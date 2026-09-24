@@ -403,6 +403,7 @@ html.js .sec.ot{background:transparent}
 /* números gigantes */
 .ot-nums{position:relative;color:var(--paper);overflow:clip;padding:8vh 0 12vh}
 .ot-giant{font-weight:800;letter-spacing:-.07em;line-height:.78;font-size:clamp(260px,60vw,1100px);text-align:center;white-space:nowrap;margin-left:-.05em}
+.ot-giant.long{font-size:clamp(150px,34vw,640px)}
 .ot-pics{position:absolute;inset:0;pointer-events:none}
 .ot-pics img{position:absolute;width:clamp(150px,19vw,330px);aspect-ratio:3/4;object-fit:cover;border-radius:4px;box-shadow:0 30px 60px rgba(0,0,0,.45)}
 .ot-nums-foot{position:relative;display:grid;grid-template-columns:1.2fr 1fr auto;align-items:end;gap:30px;margin-top:4vh}
@@ -428,7 +429,7 @@ html.js .sec.ot{background:transparent}
   .ot-say{font-size:12.5vw}
   .ot-slot{width:46vw}
   .ot-nums-foot{grid-template-columns:1fr;gap:20px}
-  .ot-giant{font-size:78vw}
+  .ot-giant{font-size:78vw}.ot-giant.long{font-size:40vw}
 }
 @media (prefers-reduced-motion:reduce){.ot-cue i{animation:none}}
 
@@ -506,44 +507,19 @@ html.js .sec.ot{background:transparent}
   </div>
 </section>
 
-<section class="sec ot-nums" id="otNums" data-tone="ink" data-bg="ink" aria-label="Em números">
-  <div class="ot-giant" aria-hidden="true"><span data-n="videos">19</span></div>
+<section class="sec ot-nums" id="otNums" data-tone="ink" data-bg="ink" aria-label="Em números: +100 clientes atendidos">
+  <div class="ot-giant long" aria-hidden="true"><span>+100</span></div>
   <div class="ot-pics" id="otPics" aria-hidden="true"></div>
   <div class="ot-nums-foot wrap">
-    <p class="ot-nlabel"><b data-n="videos">19</b> vídeos no portfólio</p>
-    <div class="ot-mini"><div><b data-n="clients">12</b><span>marcas atendidas</span></div><div><b>5.0</b><span>nota no Google</span></div></div>
-    <div class="row"><a class="btn" href="#hero">Assistir showreel <span class="arr">↓</span></a><a class="btn ghost" href="#trabalhos">Ver trabalhos <span class="arr">↘</span></a></div>
+    <p class="ot-nlabel"><b>+100</b> clientes atendidos</p>
+    <div class="ot-mini"><div><b data-n="videos">19</b><span>vídeos no portfólio</span></div><div><b>5.0</b><span>nota no Google</span></div></div>
+    <div class="row"><button class="btn" type="button" id="reelBtn">Assistir showreel <span class="arr">▶</span></button><a class="btn ghost" href="#trabalhos">Ver trabalhos <span class="arr">↘</span></a></div>
   </div>
 </section>
 
 <div class="cam-fly" id="camFly" aria-hidden="true"><div class="cam-halo"></div><canvas id="cam3d" width="675" height="501"></canvas></div>
 
 <!-- HERO -->
-<section class="sec hero" id="hero" data-tone="ink" data-bg="ink">
-  <div class="h-mq" aria-hidden="true">
-    <div class="mq"><div class="mq-track"><span class="it">audiovisual · fotografia · timbó ·</span><span class="it">audiovisual · fotografia · timbó ·</span></div></div>
-    <div class="mq rev"><div class="mq-track"><span class="display">Vídeos que vendem · Fotos que param o scroll ·</span><span class="display">Vídeos que vendem · Fotos que param o scroll ·</span></div></div>
-  </div>
-  <div class="h-frame" id="hFrame">
-    <img class="poster" src="assets/69bf52edfe51.jpg" alt="">
-    <video id="heroVideo" autoplay muted loop playsinline preload="auto" poster="assets/69bf52edfe51.jpg" disablepictureinpicture aria-hidden="true" tabindex="-1"><source src="assets/0612d47a1855.mp4" type="video/mp4"></video>
-    <div class="h-shade"></div>
-    <canvas id="heroFx" aria-hidden="true"></canvas>
-    <div class="vf" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-    <div class="h-meta" aria-hidden="true"><span>Portfólio Cobra</span><span>4K · 30fps</span><span>Timbó, SC</span></div>
-    <div class="rec" aria-hidden="true"><b>REC</b><span id="tc">00:00:00:00</span></div>
-    <div class="h-content">
-      <h2 class="display" id="heroTitle" aria-label="Audiovisual e Fotografia"><span class="l1" data-prox>Audiovisual</span><span class="l2"><span class="amp">&amp;</span> <span data-prox>Fotografia</span></span></h2>
-      <div class="h-side">
-        <p>Vídeos institucionais, conteúdo para marcas e fotografia de gastronomia e produtos, produzidos em Timbó para empresas de todo tipo de segmento.</p>
-        <div class="row"><a class="btn" href="#trabalhos">Ver trabalhos <span class="arr">↘</span></a><button class="btn ghost" type="button" id="reelBtn">▶ Showreel</button></div>
-      </div>
-    </div>
-  </div>
-  <svg class="sig h-sign" viewBox="0 0 400 160" aria-hidden="true"><path pathLength="1" d="M80 46 C 62 26, 22 38, 20 78 C 18 118, 60 124, 84 102 C 92 94, 96 86, 104 80 C 94 80, 92 112, 112 112 C 132 112, 136 80, 116 76 C 106 74, 104 84, 114 88 C 124 92, 132 86, 140 78 C 152 64, 164 28, 158 14 C 152 2, 136 16, 140 52 L 143 110 C 150 92, 176 84, 178 98 C 180 112, 160 118, 146 110 C 160 106, 172 96, 186 88 C 192 84, 196 78, 198 74 C 202 84, 200 100, 199 112 C 203 90, 213 76, 228 80 C 234 82, 238 84, 246 82 C 236 74, 214 84, 216 100 C 218 116, 242 112, 250 90 L 249 104 C 249 114, 258 116, 270 106 C 296 86, 334 68, 378 58" fill="none" stroke="#CBE22E" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><path pathLength="1" d="M40 138 C 140 120, 270 126, 372 112" fill="none" stroke="#CBE22E" stroke-width="5.6" stroke-linecap="round"/></svg>
-</section>
-
-<!-- GALLERY -->
 <section class="sec t-ink gal-sec" id="trabalhos" data-tone="ink" data-bg="ink" aria-labelledby="gTitle">
   <div class="g-head wrap">
     <div><p class="eyebrow lime">01 / Portfólio</p><h2 class="display" id="gTitle">Trabalhos <span class="it">que se movem.</span></h2></div>
@@ -722,7 +698,7 @@ html.js .sec.ot{background:transparent}
   const COL={ink:[10,11,8],char:[27,30,21],paper:[238,240,227],lime:[203,226,46]};
   const secs=[...document.querySelectorAll('main > .sec, footer.foot')];
   const hdr=document.getElementById('hdr');
-  let bg=COL.ink.slice(), heroST=null;
+  let bg=COL.ink.slice();
   const mix=(a,b,t)=>a.map((v,i)=>v+(b[i]-v)*t);
   function sectionAt(y){ let cur=secs[0]; for (const s of secs){ if (s.getBoundingClientRect().top<=y) cur=s; } return cur; }
   const bgCanvas=document.getElementById('topo');
@@ -732,50 +708,13 @@ html.js .sec.ot{background:transparent}
     document.body.style.backgroundColor=`rgb(${bg.map(Math.round).join(',')})`;
     const hs=sectionAt(46); const tone = hs.id==='hero' ? 'ink' : (hs.dataset.tone||'ink'); if (hdr.dataset.tone!==tone) hdr.dataset.tone=tone;
     tick++;
-    const hr = hero.getBoundingClientRect(); const heroCovers = hr.top <= 1 && hr.bottom >= innerHeight - 1 && (!heroST || heroST.progress < 0.03);
-    if ((!reduce && tick%3===0 && !heroCovers) || first){
+    if ((!reduce && tick%3===0) || first){
       const light=(bg[0]+bg[1]+bg[2])/3>128; const B=fit(bgCanvas,1.5); B.ctx.clearRect(0,0,B.w,B.h);
       contour(B.ctx,B.w,B.h,{cell:innerWidth<800?26:18,scale:150,levels:[-2,-1.5,-1,-0.5,0,0.5,1,1.5,2],lw:1,line:light?'rgba(10,11,8,.10)':'rgba(203,226,46,.08)',ox:0,oy:scrollY*0.15}, reduce?0:t*0.00022);
     }
-    drawHeroFx(t);
     first=false; requestAnimationFrame(frame);
   }
 
-  /* ---------- hero: video, timecode, pattern trail, proximity title ---------- */
-  const hero=document.getElementById('hero'), vid=document.getElementById('heroVideo'), heroFx=document.getElementById('heroFx');
-  if (reduce){ vid.removeAttribute('autoplay'); vid.pause(); }
-  new IntersectionObserver(es=>{ if (reduce) return; es[0].isIntersecting ? vid.play().catch(()=>{}) : vid.pause(); }).observe(hero);
-  const tc=document.getElementById('tc'), t0=performance.now();
-  setInterval(()=>{ const ms=performance.now()-t0, f=Math.floor(ms/33.3)%30, s=Math.floor(ms/1000); tc.textContent=[Math.floor(s/3600),Math.floor(s/60)%60,s%60,f].map(n=>String(n).padStart(2,'0')).join(':'); }, 66);
-  const trail=[]; const TRAIL_MS=1500; let lastP=null, fxDirty=true;
-  hero.addEventListener('pointermove', e=>{ const x=e.clientX, y=e.clientY; if (lastP && Math.hypot(x-lastP.x,y-lastP.y)<8) return; lastP={x,y}; trail.push({x,y,t:performance.now()}); if (trail.length>90) trail.shift(); });
-  const hi=document.createElement('canvas'), mk=document.createElement('canvas');
-  function drawHeroFx(t){
-    if (scrollY > innerHeight*1.5) return;
-    const now=performance.now(); while (trail.length && now-trail[0].t>TRAIL_MS) trail.shift();
-    if (!trail.length && !fxDirty && tick%4) return;
-    const F=fit(heroFx,1.5), {w,h,dpr}=F, time=reduce?0:t*0.00022;
-    if (!w || !h) return;
-    F.ctx.clearRect(0,0,w,h);
-    contour(F.ctx,w,h,{cell:innerWidth<800?24:18,scale:150,levels:[-2,-1,0,1,2],lw:1,line:'rgba(238,240,227,.10)',ox:0,oy:0},time);
-    fxDirty=false;
-    if (!trail.length) return;
-    [hi,mk].forEach(c=>{ if (c.width!==heroFx.width||c.height!==heroFx.height){ c.width=heroFx.width; c.height=heroFx.height; } });
-    const H=hi.getContext('2d'), M=mk.getContext('2d');
-    H.setTransform(dpr,0,0,dpr,0,0); M.setTransform(dpr,0,0,dpr,0,0);
-    H.globalCompositeOperation='source-over'; H.clearRect(0,0,w,h); H.fillStyle='rgba(203,226,46,.10)'; H.fillRect(0,0,w,h);
-    contour(H,w,h,{cell:14,scale:150,levels:[-2,-1.5,-1,-0.5,0,0.5,1,1.5,2],lw:2,line:'#CBE22E',ox:0,oy:0},time);
-    M.clearRect(0,0,w,h);
-    const r=heroFx.getBoundingClientRect();
-    for (const p of trail){ const a=1-(now-p.t)/TRAIL_MS, R=170, x=p.x-r.left, y=p.y-r.top;
-      const g=M.createRadialGradient(x,y,0,x,y,R); g.addColorStop(0,`rgba(0,0,0,${(a*.55).toFixed(3)})`); g.addColorStop(1,'rgba(0,0,0,0)'); M.fillStyle=g; M.fillRect(x-R,y-R,R*2,R*2); }
-    H.globalCompositeOperation='destination-in'; H.setTransform(1,0,0,1,0,0); H.drawImage(mk,0,0);
-    F.ctx.setTransform(1,0,0,1,0,0); F.ctx.drawImage(hi,0,0); fxDirty=true;
-  }
-  // proximity: letters near the cursor switch to italic
-  const prox=[]; document.querySelectorAll('[data-prox]').forEach(el=>{ const txt=el.textContent; el.textContent=''; [...txt].forEach(ch=>{ const s=document.createElement('span'); s.className='ch'; s.textContent=ch; el.appendChild(s); prox.push(s); }); });
-  if (fine && !reduce){ hero.addEventListener('pointermove', e=>{ prox.forEach(s=>{ const r=s.getBoundingClientRect(); const d=Math.hypot(e.clientX-(r.left+r.width/2), e.clientY-(r.top+r.height/2)); s.classList.toggle('alt', d<110); }); });
-    hero.addEventListener('pointerleave', ()=>prox.forEach(s=>s.classList.remove('alt'))); }
   requestAnimationFrame(frame);
 
   /* ---------- gallery ---------- */
@@ -880,7 +819,7 @@ html.js .sec.ot{background:transparent}
     if (dir && hasG && !reduce) gsap.fromTo(lbFrame, { xPercent: dir*12, opacity:0 }, { xPercent:0, opacity:1, duration:.55, ease:'expo.out' });
   }
   function openLb(i, fromEl, arr){
-    lbList = arr || list; fillLb(i); lbFrom=fromEl||null; lb.classList.add('open'); if (lenis) lenis.stop(); vid.pause();
+    lbList = arr || list; fillLb(i); lbFrom=fromEl||null; lb.classList.add('open'); if (lenis) lenis.stop();
     if (hasG && !reduce && fromEl){ const r=fromEl.getBoundingClientRect(); gsap.fromTo(lb, { clipPath:`inset(${r.top}px ${innerWidth-r.right}px ${innerHeight-r.bottom}px ${r.left}px round 6px)` }, { clipPath:'inset(0px 0px 0px 0px round 0px)', duration:.85, ease:'expo.inOut' }); }
     else lb.style.clipPath='none';
     document.getElementById('lbClose').focus();
@@ -981,7 +920,7 @@ html.js .sec.ot{background:transparent}
     fillClient(k); cp.scrollTop=0;
     try { if (location.hash !== '#'+k) history.pushState({ client:k }, '', '#'+k); } catch(e){}
     if (wasOpen){ if (hasG && !reduce) gsap.fromTo('#cpName, #cpLogo, #cpStats, .cp-body', { opacity:0, y:30 }, { opacity:1, y:0, duration:.7, ease:'expo.out', stagger:.06 }); return; }
-    cpFrom=fromEl||null; cp.classList.add('open'); if (lenis) lenis.stop(); vid.pause();
+    cpFrom=fromEl||null; cp.classList.add('open'); if (lenis) lenis.stop();
     if (hasG && !reduce){
       const r = fromEl ? fromEl.getBoundingClientRect() : { top:innerHeight, left:0, right:innerWidth, bottom:innerHeight };
       gsap.fromTo(cp, { clipPath:`inset(${r.top}px ${innerWidth-r.right}px ${innerHeight-r.bottom}px ${r.left}px round 8px)` }, { clipPath:'inset(0px 0px 0px 0px round 0px)', duration:.9, ease:'expo.inOut' });
@@ -1041,18 +980,6 @@ html.js .sec.ot{background:transparent}
   }
 
   if (!hasG || reduce) return;
-
-  /* hero shrink */
-  const mm=gsap.matchMedia();
-  mm.add({ d:'(min-width: 861px)', m:'(max-width: 860px)' }, ctx=>{
-    const tl=gsap.timeline({ scrollTrigger:{ trigger:'#hero', start:'top top', end:'+=110%', pin:true, scrub:0.6 } });
-    tl.fromTo('#hFrame', { clipPath:'inset(0% 0% 0% 0% round 0px)' }, { clipPath: ctx.conditions.d ? 'inset(16% 24% 16% 24% round 22px)' : 'inset(22% 6% 22% 6% round 18px)', ease:'none', duration:1 }, 0)
-      .fromTo('#hFrame', { rotate:0 }, { rotate:-3, ease:'none', duration:1 }, 0)
-      .to('.h-content, .h-meta, .rec, .vf', { opacity:0, duration:.3, ease:'none' }, 0)
-      .fromTo('.h-mq .mq', { xPercent:0 }, { xPercent:i=>i?12:-12, ease:'none', duration:1 }, 0)
-      .fromTo('.h-sign path', { strokeDashoffset:1 }, { strokeDashoffset:0, ease:'none', duration:.45, stagger:.3 }, .45);
-    heroST=tl.scrollTrigger; return ()=>{ heroST=null; };
-  });
 
   /* word reveal */
   function splitWords(el){ (function walk(node){ [...node.childNodes].forEach(n=>{

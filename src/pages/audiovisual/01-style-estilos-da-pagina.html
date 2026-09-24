@@ -393,6 +393,7 @@ html.js .sec.ot{background:transparent}
 /* números gigantes */
 .ot-nums{position:relative;color:var(--paper);overflow:clip;padding:8vh 0 12vh}
 .ot-giant{font-weight:800;letter-spacing:-.07em;line-height:.78;font-size:clamp(260px,60vw,1100px);text-align:center;white-space:nowrap;margin-left:-.05em}
+.ot-giant.long{font-size:clamp(150px,34vw,640px)}
 .ot-pics{position:absolute;inset:0;pointer-events:none}
 .ot-pics img{position:absolute;width:clamp(150px,19vw,330px);aspect-ratio:3/4;object-fit:cover;border-radius:4px;box-shadow:0 30px 60px rgba(0,0,0,.45)}
 .ot-nums-foot{position:relative;display:grid;grid-template-columns:1.2fr 1fr auto;align-items:end;gap:30px;margin-top:4vh}
@@ -418,7 +419,7 @@ html.js .sec.ot{background:transparent}
   .ot-say{font-size:12.5vw}
   .ot-slot{width:46vw}
   .ot-nums-foot{grid-template-columns:1fr;gap:20px}
-  .ot-giant{font-size:78vw}
+  .ot-giant{font-size:78vw}.ot-giant.long{font-size:40vw}
 }
 @media (prefers-reduced-motion:reduce){.ot-cue i{animation:none}}
 

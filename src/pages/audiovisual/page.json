@@ -45,11 +45,6 @@
       "file": "07-section-otnums.html"
     },
     {
-      "label": "Showreel (hero)",
-      "kind": "section",
-      "file": "08-section-hero.html"
-    },
-    {
       "label": "Trabalhos (galeria)",
       "kind": "section",
       "file": "09-section-trabalhos.html"

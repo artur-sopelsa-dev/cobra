@@ -49,7 +49,7 @@
   const COL={ink:[10,11,8],char:[27,30,21],paper:[238,240,227],lime:[203,226,46]};
   const secs=[...document.querySelectorAll('main > .sec, footer.foot')];
   const hdr=document.getElementById('hdr');
-  let bg=COL.ink.slice(), heroST=null;
+  let bg=COL.ink.slice();
   const mix=(a,b,t)=>a.map((v,i)=>v+(b[i]-v)*t);
   function sectionAt(y){ let cur=secs[0]; for (const s of secs){ if (s.getBoundingClientRect().top<=y) cur=s; } return cur; }
   const bgCanvas=document.getElementById('topo');
@@ -59,50 +59,13 @@
     document.body.style.backgroundColor=`rgb(${bg.map(Math.round).join(',')})`;
     const hs=sectionAt(46); const tone = hs.id==='hero' ? 'ink' : (hs.dataset.tone||'ink'); if (hdr.dataset.tone!==tone) hdr.dataset.tone=tone;
     tick++;
-    const hr = hero.getBoundingClientRect(); const heroCovers = hr.top <= 1 && hr.bottom >= innerHeight - 1 && (!heroST || heroST.progress < 0.03);
-    if ((!reduce && tick%3===0 && !heroCovers) || first){
+    if ((!reduce && tick%3===0) || first){
       const light=(bg[0]+bg[1]+bg[2])/3>128; const B=fit(bgCanvas,1.5); B.ctx.clearRect(0,0,B.w,B.h);
       contour(B.ctx,B.w,B.h,{cell:innerWidth<800?26:18,scale:150,levels:[-2,-1.5,-1,-0.5,0,0.5,1,1.5,2],lw:1,line:light?'rgba(10,11,8,.10)':'rgba(203,226,46,.08)',ox:0,oy:scrollY*0.15}, reduce?0:t*0.00022);
     }
-    drawHeroFx(t);
     first=false; requestAnimationFrame(frame);
   }
 
-  /* ---------- hero: video, timecode, pattern trail, proximity title ---------- */
-  const hero=document.getElementById('hero'), vid=document.getElementById('heroVideo'), heroFx=document.getElementById('heroFx');
-  if (reduce){ vid.removeAttribute('autoplay'); vid.pause(); }
-  new IntersectionObserver(es=>{ if (reduce) return; es[0].isIntersecting ? vid.play().catch(()=>{}) : vid.pause(); }).observe(hero);
-  const tc=document.getElementById('tc'), t0=performance.now();
-  setInterval(()=>{ const ms=performance.now()-t0, f=Math.floor(ms/33.3)%30, s=Math.floor(ms/1000); tc.textContent=[Math.floor(s/3600),Math.floor(s/60)%60,s%60,f].map(n=>String(n).padStart(2,'0')).join(':'); }, 66);
-  const trail=[]; const TRAIL_MS=1500; let lastP=null, fxDirty=true;
-  hero.addEventListener('pointermove', e=>{ const x=e.clientX, y=e.clientY; if (lastP && Math.hypot(x-lastP.x,y-lastP.y)<8) return; lastP={x,y}; trail.push({x,y,t:performance.now()}); if (trail.length>90) trail.shift(); });
-  const hi=document.createElement('canvas'), mk=document.createElement('canvas');
-  function drawHeroFx(t){
-    if (scrollY > innerHeight*1.5) return;
-    const now=performance.now(); while (trail.length && now-trail[0].t>TRAIL_MS) trail.shift();
-    if (!trail.length && !fxDirty && tick%4) return;
-    const F=fit(heroFx,1.5), {w,h,dpr}=F, time=reduce?0:t*0.00022;
-    if (!w || !h) return;
-    F.ctx.clearRect(0,0,w,h);
-    contour(F.ctx,w,h,{cell:innerWidth<800?24:18,scale:150,levels:[-2,-1,0,1,2],lw:1,line:'rgba(238,240,227,.10)',ox:0,oy:0},time);
-    fxDirty=false;
-    if (!trail.length) return;
-    [hi,mk].forEach(c=>{ if (c.width!==heroFx.width||c.height!==heroFx.height){ c.width=heroFx.width; c.height=heroFx.height; } });
-    const H=hi.getContext('2d'), M=mk.getContext('2d');
-    H.setTransform(dpr,0,0,dpr,0,0); M.setTransform(dpr,0,0,dpr,0,0);
-    H.globalCompositeOperation='source-over'; H.clearRect(0,0,w,h); H.fillStyle='rgba(203,226,46,.10)'; H.fillRect(0,0,w,h);
-    contour(H,w,h,{cell:14,scale:150,levels:[-2,-1.5,-1,-0.5,0,0.5,1,1.5,2],lw:2,line:'#CBE22E',ox:0,oy:0},time);
-    M.clearRect(0,0,w,h);
-    const r=heroFx.getBoundingClientRect();
-    for (const p of trail){ const a=1-(now-p.t)/TRAIL_MS, R=170, x=p.x-r.left, y=p.y-r.top;
-      const g=M.createRadialGradient(x,y,0,x,y,R); g.addColorStop(0,`rgba(0,0,0,${(a*.55).toFixed(3)})`); g.addColorStop(1,'rgba(0,0,0,0)'); M.fillStyle=g; M.fillRect(x-R,y-R,R*2,R*2); }
-    H.globalCompositeOperation='destination-in'; H.setTransform(1,0,0,1,0,0); H.drawImage(mk,0,0);
-    F.ctx.setTransform(1,0,0,1,0,0); F.ctx.drawImage(hi,0,0); fxDirty=true;
-  }
-  // proximity: letters near the cursor switch to italic
-  const prox=[]; document.querySelectorAll('[data-prox]').forEach(el=>{ const txt=el.textContent; el.textContent=''; [...txt].forEach(ch=>{ const s=document.createElement('span'); s.className='ch'; s.textContent=ch; el.appendChild(s); prox.push(s); }); });
-  if (fine && !reduce){ hero.addEventListener('pointermove', e=>{ prox.forEach(s=>{ const r=s.getBoundingClientRect(); const d=Math.hypot(e.clientX-(r.left+r.width/2), e.clientY-(r.top+r.height/2)); s.classList.toggle('alt', d<110); }); });
-    hero.addEventListener('pointerleave', ()=>prox.forEach(s=>s.classList.remove('alt'))); }
   requestAnimationFrame(frame);
 
   /* ---------- gallery ---------- */
@@ -207,7 +170,7 @@
     if (dir && hasG && !reduce) gsap.fromTo(lbFrame, { xPercent: dir*12, opacity:0 }, { xPercent:0, opacity:1, duration:.55, ease:'expo.out' });
   }
   function openLb(i, fromEl, arr){
-    lbList = arr || list; fillLb(i); lbFrom=fromEl||null; lb.classList.add('open'); if (lenis) lenis.stop(); vid.pause();
+    lbList = arr || list; fillLb(i); lbFrom=fromEl||null; lb.classList.add('open'); if (lenis) lenis.stop();
     if (hasG && !reduce && fromEl){ const r=fromEl.getBoundingClientRect(); gsap.fromTo(lb, { clipPath:`inset(${r.top}px ${innerWidth-r.right}px ${innerHeight-r.bottom}px ${r.left}px round 6px)` }, { clipPath:'inset(0px 0px 0px 0px round 0px)', duration:.85, ease:'expo.inOut' }); }
     else lb.style.clipPath='none';
     document.getElementById('lbClose').focus();
@@ -308,7 +271,7 @@
     fillClient(k); cp.scrollTop=0;
     try { if (location.hash !== '#'+k) history.pushState({ client:k }, '', '#'+k); } catch(e){}
     if (wasOpen){ if (hasG && !reduce) gsap.fromTo('#cpName, #cpLogo, #cpStats, .cp-body', { opacity:0, y:30 }, { opacity:1, y:0, duration:.7, ease:'expo.out', stagger:.06 }); return; }
-    cpFrom=fromEl||null; cp.classList.add('open'); if (lenis) lenis.stop(); vid.pause();
+    cpFrom=fromEl||null; cp.classList.add('open'); if (lenis) lenis.stop();
     if (hasG && !reduce){
       const r = fromEl ? fromEl.getBoundingClientRect() : { top:innerHeight, left:0, right:innerWidth, bottom:innerHeight };
       gsap.fromTo(cp, { clipPath:`inset(${r.top}px ${innerWidth-r.right}px ${innerHeight-r.bottom}px ${r.left}px round 8px)` }, { clipPath:'inset(0px 0px 0px 0px round 0px)', duration:.9, ease:'expo.inOut' });
@@ -368,18 +331,6 @@
   }
 
   if (!hasG || reduce) return;
-
-  /* hero shrink */
-  const mm=gsap.matchMedia();
-  mm.add({ d:'(min-width: 861px)', m:'(max-width: 860px)' }, ctx=>{
-    const tl=gsap.timeline({ scrollTrigger:{ trigger:'#hero', start:'top top', end:'+=110%', pin:true, scrub:0.6 } });
-    tl.fromTo('#hFrame', { clipPath:'inset(0% 0% 0% 0% round 0px)' }, { clipPath: ctx.conditions.d ? 'inset(16% 24% 16% 24% round 22px)' : 'inset(22% 6% 22% 6% round 18px)', ease:'none', duration:1 }, 0)
-      .fromTo('#hFrame', { rotate:0 }, { rotate:-3, ease:'none', duration:1 }, 0)
-      .to('.h-content, .h-meta, .rec, .vf', { opacity:0, duration:.3, ease:'none' }, 0)
-      .fromTo('.h-mq .mq', { xPercent:0 }, { xPercent:i=>i?12:-12, ease:'none', duration:1 }, 0)
-      .fromTo('.h-sign path', { strokeDashoffset:1 }, { strokeDashoffset:0, ease:'none', duration:.45, stagger:.3 }, .45);
-    heroST=tl.scrollTrigger; return ()=>{ heroST=null; };
-  });
 
   /* word reveal */
   function splitWords(el){ (function walk(node){ [...node.childNodes].forEach(n=>{
