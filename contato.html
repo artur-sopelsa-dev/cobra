@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>[hidden]{display:none!important}</style>
+<title>Fale com a Cobra | Contato</title>
+<meta name="description" content="Agência Cobra · marketing digital, conteúdo, tecnologia e audiovisual em Timbó, SC.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500&family=Sedgwick+Ave+Display&display=swap">
+<style>
+:root{
+  color-scheme:dark;
+  --ink:#0A0B08;--char:#1B1E15;--paper:#EEF0E3;--paper-2:#E2E5D6;--lime:#CBE22E;--lime-deep:#A9BD1C;--mute:#8C9080;
+  --line:rgba(238,240,227,.14);--line-d:rgba(10,11,8,.14);
+  --font:"Montserrat","Helvetica Neue",Arial,sans-serif;--graf:"Sedgwick Ave Display",var(--font);
+  --gut:clamp(16px,3vw,40px);--ease:cubic-bezier(.7,0,.2,1);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ink);color:var(--paper);font-family:var(--font);font-size:16px;line-height:1.55;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit}img{max-width:100%;display:block}button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--lime);outline-offset:3px}
+.wrap{padding-inline:var(--gut)}
+.display{font-weight:800;text-transform:uppercase;letter-spacing:-.045em;line-height:.9;margin:0}
+.it{font-style:italic;font-weight:300;text-transform:none;letter-spacing:-.035em}
+.graf{font-family:var(--graf);font-weight:400;text-transform:none;letter-spacing:-.01em;color:var(--lime)}
+.eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:800;margin:0}
+.eyebrow b,.lime{color:var(--lime)}
+.muted{color:var(--mute)}
+#topo{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+main,footer{position:relative;z-index:1}
+.sec{position:relative}
+.t-ink{background:var(--ink);color:var(--paper)}.t-char{background:var(--char);color:var(--paper)}.t-paper{background:var(--paper);color:var(--ink)}.t-lime{background:var(--lime);color:var(--ink)}
+html.js .sec.t-ink,html.js .sec.t-char,html.js .sec.t-paper{background:transparent}
+html.js .sec.t-paper{color:var(--ink)}
+/* botões */
+.btn{display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 20px;border-radius:10px;background:var(--lime);color:var(--ink);font-weight:800;text-transform:uppercase;font-size:13px;letter-spacing:.02em;text-decoration:none;border:0;cursor:pointer;transition:transform .35s var(--ease),background .3s,color .3s;white-space:nowrap}
+.btn:hover{background:#d9ef3c}
+.btn .arr{display:inline-block;transition:transform .35s var(--ease)}
+.btn:hover .arr{transform:translateX(4px) rotate(-45deg)}
+.btn.ink{background:var(--ink);color:var(--lime)}
+.btn.ghost{background:transparent;color:inherit;border:1.5px solid currentColor}
+.btn.ghost:hover{background:var(--lime);color:var(--ink);border-color:var(--lime)}
+/* header */
+.hdr{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:16px var(--gut);pointer-events:none;--hc:var(--paper);transition:transform .5s var(--ease)}
+.hdr>*{pointer-events:auto}
+.hdr.hide{transform:translateY(-110%)}
+.hdr[data-tone="paper"],.hdr[data-tone="lime"]{--hc:var(--ink)}
+.logo{display:block;width:108px;color:var(--hc);transition:color .4s;text-decoration:none}
+.logo svg{width:100%;display:block;overflow:visible}
+.hdr nav{display:flex;gap:4px;padding:5px;border-radius:12px;background:rgba(10,11,8,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(238,240,227,.1)}
+.hdr nav a{text-decoration:none;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--paper);padding:9px 12px;border-radius:8px;transition:background .3s,color .3s}
+.hdr nav a:hover{background:rgba(238,240,227,.1)}
+.hdr nav a.on{background:var(--lime);color:var(--ink)}
+.burger{display:none;width:48px;height:48px;border-radius:10px;border:1.5px solid var(--hc);background:transparent;cursor:pointer;place-items:center}
+.burger i{display:block;width:18px;height:1.5px;background:var(--hc);position:relative}
+.burger i::before,.burger i::after{content:"";position:absolute;right:0;height:1.5px;background:var(--hc);transition:transform .4s var(--ease),width .3s}
+.burger i::before{top:-5px;width:10px}.burger i::after{top:5px;width:14px}
+.menu-open .burger i{background:transparent}.menu-open .burger i::before{width:18px;transform:translateY(5px) rotate(45deg)}.menu-open .burger i::after{width:18px;transform:translateY(-5px) rotate(-45deg)}
+.mnav{position:fixed;inset:0;z-index:45;background:var(--char);padding:100px var(--gut) 40px;display:flex;flex-direction:column;justify-content:center;gap:6px;clip-path:inset(0 0 100% 0);transition:clip-path .7s var(--ease);visibility:hidden}
+.menu-open .mnav{clip-path:inset(0);visibility:visible}
+.menu-open .hdr{--hc:var(--paper)}
+.mnav a{font-weight:800;text-transform:uppercase;letter-spacing:-.04em;font-size:clamp(34px,9vw,60px);line-height:1.02;text-decoration:none;color:var(--paper)}
+.mnav a.on{color:var(--lime)}
+@media (max-width:1060px){.hdr nav{display:none}.burger{display:grid}.hdr .btn .lbl{display:none}}
+/* whatsapp flutuante */
+.wa{position:fixed;right:18px;bottom:18px;z-index:40;width:54px;height:54px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.35);transition:transform .3s var(--ease)}
+.wa:hover{transform:scale(1.08)}
+.wa svg{width:26px;height:26px}
+/* revelações */
+.wm{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.06em;margin-bottom:-.06em}
+.wi{display:inline-block}
+.rv{opacity:0;transform:translateY(40px)}
+html:not(.js) .rv,.reduce .rv{opacity:1;transform:none}
+/* rodapé */
+.foot{background:var(--ink);color:var(--paper);padding:clamp(70px,10vw,130px) var(--gut) 24px;overflow:hidden}
+.f-cta{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:40px;align-items:end;padding-bottom:clamp(50px,8vw,100px);border-bottom:1px solid var(--line)}
+.f-cta h2{font-size:clamp(44px,7vw,120px)}
+.f-cta h2 .it{color:var(--lime);display:block}
+.f-cta .side{display:flex;flex-direction:column;gap:16px;align-items:flex-start}
+.f-cta .side p{margin:0;opacity:.75;max-width:36ch}
+.f-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:30px;padding:40px 0}
+.f-grid h4{margin:0 0 14px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute)}
+.f-grid nav{display:flex;flex-direction:column;gap:8px}
+.f-grid a{text-decoration:none;font-weight:600}
+.f-grid a:hover{color:var(--lime)}
+.f-grid address{font-style:normal;opacity:.8;font-size:14px;line-height:1.7}
+.rating{display:flex;align-items:center;gap:12px}.rating strong{font-size:44px;font-weight:800;letter-spacing:-.05em;color:var(--lime);line-height:1}.rating span{display:block;font-size:12px}
+.f-big{font-weight:800;text-transform:uppercase;letter-spacing:-.07em;line-height:.75;font-size:clamp(90px,26vw,460px);color:transparent;-webkit-text-stroke:1px rgba(238,240,227,.18);text-align:center;margin:10px 0 20px;white-space:nowrap}
+.f-bottom{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--mute)}
+.f-bottom a{text-decoration:none}
+@media (max-width:900px){.f-cta{grid-template-columns:1fr}.f-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.f-grid{grid-template-columns:1fr}}
+.proto{position:fixed;left:10px;bottom:10px;z-index:30;font-size:9px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;background:rgba(10,11,8,.75);color:var(--mute);padding:5px 8px;border-radius:5px;pointer-events:none}
+/* transição de página */
+.pgwipe{position:fixed;inset:0;z-index:90;background:var(--lime);transform:translateY(100%);pointer-events:none}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+.ct-hero{min-height:92svh;padding:clamp(120px,18vh,170px) var(--gut) clamp(40px,7vh,70px);display:flex;flex-direction:column;justify-content:space-between;gap:40px;overflow:hidden}
+.ct-hero h1{font-size:clamp(70px,14vw,260px);line-height:.8;position:relative}
+.ct-hero h1 .graf{display:block;font-size:.72em;margin:-.02em 0 0 .5em;transform:rotate(-5deg);transform-origin:left;text-shadow:.03em .03em 0 var(--ink)}
+.ct-hero .top{display:flex;justify-content:space-between;align-items:flex-start;gap:30px;flex-wrap:wrap}
+.ct-hero .top p{max-width:430px;margin:0;font-size:clamp(17px,1.4vw,21px);line-height:1.45;opacity:.85}
+.ct-hero canvas{position:absolute;inset:0;width:100%;height:100%;z-index:-1;opacity:.9}
+.chan{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:12px}
+.ch{position:relative;border:1px solid var(--line);border-radius:18px;padding:20px;min-height:170px;display:flex;flex-direction:column;justify-content:space-between;text-decoration:none;background:rgba(10,11,8,.55);backdrop-filter:blur(6px);transition:transform .45s var(--ease),border-color .3s,background .3s;overflow:hidden}
+.ch small{font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;opacity:.65}
+.ch b{font-size:clamp(18px,1.6vw,24px);letter-spacing:-.02em;line-height:1.15;word-break:break-word}
+.ch .go{position:absolute;right:16px;top:16px;width:38px;height:38px;border-radius:50%;border:1.5px solid currentColor;display:grid;place-items:center;transition:transform .45s var(--ease)}
+.ch:hover{transform:translateY(-6px);border-color:var(--lime)}
+.ch:hover .go{transform:rotate(-45deg)}
+.ch.main{background:var(--lime);color:var(--ink);border-color:var(--lime)}
+.ch.main b{font-size:clamp(26px,2.6vw,40px);letter-spacing:-.04em}
+@media (max-width:980px){.chan{grid-template-columns:1fr 1fr}.ch.main{grid-column:1/-1}}
+@media (max-width:520px){.chan{grid-template-columns:1fr}.ch{min-height:120px}}
+/* formulário */
+.ct-form{padding:clamp(80px,10vw,140px) var(--gut);display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.3fr);gap:clamp(30px,6vw,100px);align-items:start}
+.ct-form .intro{position:sticky;top:110px}
+.ct-form h2{font-size:clamp(42px,5.8vw,98px)}
+.ct-form h2 .it{color:var(--lime-deep)}
+.ct-form .intro p{max-width:40ch;margin:22px 0;opacity:.8}
+.steps{list-style:none;margin:30px 0 0;padding:0;display:flex;flex-direction:column;gap:14px;counter-reset:s}
+.steps li{display:flex;gap:14px;align-items:flex-start;font-size:15px;counter-increment:s}
+.steps li::before{content:counter(s,decimal-leading-zero);font-weight:800;font-size:12px;background:var(--ink);color:var(--lime);border-radius:99px;padding:4px 9px;flex:none}
+form.card{background:#fff;color:var(--ink);border-radius:24px;padding:clamp(22px,3vw,40px);box-shadow:0 30px 80px -30px rgba(10,11,8,.35)}
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.fld{display:flex;flex-direction:column;gap:8px;margin-bottom:18px}
+.fld>span{font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+.fld>span i{font-style:normal;color:#8a8e7e;text-transform:none;letter-spacing:0;font-weight:500}
+.fld input,.fld textarea,.fld select{width:100%;border:0;border-bottom:2px solid #d6d9ca;background:transparent;padding:10px 2px;font-size:17px;outline:none;transition:border-color .3s;border-radius:0}
+.fld textarea{resize:vertical;min-height:110px}
+.fld input:focus,.fld textarea:focus,.fld select:focus{border-color:var(--ink)}
+.fld.err input,.fld.err textarea{border-color:#d9412f}
+.fld .msg{font-size:12px;color:#d9412f;min-height:0}
+.pills{display:flex;flex-wrap:wrap;gap:8px}
+.pills label{cursor:pointer}
+.pills input{position:absolute;opacity:0;pointer-events:none}
+.pills span{display:inline-flex;align-items:center;gap:6px;border:1.5px solid #d6d9ca;border-radius:99px;padding:9px 14px;font-size:13px;font-weight:700;transition:all .25s}
+.pills input:checked+span{background:var(--ink);color:var(--lime);border-color:var(--ink)}
+.pills input:focus-visible+span{outline:2px solid var(--lime-deep);outline-offset:2px}
+.fbot{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:10px}
+.fbot small{color:#6b6f63;font-size:12px;flex:1 1 220px}
+.btn.big{height:58px;padding:0 26px;font-size:14px}
+.ok{display:none;text-align:center;padding:30px 10px}
+.ok b{display:block;font-size:clamp(30px,3vw,44px);letter-spacing:-.04em;line-height:1;margin-bottom:10px}
+form.sent .form-in{display:none}form.sent .ok{display:block}
+@media (max-width:900px){.ct-form{grid-template-columns:1fr}.ct-form .intro{position:static}.fr{grid-template-columns:1fr;gap:0}}
+/* local */
+.ct-loc{padding:0 var(--gut) clamp(80px,10vw,140px)}
+.loc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);border-radius:24px;overflow:hidden;background:var(--ink);color:var(--paper);min-height:420px}
+.loc .txt{padding:clamp(26px,4vw,50px);display:flex;flex-direction:column;justify-content:space-between;gap:24px}
+.loc h3{margin:0;font-size:clamp(34px,3.6vw,56px);text-transform:uppercase;letter-spacing:-.045em;line-height:.92}
+.loc h3 .it{color:var(--lime)}
+.loc address{font-style:normal;font-size:17px;line-height:1.6;opacity:.85}
+.loc .map{position:relative;min-height:320px}
+.loc .map canvas{position:absolute;inset:0;width:100%;height:100%}
+.loc .pin{position:absolute;left:50%;top:50%;transform:translate(-50%,-100%);display:flex;flex-direction:column;align-items:center;gap:6px}
+.loc .pin b{background:var(--lime);color:var(--ink);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:8px 12px;border-radius:99px}
+.loc .pin i{width:14px;height:14px;border-radius:50%;background:var(--lime);animation:ping 2s infinite}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(203,226,46,.6)}100%{box-shadow:0 0 0 26px rgba(203,226,46,0)}}
+@media (max-width:860px){.loc{grid-template-columns:1fr}}
+
+/* ===== rodapé padrão (igual ao da home) ===== */
+.hf{--hl:#CBE22E;--hi:#0A0B08;--hp:#EEF0E3;--hc:#1B1E15;--he:cubic-bezier(.16,1,.3,1);background:var(--hl);padding:0 12px;position:relative;z-index:1;margin:0;font-family:"Montserrat","Helvetica Neue",Arial,sans-serif}
+.hf-card{background:var(--hc);color:var(--hp);border-radius:0 0 26px 26px;position:relative;overflow:hidden;padding:110px clamp(16px,3vw,40px) 40px;min-height:min(100svh,880px);display:flex;flex-direction:column;transform-origin:50% 0}
+.hf-topo{position:absolute;inset:0;width:100%;height:100%;opacity:.5}
+.hf-sign{width:min(52vw,340px);margin:0 auto -10px;position:relative;z-index:2;display:block;overflow:visible}
+.hf-sign path{stroke-dasharray:1;stroke-dashoffset:0}
+.hf-title{font-weight:800;text-transform:uppercase;letter-spacing:-.04em;line-height:.92;text-align:center;font-size:clamp(40px,6vw,100px);margin:0;position:relative;z-index:3;color:var(--hp)}
+.hf-it{display:inline;font-style:italic;font-weight:400;text-transform:none;letter-spacing:-.03em;color:var(--hl)}
+.hf-mid{flex:1;display:grid;grid-template-columns:1fr minmax(200px,34vw) 1fr;align-items:end;gap:20px;position:relative;z-index:2;margin-top:10px}
+.hf-col{text-align:center;align-self:center}
+.hf-eye{font-size:9px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:#8C9080;margin-bottom:10px}
+.hf-col a{display:block;font-weight:800;text-transform:uppercase;letter-spacing:-.02em;font-size:clamp(18px,2vw,28px);line-height:1.15;text-decoration:none;color:var(--hp);transition:color .25s}
+.hf-col a.lime,.hf-col a:hover,.hf-col a[aria-current]{color:var(--hl)}
+.hf-hand{position:relative;margin-bottom:-40px}
+.hf-hand img{width:100%;display:block;filter:drop-shadow(0 0 60px rgba(203,226,46,.18))}
+.hf-wa{position:relative;z-index:4;justify-self:center;display:inline-flex;align-items:center;gap:10px;height:46px;padding:0 18px;border-radius:10px;background:var(--hl);color:var(--hi);font-weight:800;text-transform:uppercase;font-size:13px;letter-spacing:.02em;text-decoration:none;white-space:nowrap;transition:background .3s}
+.hf-wa:hover{background:#d9ef3c}.hf-wa .arr{display:inline-block;transition:transform .35s var(--he)}.hf-wa:hover .arr{transform:translateX(4px) rotate(-45deg)}
+.hf-sgrid{display:grid;grid-template-columns:auto auto;gap:2px 34px;text-align:left}
+.hf-sols .hf-eye{text-align:left}
+.hf-sols{justify-self:center}
+.hf-col.hf-sols a{font-size:clamp(16px,1.5vw,22px);line-height:1.2;letter-spacing:-.02em;padding:2px 0;white-space:nowrap}
+.hf-bar{position:relative;z-index:3;margin-top:24px;border-top:1px solid rgba(238,240,227,.14);padding-top:18px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:20px}
+.hf-facts,.hf-soc{display:flex;flex-wrap:wrap;gap:6px 20px;font-weight:700;font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+.hf-facts span{color:var(--hl);white-space:nowrap}
+.hf-soc{justify-content:flex-end}
+.hf-soc a{color:var(--hp);text-decoration:none;white-space:nowrap;transition:color .25s}.hf-soc a:hover{color:var(--hl)}
+.hf-bottom{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:14px 8px 16px;font-size:11px;font-weight:700;color:var(--hi);text-transform:uppercase;letter-spacing:.06em}
+.hf-bottom a{text-decoration:none;margin-left:18px;color:var(--hi)}
+@media (max-width:1100px){.hf-bar{grid-template-columns:1fr 1fr}.hf-wa{grid-column:1/-1;grid-row:1}}
+@media (max-width:760px){.hf-mid{grid-template-columns:1fr}.hf-hand{order:-1;max-width:320px;margin:0 auto}.hf-sols{justify-self:center}.hf-bar{grid-template-columns:1fr;text-align:center}.hf-facts,.hf-soc{justify-content:center}.hf-wa{white-space:normal;height:auto;min-height:46px;text-align:center}}
+@media (prefers-reduced-motion: reduce){</style>
+</head>
+<body>
+<canvas id="topo" aria-hidden="true"></canvas>
+<header class="hdr" id="hdr" data-tone="ink">
+  <a class="logo" href="index.html" aria-label="Agência Cobra, página inicial"><svg class="sig " viewBox="0 0 400 160" role="img" aria-label="Cobra"><path pathLength="1" d="M80 46 C 62 26, 22 38, 20 78 C 18 118, 60 124, 84 102 C 92 94, 96 86, 104 80 C 94 80, 92 112, 112 112 C 132 112, 136 80, 116 76 C 106 74, 104 84, 114 88 C 124 92, 132 86, 140 78 C 152 64, 164 28, 158 14 C 152 2, 136 16, 140 52 L 143 110 C 150 92, 176 84, 178 98 C 180 112, 160 118, 146 110 C 160 106, 172 96, 186 88 C 192 84, 196 78, 198 74 C 202 84, 200 100, 199 112 C 203 90, 213 76, 228 80 C 234 82, 238 84, 246 82 C 236 74, 214 84, 216 100 C 218 116, 242 112, 250 90 L 249 104 C 249 114, 258 116, 270 106 C 296 86, 334 68, 378 58" fill="none" stroke="currentColor" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/><path pathLength="1" d="M40 138 C 140 120, 270 126, 372 112" fill="none" stroke="currentColor" stroke-width="8.8" stroke-linecap="round"/></svg></a>
+  <nav aria-label="Menu principal"><a href="index.html">Home</a><a href="sobre.html">Sobre</a><a href="index.html#solucoes">Soluções</a><a href="portfolio.html">Portfólio</a><a href="audiovisual.html">Audiovisual</a><a href="blog.html">Blog</a><a href="contato.html" class="on" aria-current="page">Contato</a></nav>
+  <div style="display:flex;gap:10px;align-items:center"><a class="btn" href="https://wa.me/5547999150241?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Cobra%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto." target="_blank" rel="noopener"><span class="lbl">Falar com a Cobra</span><span class="arr" aria-hidden="true">↗</span></a><button class="burger" id="burger" type="button" aria-label="Abrir menu" aria-expanded="false"><i></i></button></div>
+</header>
+<nav class="mnav" aria-label="Menu"><a href="index.html">Home</a><a href="sobre.html">Sobre</a><a href="index.html#solucoes">Soluções</a><a href="portfolio.html">Portfólio</a><a href="audiovisual.html">Audiovisual</a><a href="blog.html">Blog</a><a href="contato.html" class="on" aria-current="page">Contato</a></nav>
+
+<main id="top">
+<section class="sec t-ink ct-hero" data-bg="ink" data-tone="ink">
+  <canvas id="ctCv" aria-hidden="true"></canvas>
+  <div class="top">
+    <p class="eyebrow"><b>Contato</b> · Agência Cobra</p>
+    <p class="rv">Conte o que você quer fazer crescer. A gente responde rápido pelo WhatsApp e marca uma conversa, presencial em Timbó ou por vídeo.</p>
+  </div>
+  <h1 class="display">Vamos <span class="graf">conversar.</span></h1>
+  <div class="chan">
+    <a class="ch main rv" href="https://wa.me/5547999150241?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Cobra%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto." target="_blank" rel="noopener"><small>WhatsApp · resposta mais rápida</small><b>(47) 99915-0241</b><span class="go">→</span></a>
+    <a class="ch rv" data-d=".06" href="mailto:contato@cobra.art.br"><small>E-mail</small><b>contato@cobra.art.br</b><span class="go">→</span></a>
+    <a class="ch rv" data-d=".12" href="https://www.instagram.com/agenciacobra.oficial/" target="_blank" rel="noopener"><small>Instagram</small><b>@agenciacobra<wbr>.oficial</b><span class="go">→</span></a>
+    <a class="ch rv" data-d=".18" href="#local"><small>Endereço</small><b>Rua Blumenau, 702<br>Timbó, SC</b><span class="go">↓</span></a>
+  </div>
+</section>
+
+<section class="sec t-paper ct-form" id="form" data-bg="paper" data-tone="paper">
+  <div class="intro">
+    <p class="eyebrow">Formulário</p>
+    <h2 class="display" data-split style="margin-top:12px">Conte sobre o <span class="it">seu projeto</span></h2>
+    <p class="rv">Leva um minuto. Quando você envia, abrimos o WhatsApp com a mensagem pronta para a nossa equipe.</p>
+    <ol class="steps rv"><li>Você conta o que precisa.</li><li>A gente entende o momento da empresa.</li><li>Marcamos uma conversa e montamos a proposta.</li></ol>
+  </div>
+  <form class="card rv" id="leadForm" novalidate>
+    <div class="form-in">
+      <div class="fr">
+        <label class="fld"><span>Seu nome</span><input name="nome" autocomplete="name" required><em class="msg"></em></label>
+        <label class="fld"><span>Empresa <i>(opcional)</i></span><input name="empresa" autocomplete="organization"></label>
+      </div>
+      <div class="fr">
+        <label class="fld"><span>WhatsApp</span><input name="tel" type="tel" inputmode="tel" autocomplete="tel" placeholder="(47) 90000-0000" required><em class="msg"></em></label>
+        <label class="fld"><span>E-mail <i>(opcional)</i></span><input name="email" type="email" autocomplete="email"></label>
+      </div>
+      <div class="fld"><span>No que podemos ajudar?</span>
+        <div class="pills" role="group" aria-label="Interesses">
+          <label><input type="checkbox" name="int" value="Tráfego pago e performance"><span>Tráfego pago</span></label>
+          <label><input type="checkbox" name="int" value="Redes sociais e conteúdo"><span>Redes sociais</span></label>
+          <label><input type="checkbox" name="int" value="Site ou e-commerce"><span>Site / e-commerce</span></label>
+          <label><input type="checkbox" name="int" value="Fotos e vídeos"><span>Fotos &amp; vídeos</span></label>
+          <label><input type="checkbox" name="int" value="Branding e identidade visual"><span>Branding</span></label>
+          <label><input type="checkbox" name="int" value="Diagnóstico digital"><span>Diagnóstico</span></label>
+          <label><input type="checkbox" name="int" value="Ainda não sei"><span>Ainda não sei</span></label>
+        </div>
+      </div>
+      <label class="fld"><span>Quando quer começar?</span>
+        <select name="quando"><option value="">Escolha uma opção</option><option>O quanto antes</option><option>Nos próximos 3 meses</option><option>Ainda estou pesquisando</option></select>
+      </label>
+      <label class="fld"><span>Mensagem <i>(opcional)</i></span><textarea name="msg" placeholder="Conte um pouco da empresa, do objetivo e do que já tentaram."></textarea></label>
+      <div class="fbot">
+        <button class="btn ink big" type="submit">Enviar pelo WhatsApp <span class="arr">→</span></button>
+        <small>Seus dados só são usados para responder o seu contato.</small>
+      </div>
+    </div>
+    <div class="ok" role="status"><b>Mensagem pronta!</b><p>Abrimos o WhatsApp numa nova aba. É só tocar em enviar.<br>Se não abriu, <a id="waAgain" href="https://wa.me/5547999150241?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Cobra%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto." target="_blank" rel="noopener">clique aqui</a>.</p><button class="btn ghost" type="button" id="again">Enviar outro contato</button></div>
+  </form>
+</section>
+
+<section class="sec t-paper ct-loc" id="local" data-bg="paper" data-tone="paper">
+  <div class="loc rv">
+    <div class="txt">
+      <div><p class="eyebrow" style="color:var(--lime)">Onde estamos</p><h3 style="margin-top:12px">Venha tomar <span class="it">um café.</span></h3></div>
+      <address>Rua Blumenau, 702 · Sala 02, segundo piso<br>Bairro dos Estados · Timbó, SC<br>CEP 89093-438</address>
+      <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Rua+Blumenau+702+Timb%C3%B3+SC" target="_blank" rel="noopener">Abrir no mapa <span class="arr">↗</span></a><a class="btn ghost" href="https://wa.me/5547999150241?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Cobra%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto." target="_blank" rel="noopener">Marcar horário</a></div>
+    </div>
+    <div class="map" aria-hidden="true"><canvas id="mapCv"></canvas><div class="pin"><b>Cobra · Timbó</b><i></i></div></div>
+  </div>
+</section>
+</main>
+<footer class="hf sec" data-tone="lime" data-bg="lime">
+  <div class="hf-card">
+    <canvas class="hf-topo" aria-hidden="true"></canvas>
+    <svg class="hf-sign" viewBox="0 0 400 160" aria-hidden="true"><path pathLength="1" d="M80 46 C 62 26, 22 38, 20 78 C 18 118, 60 124, 84 102 C 92 94, 96 86, 104 80 C 94 80, 92 112, 112 112 C 132 112, 136 80, 116 76 C 106 74, 104 84, 114 88 C 124 92, 132 86, 140 78 C 152 64, 164 28, 158 14 C 152 2, 136 16, 140 52 L 143 110 C 150 92, 176 84, 178 98 C 180 112, 160 118, 146 110 C 160 106, 172 96, 186 88 C 192 84, 196 78, 198 74 C 202 84, 200 100, 199 112 C 203 90, 213 76, 228 80 C 234 82, 238 84, 246 82 C 236 74, 214 84, 216 100 C 218 116, 242 112, 250 90 L 249 104 C 249 114, 258 116, 270 106 C 296 86, 334 68, 378 58" fill="none" stroke="#CBE22E" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><path pathLength="1" d="M40 138 C 140 120, 270 126, 372 112" fill="none" stroke="#CBE22E" stroke-width="6.4" stroke-linecap="round"/></svg>
+    <h2 class="hf-title">É aqui que as ideias <span class="hf-it">ganham forma.</span></h2>
+    <div class="hf-mid">
+      <nav class="hf-col" aria-label="Páginas"><div class="hf-eye">Páginas</div><a href="index.html">Home</a><a href="sobre.html">Sobre nós</a><a href="index.html#solucoes">Soluções</a><a href="portfolio.html">Portfólio</a><a href="blog.html">Blog</a><a href="contato.html" class="lime" aria-current="page">Fale conosco</a></nav>
+      <div class="hf-hand" aria-hidden="true"><img src="assets/76faebec2532.webp" alt=""></div>
+      <nav class="hf-col hf-sols" aria-label="Soluções"><div class="hf-eye">Soluções</div><div class="hf-sgrid"><a href="solucao.html#solucao-branding" data-sol="branding" title="Branding">Branding</a><a href="solucao.html#solucao-sites-institucionais" data-sol="sites-institucionais" title="Sites Institucionais">Sites</a><a href="solucao.html#solucao-e-commerce" data-sol="e-commerce" title="E-Commerce">E-commerce</a><a href="solucao.html#solucao-midias-sociais" data-sol="midias-sociais" title="Mídias Sociais">Redes sociais</a><a href="solucao.html#solucao-embalagens-e-tags" data-sol="embalagens-e-tags" title="Embalagens e Tags de Produto">Embalagens</a><a href="solucao.html#solucao-trafego-pago" data-sol="trafego-pago" title="Tráfego Pago">Tráfego pago</a><a href="solucao.html#solucao-consultoria" data-sol="consultoria" title="Consultoria">Consultoria</a><a href="solucao.html#solucao-design-de-estampas" data-sol="design-de-estampas" title="Design de Estampas">Estampas</a><a href="audiovisual.html" data-sol="fotografia" title="Fotografia">Fotografia</a><a href="audiovisual.html#sala" data-sol="producao-de-video" title="Produção de Vídeo">Vídeo</a><a href="solucao.html#solucao-seo" data-sol="seo" title="SEO e Otimização">SEO</a><a href="solucao.html#solucao-manutencao-de-sites" data-sol="manutencao-de-sites" title="Manutenção de Sites">Manutenção</a></div></nav>
+    </div>
+    <div class="hf-bar">
+      <div class="hf-facts"><span>★ 5.0 no Google</span><span>Timbó · SC</span><span>Meta Business Partner</span><span>Google Partner</span></div>
+      <a class="hf-wa" href="https://wa.me/5547999150241?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Cobra%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto." target="_blank" rel="noopener">Agendar reunião no WhatsApp <span class="arr">→</span></a>
+      <nav class="hf-soc" aria-label="Redes sociais"><a href="https://www.instagram.com/agenciacobra.oficial/" target="_blank" rel="noopener">Instagram <span aria-hidden="true">↗</span></a><a href="https://www.facebook.com/agenciacobra.oficial/" target="_blank" rel="noopener">Facebook <span aria-hidden="true">↗</span></a><a href="https://br.linkedin.com/in/cobradesignoficial" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a><a href="https://www.youtube.com/@AgenciaCobra" target="_blank" rel="noopener">YouTube <span aria-hidden="true">↗</span></a></nav>
+    </div>
+  </div>
+  <div class="hf-bottom"><span>© 2026 Cobra Design LTDA · CNPJ 41.019.460/0001-49</span><span><a href="#top">Privacidade</a><a href="#top">Cookies</a></span></div>
+</footer>
+<a class="wa" href="https://wa.me/5547999150241?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Cobra%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto." target="_blank" rel="noopener" aria-label="Falar no WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2-1.2-.5-.5-1-1.1-1.3-1.7-.1-.2 0-.4.1-.5l.4-.5.2-.4v-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.6.6-.9 1.3-.9 2.1.1.9.4 1.8 1 2.6 1.1 1.6 2.5 2.9 4.2 3.7.5.2.9.4 1.4.5.5.2 1 .2 1.6.1.6-.1 1.2-.5 1.6-1 .2-.4.2-.8.2-1.2l-.4-.3Z"/></svg></a>
+<div class="proto" hidden>Protótipo navegável · Contato</div>
+<script src="vendor/gsap.min.js"></script>
+<script src="vendor/ScrollTrigger.min.js"></script>
+<script src="vendor/lenis.min.js"></script>
+<script>
+/* Base comum das páginas internas: scroll suave, fundo de curvas, header, menu e revelações */
+(function(){
+  const root = document.documentElement; root.classList.add('js');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) root.classList.add('reduce');
+  const hasG = !!(window.gsap && window.ScrollTrigger);
+  if (hasG){ gsap.registerPlugin(ScrollTrigger); ScrollTrigger.config({ ignoreMobileResize:true, autoRefreshEvents:'visibilitychange,DOMContentLoaded,load' }); }
+  let lenis = null;
+  if (!reduce && window.Lenis){
+    lenis = new Lenis({ smoothWheel:false, syncTouch:false }); history.scrollRestoration='manual';
+    if (hasG) ScrollTrigger.addEventListener('refresh', () => lenis && lenis.resize());
+    if (hasG){ lenis.on('scroll', ScrollTrigger.update); gsap.ticker.add(t => lenis.raf(t*1000)); gsap.ticker.lagSmoothing(0); }
+    else { const raf = t => { lenis.raf(t); requestAnimationFrame(raf); }; requestAnimationFrame(raf); }
+  }
+  const C = window.__cobra = window.__cobra || {}; C.lenis = lenis;
+  C.scrollTo = (y, imm) => { if (lenis) lenis.scrollTo(y, { immediate: !!imm, duration: 1.3 }); else scrollTo({ top: typeof y === 'number' ? y : y.getBoundingClientRect().top + scrollY, behavior: imm ? 'auto' : 'smooth' }); };
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[href^="#"]'); if (!a) return;
+    const h = a.getAttribute('href'); if (h.length < 2 || a.hasAttribute('data-route')) return;
+    const el = document.getElementById(h.slice(1)); if (!el) return;
+    e.preventDefault(); C.scrollTo(el);
+  });
+
+  /* ---------- fundo de curvas + cor por seção ---------- */
+  function field(x,y,t){ return Math.sin(x + 1.7*Math.sin(y*0.8 + t*0.30)) + Math.sin(y*1.1 + 1.5*Math.sin(x*0.9 - t*0.25)) + 0.6*Math.sin((x+y)*0.7 + t*0.20); }
+  const SEG = [[],[[3,2]],[[2,1]],[[3,1]],[[0,1]],[[3,0],[2,1]],[[0,2]],[[3,0]],[[3,0]],[[0,2]],[[0,1],[3,2]],[[0,1]],[[3,1]],[[2,1]],[[3,2]],[]];
+  function contour(ctx,w,h,o,t){
+    const c=o.cell, cols=Math.ceil(w/c)+1, rows=Math.ceil(h/c)+1, v=new Float32Array((cols+1)*(rows+1));
+    for (let j=0;j<=rows;j++) for (let i=0;i<=cols;i++) v[j*(cols+1)+i]=field((i*c+o.ox)/o.scale,(j*c+o.oy)/o.scale,t);
+    ctx.lineWidth=o.lw; ctx.strokeStyle=o.line;
+    for (const L of o.levels){ ctx.beginPath();
+      for (let j=0;j<rows;j++) for (let i=0;i<cols;i++){
+        const a=v[j*(cols+1)+i], b=v[j*(cols+1)+i+1], d=v[(j+1)*(cols+1)+i], cc=v[(j+1)*(cols+1)+i+1];
+        const k=(a>L?8:0)|(b>L?4:0)|(cc>L?2:0)|(d>L?1:0); if (k===0||k===15) continue;
+        const x=i*c, y=j*c;
+        const pt=e=>e===0?[x+c*(L-a)/(b-a),y]:e===1?[x+c,y+c*(L-b)/(cc-b)]:e===2?[x+c*(L-d)/(cc-d),y+c]:[x,y+c*(L-a)/(d-a)];
+        for (const sg of SEG[k]){ const p1=pt(sg[0]),p2=pt(sg[1]); ctx.moveTo(p1[0],p1[1]); ctx.lineTo(p2[0],p2[1]); }
+      } ctx.stroke(); }
+  }
+  C.contour = contour;
+  function fit(cv, max){ const dpr=Math.min(max||1.5, devicePixelRatio||1), w=cv.clientWidth, h=cv.clientHeight; if (!w||!h) return null;
+    if (cv.width!==Math.round(w*dpr)){ cv.width=Math.round(w*dpr); cv.height=Math.round(h*dpr); }
+    const ctx=cv.getContext('2d'); ctx.setTransform(dpr,0,0,dpr,0,0); return { ctx, w, h }; }
+  C.fit = fit;
+  const COL={ ink:[10,11,8], char:[27,30,21], paper:[238,240,227], lime:[203,226,46] };
+  const secs=[...document.querySelectorAll('main .sec, footer')];
+  const hdr=document.getElementById('hdr'), bgc=document.getElementById('topo');
+  let bg=COL[(secs[0]&&secs[0].dataset.bg)||'ink'].slice(), tick=0, lastY=scrollY, first=true;
+  const at = y => { let cur=secs.find(s=>s.offsetHeight)||secs[0]; for (const s of secs){ if (s.offsetHeight && s.getBoundingClientRect().top<=y) cur=s; } return cur; };
+  function frame(t){
+    if (secs.length){
+      const s=at(innerHeight*.6); const tgt=COL[s.dataset.bg||'ink']; bg=bg.map((v,i)=>v+(tgt[i]-v)*.09);
+      document.body.style.backgroundColor=`rgb(${bg.map(Math.round).join(',')})`;
+      const hs=at(40); const tone=hs.dataset.tone||'ink'; if (hdr && hdr.dataset.tone!==tone) hdr.dataset.tone=tone;
+    }
+    const y=scrollY; if (hdr && !root.classList.contains('menu-open')){ if (y>lastY+6 && y>200) hdr.classList.add('hide'); else if (y<lastY-6) hdr.classList.remove('hide'); } lastY=y;
+    tick++;
+    if (bgc && (first || (!reduce && tick%4===0))){ const F=fit(bgc,1); if (F){ const light=(bg[0]+bg[1]+bg[2])/3>128; F.ctx.clearRect(0,0,F.w,F.h);
+      contour(F.ctx,F.w,F.h,{cell:innerWidth<800?26:20,scale:150,levels:[-2,-1.5,-1,-.5,0,.5,1,1.5,2],lw:1,line:light?'rgba(10,11,8,.09)':'rgba(203,226,46,.07)',ox:0,oy:scrollY*.12},reduce?0:t*.0002); first=false; } }
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+
+  /* ---------- menu mobile ---------- */
+  const burger=document.getElementById('burger');
+  if (burger) burger.addEventListener('click', () => { const o=root.classList.toggle('menu-open'); burger.setAttribute('aria-expanded', String(o)); if (lenis) o ? lenis.stop() : lenis.start(); });
+  document.querySelectorAll('.mnav a').forEach(a => a.addEventListener('click', () => { root.classList.remove('menu-open'); lenis && lenis.start(); }));
+
+  /* ---------- revelações ---------- */
+  function splitWords(el){ (function walk(node){ [...node.childNodes].forEach(n=>{
+    if (n.nodeType===3){ const frag=document.createDocumentFragment(); n.textContent.split(/(\s+)/).forEach(p=>{ if (!p) return; if (/^\s+$/.test(p)){ frag.appendChild(document.createTextNode(p)); return; } const m=document.createElement('span'); m.className='wm'; const i=document.createElement('span'); i.className='wi'; i.textContent=p; m.appendChild(i); frag.appendChild(m); }); n.replaceWith(frag); }
+    else if (n.nodeType===1 && !n.matches('svg,br')) walk(n); }); })(el); }
+  C.splitWords = splitWords;
+  C.reveal = function(scope){
+    scope = scope || document;
+    if (!hasG || reduce){ scope.querySelectorAll('.rv').forEach(e=>{ e.style.opacity=1; e.style.transform='none'; }); return; }
+    scope.querySelectorAll('[data-split]:not(.done)').forEach(el => { el.classList.add('done'); splitWords(el);
+      gsap.from(el.querySelectorAll('.wi'), { yPercent:115, rotate:3, duration:1, ease:'power4.out', stagger:.045, scrollTrigger:{ trigger:el, start:'top 90%', once:true } }); });
+    scope.querySelectorAll('.rv:not(.done)').forEach(el => { el.classList.add('done');
+      gsap.to(el, { opacity:1, y:0, duration:1, ease:'expo.out', delay:+(el.dataset.d||0), scrollTrigger:{ trigger:el, start:'top 92%', once:true } }); });
+  };
+  let rf; C.refresh = () => { clearTimeout(rf); rf = setTimeout(() => hasG && ScrollTrigger.refresh(), 150); };
+  addEventListener('load', C.refresh);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(C.refresh);
+})();
+
+</script>
+
+<script>
+(function(){
+  const C = window.__cobra || {}; const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  C.reveal && C.reveal();
+  /* curvas que reagem ao mouse no topo */
+  const cv=document.getElementById('ctCv'), sec=cv.parentElement; let mx=-999,my=-999; const t0=performance.now();
+  sec.addEventListener('pointermove', e=>{ const r=cv.getBoundingClientRect(); mx=e.clientX-r.left; my=e.clientY-r.top; });
+  (function loop(t){ const F=C.fit(cv,1.5); if (F){ F.ctx.clearRect(0,0,F.w,F.h);
+      C.contour(F.ctx,F.w,F.h,{cell:18,scale:150,levels:[-1.5,-1,-.5,0,.5,1,1.5],lw:1,line:'rgba(203,226,46,.12)',ox:0,oy:0},reduce?0:(t-t0)*.00025);
+      if (mx>-999){ const g=F.ctx.createRadialGradient(mx,my,0,mx,my,220); g.addColorStop(0,'rgba(203,226,46,.16)'); g.addColorStop(1,'rgba(203,226,46,0)'); F.ctx.fillStyle=g; F.ctx.fillRect(0,0,F.w,F.h); } }
+    if (!reduce) setTimeout(()=>requestAnimationFrame(loop),50); })(t0);
+  const m=document.getElementById('mapCv'); const drawMap=()=>{ const F=C.fit(m,1.5); if (F){ F.ctx.clearRect(0,0,F.w,F.h); C.contour(F.ctx,F.w,F.h,{cell:8,scale:70,levels:[-2,-1.5,-1,-.5,0,.5,1,1.5,2],lw:1,line:'rgba(203,226,46,.3)',ox:400,oy:200},1.3); } };
+  drawMap(); addEventListener('resize', ()=>{ clearTimeout(drawMap._t); drawMap._t=setTimeout(drawMap,200); });
+  /* formulário → WhatsApp */
+  const f=document.getElementById('leadForm'), WA_NUM='5547999150241';
+  const tel=f.tel; tel.addEventListener('input', ()=>{ let d=tel.value.replace(/\D/g,'').slice(0,11); tel.value = d.length>6 ? `(${d.slice(0,2)}) ${d.slice(2,d.length-4)}-${d.slice(-4)}` : d.length>2 ? `(${d.slice(0,2)}) ${d.slice(2)}` : d; });
+  function err(inp, msg){ const l=inp.closest('.fld'); l.classList.toggle('err', !!msg); l.querySelector('.msg').textContent=msg||''; }
+  f.addEventListener('submit', e=>{
+    e.preventDefault();
+    const nome=f.nome.value.trim(), t=f.tel.value.replace(/\D/g,'');
+    err(f.nome, nome?'':'Como podemos te chamar?'); err(f.tel, t.length>=10?'':'Informe um WhatsApp com DDD.');
+    if (!nome || t.length<10){ (nome?f.tel:f.nome).focus(); return; }
+    const ints=[...f.querySelectorAll('[name=int]:checked')].map(i=>i.value);
+    const linhas=[`Olá! Vim pelo site da Cobra e gostaria de conversar sobre um projeto.`, ``, `*Nome:* ${nome}`];
+    if (f.empresa.value.trim()) linhas.push(`*Empresa:* ${f.empresa.value.trim()}`);
+    linhas.push(`*WhatsApp:* ${f.tel.value}`);
+    if (f.email.value.trim()) linhas.push(`*E-mail:* ${f.email.value.trim()}`);
+    if (ints.length) linhas.push(`*Interesse:* ${ints.join(', ')}`);
+    if (f.quando.value) linhas.push(`*Quando:* ${f.quando.value}`);
+    if (f.msg.value.trim()) linhas.push(``, f.msg.value.trim());
+    const url='https://wa.me/'+WA_NUM+'?text='+encodeURIComponent(linhas.join('\n'));
+    document.getElementById('waAgain').href=url;
+    window.open(url,'_blank','noopener');
+    f.classList.add('sent'); C.refresh && C.refresh();
+  });
+  document.getElementById('again').addEventListener('click', ()=>{ f.reset(); f.classList.remove('sent'); });
+  C.goHash = h => { if (h==='diagnostico'){ const c=f.querySelector('[value="Diagnóstico digital"]'); if (c) c.checked=true; h='form'; } const el=h && document.getElementById(h); if (el) C.scrollTo(el,true); else C.scrollTo(0,true); };
+  const pre=(location.hash||'').slice(1); if (pre) setTimeout(()=>C.goHash(pre),300);
+})();
+</script>
+<script>
+(function(){
+  var ft=document.querySelector('.hf'); if(!ft) return;
+  var cv=ft.querySelector('.hf-topo'), reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function field(x,y,t){ return Math.sin(x + 1.7*Math.sin(y*0.8 + t*0.30)) + Math.sin(y*1.1 + 1.5*Math.sin(x*0.9 - t*0.25)) + 0.6*Math.sin((x+y)*0.7 + t*0.20); }
+  var SEG=[[],[[3,2]],[[2,1]],[[3,1]],[[0,1]],[[3,0],[2,1]],[[0,2]],[[3,0]],[[3,0]],[[0,2]],[[0,1],[3,2]],[[0,1]],[[3,1]],[[2,1]],[[3,2]],[]];
+  function draw(t){
+    var dpr=Math.min(1.5,devicePixelRatio||1), w=cv.clientWidth, h=cv.clientHeight; if(!w||!h) return;
+    if(cv.width!==Math.round(w*dpr)){ cv.width=Math.round(w*dpr); cv.height=Math.round(h*dpr); }
+    var ctx=cv.getContext('2d'); ctx.setTransform(dpr,0,0,dpr,0,0); ctx.clearRect(0,0,w,h);
+    var c=18, sc=130, cols=Math.ceil(w/c)+1, rows=Math.ceil(h/c)+1, v=new Float32Array((cols+1)*(rows+1)), i, j;
+    for(j=0;j<=rows;j++) for(i=0;i<=cols;i++) v[j*(cols+1)+i]=field((i*c+300)/sc,(j*c)/sc,t);
+    ctx.lineWidth=1; ctx.strokeStyle='rgba(203,226,46,.16)';
+    [-1.5,-0.75,0,0.75,1.5].forEach(function(L){ ctx.beginPath();
+      for(j=0;j<rows;j++) for(i=0;i<cols;i++){
+        var a=v[j*(cols+1)+i], b=v[j*(cols+1)+i+1], d=v[(j+1)*(cols+1)+i], cc=v[(j+1)*(cols+1)+i+1];
+        var k=(a>L?8:0)|(b>L?4:0)|(cc>L?2:0)|(d>L?1:0); if(k===0||k===15) continue;
+        var x=i*c, y=j*c;
+        var pt=function(e){ return e===0?[x+c*(L-a)/(b-a),y]:e===1?[x+c,y+c*(L-b)/(cc-b)]:e===2?[x+c*(L-d)/(cc-d),y+c]:[x,y+c*(L-a)/(d-a)]; };
+        SEG[k].forEach(function(sg){ var p1=pt(sg[0]), p2=pt(sg[1]); ctx.moveTo(p1[0],p1[1]); ctx.lineTo(p2[0],p2[1]); });
+      } ctx.stroke(); });
+  }
+  var vis=false, tick=0; new IntersectionObserver(function(es){ vis=es[0].isIntersecting; }).observe(cv);
+  draw(0); addEventListener('resize', function(){ draw(performance.now()*0.00025); });
+  if(!reduce) (function loop(t){ if(vis && (tick++%4===0)) draw(t*0.00025); requestAnimationFrame(loop); })(0);
+  if (window.gsap && window.ScrollTrigger && !reduce){
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.from(ft.querySelector('.hf-card'), { scale:.94, borderRadius:40, ease:'none', scrollTrigger:{ trigger:ft, start:'top bottom', end:'top 30%', scrub:1 } });
+    gsap.from(ft.querySelector('.hf-hand'), { yPercent:30, ease:'none', scrollTrigger:{ trigger:ft, start:'top 80%', end:'top 10%', scrub:1 } });
+    gsap.fromTo(ft.querySelectorAll('.hf-sign path'), { strokeDashoffset:1 }, { strokeDashoffset:0, ease:'none', stagger:.6, scrollTrigger:{ trigger:ft.querySelector('.hf-card'), start:'top 90%', end:'top 30%', scrub:1 } });
+  }
+})();
+</script>
+
+</body>
+</html>
