@@ -304,7 +304,7 @@ html.js .sec.offer{background:var(--paper)}
 .sticker{right:2%;bottom:14%;width:120px;height:120px;border-radius:50%;background:var(--lime);display:grid;place-items:center;text-align:center;font-weight:800;text-transform:uppercase;font-size:13px;line-height:1.05;transform:rotate(-12deg);box-shadow:0 14px 30px rgba(10,11,8,.2)}
 @media (max-width:860px){.o-grid{grid-template-columns:1fr}.offer{border-radius:50% 50% 0 0/40px 40px 0 0;margin-top:-40px}}
 
-/* ================= BRANDS (logos around the snake) ================= */
+/* ================= BRANDS (logos around the neon line) ================= */
 .brands{padding-block:clamp(80px,10vw,140px);overflow:clip}
 .b-head{text-align:center;position:relative;z-index:2;margin-bottom:40px}
 .b-head h2{margin:0;font-size:clamp(40px,5.6vw,90px)}
@@ -318,11 +318,9 @@ html.js .sec.offer{background:var(--paper)}
 .b-link{text-decoration:none;background:linear-gradient(var(--lime),var(--lime)) 0 100%/0 .32em no-repeat;transition:background-size .45s var(--ease)}
 .b-link:hover{background-size:100% .32em}
 .b-center{position:relative;align-self:stretch;min-height:100%}
-#snakeSvg{position:absolute;left:-20%;top:0;width:140%;height:100%;overflow:visible;pointer-events:none}
+.b-line{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
 .b-cta{position:absolute;left:50%;bottom:0;transform:translateX(-50%);white-space:nowrap}
-.tongue{animation:flick 2.4s infinite;transform-origin:0 0}
-@keyframes flick{0%,70%,100%{transform:scaleX(0)}74%,86%{transform:scaleX(1)}}
-@media (max-width:860px){.b-grid{grid-template-columns:1fr 1fr;min-height:0}.b-center{grid-column:1/-1;order:2;min-height:0;display:flex;justify-content:center;margin-top:30px}#snakeSvg{display:none}.b-cta{position:static;transform:none}.b-col{padding-top:0!important;gap:28px}.b-col:nth-child(n+4){display:none}.b-col span:nth-child(n+4){display:none}}
+@media (max-width:860px){.b-grid{grid-template-columns:1fr 1fr;min-height:0}.b-center{grid-column:1/-1;order:2;min-height:0;display:flex;justify-content:center;margin-top:30px}.b-line{display:none}.b-cta{position:static;transform:none}.b-col{padding-top:0!important;gap:28px}.b-col:nth-child(n+4){display:none}.b-col span:nth-child(n+4){display:none}}
 
 /* ================= FAN ================= */
 .fan-sec{padding-block:clamp(60px,8vw,110px);text-align:center;overflow:hidden}

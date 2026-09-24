@@ -199,46 +199,45 @@
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .5 });
   document.querySelectorAll('.wipe').forEach(el => io.observe(el));
 
-  /* ---------- brands: a snake slithering down the centre ---------- */
-  const snakeSvg = document.getElementById('snakeSvg');
+  /* ---------- brands: a neon line that slides out from behind the heading and leaves under the next section ---------- */
+  const bLine = document.getElementById('bLine'), bSec = bLine && bLine.closest('section');
   const NS = 'http://www.w3.org/2000/svg';
-  let snake = null, snakeP = 0.55, snakeTarget = 0.55;
-  function buildSnake(){
-    const w = snakeSvg.clientWidth, h = snakeSvg.clientHeight; if (!w || !h) return;
-    snakeSvg.setAttribute('viewBox', `0 0 ${w} ${h}`);
-    const A = Math.min(w*0.3, 120), cx = w/2, step = 10; let d = '';
-    for (let y = -140; y <= h - 130; y += step){ const x = cx + A*Math.sin(y/170) * (0.75 + 0.25*Math.sin(y/410)); d += (d ? ' L' : 'M') + x.toFixed(1) + ' ' + y.toFixed(1); }
-    snakeSvg.innerHTML = `<defs><pattern id="scl" width="12" height="9" patternUnits="userSpaceOnUse"><rect width="12" height="9" fill="#101109"/><path d="M0 4.5 L6 0 L12 4.5 L6 9 Z" fill="#1d2016" stroke="#2c3022" stroke-width=".8"/><circle cx="6" cy="3" r=".9" fill="rgba(203,226,46,.25)"/></pattern></defs>
-      <path id="snPath" d="${d}" fill="none" stroke="none"/>
-      <g id="snBody" fill="none" stroke-linecap="round" stroke-linejoin="round"></g>
-      <g id="snHead"><path d="M34 0 C 30 -15, 8 -24, -14 -20 C -28 -17, -32 -9, -32 0 C -32 9, -28 17, -14 20 C 8 24, 30 15, 34 0 Z" fill="url(#scl)" stroke="#0A0B08" stroke-width="3"/>
-        <circle cx="12" cy="-9" r="3.6" fill="#CBE22E"/><circle cx="12" cy="9" r="3.6" fill="#CBE22E"/>
-        <path class="tongue" d="M34 0 L52 0 M52 0 L60 -6 M52 0 L60 6" stroke="#CBE22E" stroke-width="2.4" stroke-linecap="round"/></g>`;
-    const body = snakeSvg.querySelector('#snBody');
-    const layers = []; for (let i = 0; i < 12; i++){ const f = 0.5 + 0.5*(i/11), wd = 46 - 40*(i/11); layers.push([wd,'#0A0B08',f]); } for (let i = 0; i < 12; i++){ const f = 0.5 + 0.5*(i/11) - 0.01, wd = 40 - 38*(i/11); if (wd > 3) layers.push([wd,'url(#scl)',f]); }
-    const path = snakeSvg.querySelector('#snPath'), total = path.getTotalLength();
-    const bodyLen = Math.min(total*0.55, 900);
-    const segs = layers.map(([wd,col,f]) => { const p = document.createElementNS(NS,'path'); p.setAttribute('d', d); p.setAttribute('stroke', col); p.setAttribute('stroke-width', wd); body.appendChild(p); return { p, len: bodyLen*f }; });
-    snake = { path, total, segs, head: snakeSvg.querySelector('#snHead'), bodyLen };
-    placeSnake(snakeP);
+  let line = null, lineP = 0.55, lineTarget = 0.55;
+  function buildLine(){
+    const w = bSec.clientWidth, h = bSec.clientHeight; if (!w || !h || !bLine.clientWidth) return;
+    bLine.setAttribute('viewBox', `0 0 ${w} ${h}`);
+    const sr = bSec.getBoundingClientRect(), hr = bSec.querySelector('.b-head h2').getBoundingClientRect(), cr = document.getElementById('bCenter').getBoundingClientRect();
+    const y0 = hr.top - sr.top + hr.height*0.5, cx = cr.left - sr.left + cr.width/2;
+    const A = Math.min(cr.width*0.42, 120), bodyLen = Math.min(h*0.55, 900), y1 = h + bodyLen + 80;
+    let d = '';
+    for (let y = y0; y <= y1; y += 10){ const k = y - y0, x = cx + A*Math.sin(k/170)*(0.75 + 0.25*Math.sin(k/410)); d += (d ? ' L' : 'M') + x.toFixed(1) + ' ' + y.toFixed(1); }
+    bLine.innerHTML = `<defs><filter id="bGlow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="8"/></filter></defs>
+      <path id="bPath" d="${d}" fill="none" stroke="none"/>
+      <g filter="url(#bGlow)" opacity=".8" fill="none" stroke-linecap="round" stroke-linejoin="round" id="bGlowG"></g>
+      <g fill="none" stroke-linecap="round" stroke-linejoin="round" id="bCore"></g>
+      <circle id="bTip" r="6.5" fill="#E9FF5C" filter="url(#bGlow)"/><circle id="bTipCore" r="4.5" fill="#F6FFB8"/>`;
+    const path = bLine.querySelector('#bPath'), total = path.getTotalLength(), segs = [];
+    const add = (g, width, color, len) => { const p = document.createElementNS(NS,'path'); p.setAttribute('d', d); p.setAttribute('stroke', color); p.setAttribute('stroke-width', width); g.appendChild(p); segs.push({ p, len }); };
+    add(bLine.querySelector('#bGlowG'), 16, '#CBE22E', bodyLen*0.8);
+    for (let i = 0; i < 10; i++) add(bLine.querySelector('#bCore'), 1.5 + 7*(i/9), '#CBE22E', bodyLen*(1 - 0.85*(i/9)));   // thick near the tip, thin tail
+    add(bLine.querySelector('#bCore'), 1.6, '#F6FFB8', bodyLen*0.5);   // bright core
+    line = { path, total, segs, tip: [bLine.querySelector('#bTip'), bLine.querySelector('#bTipCore')] };
+    placeLine(lineP);
   }
-  function placeSnake(p){
-    if (!snake) return;
-    const { path, total, segs, head, bodyLen } = snake;
-    const lead = bodyLen*0.6 + p*(total - bodyLen*0.6 - 10);
+  function placeLine(p){
+    if (!line) return;
+    const { path, total, segs, tip } = line, lead = p*total;
     segs.forEach(s => { s.p.setAttribute('stroke-dasharray', `${s.len} ${total*2}`); s.p.setAttribute('stroke-dashoffset', String(-(lead - s.len))); });
-    const a = path.getPointAtLength(Math.max(0, lead - 2)), b = path.getPointAtLength(Math.min(total, lead + 2));
-    const ang = Math.atan2(b.y - a.y, b.x - a.x) * 180 / Math.PI;
-    const pt = path.getPointAtLength(lead);
-    head.setAttribute('transform', `translate(${pt.x.toFixed(1)} ${pt.y.toFixed(1)}) rotate(${ang.toFixed(1)}) scale(1.45)`);
+    const pt = path.getPointAtLength(Math.max(0, lead));
+    tip.forEach(c => { c.setAttribute('cx', pt.x.toFixed(1)); c.setAttribute('cy', pt.y.toFixed(1)); c.style.opacity = lead > 1 ? 1 : 0; });
   }
-  if (snakeSvg){
-    buildSnake();
-    let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(buildSnake, 200); });
-    (function loop(t){ const idle = reduce ? 0 : Math.sin(t*0.0016)*0.006; snakeP += (snakeTarget - snakeP)*0.08; placeSnake(Math.max(0, Math.min(1, snakeP + idle))); requestAnimationFrame(loop); })(0);
+  if (bLine){
+    buildLine();
+    let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(buildLine, 200); });
+    (function loop(t){ const idle = reduce ? 0 : Math.sin(t*0.0016)*0.006; lineP += (lineTarget - lineP)*0.08; placeLine(Math.max(0, Math.min(1, lineP + idle))); requestAnimationFrame(loop); })(0);
     if (hasG && !reduce){
-      ScrollTrigger.create({ trigger: '#bGrid', start: 'top 85%', end: 'bottom 40%', onUpdate: self => { snakeTarget = self.progress; }, onRefresh: buildSnake });
-      snakeP = snakeTarget = 0;
+      ScrollTrigger.create({ trigger: bSec, start: 'top 75%', end: 'bottom 40%', onUpdate: self => { lineTarget = self.progress; }, onRefresh: buildLine });
+      lineP = lineTarget = 0;
     }
   }
 
@@ -386,7 +385,7 @@
   /* hall */
   gsap.utils.toArray('#grid .card').forEach(c => gsap.from(c, { y: 80, ease: 'none', scrollTrigger: { trigger: c, start: 'top bottom', end: 'top 60%', scrub: 1 } }));
 
-  /* brands columns + turning snake */
+  /* brands columns */
   mm.add('(min-width: 861px)', () => {
     document.querySelectorAll('.b-col').forEach(col => { const s = +col.dataset.speed; gsap.fromTo(col, { y: s*160 }, { y: -s*160, ease: 'none', scrollTrigger: { trigger: '#bGrid', start: 'top bottom', end: 'bottom top', scrub: true } }); });
   });
