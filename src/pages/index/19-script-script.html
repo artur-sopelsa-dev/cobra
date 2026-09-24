@@ -200,10 +200,10 @@
   document.querySelectorAll('.wipe').forEach(el => io.observe(el));
 
   /* ---------- brands: the neon line works like the car of a race calendar ----------
-     its tip rides at the middle of the screen while the list scrolls under it, the brand at the tip lights up,
+     its tip rides at the middle of the screen while the names scroll by, the names at the tip light up,
      it starts behind the heading and leaves under the next section (the section clips it) */
   const bLine = document.getElementById('bLine'), bSec = bLine && bLine.closest('section');
-  const bRows = bSec ? [...bSec.querySelectorAll('.b-row')] : [];
+  const bNames = bSec ? [...bSec.querySelectorAll('.b-col span')] : [];
   const NS = 'http://www.w3.org/2000/svg';
   let line = null, tipY = null;
   function buildLine(){
@@ -237,13 +237,13 @@
   if (bSec){
     buildLine();
     let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(buildLine, 200); });
-    let onRow = null;
+    let lit = [];
     (function loop(){
       const sr = bSec.getBoundingClientRect(), mid = innerHeight*0.5;
       if (sr.bottom > -200 && sr.top < innerHeight + 200){
-        // the brand crossing the middle of the screen lights up
-        let hit = null; for (const r of bRows){ const b = r.getBoundingClientRect(); if (b.top <= mid && b.bottom > mid - 1){ hit = r; break; } }
-        if (hit !== onRow){ onRow && onRow.classList.remove('on'); hit && hit.classList.add('on'); onRow = hit; }
+        // the names at the height of the tip light up
+        const band = 34, hit = bNames.filter(n => { const b = n.getBoundingClientRect(); return b.bottom > mid - band && b.top < mid + band; });
+        if (hit.length !== lit.length || hit.some((n, i) => n !== lit[i])){ lit.forEach(n => n.classList.remove('on')); hit.forEach(n => n.classList.add('on')); lit = hit; }
         if (line){ const target = Math.max(line.y0, Math.min(line.y1, mid - sr.top)); tipY = (tipY === null || reduce) ? target : tipY + (target - tipY)*0.18; placeLine(); }
       }
       requestAnimationFrame(loop);
@@ -394,6 +394,11 @@
   /* hall */
   gsap.utils.toArray('#grid .card').forEach(c => gsap.from(c, { y: 80, ease: 'none', scrollTrigger: { trigger: c, start: 'top bottom', end: 'top 60%', scrub: 1 } }));
 
+
+  /* brands columns */
+  mm.add('(min-width: 861px)', () => {
+    document.querySelectorAll('.b-col').forEach(col => { const s = +col.dataset.speed; gsap.fromTo(col, { y: s*160 }, { y: -s*160, ease: 'none', scrollTrigger: { trigger: '#bGrid', start: 'top bottom', end: 'bottom top', scrub: true } }); });
+  });
 
   /* fan */
   const cards = gsap.utils.toArray('#fan .fcard'); const mid = (cards.length-1)/2;
