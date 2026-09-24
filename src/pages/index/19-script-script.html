@@ -201,7 +201,7 @@
 
   /* ---------- brands: the neon line works like the car of a race calendar ----------
      its tip rides at the middle of the screen while the names scroll by, the names at the tip light up,
-     it starts behind the heading and leaves under the next section (the section clips it) */
+     it enters from behind the previous section at the top edge and leaves under the next one (the section clips it) */
   const bLine = document.getElementById('bLine'), bSec = bLine && bLine.closest('section');
   const bNames = bSec ? [...bSec.querySelectorAll('.b-col span')] : [];
   const NS = 'http://www.w3.org/2000/svg';
@@ -209,8 +209,7 @@
   function buildLine(){
     const w = bSec.clientWidth, h = bSec.clientHeight; if (!w || !h || !bLine.clientWidth) { line = null; return; }
     bLine.setAttribute('viewBox', `0 0 ${w} ${h}`);
-    const sr = bSec.getBoundingClientRect(), hr = bSec.querySelector('.b-head h2').getBoundingClientRect();
-    const y0 = hr.top - sr.top + hr.height*0.5, y1 = h + 160, cx = w/2, A = Math.min(w*0.035, 46), trail = Math.min(innerHeight*0.55, 520);
+    const y0 = -60, y1 = h + 160, cx = w/2, A = Math.min(w*0.035, 46), trail = Math.min(innerHeight*0.55, 520);
     const ys = [], ls = []; let d = '', len = 0, px, py;
     for (let y = y0; y <= y1; y += 8){ const k = y - y0, x = cx + A*Math.sin(k/150)*(0.7 + 0.3*Math.sin(k/430));
       if (px !== undefined) len += Math.hypot(x - px, y - py); px = x; py = y; ys.push(y); ls.push(len);
