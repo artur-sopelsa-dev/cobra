@@ -1,0 +1,1631 @@
+<title>Painel Cobra</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Sedgwick+Ave+Display&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#ECEEE2; --surface:#F8F9F2; --raise:#FFFFFF; --ink:#0A0B08; --text:#1B1E15; --mute:#5C6150;
+  --line:#D6D9C8; --line-2:#E3E5D7; --lime:#CBE22E; --lime-soft:#E6F09A; --on-lime:#0A0B08;
+  --char:#1B1E15; --char-2:#23271C; --on-char:#E3E6D6; --on-char-mute:#9DA38D;
+  --good:#2F7A3B; --good-bg:#DDEFD9; --warn:#8A5A00; --warn-bg:#F6E7C4; --bad:#A33A2A; --bad-bg:#F5DAD4;
+  --code-bg:#15180F; --code-fg:#DDE3C8; --shadow:0 18px 50px rgba(10,11,8,.18);
+  --serp-link:#1A0DAB; --serp-url:#4D5156;
+  --sans:"Montserrat",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --script:"Sedgwick Ave Display","Montserrat",cursive;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --ease:cubic-bezier(.16,1,.3,1);
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0E100B; --surface:#161911; --raise:#1D2117; --ink:#EEF0E3; --text:#E3E6D6; --mute:#9DA38D;
+    --line:#2C3124; --line-2:#23271C; --lime-soft:#3B4312; --char:#090A07; --char-2:#15180F;
+    --good:#8FD18F; --good-bg:#1E3320; --warn:#E8C26A; --warn-bg:#3A2E12; --bad:#F09A8A; --bad-bg:#3D1F1A;
+    --code-bg:#090A07; --shadow:0 18px 50px rgba(0,0,0,.55); --serp-link:#8AB4F8; --serp-url:#BDC1C6; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0E100B; --surface:#161911; --raise:#1D2117; --ink:#EEF0E3; --text:#E3E6D6; --mute:#9DA38D;
+  --line:#2C3124; --line-2:#23271C; --lime-soft:#3B4312; --char:#090A07; --char-2:#15180F;
+  --good:#8FD18F; --good-bg:#1E3320; --warn:#E8C26A; --warn-bg:#3A2E12; --bad:#F09A8A; --bad-bg:#3D1F1A;
+  --code-bg:#090A07; --shadow:0 18px 50px rgba(0,0,0,.55); --serp-link:#8AB4F8; --serp-url:#BDC1C6; color-scheme:dark;
+}
+[hidden]{display:none!important}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{background:var(--bg);color:var(--text);font:500 14px/1.5 var(--sans);-webkit-font-smoothing:antialiased}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--lime);outline-offset:2px}
+h1,h2,h3{margin:0;color:var(--ink);text-wrap:balance;letter-spacing:-.02em}
+p{margin:0}
+.sig-svg path{fill:none;stroke:var(--lime);stroke-linecap:round;stroke-linejoin:round}
+
+.login{position:fixed;inset:0;z-index:100;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);background:var(--bg);transition:opacity .5s var(--ease),transform .6s var(--ease)}
+.login.out{opacity:0;transform:scale(1.02);pointer-events:none}
+.login-art{position:relative;background:var(--char);overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:40px}
+.login-art canvas{position:absolute;inset:0;width:100%;height:100%}
+.login-art img{position:absolute;right:-6%;bottom:-4%;height:92%;max-width:none;filter:grayscale(1) contrast(1.05);pointer-events:none}
+.login-art::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(27,30,21,.92) 0%,rgba(27,30,21,.55) 45%,rgba(27,30,21,0) 75%);pointer-events:none}
+.login-art .sig-svg,.login-art .quote,.login-art small{z-index:1}
+.login-art .sig-svg{position:relative;width:200px}
+.login-art .quote{position:relative;max-width:14ch;color:#EEF0E3;font-size:clamp(26px,3.2vw,46px);font-weight:900;line-height:1.02;letter-spacing:-.03em;text-transform:uppercase}
+.login-art .quote em{font-style:normal;background:var(--lime);color:var(--on-lime);padding:0 .12em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.login-art small{position:relative;color:var(--on-char-mute);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.login-form{display:flex;flex-direction:column;justify-content:center;gap:20px;padding:40px clamp(24px,6vw,90px);max-width:560px;width:100%;justify-self:center}
+.login-form h1{font-size:30px;font-weight:900}
+.login-form p{color:var(--mute)}
+.otp{display:flex;gap:8px}
+.otp input{width:44px;height:50px;text-align:center;font:700 20px var(--mono);border-radius:10px;border:1px solid var(--line);background:var(--raise);color:var(--ink);padding:0}
+.otp input:focus{border-color:var(--ink);outline:none}
+
+.app{display:grid;grid-template-columns:236px minmax(0,1fr);min-height:100%}
+.side{background:var(--char);color:var(--on-char);padding:22px 14px;display:flex;flex-direction:column;gap:18px;position:sticky;top:0;height:100vh;overflow-y:auto}
+.brand{display:flex;align-items:center;gap:8px;padding:0 6px}
+.brand .sig-svg{width:96px;height:auto}
+.brand span{font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--on-char-mute);margin-top:14px}
+.ask{display:flex;align-items:center;gap:8px;background:var(--char-2);border:1px solid #2C3124;border-radius:10px;padding:9px 10px;color:var(--on-char-mute);font-weight:600;text-align:left}
+.ask:hover{border-color:var(--lime);color:var(--on-char)}
+.ask svg{width:15px;height:15px;color:var(--lime);flex:none}
+.ask .kbd{margin-left:auto;background:#0A0B08;border-color:#2C3124;color:var(--on-char-mute)}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav .grp{font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#7C8270;padding:12px 10px 6px}
+.nav button{display:flex;align-items:center;gap:10px;background:none;border:0;border-radius:10px;padding:8px 10px;color:#C9CDBB;text-align:left;font-weight:600}
+.nav button:hover{background:var(--char-2);color:#fff}
+.nav button[aria-current="page"]{background:var(--lime);color:var(--on-lime)}
+.nav svg{width:17px;height:17px;flex:none}
+.nav .count{margin-left:auto;font-size:11px;font-weight:800;font-style:normal;background:#2F3426;color:var(--on-char);border-radius:99px;padding:1px 7px}
+.nav button[aria-current="page"] .count{background:rgba(10,11,8,.15);color:var(--on-lime)}
+.side-foot{margin-top:auto;display:flex;align-items:center;gap:10px;padding:10px 6px 0;border-top:1px solid #2C3124}
+.side-foot b{font-size:13px;color:#fff}
+.side-foot small{display:block;color:var(--on-char-mute);font-size:11px}
+.side-foot button{margin-left:auto;background:none;border:0;color:var(--on-char-mute);font-size:12px;font-weight:700}
+.side-foot button:hover{color:#fff}
+.avatar{width:32px;height:32px;border-radius:50%;background:var(--lime);color:var(--on-lime);display:grid;place-items:center;font-weight:800;font-size:12px;flex:none;overflow:hidden}
+.avatar img{width:100%;height:100%;object-fit:cover}
+.avatar.ghost{background:var(--bg);color:var(--mute);border:1px dashed var(--line)}
+
+.main{min-width:0;display:flex;flex-direction:column}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px;padding:12px 28px;flex-wrap:wrap}
+.crumb{display:flex;align-items:center;gap:8px;font-weight:700;color:var(--ink);min-width:0}
+.crumb button{background:none;border:0;padding:0;color:var(--mute);font-weight:600}
+.crumb button:hover{color:var(--ink);text-decoration:underline}
+.crumb i{color:var(--mute);font-style:normal}
+.top .sp{flex:1}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;border-radius:99px;padding:4px 10px;background:var(--surface);border:1px solid var(--line);color:var(--mute);white-space:nowrap}
+.pill .dot{width:7px;height:7px;border-radius:50%;background:var(--good)}
+.pill.pending{color:var(--ink);border-color:var(--warn)}
+.pill.pending .dot{background:var(--warn);animation:pulse 1.6s infinite}
+@keyframes pulse{50%{opacity:.35}}
+.btn{text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:10px;border:1px solid var(--line);background:var(--raise);padding:8px 14px;font-weight:700;font-size:13px;color:var(--ink);white-space:nowrap;transition:transform .15s,border-color .15s}
+.btn:hover{border-color:var(--mute)}
+.btn:active{transform:translateY(1px)}
+.btn.primary{background:var(--lime);border-color:var(--lime);color:var(--on-lime)}
+.btn.primary:hover{filter:brightness(.95)}
+.btn.dark{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.btn.ghost{background:none;border-color:transparent}
+.btn.danger{color:var(--bad)}
+.btn.sm{padding:5px 10px;font-size:12px;border-radius:8px}
+.btn svg{width:15px;height:15px;flex:none}
+.btn[disabled]{opacity:.5;cursor:default}
+.icon-btn{width:36px;padding:8px}
+.pub-count{background:var(--ink);color:var(--lime);border-radius:99px;font-size:11px;padding:0 7px;line-height:18px}
+
+.note{margin:18px 28px 0;display:flex;gap:10px;align-items:flex-start;padding:10px 14px;border-radius:12px;background:var(--lime-soft);color:var(--ink);font-size:13px}
+.note b{font-weight:800}
+.note button{margin-left:auto;background:none;border:0;color:var(--ink);font-weight:800}
+
+.view{padding:24px 28px 72px;display:flex;flex-direction:column;gap:22px;max-width:1260px;width:100%}
+.view > *{animation:rise .45s var(--ease) both}
+.view > *:nth-child(2){animation-delay:.04s}.view > *:nth-child(3){animation-delay:.08s}.view > *:nth-child(4){animation-delay:.12s}
+@keyframes rise{from{opacity:.001;transform:translateY(8px)}}
+.vhead{display:flex;align-items:flex-end;gap:10px;flex-wrap:wrap}
+.vhead h1{font-size:28px;font-weight:900}
+.vhead p{color:var(--mute);max-width:64ch;margin-top:4px}
+.vhead .sp{flex:1}
+.eyebrow{font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--mute)}
+
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;min-width:0}
+.panel-h{display:flex;align-items:center;gap:10px;padding:14px 18px;border-bottom:1px solid var(--line-2);flex-wrap:wrap}
+.panel-h h2{font-size:15px;font-weight:800}
+.panel-h .sp{flex:1}
+.panel-b{padding:16px 18px}
+.col{display:flex;flex-direction:column;gap:20px;min-width:0}
+.grid2{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:20px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+
+.hero{position:relative;overflow:hidden;border-radius:20px;background:var(--char);color:var(--on-char);min-height:230px;display:flex;align-items:flex-end;padding:26px 28px}
+.hero canvas{position:absolute;inset:0;width:100%;height:100%}
+.hero img{position:absolute;right:2%;bottom:-38%;height:175%;max-width:none;filter:grayscale(1);pointer-events:none}
+.hero-in{position:relative;display:flex;flex-direction:column;gap:10px;max-width:min(560px,68%)}
+.hero .hello{font:400 clamp(40px,5.4vw,66px)/.9 var(--script);color:var(--lime)}
+.hero p{color:var(--on-char);font-size:15px;max-width:48ch}
+.hero p b{color:#fff}
+.hero .row-btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.hero .btn{border-color:#3A3F30;background:#0A0B08;color:#E3E6D6}
+.hero .btn.primary{background:var(--lime);color:var(--on-lime);border-color:var(--lime)}
+
+.status{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid var(--line);border-radius:16px;background:var(--surface);overflow:hidden}
+.status > div{padding:14px 18px;border-left:1px solid var(--line-2);display:flex;flex-direction:column;gap:2px;min-width:0}
+.status > div:first-child{border-left:0}
+.status b{font-size:22px;font-weight:800;color:var(--ink);font-variant-numeric:tabular-nums}
+.status small{color:var(--mute);font-size:12px}
+
+.rows{display:flex;flex-direction:column}
+.row{display:flex;align-items:center;gap:12px;padding:12px 18px;border-top:1px solid var(--line-2);min-width:0}
+.row:first-child{border-top:0}
+.row .t{min-width:0;flex:1}
+.row .t b{display:block;color:var(--ink);font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.row .t small{display:block;color:var(--mute);font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.row.click{cursor:pointer}
+.row.click:hover{background:var(--raise)}
+.new{animation:flash 1.6s var(--ease)}
+@keyframes flash{from{background:var(--lime-soft)}}
+.sev{width:4px;align-self:stretch;border-radius:4px;background:var(--line);flex:none}
+.sev.bad{background:var(--bad)} .sev.warn{background:var(--warn)} .sev.good{background:var(--good)} .sev.info{background:var(--lime)}
+.when{font-size:12px;color:var(--mute);white-space:nowrap;font-variant-numeric:tabular-nums}
+
+.chip{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;border-radius:99px;padding:2px 9px;background:var(--bg);border:1px solid var(--line);color:var(--mute);white-space:nowrap}
+.chip.good{background:var(--good-bg);border-color:transparent;color:var(--good)}
+.chip.warn{background:var(--warn-bg);border-color:transparent;color:var(--warn)}
+.chip.bad{background:var(--bad-bg);border-color:transparent;color:var(--bad)}
+.chip.lime{background:var(--lime);border-color:transparent;color:var(--on-lime)}
+.chip.ex{border-style:dashed}
+.chip button{background:none;border:0;padding:0;margin-left:2px;color:inherit;font-weight:800}
+.chips{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+
+.thumb{width:48px;height:48px;border-radius:10px;object-fit:cover;flex:none;background:var(--line)}
+
+.pages{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.pcard{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:10px;text-align:left;transition:border-color .2s,transform .2s var(--ease)}
+.pcard:hover{border-color:var(--mute);transform:translateY(-2px)}
+.pcard h3{font-size:17px;font-weight:800}
+.pcard .url{font:500 12px var(--mono);color:var(--mute)}
+.pcard .meta{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto;align-items:center}
+.pcard p{color:var(--mute);font-size:13px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.mini-ring{margin-left:auto}
+
+.sections{display:flex;flex-direction:column;gap:8px}
+.sec{display:flex;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 12px;transition:opacity .2s}
+.sec.off{opacity:.5}
+.sec.off .t b{text-decoration:line-through}
+.grip{display:flex;flex-direction:column;gap:2px}
+.grip button{background:none;border:1px solid transparent;border-radius:6px;width:24px;height:18px;display:grid;place-items:center;color:var(--mute);padding:0}
+.grip button:hover{border-color:var(--line);color:var(--ink)}
+.grip svg{width:12px;height:12px}
+.sec .kind{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;background:var(--bg);color:var(--mute);flex:none}
+.sec .kind svg{width:17px;height:17px}
+.sec .t{flex:1;min-width:0}
+.sec .t b{color:var(--ink);font-weight:700}
+.sec .t small{display:block;color:var(--mute);font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.switch{position:relative;width:36px;height:20px;border-radius:99px;background:var(--line);border:0;flex:none;padding:0}
+.switch::after{content:"";position:absolute;left:3px;top:3px;width:14px;height:14px;border-radius:50%;background:var(--raise);transition:transform .2s var(--ease)}
+.switch[aria-checked="true"]{background:var(--ink)}
+.switch[aria-checked="true"]::after{transform:translateX(16px);background:var(--lime)}
+
+.field{display:flex;flex-direction:column;gap:6px;min-width:0}
+.field > label,.lbl{font-size:12px;font-weight:700;color:var(--ink)}
+.hint{font-size:12px;color:var(--mute)}
+.input,.textarea{width:100%;background:var(--raise);border:1px solid var(--line);border-radius:10px;padding:9px 12px;color:var(--ink)}
+.textarea{min-height:88px;resize:vertical;line-height:1.55}
+.input:focus,.textarea:focus{border-color:var(--ink);outline:none}
+.form{display:flex;flex-direction:column;gap:16px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.counter{font-size:11px;color:var(--mute);font-variant-numeric:tabular-nums}
+.counter.over{color:var(--bad);font-weight:800}
+.frow{display:flex;justify-content:space-between;gap:10px;align-items:center}
+.checkline{display:flex;align-items:center;gap:8px;font-weight:600;cursor:pointer}
+.checkline input{accent-color:var(--ink);width:16px;height:16px}
+
+.serp{background:var(--raise);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-family:Arial,Helvetica,sans-serif}
+.serp .site{display:flex;align-items:center;gap:10px;margin-bottom:4px}
+.serp .fav{width:26px;height:26px;border-radius:50%;background:#1B1E15;display:grid;place-items:center;flex:none}
+.serp .fav svg{width:18px}
+.serp .site b{display:block;font-size:14px;font-weight:400;color:var(--ink)}
+.serp .site small{display:block;font-size:12px;color:var(--serp-url)}
+.serp .st{font-size:19px;line-height:1.3;color:var(--serp-link);margin:2px 0 3px;word-break:break-word}
+.serp .sd{font-size:14px;line-height:1.55;color:var(--serp-url);word-break:break-word}
+.serp .sd.miss{font-style:italic}
+.aicite{background:var(--raise);border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:flex;gap:12px}
+.aicite .bot{width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--bg);display:grid;place-items:center;flex:none}
+.aicite .bot svg{width:14px}
+.aicite p{font-size:13.5px;color:var(--text)}
+.aicite sup{display:inline-block;background:var(--lime);color:var(--on-lime);font-size:10px;font-weight:800;border-radius:6px;padding:0 5px;margin-left:3px}
+.aicite .srcs{margin-top:8px;display:flex;gap:6px;flex-wrap:wrap}
+
+.drawer-bg{position:fixed;inset:0;background:rgba(10,11,8,.5);z-index:40;animation:fade .25s both}
+@keyframes fade{from{opacity:0}}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(780px,100%);background:var(--bg);z-index:41;display:flex;flex-direction:column;box-shadow:var(--shadow);padding-top:env(safe-area-inset-top,0px);animation:slide .4s var(--ease) both}
+@keyframes slide{from{transform:translateX(40px);opacity:0}}
+.drawer-h{display:flex;align-items:center;gap:10px;padding:16px 22px;border-bottom:1px solid var(--line)}
+.drawer-h h2{font-size:18px;font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.drawer-h .sp{flex:1}
+.drawer-b{flex:1;overflow:auto;padding:20px 22px;display:flex;flex-direction:column;gap:18px}
+.drawer-f{display:flex;gap:10px;justify-content:flex-end;align-items:center;padding:14px 22px calc(14px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line);flex-wrap:wrap}
+.drawer-f .sp{flex:1}
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);padding:0 22px;overflow-x:auto}
+.tabs button{background:none;border:0;border-bottom:2px solid transparent;padding:12px 10px;font-weight:700;color:var(--mute);margin-bottom:-1px;white-space:nowrap}
+.tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--lime)}
+.code{width:100%;min-height:440px;background:var(--code-bg);color:var(--code-fg);border:0;border-radius:12px;padding:14px 16px;font:400 12.5px/1.6 var(--mono);white-space:pre;overflow:auto;resize:vertical;tab-size:2}
+
+.ai{border:1px solid var(--line);border-radius:14px;background:var(--surface);overflow:hidden}
+.ai-h{display:flex;align-items:center;gap:10px;padding:12px 14px;background:#1B1E15;color:#E3E6D6}
+.ai-h b{color:#fff}
+.ai-h small{display:block;font-size:12px;color:#9DA38D}
+.spark{width:26px;height:26px;border-radius:8px;background:var(--lime);color:var(--on-lime);display:grid;place-items:center;flex:none}
+.spark svg{width:15px;height:15px}
+.ai-b{padding:12px 14px;display:flex;flex-direction:column;gap:10px}
+.sug{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border:1px solid var(--line-2);border-radius:10px;background:var(--raise)}
+.sug .t{flex:1;min-width:0;font-size:13px}
+.sug .t b{color:var(--ink)}
+.sug .from{color:var(--mute);text-decoration:line-through}
+.sug .to{color:var(--ink);background:var(--lime-soft);padding:0 3px;border-radius:3px}
+.sug.done{opacity:.6}
+
+.score{position:relative;width:54px;height:54px;flex:none}
+.score svg{width:100%;height:100%;transform:rotate(-90deg)}
+.score circle{transition:stroke-dashoffset .8s var(--ease),stroke .4s}
+.score b{position:absolute;inset:0;display:grid;place-items:center;font-size:15px;font-weight:800;color:var(--ink);font-variant-numeric:tabular-nums}
+.score.sm{width:36px;height:36px}
+.score.sm b{font-size:11px}
+.checks{display:flex;flex-direction:column;gap:7px}
+.check{display:flex;align-items:center;gap:8px;font-size:13px}
+.check .ic{width:18px;height:18px;border-radius:50%;display:grid;place-items:center;flex:none;font-size:11px;font-weight:800;transition:.3s}
+.check .ic.ok{background:var(--good-bg);color:var(--good)} .check .ic.no{background:var(--bad-bg);color:var(--bad)} .check .ic.wait{background:#2F3426;color:#9DA38D}
+.check small{margin-left:auto;color:var(--mute);font-size:12px;white-space:nowrap}
+
+.trend{display:flex;flex-direction:column;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;transition:border-color .2s}
+.trend:hover{border-color:var(--mute)}
+.trend h3{font-size:16px;font-weight:800}
+.trend .why{color:var(--mute);font-size:13px}
+.trend .foot{display:flex;align-items:center;gap:10px;margin-top:auto}
+.spark-line{width:100%;height:40px;display:block}
+.heat{font-size:12px;font-weight:800;color:var(--good);font-variant-numeric:tabular-nums}
+.filters{display:flex;gap:6px;flex-wrap:wrap}
+.filters button{border:1px solid var(--line);background:var(--surface);border-radius:99px;padding:5px 12px;font-weight:700;font-size:12px;color:var(--mute)}
+.filters button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+
+.media{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}
+.mcard{display:flex;flex-direction:column;gap:6px;min-width:0;background:none;border:0;padding:0;text-align:left}
+.mcard img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:12px;background:var(--line);border:1px solid var(--line);transition:transform .25s var(--ease)}
+.mcard:hover img{transform:scale(1.02)}
+.mcard small{font:500 11px var(--mono);color:var(--mute);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mcard .chip{align-self:flex-start}
+.drop{border:2px dashed var(--line);border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;aspect-ratio:1;color:var(--mute);text-align:center;padding:10px;cursor:pointer;font-weight:700;font-size:12px;background:none}
+.drop:hover,.drop.over{border-color:var(--ink);color:var(--ink);background:var(--lime-soft)}
+
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px}
+.vcard{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;text-align:left;padding:0}
+.vcard:hover{border-color:var(--mute)}
+.vcard .pic{position:relative;aspect-ratio:16/10;background:#1B1E15;display:grid;place-items:center;color:#9DA38D;font-size:12px;font-weight:700}
+.vcard .pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.vcard .pic .chip{position:absolute;left:8px;top:8px}
+.vcard .pic .dur{position:absolute;right:8px;bottom:8px;font:500 11px var(--mono);background:rgba(10,11,8,.8);color:#fff;border-radius:6px;padding:1px 6px}
+.vcard .in{padding:10px 12px;display:flex;flex-direction:column;gap:2px}
+.vcard b{color:var(--ink);font-size:13px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.vcard small{color:var(--mute);font-size:12px}
+.logos{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.logo-card{background:#fff;border:1px solid var(--line);border-radius:14px;aspect-ratio:3/2;display:grid;place-items:center;padding:18px 18px 24px;position:relative}
+.logo-card img{max-height:56px;object-fit:contain}
+.logo-card.w{background:#1B1E15}
+.logo-card span{position:absolute;left:10px;bottom:6px;font-size:11px;font-weight:700;color:#5C6150}
+.logo-card.w span{color:#9DA38D}
+.quote-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:10px;justify-content:space-between}
+.quote-card p{font-size:15px;color:var(--ink);font-weight:600;line-height:1.45}
+.quote-card p::before{content:"“";color:var(--good);font:400 38px/0 var(--script);vertical-align:-12px;margin-right:4px}
+
+.case{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;text-align:left;padding:0;transition:border-color .2s,transform .2s var(--ease)}
+.case:hover{border-color:var(--mute);transform:translateY(-2px)}
+.case img{width:100%;aspect-ratio:16/9;object-fit:cover;background:#1B1E15}
+.case .in{padding:14px 16px;display:flex;flex-direction:column;gap:8px}
+.case h3{font-size:16px;font-weight:800}
+.case p{color:var(--mute);font-size:13px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+
+.post-body{display:flex;flex-direction:column;gap:8px}
+.blk{display:flex;gap:8px;align-items:flex-start}
+.blk .tag{font:500 10px var(--mono);color:var(--mute);width:34px;padding-top:12px;text-transform:uppercase;flex:none}
+.blk .textarea{min-height:44px}
+.blk .x{background:none;border:0;color:var(--mute);padding:10px 4px;font-weight:800}
+.blk .x:hover{color:var(--bad)}
+.typing{caret-color:var(--lime)}
+p.typing::after{content:"";display:inline-block;width:8px;height:1em;background:var(--lime);vertical-align:-2px;margin-left:2px;animation:pulse .8s infinite}
+.writer-head{display:flex;gap:14px;align-items:center;padding:12px 14px;border-radius:14px;background:#1B1E15;color:#E3E6D6}
+.writer-head b{color:#fff}
+.writer-head .score b{color:#fff}
+.writer-head .checks{flex-direction:row;flex-wrap:wrap;gap:6px 12px;margin-top:6px}
+.writer-head .check{font-size:12px;color:#9DA38D}
+
+.templates{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.tpl{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px;display:flex;flex-direction:column;gap:8px;text-align:left}
+.tpl:hover,.tpl[aria-pressed="true"]{border-color:var(--ink)}
+.tpl[aria-pressed="true"]{box-shadow:0 0 0 2px var(--lime)}
+.tpl .wf{aspect-ratio:16/9;border-radius:8px;background:var(--bg);padding:10px;display:flex;flex-direction:column;gap:5px;justify-content:center}
+.tpl .wf i{display:block;height:6px;border-radius:3px;background:var(--line)}
+.tpl .wf i.h{height:10px;width:60%;background:var(--mute)}
+.tpl .wf i.l{background:var(--lime);width:30%;height:9px}
+.tpl .wf .g{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
+.tpl .wf .g i{height:22px}
+.tpl b{color:var(--ink);font-size:13px}
+.tpl small{color:var(--mute);font-size:12px}
+
+.cmd-bg{position:fixed;inset:0;background:rgba(10,11,8,.55);backdrop-filter:blur(4px);z-index:70;animation:fade .2s both}
+.cmd{position:fixed;left:50%;top:10vh;transform:translateX(-50%);width:min(680px,calc(100% - 32px));max-height:76vh;background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);z-index:71;display:flex;flex-direction:column;overflow:hidden;animation:pop .3s var(--ease) both}
+@keyframes pop{from{opacity:0;transform:translateX(-50%) translateY(-8px) scale(.98)}}
+.cmd-in{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid var(--line)}
+.cmd-in input{flex:1;border:0;background:none;font-size:16px;font-weight:600;color:var(--ink);outline:none;min-width:0}
+.cmd-body{overflow:auto;padding:10px}
+.cmd-sug{display:flex;flex-direction:column;gap:2px}
+.cmd-sug button{display:flex;gap:10px;align-items:center;background:none;border:0;border-radius:10px;padding:9px 10px;text-align:left;font-weight:600;color:var(--text)}
+.cmd-sug button:hover,.cmd-sug button.on{background:var(--bg);color:var(--ink)}
+.cmd-sug svg{width:15px;height:15px;color:var(--mute);flex:none}
+.cmd-ans{display:flex;gap:12px;padding:8px 6px 4px}
+.cmd-ans .t{flex:1;min-width:0;display:flex;flex-direction:column;gap:10px}
+.cmd-ans p{color:var(--ink);font-size:14.5px;line-height:1.6}
+.cmd-foot{display:flex;gap:12px;padding:10px 16px;border-top:1px solid var(--line);font-size:12px;color:var(--mute);flex-wrap:wrap}
+
+.pub-sig{display:grid;place-items:center;padding:18px;background:#1B1E15;border-radius:16px}
+.pub-sig .sig-svg{width:min(320px,80%)}
+.pub-sig .sig-svg path{stroke-dasharray:1;stroke-dashoffset:1}
+.pub-sig.go .sig-svg path{transition:stroke-dashoffset 1.2s var(--ease)}
+.pub-sig.go .sig-svg path:nth-child(2){transition-delay:1s}
+.pub-sig.go .sig-svg path{stroke-dashoffset:0}
+.pub-pages{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px}
+.pub-pages span{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--mute);border:1px solid var(--line);border-radius:10px;padding:7px 10px;transition:.3s}
+.pub-pages span.done{color:var(--good);border-color:transparent;background:var(--good-bg)}
+.progress{height:6px;border-radius:99px;background:var(--line);overflow:hidden}
+.progress i{display:block;height:100%;background:var(--lime);width:0;transition:width .35s}
+
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%) translateY(20px);opacity:0;background:var(--ink);color:var(--bg);padding:11px 18px;border-radius:12px;font-weight:700;z-index:90;transition:.3s var(--ease);pointer-events:none;display:flex;gap:10px;align-items:center;max-width:calc(100% - 32px)}
+.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast i{width:8px;height:8px;border-radius:50%;background:var(--lime);flex:none}
+.empty{color:var(--mute);font-size:13px;padding:6px 0}
+.kbd{font:500 11px var(--mono);background:var(--bg);border:1px solid var(--line);border-radius:5px;padding:1px 5px;color:var(--mute)}
+.muted{color:var(--mute)}
+.list-inline{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.confirm{display:inline-flex;gap:8px;align-items:center;flex-wrap:wrap;padding:10px 12px;border-radius:10px;background:var(--warn-bg);color:var(--ink);font-size:13px;font-weight:600}
+
+.cli-head{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.cli-logo{width:72px;height:72px;border-radius:18px;background:#fff;border:1px solid var(--line);display:grid;place-items:center;overflow:hidden;flex:none;font:900 24px var(--sans);color:var(--on-lime)}
+.cli-logo.ini{background:var(--lime)}
+.cli-logo.w{background:#1B1E15}
+.cli-logo img{max-width:80%;max-height:70%;object-fit:contain}
+.cli-logo.sm{width:44px;height:44px;border-radius:12px;font-size:15px}
+.cli-head h1{font-size:30px;font-weight:900}
+.cli-meta{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px;align-items:center}
+.cli-tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-left:auto}
+.svc-tabs{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.svc-tabs button.tabb{display:flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:8px 12px;font-weight:700;color:var(--mute)}
+.svc-tabs button.tabb img{width:26px;height:26px;border-radius:7px;object-fit:cover}
+.svc-tabs button.tabb[aria-selected="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.svc-tabs .n{font-size:11px;border-radius:99px;padding:0 7px;background:var(--bg);color:var(--mute)}
+.svc-tabs button.tabb[aria-selected="true"] .n{background:var(--lime);color:var(--on-lime)}
+.mats{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px}
+.mat{position:relative;border-radius:14px;overflow:hidden;background:#1B1E15;border:1px solid var(--line);aspect-ratio:4/3;display:flex;flex-direction:column}
+.mat.off{opacity:.45}
+.mat > img,.mat > video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.mat .ph.yt{background:radial-gradient(circle at 30% 20%,#2F3426,#1B1E15 70%)}
+.mat .ph{flex:1;display:grid;place-items:center;color:#9DA38D;font-size:12px;font-weight:700;text-align:center;padding:12px}
+.mat .play{position:absolute;left:50%;top:50%;width:42px;height:42px;margin:-21px 0 0 -21px;border-radius:50%;background:rgba(10,11,8,.7);display:grid;place-items:center;color:var(--lime);pointer-events:none}
+.mat .play svg{width:16px;height:16px}
+.mat .cap{position:absolute;left:0;right:0;bottom:0;padding:22px 10px 8px;background:linear-gradient(transparent,rgba(10,11,8,.85));color:#fff;font-size:12px;font-weight:700;line-height:1.3}
+.mat .cap small{display:block;color:#C9CDBB;font-weight:600}
+.mat .tools{position:absolute;right:6px;top:6px;display:flex;gap:4px;opacity:0;transition:opacity .2s}
+.mat:hover .tools,.mat:focus-within .tools{opacity:1}
+.mat .tools button{width:28px;height:28px;border-radius:8px;border:0;background:rgba(10,11,8,.75);color:#fff;font-size:13px;font-weight:800;display:grid;place-items:center;padding:0}
+.mat .tools button[aria-pressed="true"]{background:var(--lime);color:var(--on-lime)}
+.mat .badge{position:absolute;left:8px;top:8px;display:flex;gap:4px}
+.browser{position:absolute;inset:0;display:flex;flex-direction:column;background:#EEF0E3}
+.browser .bar{display:flex;align-items:center;gap:5px;padding:7px 9px;background:#D6D9C8}
+.browser .bar i{width:7px;height:7px;border-radius:50%;background:#9DA38D}
+.browser .bar span{margin-left:6px;flex:1;background:#fff;border-radius:6px;padding:2px 8px;font:500 10px var(--mono);color:#5C6150;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.browser .page{flex:1;position:relative;display:grid;place-items:center;color:#5C6150;font-size:12px;font-weight:700;text-align:center;padding:10px}
+.browser .page img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top}
+.mats .drop{aspect-ratio:4/3}
+.ccard{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;text-align:left;padding:0;transition:border-color .2s,transform .2s var(--ease)}
+.ccard:hover{border-color:var(--mute);transform:translateY(-2px)}
+.ccard .cv{position:relative;aspect-ratio:16/9;background:#1B1E15;display:grid;place-items:center}
+.ccard .cv img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ccard .cv .cli-logo{position:absolute;left:12px;bottom:-22px;box-shadow:0 6px 20px rgba(10,11,8,.25)}
+.ccard .in{padding:30px 16px 16px;display:flex;flex-direction:column;gap:8px}
+.ccard h3{font-size:16px;font-weight:800}
+.ccard small{color:var(--mute);font-size:12px}
+.pv-bg{position:fixed;inset:0;z-index:80;background:#0A0B08;overflow:auto;animation:fade .25s both;color:#E3E6D6}
+.pv-top{position:sticky;top:0;z-index:2;display:flex;align-items:center;gap:10px;padding:12px 20px;background:rgba(10,11,8,.9);backdrop-filter:blur(8px);border-bottom:1px solid #2C3124;font-size:13px}
+.pv-top .url{font:500 12px var(--mono);color:#9DA38D;background:#1B1E15;border-radius:8px;padding:4px 10px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pv-top .btn{background:#1B1E15;border-color:#2C3124;color:#E3E6D6}
+.pv-hero{position:relative;overflow:hidden;padding:clamp(40px,8vw,90px) clamp(16px,5vw,64px) 40px;display:flex;flex-direction:column;gap:16px}
+.pv-hero canvas{position:absolute;inset:0;width:100%;height:100%}
+.pv-hero > *{position:relative}
+.pv-hero .eyebrow{color:var(--lime)}
+.pv-hero h1{color:#EEF0E3;font-size:clamp(40px,8vw,110px);font-weight:900;line-height:.9;text-transform:uppercase;letter-spacing:-.04em;max-width:14ch}
+.pv-hero p{max-width:60ch;color:#C9CDBB;font-size:16px}
+.pv-sec{padding:28px clamp(16px,5vw,64px) 36px;display:flex;flex-direction:column;gap:14px;border-top:1px solid #1B1E15}
+.pv-sec h2{color:var(--lime);font:400 clamp(34px,5vw,56px)/1 var(--script)}
+.pv-sec p{color:#C9CDBB;max-width:62ch}
+.pv-sec .mats .mat{border-color:#2C3124}
+.pv-cta{margin:24px clamp(16px,5vw,64px) 60px;padding:28px;border-radius:20px;background:var(--lime);color:var(--on-lime);display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.pv-cta b{font-size:clamp(22px,3vw,34px);font-weight:900;text-transform:uppercase;letter-spacing:-.02em;flex:1;min-width:220px}
+.pv-cta span{background:#0A0B08;color:var(--lime);border-radius:10px;padding:12px 18px;font-weight:800}
+
+.pfm{position:relative;display:flex;flex-direction:column;gap:0;padding:0;border:0;background:none;text-align:left;border-radius:14px;overflow:hidden}
+.pfm .mat{border-radius:14px 14px 0 0}
+.pfm-c{display:flex;align-items:center;gap:8px;padding:9px 10px;background:var(--surface);border:1px solid var(--line);border-top:0;border-radius:0 0 14px 14px;min-width:0}
+.pfm-c b{color:var(--ink);font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pfm-c small{margin-left:auto;color:var(--mute);font-size:11px;white-space:nowrap}
+.pfm:hover .pfm-c{border-color:var(--mute)}
+.cli-logo.xs{width:24px;height:24px;border-radius:7px;font-size:9px}
+.pv-bg .pfm-c{background:#1B1E15;border-color:#2C3124}
+.pv-bg .pfm-c b{color:#EEF0E3}
+.pv-bg .pfm-c small{color:#9DA38D}
+.pv-filters{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.pv-filters button{border:1px solid #3A3F30;background:#0A0B08;color:#E3E6D6;border-radius:99px;padding:8px 14px;font-weight:700;font-size:13px}
+.pv-filters button span{color:#9DA38D;font-weight:600;margin-left:4px}
+.pv-filters button[aria-pressed="true"]{background:var(--lime);border-color:var(--lime);color:var(--on-lime)}
+.pv-filters button[aria-pressed="true"] span{color:rgba(10,11,8,.6)}
+
+@media (max-width:1060px){
+  .grid2{grid-template-columns:1fr}
+  .grid3{grid-template-columns:1fr 1fr}
+  .status{grid-template-columns:1fr 1fr}
+  .status > div:nth-child(3){border-left:0}
+  .status > div:nth-child(n+3){border-top:1px solid var(--line-2)}
+  .hero img{opacity:.35}
+  .hero-in{max-width:100%}
+}
+@media (max-width:760px){
+  .login{grid-template-columns:1fr;overflow:auto}
+  .login-art{min-height:250px;padding:24px}
+  .login-art img{height:120%;right:-24%;opacity:.6}
+  .app{grid-template-columns:1fr}
+  .side{position:sticky;top:0;height:auto;z-index:30;flex-direction:row;align-items:center;gap:8px;padding:10px 16px;overflow-x:auto}
+  .brand .sig-svg{width:70px}
+  .brand span,.nav .grp,.side-foot,.nav .count,.ask .kbd,.ask span{display:none}
+  .nav{flex-direction:row;gap:2px}
+  .nav button{padding:8px 10px;white-space:nowrap}
+  .nav button span{display:none}
+  .nav button[aria-current="page"] span{display:inline}
+  .top{padding:10px 16px;position:relative;top:auto}
+  .note{margin:14px 16px 0}
+  .view{padding:18px 16px 56px}
+  .grid3{grid-template-columns:1fr}
+  .two{grid-template-columns:1fr}
+  .hide-sm{display:none}
+  .vhead h1{font-size:23px}
+  .hero{padding:20px;min-height:200px}
+}
+@media (prefers-reduced-motion: reduce){*,*::before,*::after{transition:none!important;animation:none!important}}
+</style>
+
+<div class="login" id="login">
+  <div class="login-art"><canvas id="loginTopo" aria-hidden="true"></canvas><img id="loginImg" alt=""><svg class="sig-svg" id="loginSig" viewBox="0 0 400 160" role="img" aria-label="Cobra"></svg>
+    <div class="quote">É aqui que as ideias <em>ganham forma.</em></div><small>Painel administrativo · cobra.art.br</small></div>
+  <form class="login-form" id="loginForm" autocomplete="off">
+    <div><div class="eyebrow">Acesso restrito</div><h1>Entrar no painel</h1><p style="margin-top:6px">Use sua conta da equipe. O código de 6 dígitos vem do app autenticador do seu celular.</p></div>
+    <div class="field"><label for="lgEmail">E-mail</label><input class="input" id="lgEmail" type="email" value="dev@cobra.art.br"></div>
+    <div class="field"><label for="lgPass">Senha</label><input class="input" id="lgPass" type="password" value="prototipo"></div>
+    <div class="field"><span class="lbl">Código de verificação</span><div class="otp"><input id="otp1" inputmode="numeric" maxlength="1" aria-label="Dígito 1" value="4"><input id="otp2" inputmode="numeric" maxlength="1" aria-label="Dígito 2" value="8"><input id="otp3" inputmode="numeric" maxlength="1" aria-label="Dígito 3" value="1"><input id="otp4" inputmode="numeric" maxlength="1" aria-label="Dígito 4" value="2"><input id="otp5" inputmode="numeric" maxlength="1" aria-label="Dígito 5" value="0"><input id="otp6" inputmode="numeric" maxlength="1" aria-label="Dígito 6" value="7"></div></div>
+    <button class="btn primary" type="submit" style="padding:12px;font-size:14px">Entrar</button>
+    <p class="hint">Protótipo: os campos já vêm preenchidos, é só entrar.</p>
+  </form>
+</div>
+
+<div class="app">
+  <aside class="side">
+    <div class="brand"><svg class="sig-svg" id="sideSig" viewBox="0 0 400 160" role="img" aria-label="Cobra"></svg><span>Painel</span></div>
+    <button class="ask" type="button" data-cmd><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.8 5.6L19.5 9.5l-5.7 1.9L12 17l-1.8-5.6L4.5 9.5l5.7-1.9zM19 15l.9 2.6 2.6.9-2.6.9L19 22l-.9-2.6-2.6-.9 2.6-.9z"/></svg><span>Cobra IA</span><span class="kbd">⌘K</span></button>
+    <nav class="nav" id="nav" aria-label="Seções do painel"></nav>
+    <div class="side-foot"><div class="avatar">AS</div><div><b>Artur</b><small>Administrador</small></div><button type="button" data-logout>Sair</button></div>
+  </aside>
+  <div class="main">
+    <header class="top">
+      <div class="crumb" id="crumb"></div>
+      <div class="sp"></div>
+      <span class="pill" id="pubState"><span class="dot"></span><span id="pubText">Tudo publicado</span></span>
+      <a class="btn hide-sm" href="https://cobra-iota.vercel.app" target="_blank" rel="noopener">Ver site ↗</a>
+      <button class="btn icon-btn" id="themeBtn" type="button" aria-label="Alternar tema claro/escuro"></button>
+      <button class="btn primary" id="publishBtn" type="button">Publicar</button>
+    </header>
+    <div class="note" id="protoNote"><div><b>Protótipo navegável.</b> Páginas, seções, soluções, portfólio, vídeos, posts, equipe e a auditoria de SEO usam os dados reais do site. Pautas, respostas da IA e rascunhos são exemplos. Nada aqui altera o site de verdade.</div><button type="button" aria-label="Fechar aviso" id="closeNote">✕</button></div>
+    <main class="view" id="view"></main>
+  </div>
+</div>
+<div id="drawerRoot"></div>
+<div id="cmdRoot"></div>
+<div class="toast" id="toast" role="status" aria-live="polite"><i></i><span></span></div>
+
+<script>const DATA=/*DATA*/null;</script>
+<script>
+(function(){
+'use strict';
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const h = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const img = p => (DATA.imgs[p] || {}).uri || '';
+const fmtDate = d => { const [y,m,dd] = String(d).split('-'); return dd ? `${dd}/${m}/${y}` : d; };
+const REDUCE = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const today = () => new Date().toISOString().slice(0,10);
+const clock = () => new Date().toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
+const slugify = s => String(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,60);
+const norm = s => String(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+
+const I = {
+  home:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg>',
+  pages:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>',
+  sol:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>',
+  client:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2.5"/><path d="M5 17c.6-2 2.1-3 4-3s3.4 1 4 3M15 9h3M15 13h3"/></svg>',
+  folio:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>',
+  video:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="M16 10l6-3v10l-6-3"/></svg>',
+  blog:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13 7l4 4"/></svg>',
+  trend:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>',
+  seo:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>',
+  media:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-9 9"/></svg>',
+  team:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.6-3.6 3.2-5.5 6.5-5.5s5.9 1.9 6.5 5.5"/><circle cx="17" cy="9" r="2.5"/><path d="M16.5 14.6c2.6.2 4.4 1.9 5 5.4"/></svg>',
+  cog:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>',
+  up:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15l6-6 6 6"/></svg>',
+  down:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>',
+  spark:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.8 5.6L19.5 9.5l-5.7 1.9L12 17l-1.8-5.6L4.5 9.5l5.7-1.9zM19 15l.9 2.6 2.6.9-2.6.9L19 22l-.9-2.6-2.6-.9 2.6-.9z"/></svg>',
+  code:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg>',
+  section:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg>',
+  style:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="8" cy="11" r="1"/><circle cx="12" cy="7.5" r="1"/><circle cx="16" cy="11" r="1"/></svg>',
+  sun:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>',
+  moon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>',
+  arrow:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
+};
+const sigSvg = DATA.sig.map((d,i)=>`<path pathLength="1" d="${d}" stroke-width="${i?6.4:8}"/>`).join('');
+const KIND_ICON = {section:I.section, header:I.pages, footer:I.pages, style:I.style, script:I.code, structure:I.code, extras:I.section};
+const KIND_LABEL = {section:'Seção', header:'Cabeçalho', footer:'Rodapé', style:'Estilo', script:'Script', structure:'Estrutura', extras:'Elementos'};
+const SERV = Object.fromEntries(DATA.servicos.map(s=>[s.id,s]));
+const KIND_V = {video:'Vídeo', short:'Short', photo:'Foto'};
+
+// ------------------------------------------------------------------ state
+const S = {
+  view:'inicio', page:null, pending:[], showTech:false, trendFilter:'Todas', avTab:'videos', avFilter:'all', cfgTab:'geral', mediaFilter:'Todas',
+  log:[{when:'14:32', who:'Artur', what:'Publicou o site (7 páginas)'}, {when:'11:18', who:'Sistema', what:'Site reorganizado em seções editáveis'}],
+  versions:[{id:'v2', when:'Hoje, 14:32', who:'Artur', what:'Estrutura em seções editáveis', cur:true},{id:'v1', when:'Hoje, 11:18', who:'Artur', what:'Primeira versão do site'}],
+  users:[{nome:'Artur', email:'dev@cobra.art.br', papel:'Administrador'}],
+  drafts:[
+    {id:'d1', title:'Busca por IA: como aparecer nas respostas do ChatGPT e do Google', cat:'Sites e tecnologia', from:'Pauta: buscas com IA'},
+    {id:'d2', title:'WhatsApp com catálogo: o que muda para a loja de bairro', cat:'Marketing digital', from:'Pauta: vendas pelo WhatsApp'},
+  ],
+  trends:[
+    {id:'t1', topic:'Buscas com IA mudam o tráfego dos sites', why:'Empresas locais querem saber como aparecer quando o cliente pesquisa no ChatGPT, no Gemini e na visão geral do Google.', cat:'IA', src:['Google Trends','Google News','Hacker News'], heat:'+240%', pts:[8,9,9,12,15,14,19,26,31,38], fit:'Alta', sol:'seo'},
+    {id:'t2', topic:'Vendas pelo WhatsApp com catálogo e pagamento', why:'Pequenos negócios levam a venda inteira para o WhatsApp. Conecta com Tráfego Pago e E-commerce.', cat:'Marketing', src:['Google Trends','Tecnoblog'], heat:'+85%', pts:[10,11,10,13,12,15,17,18,20,23], fit:'Alta', sol:'trafego-pago'},
+    {id:'t3', topic:'Vídeo vertical curto como vitrine de loja', why:'Reels e Shorts de bastidores seguem crescendo no comércio local. Casa com o portfólio de Audiovisual.', cat:'Redes sociais', src:['Google Trends','Reddit'], heat:'+60%', pts:[14,15,15,16,18,17,20,21,22,24], fit:'Alta', sol:'producao-de-video'},
+    {id:'t4', topic:'Sites lentos perdem posição no Google', why:'As métricas de velocidade voltaram ao debate. Pauta boa para Sites e Manutenção.', cat:'Tecnologia', src:['Google News','Canaltech'], heat:'+40%', pts:[12,12,13,12,14,15,15,16,17,18], fit:'Média', sol:'manutencao-de-sites'},
+    {id:'t5', topic:'Logo feito por IA: riscos para a marca', why:'Debate sobre logos gerados por IA e registro de marca. Ângulo de autoridade para Branding.', cat:'IA', src:['Olhar Digital','Hacker News'], heat:'+35%', pts:[9,10,9,11,11,12,13,12,14,15], fit:'Média', sol:'branding'},
+    {id:'t6', topic:'Anúncios no Google com segmentação por IA', why:'Campanhas automáticas mudam a forma de segmentar. Útil para quem investe pouco.', cat:'Marketing', src:['Google News'], heat:'+22%', pts:[11,11,12,12,13,12,13,14,14,15], fit:'Média', sol:'trafego-pago'},
+  ],
+  sources:[['Google Trends (Brasil)',true],['Google News',true],['Tecnoblog',true],['Canaltech',true],['Olhar Digital',true],['Hacker News',true],['Reddit',true],['Busca na web da IA',true],['TikTok Creative Center',false]],
+  seoDone:{}, uploads:[], alts:{}, client:null, svcTab:null, cliFilter:'Todos', pfFilter:'Todos',
+};
+DATA.posts.forEach(p=>p.exemplo=true);
+function addPending(what){ if (!S.pending.includes(what)) { S.pending.push(what); S.log.unshift({when:clock(), who:'Artur', what:'Editou: '+what}); } renderPubState(); }
+
+// ------------------------------------------------------------------ chrome
+const NAV = () => [
+  {grp:'Site'},
+  {id:'inicio', label:'Início', icon:I.home},
+  {id:'paginas', label:'Páginas', icon:I.pages, count:DATA.pages.length},
+  {id:'solucoes', label:'Soluções', icon:I.sol, count:DATA.solucoes.length},
+  {id:'clientes', label:'Clientes', icon:I.client, count:DATA.clientes.length},
+  {id:'portfolio', label:'Portfólio', icon:I.folio},
+  {id:'audiovisual', label:'Audiovisual', icon:I.video, count:DATA.videos.length},
+  {id:'equipe', label:'Equipe', icon:I.team, count:DATA.equipe.length},
+  {id:'midia', label:'Mídia', icon:I.media},
+  {grp:'Conteúdo e IA'},
+  {id:'blog', label:'Blog', icon:I.blog, count:DATA.posts.length+S.drafts.length},
+  {id:'pautas', label:'Pautas em alta', icon:I.trend},
+  {id:'seo', label:'SEO e GEO', icon:I.seo, count:openIssues().length||''},
+  {grp:'Sistema'},
+  {id:'config', label:'Configurações', icon:I.cog},
+];
+function renderNav(){
+  const cur = S.page ? 'paginas' : S.view==='cliente' ? 'clientes' : S.view;
+  $('#nav').innerHTML = NAV().map(n => n.grp ? `<div class="grp">${n.grp}</div>` :
+    `<button type="button" data-go="${n.id}" ${cur===n.id?'aria-current="page"':''}>${n.icon}<span>${n.label}</span>${n.count?`<em class="count">${n.count}</em>`:''}</button>`).join('');
+}
+function renderCrumb(){
+  const cur = NAV().find(n => n.id===S.view) || {label:'Início'};
+  if (S.view==='cliente' && S.client) { $('#crumb').innerHTML = `<button type="button" data-go="clientes">Clientes</button><i>/</i><span>${h(S.client.nome)}</span>`; return; }
+  $('#crumb').innerHTML = S.page ? `<button type="button" data-go="paginas">Páginas</button><i>/</i><span>${h(S.page.name)}</span>` : `<span>${h(cur.label)}</span>`;
+}
+function renderPubState(){
+  const n = S.pending.length;
+  $('#pubState').classList.toggle('pending', n>0);
+  $('#pubText').textContent = n ? `${n} alteraç${n>1?'ões':'ão'} não publicada${n>1?'s':''}` : 'Tudo publicado';
+  $('#publishBtn').innerHTML = n ? `Publicar <span class="pub-count">${n}</span>` : 'Publicar';
+  renderNav();
+}
+function go(view, page){
+  S.view = view; S.page = page || null;
+  renderNav(); renderCrumb();
+  $('#view').innerHTML = (VIEWS[view] || VIEWS.inicio)();
+  AFTER[view] && AFTER[view]();
+  window.scrollTo(0,0);
+  try { history.replaceState(null,'','#'+(page?'paginas':view)); } catch(e){}
+}
+const rerender = () => { const y = window.scrollY; go(S.view, S.page); window.scrollTo(0,y); };
+function toast(msg){
+  const t = $('#toast'); t.querySelector('span').textContent = msg; t.classList.add('on');
+  clearTimeout(toast._t); toast._t = setTimeout(()=>t.classList.remove('on'), 2800);
+}
+
+// ------------------------------------------------------------------ helpers
+function ring(score, cls='', id=''){
+  const r=23, c=2*Math.PI*r, off=c*(1-score/100);
+  const col = score>=75?'var(--good)':score>=50?'var(--warn)':'var(--bad)';
+  return `<div class="score ${cls}" ${id?`id="${id}"`:''} aria-label="Nota ${score} de 100"><svg viewBox="0 0 54 54"><circle cx="27" cy="27" r="${r}" fill="none" stroke="var(--line)" stroke-width="5"/><circle class="arc" cx="27" cy="27" r="${r}" fill="none" stroke="${col}" stroke-width="5" stroke-linecap="round" stroke-dasharray="${c}" stroke-dashoffset="${off}"/></svg><b>${score}</b></div>`;
+}
+function setRing(el, score){
+  const c=2*Math.PI*23, arc = el.querySelector('.arc');
+  arc.style.strokeDashoffset = c*(1-score/100); arc.setAttribute('stroke', score>=75?'var(--good)':score>=50?'var(--warn)':'var(--bad)');
+  el.querySelector('b').textContent = score; el.setAttribute('aria-label', `Nota ${score} de 100`);
+}
+function spark(pts){
+  const w=240,hh=40,max=Math.max(...pts),min=Math.min(...pts);
+  const xy = pts.map((p,i)=>[i*(w/(pts.length-1)), hh-4-((p-min)/(max-min||1))*(hh-10)]);
+  const d = xy.map((p,i)=>(i?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1)).join(' ');
+  const last = xy[xy.length-1];
+  return `<svg class="spark-line" viewBox="0 0 ${w} ${hh}" preserveAspectRatio="none" aria-hidden="true"><path d="${d} L${w} ${hh} L0 ${hh}Z" fill="var(--lime-soft)"/><path d="${d}" fill="none" stroke="var(--ink)" stroke-width="1.6" vector-effect="non-scaling-stroke"/><circle cx="${last[0]-3}" cy="${last[1]}" r="3" fill="var(--lime)" stroke="var(--ink)" stroke-width="1"/></svg>`;
+}
+function pageScore(a){ const ok = a.checks.filter(c=>c.ok||S.seoDone[a.slug+c.label]).length; return Math.round(100*ok/a.checks.length); }
+function avgScore(){ return Math.round(DATA.audit.reduce((s,a)=>s+pageScore(a),0)/DATA.audit.length); }
+function openIssues(){ const out=[]; DATA.audit.forEach(p => p.checks.forEach(c => { if(!c.ok && !S.seoDone[p.slug+c.label]) out.push({page:p, c}); })); return out; }
+function field(id,label,value,opts={}){
+  const {area=false,hint='',max=0,type='text',ph=''} = opts;
+  const v = String(value ?? '');
+  const cnt = max ? `<span class="counter${v.length>max?' over':''}" data-max="${max}">${v.length}/${max}</span>` : '';
+  return `<div class="field"><label for="${id}">${label}</label>${area?`<textarea class="textarea" id="${id}" placeholder="${h(ph)}">${h(v)}</textarea>`:`<input class="input" id="${id}" type="${type}" value="${h(v)}" placeholder="${h(ph)}">`}${hint||cnt?`<div class="frow"><span class="hint">${hint}</span>${cnt}</div>`:''}</div>`;
+}
+const val = id => { const el = document.getElementById(id); return el ? el.value.trim() : ''; };
+function typeInto(el, text, speed=14){
+  return new Promise(res => {
+    if (!el) return res();
+    const isField = el.tagName==='INPUT' || el.tagName==='TEXTAREA';
+    const set = t => { if (isField) { el.value = t; el.dispatchEvent(new Event('input',{bubbles:true})); } else el.textContent = t; };
+    if (REDUCE) { set(text); return res(); }
+    let i = 0; el.classList.add('typing');
+    const step = () => { if (!el.isConnected) return res(); i = Math.min(text.length, i + 2 + Math.floor(Math.random()*3)); set(text.slice(0,i));
+      if (i < text.length) setTimeout(step, speed); else { el.classList.remove('typing'); res(); } };
+    step();
+  });
+}
+const wait = ms => new Promise(r => setTimeout(r, REDUCE?0:ms));
+
+function topo(canvas, {color='rgba(203,226,46,.22)', lines=22, speed=0.00012}={}){
+  const ctx = canvas.getContext('2d'); const t0 = performance.now(); let raf, alive = true;
+  function draw(now){
+    if (!alive || !canvas.isConnected) return;
+    const w = canvas.clientWidth, hh = canvas.clientHeight, dpr = Math.min(2, devicePixelRatio||1);
+    if (w && hh) {
+      if (canvas.width !== Math.round(w*dpr)) { canvas.width = Math.round(w*dpr); canvas.height = Math.round(hh*dpr); }
+      ctx.setTransform(dpr,0,0,dpr,0,0); ctx.clearRect(0,0,w,hh);
+      const t = (now - t0) * speed;
+      ctx.lineWidth = 1; ctx.strokeStyle = color;
+      for (let k=0; k<lines; k++){
+        const base = (k+.5) * hh/lines * 1.25 - hh*.1;
+        ctx.beginPath();
+        for (let x=0; x<=w+8; x+=8){
+          const y = base + Math.sin(x*.006 + k*.35 + t)*18 + Math.sin(x*.013 - k*.2 + t*1.7)*9 + Math.cos(x*.002 + k*.9)*26;
+          x ? ctx.lineTo(x,y) : ctx.moveTo(x,y);
+        }
+        ctx.stroke();
+      }
+    }
+    if (!REDUCE) raf = requestAnimationFrame(draw);
+  }
+  raf = requestAnimationFrame(draw);
+  return () => { alive = false; cancelAnimationFrame(raf); };
+}
+
+// ------------------------------------------------------------------ views
+const VIEWS = {}, AFTER = {};
+
+function todoList(){
+  const semDesc = DATA.pages.filter(p=>!p.description).map(p=>p.name);
+  const equipeVazia = DATA.equipe.filter(m=>!m.nome || m.nome==='Nome da pessoa').length;
+  const exemplos = DATA.posts.filter(p=>p.exemplo).length;
+  const semMat = DATA.clientes.filter(c=>!allItems(c).length).length;
+  return [
+    ...S.drafts.map(d=>({sev:'info', t:d.title, s:`Rascunho da IA · ${d.from}`, act:`<button class="btn sm" data-draft="${d.id}">Revisar</button>`})),
+    semDesc.length ? {sev:'bad', t:`${semDesc.length} página${semDesc.length>1?'s':''} sem descrição para o Google`, s:semDesc.join(', '), act:`<button class="btn sm" data-go="seo">Corrigir</button>`} : null,
+    equipeVazia ? {sev:'warn', t:`${equipeVazia} vagas da equipe sem nome e foto`, s:'Página Sobre · seção Equipe', act:`<button class="btn sm" data-go="equipe">Preencher</button>`} : null,
+    DATA.site.rodape.links_legais[0].href==='#top' ? {sev:'warn', t:'Links de Privacidade e Cookies apontam para o topo', s:'Rodapé de todas as páginas', act:`<button class="btn sm" data-cfg="menu">Ajustar</button>`} : null,
+    semMat ? {sev:'warn', t:`${semMat} clientes cadastrados sem materiais`, s:'Suba fotos, vídeos ou o site de cada serviço contratado', act:`<button class="btn sm" data-go="clientes">Abrir clientes</button>`} : null,
+    exemplos ? {sev:'warn', t:`${exemplos} posts ainda são texto de exemplo`, s:'Blog', act:`<button class="btn sm" data-go="blog">Ver posts</button>`} : null,
+  ].filter(Boolean);
+}
+VIEWS.inicio = () => {
+  const issues = openIssues(), todo = todoList();
+  const hr = new Date().getHours(), greet = hr<12?'Bom dia':hr<18?'Boa tarde':'Boa noite';
+  return `
+  <section class="hero"><canvas id="heroTopo" aria-hidden="true"></canvas><img src="${img(DATA.hero)}" alt="">
+    <div class="hero-in"><div class="hello">${greet}, Artur</div>
+      <p><b>${todo.length} ${todo.length===1?'item pede':'itens pedem'}</b> sua atenção, a nota média de SEO do site está em <b>${avgScore()}/100</b> e há <b>${S.trends.length} pautas</b> em alta para o blog.</p>
+      <div class="row-btns"><button class="btn primary" data-cmd>${I.spark} Pergunte à Cobra IA</button><button class="btn" data-go="pautas">${I.trend} Pautas de hoje</button></div></div></section>
+  <div class="status">
+    <div><small>Site</small><b><span class="pill"><span class="dot"></span>No ar</span></b><small>cobra-iota.vercel.app</small></div>
+    <div><small>Conteúdo</small><b>${DATA.pages.reduce((s,p)=>s+p.parts.filter(x=>x.kind==='section').length,0)}</b><small>seções em ${DATA.pages.length} páginas</small></div>
+    <div><small>Nota média de SEO/GEO</small><b>${avgScore()}<span class="muted" style="font-size:14px">/100</span></b><small>${issues.length} pontos a corrigir</small></div>
+    <div><small>Última publicação</small><b>${h(S.versions.find(v=>v.cur).when.replace('Hoje, ',''))}</b><small>hoje · por ${h(S.versions[0].who)}</small></div>
+  </div>
+  <div class="grid2">
+    <section class="panel"><div class="panel-h"><h2>Para revisar</h2><span class="chip">${todo.length}</span></div>
+      <div class="rows">${todo.length?todo.map(x=>`<div class="row"><span class="sev ${x.sev}"></span><div class="t"><b>${h(x.t)}</b><small>${h(x.s)}</small></div>${x.act}</div>`).join(''):'<div class="row"><span class="empty">Nada pendente.</span></div>'}</div></section>
+    <div class="col">
+      <section class="panel"><div class="panel-h"><h2>Em alta hoje</h2><span class="chip ex">exemplo</span><div class="sp"></div><button class="btn sm ghost" data-go="pautas">Todas ${I.arrow}</button></div>
+        <div class="rows">${S.trends.slice(0,3).map(t=>`<div class="row"><div class="t"><b>${h(t.topic)}</b><small>${t.src.join(' · ')} · <span class="heat">${t.heat}</span></small></div><button class="btn sm" data-gen="${t.id}">${I.spark} Escrever</button></div>`).join('')}</div></section>
+      <section class="panel"><div class="panel-h"><h2>Atividade</h2></div>
+        <div class="rows">${S.log.slice(0,5).map(l=>`<div class="row"><div class="t"><b style="font-weight:600">${h(l.what)}</b><small>${h(l.who)}</small></div><span class="when">${h(l.when)}</span></div>`).join('')}</div></section>
+    </div>
+  </div>`;
+};
+let stopHeroTopo = null;
+AFTER.inicio = () => { stopHeroTopo && stopHeroTopo(); const c = $('#heroTopo'); if (c) stopHeroTopo = topo(c); };
+
+VIEWS.paginas = () => `
+  <div class="vhead"><div><h1>Páginas</h1><p>Cada página é montada por seções. Edite os textos pelos campos ou o código de cada seção. Cabeçalho e rodapé são compartilhados: mudou em um lugar, muda em todas as páginas.</p></div></div>
+  <div class="pages">${DATA.pages.map(p=>{
+    const secs = p.parts.filter(x=>x.kind==='section').length, a = DATA.audit.find(x=>x.slug===p.slug);
+    return `<button type="button" class="pcard" data-page="${p.slug}"><div class="url">cobra.art.br/${p.output.replace('.html','').replace('index','')}</div><h3>${h(p.name)}</h3><p>${h(p.title)}</p>
+      <div class="meta"><span class="chip">${secs?secs+' seções':'Conteúdo dinâmico'}</span>${p.description?'<span class="chip good">Descrição ok</span>':'<span class="chip bad">Sem descrição</span>'}<span class="mini-ring">${ring(pageScore(a),'sm')}</span></div></button>`;}).join('')}</div>`;
+
+VIEWS.pagina = () => {
+  const p = S.page, a = DATA.audit.find(x=>x.slug===p.slug);
+  const parts = p.parts.map((x,i)=>({...x,i})).filter(x => S.showTech || ['section','header','footer','extras'].includes(x.kind));
+  const path = p.output.replace('.html','').replace('index','');
+  return `
+  <div class="vhead"><div><div class="eyebrow">cobra.art.br/${path}</div><h1>${h(p.name)}</h1></div><div class="sp"></div>
+    <button class="btn" data-addsec>+ Adicionar seção</button><a class="btn" href="https://cobra-iota.vercel.app/${path}" target="_blank" rel="noopener">Ver no site ↗</a></div>
+  <div class="grid2">
+    <section class="panel"><div class="panel-h"><h2>Seções</h2><span class="chip">${parts.length}</span><div class="sp"></div>
+      <span class="list-inline muted" style="font-size:12px;font-weight:700"><button type="button" class="switch" role="switch" aria-checked="${S.showTech}" id="techSw" aria-label="Mostrar estilos e scripts"></button>Estilos e scripts</span></div>
+      <div class="panel-b sections">${parts.map(x=>`
+        <div class="sec${x.hidden?' off':''}${x.fresh?' new':''}">
+          <div class="grip"><button type="button" aria-label="Subir" data-move="${x.i}" data-dir="-1">${I.up}</button><button type="button" aria-label="Descer" data-move="${x.i}" data-dir="1">${I.down}</button></div>
+          <span class="kind">${KIND_ICON[x.kind]||I.section}</span>
+          <div class="t"><b>${h(x.label)}</b><small>${KIND_LABEL[x.kind]||x.kind}${x.shared?' · compartilhada':''}${x.fields.length?' · '+h(x.fields[0]):''}</small></div>
+          ${x.shared?'<span class="chip lime hide-sm">Compartilhada</span>':''}
+          <button type="button" class="switch" role="switch" aria-checked="${!x.hidden}" data-vis="${x.i}" aria-label="Mostrar “${h(x.label)}” no site"></button>
+          <button type="button" class="btn sm" data-edit="${x.i}">Editar</button>
+        </div>`).join('')}</div></section>
+    <div class="col">
+      <section class="panel"><div class="panel-h"><h2>Como aparece nas buscas</h2></div><div class="panel-b form">
+        ${field('pgTitle','Título da página',p.title,{max:65})}
+        ${field('pgDesc','Descrição (meta description)',p.description,{area:true,max:160,ph:'Sem descrição, o Google escolhe um trecho qualquer da página.'})}
+        <div class="list-inline"><button type="button" class="btn" data-aidesc>${I.spark} Sugerir com IA</button><button type="button" class="btn primary" data-savemeta>Salvar</button></div>
+        <div class="field"><span class="lbl">No Google</span><div class="serp" id="serp"></div></div>
+        <div class="field"><span class="lbl">Numa resposta de IA <span class="chip ex">simulação</span></span><div class="aicite" id="aicite"></div></div>
+      </div></section>
+      <section class="panel"><div class="panel-h">${ring(pageScore(a))}<div><h2>SEO e GEO</h2><small class="muted">Checagem desta página</small></div></div>
+        <div class="panel-b checks">${a.checks.map(c=>{const ok=c.ok||S.seoDone[a.slug+c.label];return `<div class="check"><span class="ic ${ok?'ok':'no'}">${ok?'✓':'!'}</span>${h(c.label)}<small>${ok&&!c.ok?'corrigido':h(c.detail)}</small></div>`;}).join('')}</div></section>
+    </div>
+  </div>`;
+};
+function renderSerp(){
+  const p = S.page; if (!p || !$('#serp')) return;
+  const t = val('pgTitle') || p.title, d = val('pgDesc');
+  const path = p.output.replace('.html','').replace('index','');
+  const cut = (s,n) => s.length>n ? s.slice(0,n-1).trimEnd()+'…' : s;
+  $('#serp').innerHTML = `<div class="site"><span class="fav"><svg class="sig-svg" viewBox="0 0 400 160">${sigSvg}</svg></span><div><b>Agência Cobra</b><small>https://cobra.art.br${path?' › '+path:''}</small></div></div>
+    <div class="st">${h(cut(t,62))}</div><div class="sd${d?'':' miss'}">${d?h(cut(d,158)):'Sem descrição, o Google escolhe um trecho qualquer da página, como o texto de um botão.'}</div>`;
+  const ai = d ? `${h(d.replace(/\.$/,''))}<sup>1</sup>. A agência fica em Timbó, SC, e atende empresas da região<sup>1</sup>.` : 'Não encontrei um resumo claro desta página da Agência Cobra. Sem esse resumo, a IA tende a citar outra fonte.';
+  $('#aicite').innerHTML = `<span class="bot">${I.spark}</span><div><p>${ai}</p><div class="srcs"><span class="chip">1 · cobra.art.br${path?'/'+path:''}</span></div></div>`;
+}
+AFTER.pagina = renderSerp;
+
+VIEWS.solucoes = () => `
+  <div class="vhead"><div><h1>Soluções</h1><p>Uma lista só alimenta a grade da Home, a página de cada solução e o rodapé. A ordem aqui é a ordem no site.</p></div><div class="sp"></div><button class="btn dark" data-newsol>+ Nova solução</button></div>
+  <section class="panel"><div class="rows">${DATA.solucoes.map((s,i)=>`
+    <div class="row${s.fresh?' new':''}"><div class="grip"><button type="button" aria-label="Subir" data-solmove="${i}" data-dir="-1">${I.up}</button><button type="button" aria-label="Descer" data-solmove="${i}" data-dir="1">${I.down}</button></div>
+      <img class="thumb" src="${img(s.img)}" alt=""><div class="t"><b>${h(s.nome)}</b><small>${h(s.desc)}</small></div>
+      <span class="chip hide-sm">${h(s.tag)}</span>${s.clientes.length?`<span class="chip good hide-sm">${s.clientes.length} cliente${s.clientes.length>1?'s':''}</span>`:''}<button class="btn sm" data-sol="${i}">Editar</button></div>`).join('')}</div></section>`;
+
+VIEWS.audiovisual = () => {
+  const tabs = [['videos',`Vídeos e fotos (${DATA.videos.length})`],['marcas',`Marcas (${DATA.marcas.length})`],['depoimentos',`Depoimentos (${DATA.depoimentos.length})`]];
+  let body = '';
+  if (S.avTab==='videos') {
+    const list = DATA.videos.map((v,i)=>({...v,i})).filter(v=>S.avFilter==='all'||v.kind===S.avFilter);
+    body = `<div class="frow" style="flex-wrap:wrap"><div class="filters" role="group" aria-label="Filtrar">${[['all','Tudo'],['video','Vídeos'],['short','Shorts'],['photo','Fotos']].map(([k,l])=>`<button type="button" aria-pressed="${S.avFilter===k}" data-avf="${k}">${l}</button>`).join('')}</div>
+      <div class="list-inline"><input class="input" id="ytUrl" placeholder="Cole o link do YouTube" style="width:min(300px,56vw)"><button class="btn dark" data-addyt>Adicionar</button></div></div>
+      <div class="vgrid">${list.map(v=>`<button type="button" class="vcard${v.fresh?' new':''}" data-video="${v.i}"><div class="pic">${v.thumb?`<img src="${img(v.thumb)}" alt="" loading="lazy">`:'Capa vem do YouTube'}<span class="chip ${v.kind==='short'?'lime':''}">${KIND_V[v.kind]||v.kind}</span>${v.dur?`<span class="dur">${Math.floor(v.dur/60)}:${String(v.dur%60).padStart(2,'0')}</span>`:''}</div>
+        <div class="in"><b>${h(v.title)}</b><small>${h(v.client||'Sem cliente')}${v.label?' · '+h(v.label):''}</small></div></button>`).join('')}</div>`;
+  } else if (S.avTab==='marcas') {
+    body = `<div class="logos">${DATA.marcas.map(m=>`<div class="logo-card${m.branca?' w':''}${m.fresh?' new':''}"><img src="${img(m.src)}" alt="${h(m.nome)}"><span>${h(m.nome)}</span></div>`).join('')}
+      <label class="drop" for="logoUp" style="aspect-ratio:3/2">＋ Adicionar marca<small class="muted" style="font-weight:500">PNG ou SVG, fundo transparente</small></label><input type="file" id="logoUp" accept="image/*" hidden></div>`;
+  } else {
+    body = `<div class="note" style="margin:0"><div><b>Regra da equipe:</b> depoimentos mostram só o nome da empresa, sem nome de pessoa, telefone, print ou áudio.</div></div>
+      <div class="grid3">${DATA.depoimentos.map((d,i)=>`<div class="quote-card${d.fresh?' new':''}"><p>${h(d.texto)}</p><div class="frow"><b style="color:var(--ink)">${h(d.empresa)}</b><button class="btn sm" data-dep="${i}">Editar</button></div></div>`).join('')}
+      <button type="button" class="drop" data-dep="new" style="aspect-ratio:auto;min-height:150px">＋ Novo depoimento</button></div>`;
+  }
+  return `<div class="vhead"><div><h1>Audiovisual</h1><p>Galeria, sala de exibição, marcas e depoimentos da página Fotos &amp; Vídeos. Os números da página se atualizam sozinhos.</p></div></div>
+    <div class="tabs" role="tablist" style="padding:0">${tabs.map(([k,l])=>`<button type="button" role="tab" aria-selected="${S.avTab===k}" data-avtab="${k}">${l}</button>`).join('')}</div>${body}`;
+};
+
+VIEWS.equipe = () => `
+  <div class="vhead"><div><h1>Equipe</h1><p>Aparece na página Sobre, na seção “Quem faz a Cobra”. Sem foto, o site mostra a silhueta com “Foto em breve”. Clique no círculo para enviar a foto.</p></div><div class="sp"></div><button class="btn dark" data-newmember>+ Adicionar pessoa</button></div>
+  <section class="panel"><div class="rows">${DATA.equipe.map((m,i)=>`
+    <div class="row${m.fresh?' new':''}"><div class="grip"><button type="button" aria-label="Subir" data-mbmove="${i}" data-dir="-1">${I.up}</button><button type="button" aria-label="Descer" data-mbmove="${i}" data-dir="1">${I.down}</button></div>
+      <label class="avatar ${m.fotoUri?'':'ghost'}" for="mbF${i}" style="cursor:pointer;width:44px;height:44px" title="Enviar foto">${m.fotoUri?`<img src="${m.fotoUri}" alt="">`:'+'}</label><input type="file" id="mbF${i}" accept="image/*" hidden data-mbfoto="${i}">
+      <div class="t two" style="gap:10px"><input class="input" aria-label="Nome" data-mb="${i}" data-k="nome" value="${m.nome==='Nome da pessoa'?'':h(m.nome)}" placeholder="Nome da pessoa"><input class="input" aria-label="Cargo" data-mb="${i}" data-k="cargo" value="${h(m.cargo)}" placeholder="Cargo"></div>
+      <button class="btn sm ghost danger" data-mbdel="${i}" aria-label="Remover pessoa">✕</button></div>`).join('')}</div></section>`;
+
+VIEWS.midia = () => {
+  const used = p => {
+    const u=[]; if (p===DATA.hero) u.push('Home'); if (DATA.solucoes.some(s=>s.img===p)) u.push('Soluções'); if (Object.values(DATA.blogImg).includes(p)) u.push('Blog');
+    if (DATA.videos.some(v=>v.thumb===p)) u.push('Audiovisual'); if (DATA.marcas.some(m=>m.src===p)) u.push('Marcas'); if (DATA.clientes.some(c=>allItems(c).some(it=>it.src===p))) u.push('Portfólio'); return u;
+  };
+  const all = [...S.uploads.map(u=>({p:u.name, uri:u.uri, kb:u.kb, used:['Todas'], fresh:true})), ...Object.entries(DATA.imgs).map(([p,v])=>({p, uri:v.uri, kb:v.kb, used:used(p)}))];
+  const cats = ['Todas','Home','Soluções','Portfólio','Audiovisual','Marcas','Blog'];
+  const list = all.filter(x=>S.mediaFilter==='Todas'||x.used.includes(S.mediaFilter));
+  return `<div class="vhead"><div><h1>Mídia</h1><p>Imagens e vídeos do site. Ao enviar, o painel converte para WebP, cria versões para celular e a IA sugere o texto alternativo.</p></div><div class="sp"></div><span class="muted" style="font-size:13px">${all.length} arquivos · ${(all.reduce((s,x)=>s+x.kb,0)/1024).toFixed(1).replace('.',',')} MB</span></div>
+    <div class="filters" role="group" aria-label="Filtrar por uso">${cats.map(c=>`<button type="button" aria-pressed="${S.mediaFilter===c}" data-mf="${c}">${c}</button>`).join('')}</div>
+    <div class="media"><label class="drop" for="upl" id="dropZone"><span style="font-size:22px">＋</span>Enviar ou arrastar arquivos<small class="muted" style="font-weight:500">JPG, PNG, WebP, MP4</small></label><input type="file" id="upl" accept="image/*" multiple hidden>
+      ${list.map(x=>`<button type="button" class="mcard" data-media="${h(x.p)}"><img src="${x.uri}" alt="" loading="lazy"><small>${h(x.p.replace('assets/',''))} · ${x.kb} KB</small>${x.fresh?'<span class="chip lime">nova</span>':(S.alts[x.p]?'<span class="chip good">texto alt ok</span>':'')}</button>`).join('')}</div>`;
+};
+
+VIEWS.blog = () => `
+  <div class="vhead"><div><h1>Blog</h1><p>Posts publicados e rascunhos. Rascunhos da IA só vão ao ar depois da sua aprovação.</p></div><div class="sp"></div><button class="btn" data-go="pautas">${I.trend} Pautas em alta</button><button class="btn dark" data-newpost>${I.blog} Novo post</button></div>
+  <section class="panel"><div class="panel-h"><h2>Rascunhos para aprovar</h2><span class="chip">${S.drafts.length}</span><span class="chip ex">exemplo</span></div><div class="rows">${S.drafts.length?S.drafts.map(d=>`
+    <div class="row${d.fresh?' new':''}"><span class="sev info"></span><div class="t"><b>${h(d.title)}</b><small>${h(d.cat)} · ${h(d.from)}</small></div><span class="chip lime hide-sm">Rascunho da IA</span><button class="btn sm" data-draft="${d.id}">Revisar</button></div>`).join(''):'<div class="row"><span class="empty">Nenhum rascunho. Gere um a partir das pautas em alta.</span></div>'}</div></section>
+  <section class="panel"><div class="panel-h"><h2>Publicados</h2><span class="chip">${DATA.posts.length}</span></div><div class="rows">${DATA.posts.map((p,i)=>`
+    <div class="row click${p.fresh?' new':''}" data-post="${i}"><img class="thumb" src="${img(DATA.blogImg[p.img]||p.img)}" alt=""><div class="t"><b>${h(p.title)}</b><small>${h(p.cat)} · ${fmtDate(p.date)} · ${p.read} min de leitura</small></div>${p.exemplo?'<span class="chip warn hide-sm">Texto de exemplo</span>':'<span class="chip good hide-sm">Pronto</span>'}</div>`).join('')}</div></section>`;
+
+VIEWS.pautas = () => {
+  const cats = ['Todas','IA','Marketing','Redes sociais','Tecnologia'];
+  const list = S.trends.filter(t => S.trendFilter==='Todas' || t.cat===S.trendFilter);
+  return `
+  <div class="vhead"><div><h1>Pautas em alta</h1><p>A IA varre as fontes todo dia, cruza com as soluções da Cobra e sugere pautas. Um clique escreve o rascunho, já pensado para SEO e GEO.</p></div><div class="sp"></div><button class="btn" data-scan>${I.trend} Varrer agora</button></div>
+  <div class="frow" style="flex-wrap:wrap"><div class="filters" role="group" aria-label="Filtrar pautas">${cats.map(c=>`<button type="button" aria-pressed="${S.trendFilter===c}" data-tf="${c}">${c}</button>`).join('')}</div><span class="chip ex">Pautas de exemplo</span></div>
+  <div class="grid3">${list.map(t=>`
+    <article class="trend"><div class="chips"><span class="chip">${h(t.cat)}</span><span class="chip ${t.fit==='Alta'?'good':''}">Relevância ${t.fit.toLowerCase()}</span></div>
+      <h3>${h(t.topic)}</h3><p class="why">${h(t.why)}</p>${spark(t.pts)}
+      <div class="chips">${t.src.map(s=>`<span class="chip">${h(s)}</span>`).join('')}</div>
+      <div class="foot"><span class="heat">${t.heat} em 30 dias</span><div style="flex:1"></div><button class="btn sm primary" data-gen="${t.id}">${I.spark} Escrever post</button></div></article>`).join('')}</div>
+  <section class="panel"><div class="panel-h"><h2>Fontes da varredura</h2><div class="sp"></div><button class="btn sm" data-cfg="ia">Gerenciar</button></div><div class="panel-b chips">
+    ${S.sources.map(([s,on])=>`<span class="chip ${on?'good':''}">${on?'✓':'○'} ${h(s)}</span>`).join('')}</div></section>`;
+};
+
+VIEWS.seo = () => {
+  const issues = openIssues();
+  return `
+  <div class="vhead"><div><h1>SEO e GEO</h1><p>Checagem das páginas para o Google (SEO) e para buscadores de IA como ChatGPT, Perplexity e Gemini (GEO). A IA propõe a correção e você aplica com um clique.</p></div><div class="sp"></div>
+    <button class="btn" data-audit>${I.seo} Rodar auditoria</button><button class="btn primary" data-fixall ${issues.length?'':'disabled'}>${I.spark} Corrigir tudo com IA</button></div>
+  <div class="grid2">
+    <section class="panel"><div class="panel-h"><h2>Páginas</h2><div class="sp"></div><small class="muted">Nota média <b style="color:var(--ink)">${avgScore()}</b></small></div><div class="rows">${DATA.audit.map(a=>{
+      const open = a.checks.filter(c=>!c.ok && !S.seoDone[a.slug+c.label]);
+      return `<div class="row click" data-page="${a.slug}" data-aud="${a.slug}">${ring(pageScore(a))}<div class="t"><b>${h(a.name)}</b><small>${open.length?open.map(c=>c.label).slice(0,2).join(' · '):'Todos os itens em ordem'}</small></div>${open.length?`<span class="chip ${open.length>3?'bad':'warn'}">${open.length} a corrigir</span>`:'<span class="chip good">Tudo certo</span>'}</div>`;}).join('')}</div></section>
+    <div class="col">
+      <section class="panel"><div class="panel-h"><h2>Arquivos do site</h2></div><div class="panel-b checks">${DATA.siteFiles.map(f=>{const ok=f.ok||S.seoDone['file'+f.label];return `<div class="check"><span class="ic ${ok?'ok':'no'}">${ok?'✓':'!'}</span>${h(f.label)}<small>${ok?'gerado a cada publicação':'não existe'}</small></div>`;}).join('')}</div></section>
+      <section class="ai"><div class="ai-h"><span class="spark">${I.spark}</span><div><b>Correções sugeridas</b><small>Exemplos do que a IA propõe</small></div></div><div class="ai-b">
+        ${sugg('Home','Descrição','','Agência de marketing digital em Timbó, SC: estratégia, conteúdo, sites, tráfego pago e audiovisual para empresas que querem vender mais.','index','Meta description')}
+        ${sugg('Todas','Dados estruturados','','Ficha da empresa (LocalBusiness) com endereço em Timbó, nota 5.0 e serviços','all','Dados estruturados (schema.org)')}
+        ${sugg('Todas','Compartilhamento','','Título, descrição e imagem para WhatsApp, LinkedIn e Facebook','all','Open Graph (compartilhamento)')}
+        ${sugg('Blog','Leitura por IAs','Posts montados por JavaScript','Cada post gerado como página própria, com o texto no HTML','blog','Texto legível sem JavaScript (IAs)')}
+      </div></section>
+    </div>
+  </div>`;
+};
+function isOk(slug,label){ const a = DATA.audit.find(x=>x.slug===slug); const c = a.checks.find(x=>x.label===label); return c.ok || S.seoDone[slug+label]; }
+function sugg(where, what, from, to, slug, label){
+  const done = slug==='all' ? DATA.audit.every(a=>isOk(a.slug,label)) : isOk(slug,label);
+  return `<div class="sug${done?' done':''}"><div class="t"><b>${h(where)} · ${h(what)}</b><br>${from?`<span class="from">${h(from)}</span> → `:''}<span class="to">${h(to)}</span></div><button type="button" class="btn sm${done?'':' primary'}" data-apply="${slug}|${h(label)}" ${done?'disabled':''}>${done?'Aplicado':'Aplicar'}</button></div>`;
+}
+
+VIEWS.config = () => {
+  const s = DATA.site;
+  const tabs = [['geral','Geral'],['menu','Menu e rodapé'],['ia','Inteligência artificial'],['usuarios','Usuários'],['historico','Histórico']];
+  let body = '';
+  if (S.cfgTab==='geral') body = `<div class="grid2"><div class="col">
+      <section class="panel"><div class="panel-h"><h2>WhatsApp</h2></div><div class="panel-b form">
+        ${field('waNum','Número (com DDI e DDD)',s.whatsapp.numero,{hint:'Só números. Aparece em todos os botões do site.'})}
+        ${field('waMsg','Mensagem inicial do site',s.whatsapp.mensagem,{area:true})}
+        ${field('waMsgAv','Mensagem inicial do Audiovisual',s.whatsapp.mensagem_audiovisual,{area:true})}
+        <div class="hint">Link gerado: <span class="kbd" id="waPrev" style="word-break:break-all">wa.me/${h(s.whatsapp.numero)}</span></div>
+      </div></section>
+      <section class="panel"><div class="panel-h"><h2>Redes sociais</h2></div><div class="panel-b form">${s.redes.map((r,i)=>field('rd'+i,r.nome,r.url)).join('')}</div></section></div>
+    <div class="col"><section class="panel"><div class="panel-h"><h2>Empresa</h2></div><div class="panel-b form">
+        ${field('emRz','Razão social',s.empresa.razao_social)}${field('emCnpj','CNPJ',s.empresa.cnpj)}${field('emCid','Cidade',s.empresa.cidade)}</div></section>
+      <section class="panel"><div class="panel-h"><h2>Números do site</h2></div><div class="panel-b form"><div class="hint">Só dados reais. Aparecem na Home, no Sobre e no Audiovisual.</div>
+        <div class="two">${field('nG','Nota no Google',s.numeros.nota_google)}${field('nM','Marcas atendidas',s.numeros.marcas)}</div>${field('nV','Vídeos no portfólio',s.numeros.videos)}</div></section>
+      <button class="btn primary" style="align-self:flex-start" data-savecfg>Salvar configurações</button></div></div>`;
+  if (S.cfgTab==='menu') body = `<div class="grid2">
+      <section class="panel"><div class="panel-h"><h2>Menu principal</h2></div><div class="panel-b sections">${s.menu.map((m,i)=>`<div class="sec"><div class="grip"><button type="button" aria-label="Subir" data-menumove="${i}" data-dir="-1">${I.up}</button><button type="button" aria-label="Descer" data-menumove="${i}" data-dir="1">${I.down}</button></div><input class="input" data-menu="${i}" value="${h(m.rotulo)}" aria-label="Rótulo do item"><span class="kbd hide-sm">${h(m.href)}</span></div>`).join('')}</div></section>
+      <div class="col"><section class="panel"><div class="panel-h"><h2>Rodapé</h2></div><div class="panel-b form">
+        ${field('ftT','Título',s.rodape.titulo)}${field('ftD','Destaque (em verde)',s.rodape.titulo_destaque)}
+        ${field('ftF','Selos (um por linha)',s.rodape.fatos.join('\n'),{area:true})}
+        <div class="two">${field('lgP','Link de Privacidade',s.rodape.links_legais[0].href,{hint:s.rodape.links_legais[0].href==='#top'?'Hoje aponta para o topo da página.':''})}${field('lgC','Link de Cookies',s.rodape.links_legais[1].href)}</div>
+        ${s.rodape.links_legais[0].href==='#top'?`<button type="button" class="btn" data-legal>${I.spark} Criar páginas de Privacidade e Cookies com IA</button>`:''}
+        <button class="btn primary" style="align-self:flex-start" data-savemenu>Salvar menu e rodapé</button></div></section></div></div>`;
+  if (S.cfgTab==='ia') body = `<div class="grid2"><section class="panel"><div class="panel-h"><h2>Provedor e regras</h2></div><div class="panel-b form">
+        <div class="field"><label for="aiProv">Provedor</label><select class="input" id="aiProv"><option>Anthropic (Claude)</option></select></div>
+        <div class="field"><label for="aiKey">Chave da API</label><input class="input" id="aiKey" type="password" value="guardada-no-servidor"><span class="hint">Guardada no servidor, fora da pasta pública e fora do Git.</span></div>
+        <div class="field"><label for="aiTone">Tom de voz dos textos</label><textarea class="textarea" id="aiTone">Direto, próximo e sem jargão. Fala com donos de empresas de Timbó e região. Nada de promessa de resultado garantido.</textarea></div>
+        <div class="field"><label for="aiRules">Regras que a IA sempre segue</label><textarea class="textarea" id="aiRules">Depoimentos só com o nome da empresa. Fotos de gastronomia geradas por IA continuam marcadas como “Exemplo IA”. Números só com dados reais. Cards de soluções sem numeração.</textarea></div>
+        <div class="field"><label for="aiLimit">Limite de gasto por mês</label><input class="input" id="aiLimit" value="US$ 30"><span class="hint">Consumo este mês: US$ 4,12 (exemplo)</span></div></div></section>
+      <section class="panel"><div class="panel-h"><h2>Varredura de pautas</h2></div><div class="panel-b form">
+        <div class="field"><label for="aiCron">Frequência</label><select class="input" id="aiCron"><option>Todo dia às 07:00</option><option>Segunda, quarta e sexta às 07:00</option><option>Só quando eu pedir</option></select></div>
+        <div class="field"><span class="lbl">Fontes</span>${S.sources.map(([n,on],i)=>`<label class="checkline"><input type="checkbox" data-src="${i}" ${on?'checked':''}>${h(n)}</label>`).join('')}</div>
+        <div class="field"><span class="lbl">Posts escritos pela IA</span><label class="checkline"><input type="radio" name="pubm" checked>Sempre pedir minha aprovação</label><label class="checkline"><input type="radio" name="pubm">Publicar sozinho (não recomendado)</label></div>
+        <button class="btn primary" style="align-self:flex-start" data-saveia>Salvar</button></div></section></div>`;
+  if (S.cfgTab==='usuarios') body = `<section class="panel"><div class="panel-h"><h2>Usuários</h2><span class="chip">${S.users.length}</span></div><div class="rows">${S.users.map((u,i)=>`
+      <div class="row${u.fresh?' new':''}"><div class="avatar ${i?'ghost':''}">${h(u.nome.split(' ').map(x=>x[0]).join('').slice(0,2).toUpperCase())}</div><div class="t"><b>${h(u.nome)}</b><small>${h(u.email)}${u.fresh?' · convite enviado':''}</small></div><span class="chip ${u.papel==='Administrador'?'lime':''}">${h(u.papel)}</span></div>`).join('')}</div>
+      <div class="panel-b form" style="border-top:1px solid var(--line-2)"><span class="lbl">Convidar pessoa</span><div class="two">${field('invN','Nome','',{ph:'Nome'})}${field('invE','E-mail','',{type:'email',ph:'nome@cobra.art.br'})}</div>
+        <div class="field"><label for="invP">Permissão</label><select class="input" id="invP"><option value="Editor">Editor: textos, posts e mídia, sem acesso ao código</option><option value="Administrador">Administrador: acesso total</option></select></div><button class="btn dark" style="align-self:flex-start" data-invite>Enviar convite</button></div></section>`;
+  if (S.cfgTab==='historico') body = `<section class="panel"><div class="panel-h"><h2>Versões publicadas</h2><div class="sp"></div><small class="muted">Cada publicação guarda uma cópia do site. Dá para voltar a qualquer uma.</small></div><div class="rows">${S.versions.map(v=>`
+      <div class="row"><span class="sev ${v.cur?'good':''}"></span><div class="t"><b>${h(v.what)}</b><small>${h(v.when)} · ${h(v.who)}</small></div>${v.cur?'<span class="chip good">No ar</span>':`<span id="rs-${v.id}"><button class="btn sm" data-restore="${v.id}">Restaurar</button></span>`}</div>`).join('')}</div></section>`;
+  return `<div class="vhead"><div><h1>Configurações</h1><p>Dados usados em todas as páginas. Mudou aqui, muda no site inteiro na próxima publicação.</p></div></div>
+    <div class="tabs" role="tablist" style="padding:0">${tabs.map(([k,l])=>`<button type="button" role="tab" aria-selected="${S.cfgTab===k}" data-cfgtab="${k}">${l}</button>`).join('')}</div>${body}`;
+};
+
+// ------------------------------------------------------------------ drawers
+let DCTX = {};
+function drawer({title, sub='', tabs=null, body, foot, onSave=null, saveLabel='Salvar'}){
+  DCTX = {onSave};
+  $('#drawerRoot').innerHTML = `<div class="drawer-bg" data-close></div><aside class="drawer" role="dialog" aria-modal="true" aria-label="${h(title)}">
+    <div class="drawer-h"><div style="min-width:0"><div class="eyebrow">${h(sub)}</div><h2 id="drTitle">${h(title)}</h2></div><div class="sp"></div><button class="btn sm ghost" data-close aria-label="Fechar">✕</button></div>
+    ${tabs?`<div class="tabs" role="tablist">${tabs.map((t,i)=>`<button type="button" role="tab" aria-selected="${i===0}" data-tab="${i}">${t}</button>`).join('')}</div>`:''}
+    <div class="drawer-b" id="drBody">${body}</div>
+    <div class="drawer-f" id="drFoot">${foot ?? `<button class="btn" data-close>Cancelar</button><button class="btn primary" data-save>${saveLabel}</button>`}</div></aside>`;
+}
+const closeDrawer = () => { $('#drawerRoot').innerHTML=''; DCTX={}; };
+
+const SECTION_TPL = [
+  {id:'faq', nome:'Perguntas frequentes', desc:'Com dados estruturados para o Google', wf:'<i class="h"></i><i></i><i></i><i></i>'},
+  {id:'hero', nome:'Abertura com imagem', desc:'Título grande, texto e botão', wf:'<i class="h"></i><i></i><i style="width:70%"></i><i class="l"></i>'},
+  {id:'cards', nome:'Grade de cards', desc:'Três ou mais itens lado a lado', wf:'<i class="h"></i><div class="g"><i></i><i></i><i></i></div>'},
+  {id:'texto', nome:'Texto e imagem', desc:'Parágrafos com imagem ao lado', wf:'<div class="g" style="grid-template-columns:2fr 1fr"><div style="display:flex;flex-direction:column;gap:4px"><i class="h" style="width:80%"></i><i></i><i></i></div><i style="height:40px"></i></div>'},
+  {id:'depo', nome:'Depoimentos', desc:'Puxa da lista de depoimentos', wf:'<div class="g" style="grid-template-columns:1fr 1fr"><i></i><i></i></div><i style="width:40%"></i>'},
+  {id:'cta', nome:'Chamada para WhatsApp', desc:'Faixa verde com botão', wf:'<i class="h" style="margin:auto;width:50%"></i><i class="l" style="margin:auto"></i>'},
+  {id:'codigo', nome:'Código livre', desc:'HTML e CSS do zero', wf:'<i style="width:40%"></i><i style="width:70%;margin-left:12px"></i><i style="width:55%;margin-left:12px"></i><i style="width:30%"></i>'},
+];
+function addSection(){
+  drawer({title:'Adicionar seção', sub:S.page.name, saveLabel:'Adicionar à página', body:`
+    <div class="templates">${SECTION_TPL.map((t,i)=>`<button type="button" class="tpl" data-tpl="${t.id}" aria-pressed="${i===0}"><div class="wf">${t.wf}</div><b>${t.nome}</b><small>${t.desc}</small></button>`).join('')}</div>
+    ${field('nsName','Nome da seção','Perguntas frequentes')}
+    <div class="field"><label for="nsPos">Posição</label><select class="input" id="nsPos">${S.page.parts.map((x,i)=>['section','header'].includes(x.kind)?`<option value="${i}">Depois de “${h(x.label)}”</option>`:'').join('')}</select></div>
+    <section class="ai"><div class="ai-h"><span class="spark">${I.spark}</span><div><b>Preencher com IA</b><small>Gera o conteúdo inicial a partir das soluções e do tom de voz</small></div></div><div class="ai-b"><label class="checkline"><input type="checkbox" id="nsAi" checked>Escrever o primeiro rascunho da seção</label></div></section>`,
+    onSave:()=>{
+      const t = SECTION_TPL.find(x=>x.id===$('[data-tpl][aria-pressed="true"]').dataset.tpl), pos = +val('nsPos');
+      const nome = val('nsName') || t.nome;
+      const fields = t.id==='faq' && $('#nsAi').checked ? [nome,'Quanto tempo leva para ver resultado com tráfego pago?','As primeiras semanas servem para testar públicos e anúncios. Resultados consistentes costumam aparecer entre o primeiro e o terceiro mês.','A Cobra atende empresas fora de Timbó?','Sim. Atendemos o Vale do Itajaí presencialmente e outras regiões on-line.'] : [nome,'Texto da seção'];
+      S.page.parts.splice(pos+1, 0, {label:nome, kind:'section', shared:'', code:`<section class="sec t-paper" data-bg="paper" data-tone="paper">\n  <h2 class="display">${nome}</h2>\n  <!-- modelo: ${t.nome} -->\n</section>\n`, lines:4, fields, fresh:true});
+      addPending(`Nova seção “${nome}” (${S.page.name})`); toast('Seção adicionada. Publique para levar ao site.');
+    }});
+}
+function editSection(i){
+  const p = S.page, x = p.parts[i];
+  const fields = x.fields.length ? x.fields.map((f,k)=>field('sf'+k, 'Texto '+(k+1), f, {area:f.length>60})).join('') : '<p class="empty">Esta parte não tem textos visíveis. Use a aba Código.</p>';
+  drawer({title:x.label, sub:`${p.name} · ${KIND_LABEL[x.kind]||x.kind}`, tabs:['Conteúdo','Código','SEO e IA'], body:`
+    <div data-pane="0" class="form">${x.shared?`<div class="note" style="margin:0"><div><b>Parte compartilhada.</b> A alteração vale para todas as páginas que usam “${h(x.label)}”.</div></div>`:''}
+      ${field('secName','Nome da seção no painel',x.label)}${fields}
+      ${x.kind==='section'?`<div class="field"><span class="lbl">Imagem da seção</span><div class="list-inline"><button type="button" class="btn sm" data-go-close="midia">Escolher na biblioteca</button><span class="hint">ou arraste uma imagem para cá</span></div></div>`:''}</div>
+    <div data-pane="1" hidden><div class="frow" style="margin-bottom:8px;flex-wrap:wrap"><span class="hint">${x.lines} linhas · HTML com marcações do painel, como <span class="kbd">{{ site.whatsapp.numero }}</span></span><button type="button" class="btn sm" data-aicode>${I.spark} Pedir mudança à IA</button></div><textarea class="code" id="codeEd" spellcheck="false" aria-label="Código da seção">${h(x.code)}</textarea></div>
+    <div data-pane="2" hidden><section class="ai"><div class="ai-h"><span class="spark">${I.spark}</span><div><b>Revisão desta seção</b><small>Exemplos do que a IA sugere</small></div></div><div class="ai-b">
+      <div class="sug"><div class="t"><b>Palavra-chave local</b><br>Incluir “Timbó” ou “Vale do Itajaí” no título ajuda nas buscas da região.</div><button type="button" class="btn sm primary" data-okai>Aplicar</button></div>
+      <div class="sug"><div class="t"><b>Texto alternativo</b><br>Descrever as imagens da seção para leitores de tela e buscadores.</div><button type="button" class="btn sm primary" data-okai>Aplicar</button></div>
+      <div class="sug"><div class="t"><b>Resposta direta (GEO)</b><br>Abrir com uma frase que responda “o que a Cobra faz”. As IAs costumam citar frases assim.</div><button type="button" class="btn sm primary" data-okai>Aplicar</button></div>
+    </div></section></div>`,
+    onSave:()=>{ x.label = val('secName') || x.label; x.fields = x.fields.map((f,k)=>val('sf'+k) || f); if ($('#codeEd')) x.code = $('#codeEd').value; x.fresh = true;
+      addPending(`Seção “${x.label}” (${p.name})`); toast('Seção salva. Publique para levar ao site.'); }});
+}
+function editSol(i){
+  const isNew = i===-1;
+  const s = isNew ? {slug:'', nome:'', curto:'', tag:'Marca', grupo:'marca', desc:'', entregas:['','',''], clientes:[], img:'assets/c65205a981d5.webp'} : DATA.solucoes[i];
+  const clientesDisp = DATA.cases.map(c=>c.cliente).filter(n=>!s.clientes.some(c=>c.nome===n));
+  drawer({title:isNew?'Nova solução':s.nome, sub:'Solução', body:`<div class="form">
+    <div class="list-inline"><img src="${img(s.img)}" alt="" id="solImg" style="width:130px;height:96px;object-fit:cover;border-radius:12px;background:var(--line)"><div class="col" style="gap:6px;flex:1"><label class="btn sm" for="solUp" style="align-self:flex-start">Enviar imagem</label><input type="file" id="solUp" accept="image/*" hidden><span class="hint">Aparece no card da Home e no topo da página da solução.</span></div></div>
+    <div class="two">${field('solN','Nome',s.nome,{ph:'Ex.: Landing Pages'})}${field('solC','Nome curto (rodapé)',s.curto,{ph:'Ex.: Landing'})}</div>
+    <div class="two">${field('solT','Etiqueta',s.tag)}<div class="field"><label for="solG">Grupo (filtro da Home)</label><select class="input" id="solG">${[['marca','Marca'],['conteudo','Conteúdo'],['tecnologia','Tecnologia'],['performance','Performance'],['audiovisual','Audiovisual']].map(([g,l])=>`<option value="${g}" ${g===s.grupo?'selected':''}>${l}</option>`).join('')}</select></div></div>
+    ${field('solD','Descrição',s.desc,{area:true,max:220})}
+    ${s.link?'<p class="hint">Esta solução leva para a página de Audiovisual.</p>':`<div class="field"><span class="lbl">O que entregamos</span><div id="solE" class="col" style="gap:8px">${s.entregas.map(e=>`<input class="input" data-ent value="${h(e)}" aria-label="Entrega">`).join('')}</div><button type="button" class="btn sm" style="align-self:flex-start" data-addent>+ Item</button></div>`}
+    <div class="field"><span class="lbl">Clientes ligados</span><div class="chips" id="solCli">${s.clientes.map(c=>`<span class="chip good" data-cli="${h(c.nome)}">${h(c.nome)}<button type="button" data-unlink aria-label="Desligar ${h(c.nome)}">✕</button></span>`).join('')}</div>
+      <div class="list-inline"><select class="input" id="cliSel" style="width:auto;flex:1" aria-label="Cliente para ligar"><option value="">Escolha um cliente…</option>${clientesDisp.map(n=>`<option value="${h(n)}">${h(n)}</option>`).join('')}</select><button type="button" class="btn sm" data-link>Ligar</button></div>
+      <span class="hint">Sem clientes, a seção “Marcas que confiaram” fica escondida na página da solução.</span></div>
+    ${isNew?'':`<div class="confirm" id="delSol" hidden>Remover “${h(s.nome)}” do site? <button type="button" class="btn sm danger" data-delsol="${i}">Remover</button><button type="button" class="btn sm" data-undel>Cancelar</button></div>`}
+  </div>`, foot:`${isNew?'':'<button class="btn ghost danger" data-askdel>Remover</button>'}<div class="sp"></div><button class="btn" data-close>Cancelar</button><button class="btn primary" data-save>${isNew?'Criar solução':'Salvar'}</button>`,
+    onSave:()=>{
+      const nome = val('solN'); if (!nome) { toast('Dê um nome para a solução.'); return false; }
+      const im = $('#solImg');
+      if (im.dataset.uri) { DATA.imgs[im.dataset.path] = {uri:im.dataset.uri, kb:48}; s.img = im.dataset.path; }
+      Object.assign(s, {nome, curto:val('solC')||nome, tag:val('solT'), grupo:val('solG'), desc:val('solD')});
+      if (!s.link) s.entregas = $$('[data-ent]').map(x=>x.value.trim()).filter(Boolean);
+      s.clientes = $$('#solCli [data-cli]').map(c=>({nome:c.dataset.cli}));
+      if (isNew) { s.slug = slugify(nome); s.href = 'solucao.html#solucao-'+s.slug; DATA.solucoes.push(s); }
+      s.fresh = true;
+      addPending(`Solução “${nome}”`); toast(isNew?'Solução criada: entra na Home, no rodapé e ganha página própria.':'Solução salva.');
+    }});
+}
+function editCase(i){
+  const isNew = i===-1;
+  const c = isNew ? {id:'', cliente:'', desc:'', svcs:[], tags:[], img:DATA.cases[0].img} : DATA.cases[i];
+  const first = norm(c.cliente).split(' ').filter(w=>w.length>3)[0] || '§';
+  const linked = DATA.videos.filter(v=>v.client && norm(v.client).includes(first)).length;
+  drawer({title:isNew?'Novo case':c.cliente, sub:'Case do portfólio', body:`<div class="form">
+    <img src="${img(c.img)}" alt="" style="width:100%;aspect-ratio:16/7;object-fit:cover;border-radius:12px;background:#1B1E15">
+    ${field('csN','Cliente',c.cliente)}${field('csD','Descrição',c.desc,{area:true,max:200})}
+    <div class="field"><span class="lbl">Serviços (filtros do portfólio)</span><div class="list-inline">${DATA.servicos.map(s=>`<label class="checkline"><input type="checkbox" data-svc="${s.id}" ${c.svcs.includes(s.id)?'checked':''}>${h(s.curto)}</label>`).join('')}</div></div>
+    <div class="field"><span class="lbl">Etiquetas</span><div class="chips" id="csTags">${c.tags.map(t=>`<span class="chip" data-tag="${h(t)}">${h(t)}<button type="button" data-untag aria-label="Remover ${h(t)}">✕</button></span>`).join('')}</div>
+      <div class="list-inline"><input class="input" id="csNewTag" placeholder="Nova etiqueta" style="width:auto;flex:1" aria-label="Nova etiqueta"><button type="button" class="btn sm" data-addtag>Adicionar</button></div></div>
+    <div class="field"><span class="lbl">Vídeos e fotos do case</span><div class="hint">${linked} ${linked===1?'item':'itens'} da galeria do Audiovisual ligados a este cliente.</div></div></div>`,
+    saveLabel:isNew?'Criar case':'Salvar',
+    onSave:()=>{
+      const nome = val('csN'); if (!nome) { toast('Informe o nome do cliente.'); return false; }
+      Object.assign(c, {cliente:nome, desc:val('csD'), svcs:$$('[data-svc]:checked').map(x=>x.dataset.svc), tags:$$('#csTags [data-tag]').map(x=>x.dataset.tag), fresh:true});
+      if (isNew) { c.id = slugify(nome); DATA.cases.push(c); }
+      addPending(`Case “${nome}”`); toast(isNew?'Case criado.':'Case salvo.');
+    }});
+}
+function editServ(i){
+  const s = DATA.servicos[i];
+  drawer({title:s.nome, sub:'Serviço do portfólio', body:`<div class="form">${field('svN','Nome',s.nome)}${field('svC','Nome curto',s.curto)}${field('svL','Texto de abertura',s.lead,{area:true})}
+    <div class="field"><span class="lbl">Entregas</span><div id="svE" class="col" style="gap:8px">${s.deliv.map(d=>`<input class="input" data-deliv value="${h(d)}" aria-label="Entrega">`).join('')}</div><button type="button" class="btn sm" style="align-self:flex-start" data-adddeliv>+ Item</button></div></div>`,
+    onSave:()=>{ Object.assign(s,{nome:val('svN'),curto:val('svC'),lead:val('svL'),deliv:$$('[data-deliv]').map(x=>x.value.trim()).filter(Boolean)}); addPending(`Serviço “${s.nome}”`); toast('Serviço salvo.'); }});
+}
+function editVideo(i){
+  const v = DATA.videos[i];
+  drawer({title:v.title, sub:KIND_V[v.kind]||'Item', body:`<div class="form">
+    ${v.thumb?`<img src="${img(v.thumb)}" alt="" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;background:#1B1E15">`:''}
+    ${field('vT','Título',v.title)}<div class="two">${field('vC','Cliente',v.client)}${field('vL','Etiqueta',v.label)}</div>
+    <div class="two"><div class="field"><label for="vK">Tipo</label><select class="input" id="vK">${Object.entries(KIND_V).map(([k,l])=>`<option value="${k}" ${k===v.kind?'selected':''}>${l}</option>`).join('')}</select></div>${field('vD','Data',v.date,{type:'date'})}</div>
+    ${v.id && v.kind!=='photo'?`<div class="hint">No YouTube: <a href="https://www.youtube.com/watch?v=${h(v.id)}" target="_blank" rel="noopener">youtube.com/watch?v=${h(v.id)}</a></div>`:''}
+    <div class="confirm" id="delVid" hidden>Tirar este item da galeria? <button type="button" class="btn sm danger" data-delvid="${i}">Remover</button><button type="button" class="btn sm" data-undelvid>Cancelar</button></div></div>`,
+    foot:`<button class="btn ghost danger" data-askdelvid>Remover</button><div class="sp"></div><button class="btn" data-close>Cancelar</button><button class="btn primary" data-save>Salvar</button>`,
+    onSave:()=>{ Object.assign(v,{title:val('vT'),client:val('vC'),label:val('vL'),kind:val('vK'),date:val('vD'),fresh:true}); addPending(`Audiovisual: “${v.title}”`); toast('Item salvo.'); }});
+}
+function editDep(i){
+  const isNew = i==='new', d = isNew ? {empresa:'', texto:''} : DATA.depoimentos[+i];
+  drawer({title:isNew?'Novo depoimento':d.empresa, sub:'Depoimento', saveLabel:isNew?'Adicionar':'Salvar', body:`<div class="form">${field('dpE','Empresa',d.empresa,{hint:'Só o nome da empresa.'})}${field('dpT','Depoimento',d.texto,{area:true,max:220})}
+    <button type="button" class="btn sm" style="align-self:flex-start" data-aifix="dpT">${I.spark} Revisar ortografia com IA</button></div>`,
+    onSave:()=>{ if (!val('dpE')||!val('dpT')) { toast('Preencha a empresa e o depoimento.'); return false; } d.empresa=val('dpE'); d.texto=val('dpT'); d.fresh=true; if (isNew) DATA.depoimentos.push(d); addPending(`Depoimento de ${d.empresa}`); toast('Depoimento salvo.'); }});
+}
+function mediaDetail(p){
+  const up = S.uploads.find(u=>u.name===p), uri = up ? up.uri : img(p);
+  const sugAlt = {'assets/76faebec2532.webp':'Mão segurando uma cobra preta, símbolo da Agência Cobra'}[p] || (DATA.solucoes.find(s=>s.img===p) ? `Imagem ilustrativa da solução ${DATA.solucoes.find(s=>s.img===p).nome} da Agência Cobra` : (DATA.videos.find(v=>v.thumb===p) ? `Cena do vídeo ${DATA.videos.find(v=>v.thumb===p).title}` : 'Descrição da imagem gerada pela IA a partir do que aparece nela e da página onde é usada'));
+  drawer({title:p.replace('assets/',''), sub:'Arquivo de mídia', body:`<div class="form"><img src="${uri}" alt="" style="width:100%;max-height:380px;object-fit:contain;border-radius:12px;background:#1B1E15">
+    ${field('altT','Texto alternativo (alt)',S.alts[p]||'',{hint:'Lido por leitores de tela, pelo Google e pelas IAs.',ph:'Descreva o que aparece na imagem'})}
+    <button type="button" class="btn sm" style="align-self:flex-start" data-genalt="${h(sugAlt)}">${I.spark} Gerar texto alternativo com IA</button>
+    <div class="two"><div class="field"><span class="lbl">Tamanho</span><span class="muted">${(DATA.imgs[p]||up||{}).kb} KB · WebP otimizado</span></div><div class="field"><span class="lbl">Endereço</span><span class="kbd" style="word-break:break-all">/${h(p)}</span></div></div></div>`,
+    onSave:()=>{ S.alts[p] = val('altT'); addPending('Textos alternativos das imagens'); toast('Texto alternativo salvo.'); }});
+}
+
+// posts
+function draftBody(topic, sol){
+  return [
+    ['p',`${topic}. Para empresas de Timbó e do Vale do Itajaí, isso muda a forma de atrair clientes, e quem se adapta cedo sai na frente.`],
+    ['h2','O que está acontecendo'],
+    ['p','Buscas, redes e anúncios estão mudando rápido. O cliente pesquisa mais antes de chamar no WhatsApp e compara empresas pelo celular em poucos minutos.'],
+    ['h2','O que muda para a sua empresa'],
+    ['ul',['Informações claras e atualizadas no site e no Google','Conteúdo que responde às dúvidas mais comuns','Medição do que gera contato de verdade']],
+    ['h2','Como a Cobra pode ajudar'],
+    ['p',`Na solução ${sol}, a Cobra faz o diagnóstico, define as prioridades e acompanha os resultados com você, mês a mês.`],
+    ['blockquote','Quem responde melhor às perguntas do cliente é quem aparece primeiro.'],
+  ];
+}
+function blocksHtml(blocks){
+  return blocks.map(b=> b[0]==='ul' ? b[1].map(li=>`<div class="blk"><span class="tag">li</span><textarea class="textarea" data-blk="li" aria-label="Item de lista">${h(li)}</textarea><button type="button" class="x" data-rmblk aria-label="Remover bloco">✕</button></div>`).join('')
+    : `<div class="blk"><span class="tag">${b[0]==='blockquote'?'cit.':b[0]}</span><textarea class="textarea" data-blk="${b[0]}" aria-label="${b[0]==='h2'?'Subtítulo':b[0]==='blockquote'?'Citação':'Parágrafo'}" style="${b[0]==='h2'?'font-weight:800;color:var(--ink)':''}">${h(b[1])}</textarea><button type="button" class="x" data-rmblk aria-label="Remover bloco">✕</button></div>`).join('');
+}
+function readBlocks(){ const out=[]; $$('[data-blk]').forEach(el=>{ const k=el.dataset.blk, v=el.value.trim(); if(!v) return; if(k==='li'){ const last=out[out.length-1]; if(last&&last[0]==='ul') last[1].push(v); else out.push(['ul',[v]]); } else out.push([k,v]); }); return out; }
+const POST_CHECKS = ['Título entre 20 e 70 caracteres','Resumo entre 120 e 160 caracteres','Dois ou mais subtítulos','Resposta direta no início','Lista prática','Link para uma solução'];
+function postChecks(){
+  const t = val('poT'), l = val('poL'), b = readBlocks();
+  return [t.length>=20 && t.length<=70, l.length>=120 && l.length<=160, b.filter(x=>x[0]==='h2').length>=2, !!(b[0]&&b[0][0]==='p'&&b[0][1].length>80), b.some(x=>x[0]==='ul'), b.some(x=>/solução/i.test(String(x[1])))];
+}
+function refreshPostScore(){
+  const el = $('#postRing'); if (!el) return;
+  const c = postChecks(), score = Math.round(100*c.filter(Boolean).length/c.length);
+  setRing(el, score);
+  $$('#postChecks .check').forEach((row,i)=>{ const ic=row.querySelector('.ic'); ic.className='ic '+(c[i]?'ok':'wait'); ic.textContent=c[i]?'✓':'·'; });
+}
+function postEditor(p, mode){
+  drawer({title:p.title||'Novo post', sub: mode==='post' ? `Post · ${p.cat}` : 'Rascunho', tabs:['Texto','SEO e GEO','Prévia no Google'], body:`
+    <div data-pane="0" class="form">
+      <div class="writer-head">${ring(0,'','postRing')}<div style="flex:1;min-width:0"><b>Nota do post</b><div class="checks" id="postChecks">${POST_CHECKS.map(c=>`<div class="check"><span class="ic wait">·</span>${c}</div>`).join('')}</div></div></div>
+      ${field('poT','Título',p.title||'',{max:70})}
+      <div class="two">${field('poC','Categoria',p.cat||'Marketing digital')}${field('poS','Endereço',p.slug||slugify(p.title||''),{hint:'cobra.art.br/blog/…'})}</div>
+      ${field('poL','Resumo (aparece no Google)',p.lede||'',{area:true,max:160})}
+      <div class="field"><span class="lbl">Texto</span><div class="post-body" id="postBody">${blocksHtml(p.body||[['p','']])}</div>
+        <div class="list-inline"><button type="button" class="btn sm" data-addblk="p">+ Parágrafo</button><button type="button" class="btn sm" data-addblk="h2">+ Subtítulo</button><button type="button" class="btn sm" data-addblk="li">+ Item de lista</button><button type="button" class="btn sm" data-addblk="blockquote">+ Citação</button><button type="button" class="btn sm" data-aicont>${I.spark} Continuar com IA</button></div></div>
+    </div>
+    <div data-pane="1" hidden class="form">
+      <section class="ai"><div class="ai-h"><span class="spark">${I.spark}</span><div><b>Perguntas que o post responde</b><small>Viram um bloco de FAQ com dados estruturados no fim do post</small></div></div><div class="ai-b">
+        <div class="sug"><div class="t">Como fazer minha empresa aparecer nas respostas de IA?</div></div><div class="sug"><div class="t">Quanto tempo leva para ver resultado?</div></div><div class="sug"><div class="t">Preciso refazer o site inteiro?</div></div></div></section>
+      <div class="field"><span class="lbl">Links internos sugeridos</span><div class="chips"><span class="chip good">✓ SEO e Otimização</span><span class="chip good">✓ Sites Institucionais</span><span class="chip">+ Manutenção de Sites</span></div></div>
+      <div class="field"><span class="lbl">Imagem de capa</span><div class="list-inline"><img class="thumb" src="${img(DATA.blogImg[p.img]||DATA.blogImg.yt1)}" alt=""><button type="button" class="btn sm" data-go-close="midia">Trocar</button></div></div>
+    </div>
+    <div data-pane="2" hidden><div class="serp" id="postSerp"></div></div>`,
+    foot: mode==='post' ? `<button class="btn" data-close>Cancelar</button><button class="btn primary" data-save>Salvar</button>` : `<button class="btn" data-close>Fechar</button><button class="btn" data-save>Salvar rascunho</button><button class="btn primary" data-approve>Aprovar e publicar</button>`,
+    onSave:()=>{ Object.assign(p,{title:val('poT'),cat:val('poC'),slug:val('poS'),lede:val('poL'),body:readBlocks(),fresh:true}); if (!p.title) { toast('Dê um título ao post.'); return false; }
+      if (mode==='post') { p.exemplo=false; addPending(`Post “${p.title}”`); toast('Post salvo.'); } else { if (!S.drafts.includes(p)) { p.id = p.id || 'n'+Date.now(); p.from = p.from || 'Escrito no painel'; S.drafts.unshift(p); } toast('Rascunho salvo.'); } }});
+  DCTX.post = p;
+  refreshPostScore();
+}
+async function streamDraft(topic, cat, solName){
+  const p = {id:'g'+Date.now(), title:'', cat, from:'Pauta: '+topic.toLowerCase(), body:[]};
+  postEditor(p, 'draft');
+  $('#postBody').innerHTML = '';
+  $('#drTitle').textContent = 'A Cobra IA está escrevendo…';
+  $('#drFoot').querySelectorAll('button:not([data-close])').forEach(b=>b.disabled=true);
+  const title = /\bia\b|chatgpt|busca/i.test(topic) ? 'Busca por IA: como fazer sua empresa aparecer nas respostas' : topic.replace(/\.$/,'') + ': o que muda para empresas do Vale do Itajaí';
+  await typeInto($('#poT'), title, 16); if ($('#poS')) $('#poS').value = slugify(title);
+  await typeInto($('#poL'), `Entenda o que está por trás de “${topic}” e veja passos práticos para sua empresa em Timbó e região aproveitar a mudança.`.slice(0,158), 10);
+  for (const b of draftBody(topic, solName)) {
+    if (!$('#postBody')) return;
+    if (b[0]==='ul') { for (const li of b[1]) { $('#postBody').insertAdjacentHTML('beforeend', blocksHtml([['ul',['']]])); await typeInto($$('#postBody textarea').pop(), li, 10); } }
+    else { $('#postBody').insertAdjacentHTML('beforeend', blocksHtml([[b[0],'']])); await typeInto($$('#postBody textarea').pop(), b[1], 8); }
+    refreshPostScore(); await wait(120);
+  }
+  if (!$('#drTitle') || DCTX.post !== p) return;
+  $('#drTitle').textContent = title; $('#drFoot').querySelectorAll('button').forEach(b=>b.disabled=false);
+  Object.assign(p,{title, lede:val('poL'), slug:val('poS'), body:readBlocks(), fresh:true});
+  S.drafts.unshift(p); renderNav(); if (S.view==='blog'||S.view==='inicio') rerender();
+  toast('Rascunho pronto. Revise e aprove para publicar.');
+}
+
+// publish
+function publishFlow(){
+  const items = S.pending;
+  drawer({title:'Publicar alterações', sub:'Gera as páginas e atualiza o site', body: items.length ? `
+    <div class="pub-sig" id="pubSig"><svg class="sig-svg" viewBox="0 0 400 160" aria-hidden="true">${sigSvg}</svg></div>
+    <section class="panel"><div class="panel-h"><h2>O que vai ao ar</h2><span class="chip">${items.length}</span></div><div class="rows">${items.map(x=>`<div class="row"><span class="sev info"></span><div class="t"><b style="font-weight:600">${h(x)}</b></div></div>`).join('')}</div></section>
+    ${field('pubMsg','Nota desta versão (opcional)','',{ph:'Ex.: novo post sobre busca com IA'})}
+    <div id="pubProg" hidden class="form" style="gap:10px"><div class="progress"><i id="pubBar"></i></div><div class="pub-pages">${DATA.pages.map(p=>`<span data-pp="${p.slug}">○ ${h(p.name)}</span>`).join('')}<span data-pp="_files">○ Sitemap e llms.txt</span></div><p class="hint" id="pubStep"></p></div>` : '<p class="empty">Nada para publicar. Edite algo e volte aqui.</p>',
+    foot: items.length ? '<button class="btn" data-close>Cancelar</button><button class="btn primary" data-dopublish>Publicar agora</button>' : '<button class="btn" data-close>Fechar</button>'});
+}
+async function runPublish(){
+  const note = val('pubMsg'), btn = $('[data-dopublish]');
+  $('#pubProg').hidden = false; btn.disabled = true; btn.textContent = 'Publicando…';
+  const steps = [...DATA.pages.map(p=>p.slug), '_files'];
+  for (let k=0; k<steps.length; k++){
+    await wait(260);
+    const el = document.querySelector(`[data-pp="${steps[k]}"]`); if (!el) return;
+    el.classList.add('done'); el.textContent = '✓ ' + el.textContent.slice(2);
+    $('#pubBar').style.width = ((k+1)/steps.length*100)+'%';
+    $('#pubStep').textContent = k<steps.length-1 ? `Gerando páginas… ${k+1} de ${steps.length-1}` : 'Enviando para o servidor…';
+  }
+  $('#pubSig').classList.add('go'); $('#pubStep').textContent = 'Publicado.';
+  await wait(2000);
+  const what = note || (S.pending.length===1 ? S.pending[0] : `${S.pending.length} alterações`);
+  S.versions.forEach(v=>v.cur=false); S.versions.unshift({id:'v'+Date.now(), when:'Hoje, '+clock(), who:'Artur', what, cur:true});
+  S.log.unshift({when:clock(), who:'Artur', what:`Publicou: ${what}`});
+  DATA.solucoes.concat(DATA.cases, DATA.videos, DATA.posts, DATA.equipe).forEach(x=>{ if (x) delete x.fresh; });
+  S.pending = []; renderPubState(); closeDrawer(); rerender(); toast('Publicado. O site já está atualizado.');
+}
+
+// ------------------------------------------------------------------ Cobra IA (⌘K)
+const CMD_SUG = [
+  'Escreva um post sobre vídeos curtos para lojas',
+  'Qual página tem o pior SEO?',
+  'Troque o WhatsApp para 47 99999-0000',
+  'Crie a descrição da página Portfólio',
+  'Quais clientes contrataram vídeo?',
+  'O que falta para o site ficar pronto?',
+  'Quais pautas estão em alta hoje?',
+];
+const SUG_META = {
+  index:['Agência Cobra | Marketing digital em Timbó, SC','Agência de marketing digital em Timbó, SC: estratégia, conteúdo, sites, tráfego pago e audiovisual para empresas que querem vender mais.'],
+  audiovisual:['Fotos e vídeos para empresas em Timbó, SC | Cobra','Produção de fotos e vídeos para marcas do Vale do Itajaí: institucionais, reels e fotos de produto. Veja o portfólio completo.'],
+  portfolio:['Portfólio | Agência Cobra, Timbó SC','Cases de branding, sites, tráfego pago e audiovisual da Agência Cobra para empresas de Timbó e região. Veja os projetos.'],
+};
+function openCmd(){
+  $('#cmdRoot').innerHTML = `<div class="cmd-bg" data-cmdclose></div><div class="cmd" role="dialog" aria-modal="true" aria-label="Cobra IA">
+    <form class="cmd-in" id="cmdForm"><span class="spark">${I.spark}</span><input id="cmdQ" placeholder="Peça algo à Cobra IA…" autocomplete="off" aria-label="Pedido para a Cobra IA"><span class="kbd">Enter</span></form>
+    <div class="cmd-body" id="cmdBody"><div class="eyebrow" style="padding:6px 10px">Experimente</div><div class="cmd-sug">${CMD_SUG.map((s,i)=>`<button type="button" data-ask="${h(s)}" class="${i===0?'on':''}">${I.arrow}${h(s)}</button>`).join('')}</div></div>
+    <div class="cmd-foot"><span><span class="kbd">↑↓</span> escolher</span><span><span class="kbd">Enter</span> enviar</span><span><span class="kbd">Esc</span> fechar</span><span style="margin-left:auto">Respostas de exemplo neste protótipo</span></div></div>`;
+  $('#cmdQ').focus();
+}
+const closeCmd = () => { $('#cmdRoot').innerHTML=''; };
+let CMD_ACTIONS = [];
+async function ask(q){
+  const body = $('#cmdBody'); if (!body) return;
+  const ql = norm(q);
+  let text, actions = [];
+  const worst = [...DATA.audit].sort((a,b)=>pageScore(a)-pageScore(b))[0];
+  if (/client/.test(ql)) {
+    const want = /video|filma/.test(ql) ? 'producao-de-video' : /foto/.test(ql) ? 'fotografia' : /site/.test(ql) ? 'sites-institucionais' : /marca|brand/.test(ql) ? 'branding' : '';
+    const list = want ? DATA.clientes.filter(c=>c.servicos[want]) : DATA.clientes;
+    const semMat = DATA.clientes.filter(c=>!allItems(c).length).map(c=>c.nome);
+    text = want ? `${list.length} clientes contrataram ${solBy(want).nome}: ${list.map(c=>`${c.nome} (${c.servicos[want].itens.length})`).join(', ')}. Entre parênteses, a quantidade de materiais de cada um.` : `Há ${DATA.clientes.length} clientes cadastrados, ${DATA.clientes.filter(c=>c.noPortfolio).length} no portfólio. Sem nenhum material ainda: ${semMat.join(', ')}.`;
+    actions = [['Abrir clientes', ()=>{ closeCmd(); if (want) S.cliFilter = want; go('clientes'); }], ['+ Novo cliente', ()=>{ closeCmd(); go('clientes'); clientForm(-1); }, true]];
+  } else if (/post|escrev|artigo|texto sobre/.test(ql)) {
+    const topic = (q.match(/sobre (.+)$/i)||[,'buscas com IA'])[1].replace(/[?.!]+$/,'');
+    const T = topic.charAt(0).toUpperCase()+topic.slice(1);
+    text = `Vou escrever um rascunho sobre “${topic}”, no tom de voz da Cobra, com subtítulos, uma lista prática e link para a solução mais próxima. Ele fica como rascunho até você aprovar.`;
+    actions = [[`${I.spark} Escrever agora`, ()=>{ closeCmd(); streamDraft(T, 'Marketing digital', /video|reels|short/.test(ql)?'Produção de Vídeo':'Mídias Sociais'); }, true]];
+  } else if (/seo|nota|pior|ranque|google/.test(ql)) {
+    const miss = worst.checks.filter(c=>!c.ok&&!S.seoDone[worst.slug+c.label]).map(c=>c.label.toLowerCase());
+    text = miss.length ? `A página com a pior nota é ${worst.name}: ${pageScore(worst)}/100. Faltam ${miss.slice(0,3).join(', ')}${miss.length>3?` e mais ${miss.length-3} itens`:''}. A média do site está em ${avgScore()}/100, e eu consigo corrigir a maior parte sozinha.` : `Todas as páginas estão com os itens de SEO em ordem. A média do site é ${avgScore()}/100.`;
+    actions = [[`Abrir ${worst.name}`, ()=>{ closeCmd(); go('pagina', DATA.pages.find(p=>p.slug===worst.slug)); }], [`${I.spark} Corrigir tudo`, ()=>{ closeCmd(); fixAll(); }, true]];
+  } else if (/whats|zap|telefone|numero/.test(ql)) {
+    const digits = q.replace(/\D/g,'');
+    if (digits.length >= 10) {
+      const num = digits.startsWith('55') ? digits : '55'+digits;
+      text = `Pronto: troquei o número ${DATA.site.whatsapp.numero} por ${num} em todos os botões do site (cabeçalho, rodapé, botão flutuante e páginas internas). Confira e publique para valer.`;
+      DATA.site.whatsapp.numero = num; addPending('Número do WhatsApp');
+      actions = [['Conferir', ()=>{ closeCmd(); S.cfgTab='geral'; go('config'); }], ['Publicar', ()=>{ closeCmd(); publishFlow(); }, true]];
+    } else { text = `O número atual é ${DATA.site.whatsapp.numero} e aparece em todos os botões do site. Me diga o novo, por exemplo: “troque o WhatsApp para 47 99999-0000”.`; actions = [['Abrir configurações', ()=>{ closeCmd(); S.cfgTab='geral'; go('config'); }]]; }
+  } else if (/descri/.test(ql)) {
+    const pg = DATA.pages.find(p=>p.slug!=='index' && (ql.includes(p.slug)||ql.includes(norm(p.name)))) || DATA.pages.find(p=>p.slug==='portfolio');
+    const d = SUG_META[pg.slug] ? SUG_META[pg.slug][1] : (pg.description || `${pg.name} da Agência Cobra, agência de marketing digital em Timbó, SC.`);
+    text = `Sugestão para a página ${pg.name}, com ${d.length} caracteres: “${d}”`;
+    actions = [[`${I.spark} Aplicar`, ()=>{ pg.description = d; if (SUG_META[pg.slug]) pg.title = SUG_META[pg.slug][0]; S.seoDone[pg.slug+'Meta description']=true; S.seoDone[pg.slug+'Título entre 30 e 65 caracteres']=true; addPending(`Título e descrição (${pg.name})`); closeCmd(); go('pagina', pg); toast('Descrição aplicada. Veja a prévia do Google.'); }, true]];
+  } else if (/falta|pronto|pendent|revisar/.test(ql)) {
+    const eq = DATA.equipe.filter(m=>!m.nome||m.nome==='Nome da pessoa').length;
+    text = `Para o site ficar pronto: ${DATA.pages.filter(p=>!p.description).length} páginas sem descrição, ${eq} vagas da equipe sem nome e foto, ${DATA.posts.filter(p=>p.exemplo).length} posts de exemplo no blog, páginas de Privacidade e Cookies, e ${openIssues().length} pontos de SEO. Os pontos de SEO eu corrijo sozinha; o resto depende de informações da equipe.`;
+    actions = [['Ver pendências', ()=>{ closeCmd(); go('inicio'); }], [`${I.spark} Corrigir SEO`, ()=>{ closeCmd(); fixAll(); }, true]];
+  } else if (/pauta|tend|alta|assunto/.test(ql)) {
+    text = `Hoje estão em alta: ${S.trends.slice(0,3).map(t=>`“${t.topic}” (${t.heat})`).join(', ')}. A primeira combina com SEO e Otimização e tem mais chance de trazer clientes.`;
+    actions = [['Ver pautas', ()=>{ closeCmd(); go('pautas'); }], [`${I.spark} Escrever sobre a primeira`, ()=>{ closeCmd(); const t=S.trends[0]; streamDraft(t.topic,'Sites e tecnologia','SEO e Otimização'); }, true]];
+  } else {
+    text = 'Neste protótipo eu respondo a alguns pedidos de exemplo. No painel real, a Cobra IA lê o conteúdo do site e pode escrever posts, revisar textos, corrigir SEO, trocar informações em todas as páginas e explicar qualquer configuração.';
+  }
+  body.innerHTML = `<div class="cmd-ans"><span class="spark">${I.spark}</span><div class="t"><div class="eyebrow">${h(q)}</div><p id="cmdA"></p><div class="list-inline" id="cmdAct" hidden>${actions.map((a,i)=>`<button type="button" class="btn sm ${a[2]?'primary':''}" data-act="${i}">${a[0]}</button>`).join('')}<button type="button" class="btn sm ghost" data-cmdback>Outro pedido</button></div></div></div>`;
+  CMD_ACTIONS = actions.map(a=>a[1]);
+  await typeInto($('#cmdA'), text, 12);
+  if ($('#cmdAct')) $('#cmdAct').hidden = false;
+}
+function fixAll(){ openIssues().forEach(x=>S.seoDone[x.page.slug+x.c.label]=true); DATA.siteFiles.forEach(f=>S.seoDone['file'+f.label]=true); DATA.pages.forEach(p=>{ if(!p.description && SUG_META[p.slug]) { p.description=SUG_META[p.slug][1]; p.title=SUG_META[p.slug][0]; } }); addPending('SEO: correções da IA em todas as páginas'); go('seo'); toast('Correções aplicadas. Revise e publique.'); }
+async function runAudit(btn){
+  btn.disabled = true; btn.textContent = 'Auditando…';
+  for (const a of DATA.audit){
+    const row = document.querySelector(`[data-aud="${a.slug}"]`); if (!row) return;
+    const r = row.querySelector('.score'); setRing(r, 0); row.style.background='var(--lime-soft)';
+    await wait(340); setRing(r, pageScore(a)); row.style.background='';
+  }
+  btn.disabled = false; btn.innerHTML = I.seo+' Rodar auditoria'; toast(`Auditoria concluída: ${openIssues().length} pontos a corrigir.`);
+}
+
+// ------------------------------------------------------------------ clientes
+const SVC_KIND = s => ({'producao-de-video':'video','fotografia':'foto','sites-institucionais':'site','e-commerce':'site','manutencao-de-sites':'site'})[s] || 'arquivos';
+const solBy = slug => DATA.solucoes.find(s=>s.slug===slug) || {nome:slug, img:''};
+const initials = n => String(n||'?').split(/\s+/).filter(w=>w.length>2||/^[A-Z]/.test(w)).map(w=>w[0]).join('').slice(0,2).toUpperCase() || '?';
+const PLAY = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
+function logoBox(c, cls=''){ return c.logo ? `<span class="cli-logo ${cls}${c.logoBranca?' w':''}"><img src="${img(c.logo)||c.logoUri||''}" alt=""></span>` : (c.logoUri ? `<span class="cli-logo ${cls}"><img src="${c.logoUri}" alt=""></span>` : `<span class="cli-logo ini ${cls}">${h(initials(c.nome))}</span>`); }
+function allItems(c){ return Object.values(c.servicos).flatMap(s=>s.itens); }
+function coverOf(c){ const it = allItems(c).find(i=>i.capa && (i.src||i.uri||i.shot)) || allItems(c).find(i=>i.src||i.uri||i.shot); return it ? (it.uri || it.shot || img(it.src)) : ''; }
+function matCard(it, ci, sslug, k, editable=true){
+  const src = it.uri || (it.src ? img(it.src) : '');
+  let inner;
+  if (it.tipo==='site') inner = `<div class="browser"><div class="bar"><i></i><i></i><i></i><span>${h(it.url||'endereço do site')}</span></div><div class="page">${it.shot?`<img src="${it.shot}" alt="">`:(it.url?`Prévia da página<br>${h(it.url)}`:'Adicione o endereço do site ao lado')}</div></div>`;
+  else if (it.tipo==='arquivo') inner = `<div class="ph">📄<br>${h(it.titulo)}</div>`;
+  else if (it.video) inner = `<video src="${it.video}" muted playsinline preload="metadata"></video>`;
+  else inner = src ? `<img src="${src}" alt="" loading="lazy">` : `<div class="ph yt" title="A capa vem do YouTube ao publicar"></div>`;
+  const isVid = ['video','short'].includes(it.tipo) || it.video;
+  return `<div class="mat${it.oculto?' off':''}${it.fresh?' new':''}">${inner}${isVid?`<span class="play">${PLAY}</span>`:''}
+    <div class="badge">${it.capa?'<span class="chip lime">Capa</span>':''}${it.tipo==='short'?'<span class="chip">Short</span>':''}</div>
+    ${it.tipo!=='site'?`<div class="cap">${h(it.titulo||'')}${it.legenda?`<small>${h(it.legenda)}</small>`:''}</div>`:''}
+    ${editable?`<div class="tools"><button type="button" title="Usar como capa" aria-label="Usar como capa" aria-pressed="${!!it.capa}" data-cover="${ci}|${sslug}|${k}">★</button><button type="button" title="${it.oculto?'Mostrar no portfólio':'Esconder do portfólio'}" aria-label="Mostrar ou esconder" aria-pressed="${!it.oculto}" data-hideitem="${ci}|${sslug}|${k}">◉</button><button type="button" title="Remover" aria-label="Remover material" data-rmitem="${ci}|${sslug}|${k}">✕</button></div>`:''}</div>`;
+}
+
+VIEWS.clientes = () => {
+  const cats = ['Todos', ...new Set(DATA.clientes.flatMap(c=>Object.keys(c.servicos)))];
+  const list = DATA.clientes.map((c,i)=>({c,i})).filter(({c})=>S.cliFilter==='Todos'||!S.cliFilter||c.servicos[S.cliFilter]);
+  return `<div class="vhead"><div><h1>Clientes</h1><p>Cadastre cada cliente, marque os serviços contratados e suba os materiais de cada serviço. O portfólio do site é montado a partir daqui.</p></div><div class="sp"></div><button class="btn dark" data-newclient>+ Novo cliente</button></div>
+  <div class="frow" style="flex-wrap:wrap"><div class="filters" role="group" aria-label="Filtrar por serviço">${cats.map(c=>`<button type="button" aria-pressed="${(S.cliFilter||'Todos')===c}" data-cf="${c}">${c==='Todos'?'Todos':h(solBy(c).nome)}</button>`).join('')}</div>
+    <input class="input" id="cliQ" placeholder="Buscar cliente" style="width:min(260px,100%)" aria-label="Buscar cliente"></div>
+  <section class="panel"><div class="rows" id="cliRows">${list.map(({c,i})=>{ const n = allItems(c).length; return `
+    <div class="row click${c.fresh?' new':''}" data-client="${i}" data-name="${h(norm(c.nome))}">${logoBox(c,'sm')}<div class="t"><b>${h(c.nome)}</b><small>${[c.segmento,c.cidade].filter(Boolean).map(h).join(' · ') || 'Dados a completar'}</small></div>
+      <div class="chips hide-sm" style="max-width:42%">${Object.keys(c.servicos).map(s=>`<span class="chip">${h(solBy(s).nome)}</span>`).join('') || '<span class="chip warn">Sem serviços</span>'}</div>
+      <span class="chip ${n?'':'warn'}">${n} ${n===1?'material':'materiais'}</span>${c.noPortfolio?'<span class="chip good hide-sm">No portfólio</span>':''}</div>`; }).join('')}</div></section>`;
+};
+VIEWS.cliente = () => {
+  const c = S.client, ci = DATA.clientes.indexOf(c), slugs = Object.keys(c.servicos);
+  if (!slugs.includes(S.svcTab)) S.svcTab = slugs[0];
+  const sv = S.svcTab && c.servicos[S.svcTab], kind = SVC_KIND(S.svcTab);
+  const accept = kind==='video' ? 'video/*,image/*' : kind==='arquivos' ? 'image/*,application/pdf' : 'image/*';
+  const pane = !sv ? `<section class="panel"><div class="panel-b"><p class="empty">Nenhum serviço contratado ainda. Adicione o primeiro para começar a subir os materiais.</p><button class="btn dark" data-addsvc>+ Contratar serviço</button></div></section>` : `
+    <div class="grid2">
+      <section class="panel"><div class="panel-h"><h2>Materiais · ${h(solBy(S.svcTab).nome)}</h2><span class="chip">${sv.itens.length}</span><div class="sp"></div><span class="hint">Passe o mouse: ★ capa · ◉ mostrar no portfólio · ✕ remover</span></div>
+        <div class="panel-b form">
+          ${kind==='video'?`<div class="list-inline"><input class="input" id="ytC" placeholder="Cole o link do YouTube (vídeo ou Short)" style="flex:1;min-width:200px" aria-label="Link do YouTube"><button class="btn dark" data-addytc>Adicionar vídeo</button></div>`:''}
+          ${kind==='site'?`<div class="list-inline"><input class="input" id="siteUrl" placeholder="https://" value="${h((sv.itens.find(i=>i.tipo==='site')||{}).url||'')}" style="flex:1;min-width:200px" aria-label="Endereço do site"><button class="btn dark" data-savesite>Salvar endereço</button></div><span class="hint">Ao publicar, o painel tira prints da página inicial no computador e no celular. Você também pode enviar prints próprios.</span>`:''}
+          <div class="mats">${sv.itens.map((it,k)=>matCard(it,ci,S.svcTab,k)).join('')}
+            <label class="drop" for="matUp">＋ ${kind==='video'?'Enviar vídeos ou fotos':kind==='site'?'Enviar prints do site':kind==='foto'?'Enviar fotos':'Enviar imagens ou PDF'}<small class="muted" style="font-weight:500">ou arraste para cá</small></label><input type="file" id="matUp" accept="${accept}" multiple hidden></div>
+        </div></section>
+      <div class="col">
+        <section class="panel"><div class="panel-h"><h2>Sobre este trabalho</h2></div><div class="panel-b form">
+          ${field('svDesc','Texto que aparece no portfólio',sv.desc||'',{area:true,max:300,ph:'O que foi feito, para quê e com que resultado. Números só se forem reais.'})}
+          <button type="button" class="btn sm" style="align-self:flex-start" data-svcai>${I.spark} Escrever com IA</button>
+          <div class="two"><div class="field"><label for="svSt">Situação</label><select class="input" id="svSt">${['Em andamento','Entregue','Contrato mensal'].map(o=>`<option ${sv.status===o?'selected':''}>${o}</option>`).join('')}</select></div>${field('svIni','Início',sv.inicio||'',{type:'month'})}</div>
+          <div class="list-inline"><button class="btn primary" data-savesvc>Salvar</button><button class="btn ghost danger" data-rmsvc>Remover serviço</button></div>
+          <div class="confirm" id="rmSvcBox" hidden>Remover ${h(solBy(S.svcTab).nome)} e os materiais deste cliente? <button class="btn sm danger" data-dormsvc>Remover</button><button class="btn sm" data-norm>Cancelar</button></div>
+        </div></section>
+        <section class="panel"><div class="panel-h"><h2>Onde aparece</h2></div><div class="panel-b checks">
+          <div class="check"><span class="ic ${c.noPortfolio?'ok':'no'}">${c.noPortfolio?'✓':'!'}</span>Página do cliente no portfólio<small>${c.noPortfolio?'visível':'oculta'}</small></div>
+          <div class="check"><span class="ic ok">✓</span>Marcas que confiaram em ${h(solBy(S.svcTab).nome)}<small>automático</small></div>
+          ${kind==='video'||kind==='foto'?'<div class="check"><span class="ic ok">✓</span>Galeria do Audiovisual<small>automático</small></div>':''}
+        </div></section>
+      </div>
+    </div>`;
+  return `<div class="cli-head">${logoBox(c)}<div><div class="eyebrow">Cliente</div><h1>${h(c.nome)}</h1><div class="cli-meta">${c.segmento?`<span class="chip">${h(c.segmento)}</span>`:''}${c.cidade?`<span class="chip">${h(c.cidade)}</span>`:''}${c.site?`<a class="chip" href="${h(c.site)}" target="_blank" rel="noopener">${h(c.site.replace(/^https?:\/\//,''))} ↗</a>`:''}<span class="chip">${allItems(c).length} materiais</span></div></div>
+    <div class="cli-tools"><span class="list-inline muted" style="font-size:12px;font-weight:700"><button type="button" class="switch" role="switch" aria-checked="${!!c.noPortfolio}" data-pf="${ci}" aria-label="Mostrar no portfólio"></button>No portfólio</span><button class="btn" data-editclient="${ci}">Editar dados</button><button class="btn primary" data-preview="${ci}">Ver no portfólio</button></div></div>
+  <div class="svc-tabs" role="tablist">${slugs.map(s=>`<button type="button" class="tabb" role="tab" aria-selected="${S.svcTab===s}" data-svctab="${s}"><img src="${img(solBy(s).img)}" alt="">${h(solBy(s).nome)}<span class="n">${c.servicos[s].itens.length}</span></button>`).join('')}<button type="button" class="btn sm" data-addsvc>+ Contratar serviço</button></div>
+  ${pane}`;
+};
+let stopPvTopo = null;
+// general portfolio: every visible material of every client in the portfolio, grouped by contracted service
+function pfMaterials(svc){
+  const out = [];
+  DATA.clientes.forEach((c,ci)=>{ if (!c.noPortfolio) return;
+    Object.entries(c.servicos).forEach(([s,sv])=>{ if (svc && svc!=='Todos' && s!==svc) return;
+      sv.itens.forEach((it,k)=>{ if (!it.oculto) out.push({c,ci,s,it,k}); }); }); });
+  return out;
+}
+function pfServices(){ const set = new Map(); pfMaterials().forEach(m=>set.set(m.s,(set.get(m.s)||0)+1)); return [...set.entries()].sort((a,b)=>b[1]-a[1]); }
+function pfCard(m){
+  return `<button type="button" class="pfm" data-preview="${m.ci}" aria-label="${h(m.c.nome)}: abrir página do cliente">${matCard(m.it,m.ci,m.s,m.k,false)}<span class="pfm-c">${logoBox(m.c,'xs')}<b>${h(m.c.nome)}</b><small>${h(solBy(m.s).nome)}</small></span></button>`;
+}
+function pfGrid(svc){ const ms = pfMaterials(svc); return ms.length ? `<div class="mats pfgrid">${ms.map(pfCard).join('')}</div>` : '<p class="empty">Nenhum material neste serviço ainda.</p>'; }
+VIEWS.portfolio = () => {
+  const svcs = pfServices(), total = pfMaterials().length;
+  const shown = DATA.clientes.map((c,i)=>({c,i})).filter(({c})=>c.noPortfolio && allItems(c).some(it=>!it.oculto));
+  const mode = S.pfMode || 'servico';
+  const cur = S.pfFilter || 'Todos';
+  return `<div class="vhead"><div><h1>Portfólio</h1><p>Montado sozinho a partir dos clientes. Cada material cadastrado entra no serviço dele: quem visita o site escolhe um serviço e vê os trabalhos de todos os clientes que contrataram aquele serviço.</p></div><div class="sp"></div><button class="btn" data-go="clientes">Gerenciar clientes</button><button class="btn primary" data-pfvisit>Ver como o visitante</button></div>
+  <div class="status" style="grid-template-columns:repeat(3,minmax(0,1fr))"><div><small>Materiais publicados</small><b>${total}</b><small>de ${shown.length} clientes</small></div><div><small>Serviços com trabalhos</small><b>${svcs.length}</b><small>de ${DATA.solucoes.length} soluções</small></div><div><small>Sem material</small><b>${DATA.solucoes.length - svcs.length}</b><small>serviços ainda sem vitrine</small></div></div>
+  <div class="frow" style="flex-wrap:wrap"><div class="filters" role="group" aria-label="Agrupar">${[['servico','Por serviço'],['cliente','Por cliente']].map(([k,l])=>`<button type="button" aria-pressed="${mode===k}" data-pfmode="${k}">${l}</button>`).join('')}</div>
+    ${mode==='servico'?`<div class="filters" role="group" aria-label="Serviço">${[['Todos',total],...svcs].map(([s,n])=>`<button type="button" aria-pressed="${cur===s}" data-pff="${s}">${s==='Todos'?'Todos':h(solBy(s).nome)} · ${n}</button>`).join('')}</div>`:''}</div>
+  ${mode==='servico' ? pfGrid(cur) : `<div class="grid3">${shown.map(({c,i})=>{ const cv = coverOf(c); return `<button type="button" class="ccard" data-preview="${i}"><div class="cv">${cv?`<img class="bg" src="${cv}" alt="">`:''}${logoBox(c,'sm')}</div><div class="in"><h3>${h(c.nome)}</h3><div class="chips">${Object.keys(c.servicos).map(s=>`<span class="chip">${h(solBy(s).nome)}</span>`).join('')}</div><small>${allItems(c).filter(it=>!it.oculto).length} materiais</small></div></button>`; }).join('')}</div>`}
+  <section class="panel"><div class="panel-h"><h2>Serviços do portfólio</h2><span class="chip">${DATA.servicos.length}</span><div class="sp"></div><span class="hint">Textos das páginas de serviço</span></div><div class="rows">${DATA.servicos.map((s,i)=>`
+    <div class="row"><div class="t"><b>${h(s.nome)}</b><small>${h(s.lead)}</small></div><button class="btn sm" data-serv="${i}">Editar</button></div>`).join('')}</div></section>`;
+};
+function openVisitor(svc='Todos'){
+  closePreview();
+  const svcs = pfServices(), total = pfMaterials().length;
+  const el = document.createElement('div'); el.className='pv-bg'; el.id='pvRoot'; el.setAttribute('role','dialog'); el.setAttribute('aria-modal','true'); el.setAttribute('aria-label','Prévia do portfólio');
+  el.innerHTML = `<div class="pv-top"><span class="chip lime">Prévia</span><span class="url">cobra.art.br/portfolio${svc!=='Todos'?'/'+h(svc):''}</span><div style="flex:1"></div><button class="btn sm" data-pvclose>Fechar</button></div>
+    <section class="pv-hero"><canvas id="pvTopo" aria-hidden="true"></canvas><div class="eyebrow">Agência Cobra</div><h1>Portfólio.</h1><p>Escolha um serviço e veja os trabalhos que fizemos para cada cliente.</p>
+      <div class="pv-filters" role="group" aria-label="Serviços">${[['Todos',total],...svcs].map(([s,n])=>`<button type="button" aria-pressed="${svc===s}" data-pvsvc="${s}">${s==='Todos'?'Todos os trabalhos':h(solBy(s).nome)} <span>${n}</span></button>`).join('')}</div></section>
+    <section class="pv-sec">${svc!=='Todos'?`<h2>${h(solBy(svc).nome)}</h2><p>${h(solBy(svc).desc||'')}</p>`:''}${pfGrid(svc)}</section>
+    <div class="pv-cta"><b>Quer um projeto assim?</b><span>Falar no WhatsApp →</span></div>`;
+  document.body.appendChild(el);
+  stopPvTopo = topo(el.querySelector('#pvTopo'), {color:'rgba(203,226,46,.16)', lines:18});
+  (el.querySelector(`[data-pvsvc][aria-pressed="true"]`)||el.querySelector('[data-pvclose]')).focus();
+}
+
+function openPreview(ci){
+  closePreview();
+  const c = DATA.clientes[ci], slug = slugify(c.nome);
+  const secs = Object.entries(c.servicos).map(([s,sv])=>({s,sv,items:sv.itens.map((it,k)=>({it,k})).filter(({it})=>!it.oculto)})).filter(x=>x.items.length||x.sv.desc);
+  const el = document.createElement('div'); el.className='pv-bg'; el.id='pvRoot'; el.setAttribute('role','dialog'); el.setAttribute('aria-modal','true'); el.setAttribute('aria-label','Prévia da página do cliente');
+  el.innerHTML = `<div class="pv-top"><span class="chip lime">Prévia</span><button class="btn sm" data-pvsvc="Todos">← Portfólio</button><span class="url">cobra.art.br/portfolio/${h(slug)}</span><div style="flex:1"></div><button class="btn sm" data-pvclose>Fechar</button></div>
+    <section class="pv-hero"><canvas id="pvTopo" aria-hidden="true"></canvas>${logoBox(c)}<div class="eyebrow">Portfólio · Agência Cobra</div><h1>${h(c.nome)}</h1>
+      <div class="chips">${Object.keys(c.servicos).map(s=>`<span class="chip lime">${h(solBy(s).nome)}</span>`).join('')}</div>${c.desc?`<p>${h(c.desc)}</p>`:''}</section>
+    ${secs.length?secs.map(({s,sv,items})=>`<section class="pv-sec"><h2>${h(solBy(s).nome)}</h2>${sv.desc?`<p>${h(sv.desc)}</p>`:''}<div class="mats">${items.map(({it,k})=>matCard(it,ci,s,k,false)).join('')}</div></section>`).join('')
+      : '<section class="pv-sec"><p>Este cliente ainda não tem materiais visíveis. Suba fotos, vídeos ou o site em Clientes.</p></section>'}
+    <div class="pv-cta"><b>Quer um projeto assim?</b><span>Falar no WhatsApp →</span></div>`;
+  document.body.appendChild(el);
+  stopPvTopo = topo(el.querySelector('#pvTopo'), {color:'rgba(203,226,46,.16)', lines:18});
+  el.querySelector('[data-pvclose]').focus();
+}
+function closePreview(){ const el = $('#pvRoot'); if (el) { stopPvTopo && stopPvTopo(); el.remove(); } }
+function clientForm(i){
+  const isNew = i===-1;
+  const c = isNew ? {id:'', nome:'', segmento:'', cidade:'', site:'', logo:'', noPortfolio:true, desc:'', servicos:{}} : DATA.clientes[i];
+  drawer({title:isNew?'Novo cliente':c.nome, sub:'Cadastro de cliente', saveLabel:isNew?'Cadastrar cliente':'Salvar', body:`<div class="form">
+    <div class="list-inline"><span id="cfLogo">${logoBox(c)}</span><div class="col" style="gap:6px;flex:1"><label class="btn sm" for="cfLogoUp" style="align-self:flex-start">Enviar logo</label><input type="file" id="cfLogoUp" accept="image/*" hidden><span class="hint">PNG ou SVG com fundo transparente. Também entra em “Marcas que atendemos”.</span></div></div>
+    ${field('cfN','Nome do cliente',c.nome,{ph:'Como aparece no site'})}
+    <div class="two">${field('cfS','Segmento',c.segmento,{ph:'Ex.: Moda infantil'})}${field('cfC','Cidade',c.cidade,{ph:'Ex.: Timbó, SC'})}</div>
+    ${field('cfW','Site do cliente',c.site,{ph:'https://'})}
+    ${field('cfD','Resumo do trabalho (abre a página no portfólio)',c.desc,{area:true,max:220})}
+    <div class="field"><span class="lbl">Serviços contratados</span><div class="two" style="gap:6px 14px">${DATA.solucoes.map(s=>`<label class="checkline"><input type="checkbox" data-cfsvc="${s.slug}" ${c.servicos[s.slug]?'checked':''}>${h(s.nome)}</label>`).join('')}</div></div>
+    <label class="checkline"><input type="checkbox" id="cfPf" ${c.noPortfolio?'checked':''}>Mostrar no portfólio do site</label>
+    <section class="panel"><div class="panel-h"><h2>Contato interno</h2><span class="hint">Não aparece no site</span></div><div class="panel-b two">${field('cfRn','Responsável',c.contato||'',{ph:'Nome'})}${field('cfRt','WhatsApp',c.fone||'',{ph:'(47) 9…'})}</div></section>
+  </div>`,
+    onSave:()=>{
+      const nome = val('cfN'); if (!nome) { toast('Informe o nome do cliente.'); return false; }
+      Object.assign(c,{nome, segmento:val('cfS'), cidade:val('cfC'), site:val('cfW'), desc:val('cfD'), noPortfolio:$('#cfPf').checked, contato:val('cfRn'), fone:val('cfRt'), fresh:true});
+      const lg = $('#cfLogo'); if (lg.dataset.uri) { c.logo=''; c.logoUri = lg.dataset.uri; }
+      const want = $$('[data-cfsvc]:checked').map(x=>x.dataset.cfsvc);
+      want.forEach(s=>{ if(!c.servicos[s]) c.servicos[s]={desc:'',itens:[]}; });
+      Object.keys(c.servicos).forEach(s=>{ if(!want.includes(s) && !c.servicos[s].itens.length) delete c.servicos[s]; });
+      if (isNew) { c.id = slugify(nome); DATA.clientes.unshift(c); S.client = c; S.svcTab = want[0]; }
+      addPending(`Cliente “${nome}”`); toast(isNew?'Cliente cadastrado. Agora suba os materiais de cada serviço.':'Dados do cliente salvos.');
+      if (isNew) { closeDrawer(); go('cliente'); return false; }
+    }});
+}
+function addSvcDrawer(){
+  const c = S.client, free = DATA.solucoes.filter(s=>!c.servicos[s.slug]);
+  drawer({title:'Contratar serviço', sub:c.nome, saveLabel:'Adicionar', body:`<div class="templates">${free.map((s,i)=>`<button type="button" class="tpl" data-pick="${s.slug}" aria-pressed="${i===0}"><img src="${img(s.img)}" alt="" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:8px"><b>${h(s.nome)}</b><small>${h(s.tag)}</small></button>`).join('')}</div>`,
+    onSave:()=>{ const s = ($('[data-pick][aria-pressed="true"]')||{}).dataset; if (!s) return false; c.servicos[s.pick] = {desc:'', itens:[], status:'Em andamento'}; S.svcTab = s.pick; addPending(`Serviço ${solBy(s.pick).nome} para ${c.nome}`); toast('Serviço adicionado. Suba os materiais.'); }});
+}
+function matRef(v){ const [ci,s,k] = v.split('|'); const c = DATA.clientes[+ci]; return {c, sv:c.servicos[s], k:+k}; }
+function clientClicks(t, d){
+  if (d.client) { S.client = DATA.clientes[+d.client]; S.svcTab = null; go('cliente'); return true; }
+  if (d.newclient !== undefined) { clientForm(-1); return true; }
+  if (d.editclient) { clientForm(+d.editclient); return true; }
+  if (d.cf) { S.cliFilter = d.cf; rerender(); return true; }
+  if (d.pff) { S.pfFilter = d.pff; rerender(); return true; }
+  if (d.svctab) { S.svcTab = d.svctab; rerender(); return true; }
+  if (d.addsvc !== undefined) { addSvcDrawer(); return true; }
+  if (d.pick) { $$('[data-pick]').forEach(b=>b.setAttribute('aria-pressed', b===t)); return true; }
+  if (d.pf) { const c = DATA.clientes[+d.pf]; c.noPortfolio = !c.noPortfolio; addPending(`Portfólio: ${c.nome}`); rerender(); return true; }
+  if (d.preview) { openPreview(+d.preview); return true; }
+  if (d.pfmode) { S.pfMode = d.pfmode; rerender(); return true; }
+  if (d.pfvisit !== undefined) { openVisitor(S.pfFilter||'Todos'); return true; }
+  if (d.pvsvc) { openVisitor(d.pvsvc); return true; }
+  if (d.pvclose !== undefined) { closePreview(); return true; }
+  if (d.cover) { const {sv,k} = matRef(d.cover); sv.itens.forEach((it,j)=>it.capa = j===k); addPending(`Capa de ${S.client.nome}`); rerender(); return true; }
+  if (d.hideitem) { const {sv,k} = matRef(d.hideitem); sv.itens[k].oculto = !sv.itens[k].oculto; addPending(`Materiais de ${S.client.nome}`); rerender(); return true; }
+  if (d.rmitem) { const {sv,k} = matRef(d.rmitem); sv.itens.splice(k,1); addPending(`Materiais de ${S.client.nome}`); rerender(); return true; }
+  if (d.addytc !== undefined) { const u = val('ytC'), m = u.match(/(?:v=|youtu\.be\/|shorts\/)([\w-]{11})/); if (!m) { toast('Cole um link do YouTube, como youtube.com/watch?v=…'); return true; }
+    S.client.servicos[S.svcTab].itens.unshift({tipo:/shorts/.test(u)?'short':'video', yt:m[1], titulo:'Novo vídeo (título vem do YouTube)', fresh:true}); addPending(`Materiais de ${S.client.nome}`); toast('Vídeo adicionado. Também entra na galeria do Audiovisual.'); rerender(); return true; }
+  if (d.savesite !== undefined) { const u = val('siteUrl'); if (!/^https?:\/\/\S+\.\S+/.test(u)) { toast('Informe o endereço completo, com https://'); return true; } const sv = S.client.servicos[S.svcTab]; let it = sv.itens.find(i=>i.tipo==='site'); if (!it) { it = {tipo:'site', titulo:'Site', capa:!sv.itens.length}; sv.itens.unshift(it); } it.url = u; it.fresh = true; addPending(`Site de ${S.client.nome}`); toast('Endereço salvo. Os prints são gerados ao publicar.'); rerender(); return true; }
+  if (d.svcai !== undefined) { const s = solBy(S.svcTab).nome, c = S.client; typeInto($('#svDesc'), `${s} para ${c.nome}${c.segmento?`, do segmento de ${c.segmento.toLowerCase()}`:''}. A Cobra cuidou do planejamento à entrega, com foco em mostrar o produto e a marca do jeito que o cliente dela procura.`, 10); return true; }
+  if (d.savesvc !== undefined) { const sv = S.client.servicos[S.svcTab]; sv.desc = val('svDesc'); sv.status = val('svSt'); sv.inicio = val('svIni'); addPending(`${solBy(S.svcTab).nome} · ${S.client.nome}`); toast('Salvo.'); return true; }
+  if (d.rmsvc !== undefined) { $('#rmSvcBox').hidden = false; return true; }
+  if (d.norm !== undefined) { $('#rmSvcBox').hidden = true; return true; }
+  if (d.dormsvc !== undefined) { delete S.client.servicos[S.svcTab]; S.svcTab = null; addPending(`Serviços de ${S.client.nome}`); rerender(); toast('Serviço removido.'); return true; }
+  return false;
+}
+function clientUpload(el){
+  if (el.id==='matUp' && S.client) {
+    const sv = S.client.servicos[S.svcTab], kind = SVC_KIND(S.svcTab);
+    [...el.files].forEach(f=>{
+      if (f.type.startsWith('video/')) { sv.itens.unshift({tipo:'video', video:URL.createObjectURL(f), titulo:f.name.replace(/\.\w+$/,''), fresh:true}); rerender(); return; }
+      if (f.type==='application/pdf') { sv.itens.unshift({tipo:'arquivo', titulo:f.name, fresh:true}); rerender(); return; }
+      const r = new FileReader(); r.onload = () => { if (kind==='site') { const it = sv.itens.find(i=>i.tipo==='site' && !i.shot); if (it) { it.shot = r.result; it.fresh = true; } else sv.itens.unshift({tipo:'site', url:'', shot:r.result, fresh:true}); } else sv.itens.unshift({tipo:kind==='foto'?'photo':'imagem', uri:r.result, titulo:f.name.replace(/\.\w+$/,''), capa:!sv.itens.length, fresh:true}); rerender(); }; r.readAsDataURL(f);
+    });
+    addPending(`Materiais de ${S.client.nome}`); toast('Materiais enviados (nesta prévia).'); return true;
+  }
+  if (el.id==='cfLogoUp') { const f = el.files[0]; if (!f) return true; const r = new FileReader(); r.onload = () => { const box=$('#cfLogo'); box.dataset.uri = r.result; box.innerHTML = `<span class="cli-logo"><img src="${r.result}" alt=""></span>`; }; r.readAsDataURL(f); return true; }
+  return false;
+}
+
+// ------------------------------------------------------------------ events
+function move(arr, i, dir){ const j=i+dir; if (j<0||j>=arr.length) return false; [arr[i],arr[j]]=[arr[j],arr[i]]; return true; }
+document.addEventListener('click', e => {
+  const t = e.target.closest('button, [data-page], [data-post], [data-client], [data-cmdclose]'); if (!t) return;
+  const d = t.dataset;
+  if (clientClicks(t, d)) return;
+  if (d.cmdclose !== undefined) return closeCmd();
+  if (d.cmd !== undefined) return openCmd();
+  if (d.ask) return ask(d.ask);
+  if (d.cmdback !== undefined) { closeCmd(); return openCmd(); }
+  if (d.act !== undefined) { const f = CMD_ACTIONS[+d.act]; return f && f(); }
+  if (d.close !== undefined) return closeDrawer();
+  if (d.go) { closeDrawer(); return go(d.go); }
+  if (d.goClose) { closeDrawer(); return go(d.goClose); }
+  if (d.cfg) { S.cfgTab = d.cfg; return go('config'); }
+  if (d.page) return go('pagina', DATA.pages.find(x=>x.slug===d.page));
+  if (d.tab) { $$('[data-tab]').forEach(b=>b.setAttribute('aria-selected', b===t)); $$('[data-pane]').forEach(p=>p.hidden = p.dataset.pane!==d.tab);
+    if (d.tab==='2' && $('#postSerp')) $('#postSerp').innerHTML = `<div class="site"><span class="fav"><svg class="sig-svg" viewBox="0 0 400 160">${sigSvg}</svg></span><div><b>Agência Cobra</b><small>https://cobra.art.br › blog › ${h(val('poS'))}</small></div></div><div class="st">${h(val('poT')||'Título do post')}</div><div class="sd">${h(val('poL')||'Resumo do post')}</div>`; return; }
+  if (d.save !== undefined) { if (DCTX.onSave && DCTX.onSave()===false) return; closeDrawer(); return rerender(); }
+  // pages
+  if (d.edit) return editSection(+d.edit);
+  if (d.addsec !== undefined) return addSection();
+  if (d.tpl) { $$('[data-tpl]').forEach(b=>b.setAttribute('aria-pressed', b===t)); $('#nsName').value = SECTION_TPL.find(x=>x.id===d.tpl).nome; return; }
+  if (d.move) { // move among the parts that are listed, skipping hidden technical parts
+    const parts = S.page.parts, shown = i => S.showTech || ['section','header','footer','extras'].includes(parts[i].kind);
+    let i = +d.move, j = i + (+d.dir); while (j>=0 && j<parts.length && !shown(j)) j += +d.dir;
+    if (j<0 || j>=parts.length) return; const [x] = parts.splice(i,1); parts.splice(j,0,x);
+    addPending(`Ordem das seções (${S.page.name})`); return rerender(); }
+  if (d.vis) { const x=S.page.parts[+d.vis]; x.hidden=!x.hidden; addPending(`${x.hidden?'Ocultar':'Mostrar'} “${x.label}” (${S.page.name})`); return rerender(); }
+  if (t.id === 'techSw') { S.showTech=!S.showTech; return rerender(); }
+  if (d.aidesc !== undefined) { const s = SUG_META[S.page.slug] || [S.page.title, S.page.description || `${S.page.name} da Agência Cobra, agência de marketing digital em Timbó, SC: estratégia, conteúdo, tecnologia e audiovisual.`]; t.disabled=true; (async()=>{ await typeInto($('#pgTitle'), s[0], 12); await typeInto($('#pgDesc'), s[1], 8); t.disabled=false; })(); return; }
+  if (d.savemeta !== undefined) { S.page.title = val('pgTitle'); S.page.description = val('pgDesc'); if (S.page.description) S.seoDone[S.page.slug+'Meta description']=true; if (S.page.title.length>=30&&S.page.title.length<=65) S.seoDone[S.page.slug+'Título entre 30 e 65 caracteres']=true; addPending(`Título e descrição (${S.page.name})`); toast('Salvo. Publique para levar ao site.'); return rerender(); }
+  if (d.okai !== undefined) { t.textContent='Aplicado'; t.disabled=true; t.classList.remove('primary'); t.closest('.sug').classList.add('done'); return; }
+  if (d.aicode !== undefined) { const ed=$('#codeEd'); if (!/id="titulo-secao"/.test(ed.value)) ed.value = ed.value.replace(/<h2 class="([^"]*)"/, '<h2 class="$1" id="titulo-secao"'); toast('Exemplo: a IA adicionou uma âncora ao título da seção.'); return; }
+  // solutions
+  if (d.sol) return editSol(+d.sol);
+  if (d.newsol !== undefined) return editSol(-1);
+  if (d.solmove) { if (move(DATA.solucoes, +d.solmove, +d.dir)) { addPending('Ordem das soluções'); rerender(); } return; }
+  if (d.addent !== undefined) { $('#solE').insertAdjacentHTML('beforeend','<input class="input" data-ent placeholder="Nova entrega" aria-label="Entrega">'); $$('[data-ent]').pop().focus(); return; }
+  if (d.adddeliv !== undefined) { $('#svE').insertAdjacentHTML('beforeend','<input class="input" data-deliv placeholder="Nova entrega" aria-label="Entrega">'); $$('[data-deliv]').pop().focus(); return; }
+  if (d.link !== undefined) { const sel = $('#cliSel'), n = sel.value; if (!n) return; $('#solCli').insertAdjacentHTML('beforeend', `<span class="chip good" data-cli="${h(n)}">${h(n)}<button type="button" data-unlink aria-label="Desligar ${h(n)}">✕</button></span>`); sel.remove(sel.selectedIndex); sel.value=''; return; }
+  if (d.unlink !== undefined) { const chip = t.closest('[data-cli]'); $('#cliSel').insertAdjacentHTML('beforeend', `<option value="${h(chip.dataset.cli)}">${h(chip.dataset.cli)}</option>`); chip.remove(); return; }
+  if (d.askdel !== undefined) { $('#delSol').hidden = false; return; }
+  if (d.undel !== undefined) { $('#delSol').hidden = true; return; }
+  if (d.delsol) { const s = DATA.solucoes.splice(+d.delsol,1)[0]; addPending(`Remover solução “${s.nome}”`); closeDrawer(); toast('Solução removida.'); return rerender(); }
+  // portfolio / audiovisual
+  if (d.case) return editCase(+d.case);
+  if (d.newcase !== undefined) return editCase(-1);
+  if (d.serv) return editServ(+d.serv);
+  if (d.addtag !== undefined) { const v = val('csNewTag'); if (!v) return; $('#csTags').insertAdjacentHTML('beforeend', `<span class="chip" data-tag="${h(v)}">${h(v)}<button type="button" data-untag aria-label="Remover ${h(v)}">✕</button></span>`); $('#csNewTag').value=''; $('#csNewTag').focus(); return; }
+  if (d.untag !== undefined) { t.closest('[data-tag]').remove(); return; }
+  if (d.avtab) { S.avTab = d.avtab; return rerender(); }
+  if (d.avf) { S.avFilter = d.avf; return rerender(); }
+  if (d.video) return editVideo(+d.video);
+  if (d.askdelvid !== undefined) { $('#delVid').hidden = false; return; }
+  if (d.undelvid !== undefined) { $('#delVid').hidden = true; return; }
+  if (d.delvid) { const v = DATA.videos.splice(+d.delvid,1)[0]; addPending(`Remover “${v.title}” do Audiovisual`); closeDrawer(); toast('Item removido da galeria.'); return rerender(); }
+  if (d.addyt !== undefined) { const u = val('ytUrl'); const m = u.match(/(?:v=|youtu\.be\/|shorts\/)([\w-]{11})/); if (!m) { toast('Cole um link do YouTube, como youtube.com/watch?v=…'); return; } DATA.videos.unshift({kind:/shorts/.test(u)?'short':'video', id:m[1], title:'Novo vídeo (título vem do YouTube)', client:'', label:'', date:today(), thumb:'', fresh:true}); S.avFilter='all'; addPending('Novo vídeo no Audiovisual'); toast('Vídeo adicionado. Título e capa vêm do YouTube ao publicar.'); return rerender(); }
+  if (d.dep) return editDep(d.dep);
+  if (d.aifix) { const el = document.getElementById(d.aifix); el.value = el.value.replace(/\s+([!?.,])/g,'$1').replace(/\s{2,}/g,' ').replace(/^./, c=>c.toUpperCase()); el.dispatchEvent(new Event('input',{bubbles:true})); toast('Texto revisado (exemplo).'); return; }
+  // team
+  if (d.newmember !== undefined) { DATA.equipe.push({nome:'', cargo:'', foto:'', fresh:true}); addPending('Equipe'); rerender(); const ins = $$('[data-k="nome"]'); ins[ins.length-1].focus(); return; }
+  if (d.mbdel) { DATA.equipe.splice(+d.mbdel,1); addPending('Equipe'); return rerender(); }
+  if (d.mbmove) { if (move(DATA.equipe, +d.mbmove, +d.dir)) { addPending('Equipe'); rerender(); } return; }
+  // media
+  if (d.media) return mediaDetail(d.media);
+  if (d.mf) { S.mediaFilter = d.mf; return rerender(); }
+  if (d.genalt) { typeInto($('#altT'), d.genalt, 10); return; }
+  // blog
+  if (d.post) return postEditor(DATA.posts[+d.post], 'post');
+  if (d.draft) { const dr = S.drafts.find(x=>x.id===d.draft); if (!dr.body) { dr.body = draftBody(dr.title, 'SEO e Otimização'); dr.lede = dr.lede || 'O que muda quando o cliente pergunta para uma IA em vez de pesquisar no Google, e o que a sua empresa pode fazer para ser citada.'; } return postEditor(dr, 'draft'); }
+  if (d.newpost !== undefined) return postEditor({title:'', cat:'Marketing digital', body:[['p','']]}, 'new');
+  if (d.addblk) { const k = d.addblk; $('#postBody').insertAdjacentHTML('beforeend', blocksHtml(k==='li'?[['ul',['']]]:[[k,'']])); $$('#postBody textarea').pop().focus(); refreshPostScore(); return; }
+  if (d.rmblk !== undefined) { t.closest('.blk').remove(); refreshPostScore(); return; }
+  if (d.aicont !== undefined) { t.disabled = true; $('#postBody').insertAdjacentHTML('beforeend', blocksHtml([['p','']])); typeInto($$('#postBody textarea').pop(), 'Por fim: não existe fórmula pronta. O que funciona é testar, medir e ajustar com constância, olhando para o que o seu cliente realmente procura.', 10).then(()=>{ t.disabled=false; refreshPostScore(); }); return; }
+  if (d.approve !== undefined) {
+    const p = DCTX.post; Object.assign(p,{title:val('poT'),cat:val('poC'),slug:val('poS'),lede:val('poL'),body:readBlocks()});
+    if (!p.title) { toast('Dê um título ao post.'); return; }
+    S.drafts = S.drafts.filter(x=>x!==p && x.id!==p.id);
+    DATA.posts.unshift({slug:p.slug, cat:p.cat, date:today(), read:Math.max(3, Math.round(p.body.reduce((s,b)=>s+String(b[1]).split(' ').length,0)/200)), img:'yt1', title:p.title, lede:p.lede, body:p.body, fresh:true});
+    addPending(`Novo post “${p.title}”`); closeDrawer(); go('blog'); return toast('Post aprovado. Vai ao ar na próxima publicação.');
+  }
+  // trends & seo
+  if (d.tf) { S.trendFilter=d.tf; return rerender(); }
+  if (d.gen) { const tr=S.trends.find(x=>x.id===d.gen), sol=DATA.solucoes.find(s=>s.slug===tr.sol); return streamDraft(tr.topic, tr.cat==='IA'||tr.cat==='Tecnologia'?'Sites e tecnologia':'Marketing digital', sol?sol.nome:'Marketing digital'); }
+  if (d.scan !== undefined) { t.disabled=true; t.textContent='Varrendo 8 fontes…'; setTimeout(()=>{ if (!t.isConnected) return; t.disabled=false; t.innerHTML=I.trend+' Varrer agora'; toast('Varredura concluída: nenhuma pauta nova desde as 07:00.'); }, REDUCE?0:1500); return; }
+  if (d.apply) { const [slug,label] = d.apply.split('|'); (slug==='all'?DATA.audit.map(a=>a.slug):[slug]).forEach(s=>S.seoDone[s+label]=true); if (slug==='index') { DATA.pages[0].description = DATA.pages[0].description || SUG_META.index[1]; } addPending(`SEO: ${label}`); rerender(); return toast('Correção aplicada. Publique para levar ao site.'); }
+  if (d.fixall !== undefined) return fixAll();
+  if (d.audit !== undefined) return runAudit(t);
+  // config
+  if (d.cfgtab) { S.cfgTab = d.cfgtab; return rerender(); }
+  if (d.savecfg !== undefined) { const s=DATA.site; s.whatsapp.numero=val('waNum').replace(/\D/g,''); s.whatsapp.mensagem=val('waMsg'); s.whatsapp.mensagem_audiovisual=val('waMsgAv'); s.redes.forEach((r,i)=>r.url=val('rd'+i)); s.empresa.razao_social=val('emRz'); s.empresa.cnpj=val('emCnpj'); s.empresa.cidade=val('emCid'); s.numeros.nota_google=val('nG'); s.numeros.marcas=val('nM'); s.numeros.videos=val('nV'); addPending('Configurações do site'); return toast('Configurações salvas.'); }
+  if (d.menumove) { if (move(DATA.site.menu, +d.menumove, +d.dir)) { addPending('Menu principal'); rerender(); } return; }
+  if (d.savemenu !== undefined) { const s=DATA.site; $$('[data-menu]').forEach(el=>s.menu[+el.dataset.menu].rotulo=el.value.trim()); s.rodape.titulo=val('ftT'); s.rodape.titulo_destaque=val('ftD'); s.rodape.fatos=val('ftF').split('\n').map(x=>x.trim()).filter(Boolean); s.rodape.links_legais[0].href=val('lgP'); s.rodape.links_legais[1].href=val('lgC'); addPending('Menu e rodapé'); rerender(); return toast('Menu e rodapé salvos.'); }
+  if (d.legal !== undefined) { DATA.site.rodape.links_legais[0].href='privacidade.html'; DATA.site.rodape.links_legais[1].href='cookies.html'; addPending('Páginas de Privacidade e Cookies'); rerender(); return toast('Rascunhos das páginas criados com os dados da empresa (exemplo). Revise antes de publicar.'); }
+  if (d.saveia !== undefined) { $$('[data-src]').forEach(el=>S.sources[+el.dataset.src][1]=el.checked); return toast('Configurações da IA salvas.'); }
+  if (d.invite !== undefined) { const n=val('invN'), em=val('invE'); if (!n||!/@/.test(em)) { toast('Informe nome e e-mail.'); return; } S.users.push({nome:n, email:em, papel:val('invP'), fresh:true}); rerender(); return toast(`Convite enviado para ${em} (exemplo).`); }
+  if (d.restore) { $('#rs-'+d.restore).innerHTML = `<span class="confirm" style="padding:4px 8px">Voltar o site para esta versão? <button class="btn sm danger" data-dorestore="${d.restore}">Restaurar</button><button class="btn sm" data-norestore>Cancelar</button></span>`; return; }
+  if (d.norestore !== undefined) return rerender();
+  if (d.dorestore) { const v=S.versions.find(x=>x.id===d.dorestore); S.versions.forEach(x=>x.cur=false); v.cur=true; S.log.unshift({when:clock(), who:'Artur', what:`Restaurou a versão “${v.what}”`}); rerender(); return toast('Site restaurado para a versão escolhida.'); }
+  // chrome
+  if (d.dopublish !== undefined) return runPublish();
+  if (d.logout !== undefined) { const lg=$('#login'); lg.hidden=false; requestAnimationFrame(()=>lg.classList.remove('out')); stopLoginTopo = topo($('#loginTopo'), {color:'rgba(203,226,46,.2)', lines:26}); return; }
+  if (t.id === 'publishBtn') return publishFlow();
+  if (t.id === 'closeNote') { $('#protoNote').hidden = true; return; }
+  if (t.id === 'themeBtn') { const cur = document.documentElement.dataset.theme || (matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'); document.documentElement.dataset.theme = cur==='dark'?'light':'dark'; setThemeIcon(); return; }
+});
+document.addEventListener('submit', e => {
+  e.preventDefault();
+  if (e.target.id==='cmdForm') { const q = val('cmdQ') || (($('.cmd-sug button.on')||{}).dataset||{}).ask; if (q) ask(q); }
+  if (e.target.id==='loginForm') { const lg=$('#login'); lg.classList.add('out'); setTimeout(()=>{ lg.hidden = true; stopLoginTopo && stopLoginTopo(); }, REDUCE?0:550); go(S.view === 'pagina' ? 'paginas' : S.view); }
+});
+document.addEventListener('input', e => {
+  const el = e.target;
+  const f = el.closest && el.closest('.field'); const c = f && f.querySelector('.counter');
+  if (c) { const m=+c.dataset.max; c.textContent = el.value.length+'/'+m; c.classList.toggle('over', el.value.length>m); }
+  if (el.id==='pgTitle'||el.id==='pgDesc') renderSerp();
+  if (el.id==='cliQ') { const q = norm(el.value); $$('#cliRows [data-client]').forEach(r=>r.hidden = !r.dataset.name.includes(q)); }
+  if (el.id==='waNum' && $('#waPrev')) $('#waPrev').textContent = 'wa.me/'+el.value.replace(/\D/g,'');
+  if (el.closest && el.closest('#drBody') && $('#postRing')) refreshPostScore();
+  if (el.dataset && el.dataset.mb) { DATA.equipe[+el.dataset.mb][el.dataset.k] = el.value; clearTimeout(el._t); el._t = setTimeout(()=>addPending('Equipe'), 400); }
+  if (el.closest && el.closest('.otp') && el.value) { const nx = el.nextElementSibling; nx && nx.focus(); }
+});
+document.addEventListener('change', e => {
+  const el = e.target;
+  if (clientUpload(el)) return;
+  const readImg = (f, cb) => { const r = new FileReader(); r.onload = () => cb(r.result); r.readAsDataURL(f); };
+  if (el.id==='upl') { const fs=[...el.files].filter(f=>f.type.startsWith('image/')); if (!fs.length) return; fs.forEach(f=>readImg(f, uri=>{ S.uploads.unshift({name:'assets/'+slugify(f.name.replace(/\.\w+$/,''))+'.webp', uri, kb:Math.max(1,Math.round(f.size/1024*.6))}); if (S.view==='midia') rerender(); })); addPending('Novas imagens na biblioteca'); toast('Imagens enviadas e convertidas para WebP (nesta prévia).'); }
+  if (el.dataset.mbfoto) { const f = el.files[0]; if (f) readImg(f, uri=>{ DATA.equipe[+el.dataset.mbfoto].fotoUri = uri; addPending('Equipe'); rerender(); }); }
+  if (el.id==='solUp') { const f = el.files[0]; if (f) readImg(f, uri=>{ const im=$('#solImg'); im.src=uri; im.dataset.uri=uri; im.dataset.path='assets/'+slugify(f.name.replace(/\.\w+$/,''))+'.webp'; }); }
+  if (el.id==='logoUp') { const f = el.files[0]; if (f) readImg(f, uri=>{ const p='assets/'+slugify(f.name.replace(/\.\w+$/,''))+'.png'; DATA.imgs[p]={uri,kb:Math.max(1,Math.round(f.size/1024))}; DATA.marcas.push({nome:f.name.replace(/\.\w+$/,''), src:p, branca:0, fresh:true}); addPending('Nova marca no Audiovisual'); rerender(); }); }
+});
+document.addEventListener('dragover', e => { const z = e.target.closest && e.target.closest('label.drop[for]'); if (z) { e.preventDefault(); z.classList.add('over'); } });
+document.addEventListener('dragleave', e => { const z = e.target.closest && e.target.closest('label.drop[for]'); if (z) z.classList.remove('over'); });
+document.addEventListener('drop', e => { const z = e.target.closest && e.target.closest('label.drop[for]'); if (!z) return; e.preventDefault(); z.classList.remove('over'); const inp=document.getElementById(z.getAttribute('for')); try { inp.files = e.dataTransfer.files; inp.dispatchEvent(new Event('change',{bubbles:true})); } catch(err){} });
+document.addEventListener('keydown', e => {
+  if ((e.metaKey||e.ctrlKey) && e.key.toLowerCase()==='k') { e.preventDefault(); if ($('#login').hidden) { $('#cmdRoot').innerHTML ? closeCmd() : openCmd(); } return; }
+  if (e.key==='Escape') { if ($('#cmdRoot').innerHTML) return closeCmd(); if ($('#drawerRoot').innerHTML) return closeDrawer(); if ($('#pvRoot')) return closePreview(); if ($('#drawerRoot').innerHTML) return closeDrawer(); }
+  if ($('#cmdRoot').innerHTML && (e.key==='ArrowDown'||e.key==='ArrowUp')) { const b = $$('.cmd-sug button'); if (!b.length) return; e.preventDefault(); let i = b.findIndex(x=>x.classList.contains('on')); if (i>=0) b[i].classList.remove('on'); i = (i + (e.key==='ArrowDown'?1:-1) + b.length) % b.length; b[i].classList.add('on'); }
+  if (e.key==='Backspace' && e.target.closest && e.target.closest('.otp') && !e.target.value) { const pv = e.target.previousElementSibling; pv && pv.focus(); }
+});
+
+function setThemeIcon(){ const dark = (document.documentElement.dataset.theme || (matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'))==='dark'; $('#themeBtn').innerHTML = dark?I.sun:I.moon; }
+
+// ------------------------------------------------------------------ boot
+$('#sideSig').innerHTML = sigSvg; $('#loginSig').innerHTML = sigSvg;
+$('#loginImg').src = img(DATA.hero);
+let stopLoginTopo = topo($('#loginTopo'), {color:'rgba(203,226,46,.2)', lines:26});
+setThemeIcon();
+const start = (location.hash||'').slice(1);
+S.view = VIEWS[start] && start!=='pagina' ? start : 'inicio';
+renderPubState(); renderCrumb();
+$('#view').innerHTML = VIEWS[S.view]();
+AFTER[S.view] && AFTER[S.view]();
+})();
+</script>

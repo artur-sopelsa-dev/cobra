@@ -1,3 +1,6 @@
 .vercel
 node_modules
 .DS_Store
+
+# Protótipo do painel (gerado)
+docs/painel-prototipo/painel.html
