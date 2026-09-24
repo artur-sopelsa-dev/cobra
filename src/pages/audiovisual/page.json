@@ -1,0 +1,118 @@
+{
+  "slug": "audiovisual",
+  "output": "audiovisual.html",
+  "title": "Audiovisual & Fotografia | Agência Cobra",
+  "description": "",
+  "parts": [
+    {
+      "label": "Início do documento (head)",
+      "kind": "structure",
+      "partial": "documento-inicio"
+    },
+    {
+      "label": "Estilos da página",
+      "kind": "style",
+      "file": "01-style-estilos-da-pagina.html"
+    },
+    {
+      "label": "Estilos do rodapé",
+      "kind": "style",
+      "partial": "rodape-estilos"
+    },
+    {
+      "label": "Fim do head",
+      "kind": "structure",
+      "file": "03-structure-fim-do-head.html"
+    },
+    {
+      "label": "Cabeçalho e menu",
+      "kind": "header",
+      "file": "04-header-cabecalho-e-menu.html"
+    },
+    {
+      "label": "Abertura do conteúdo",
+      "kind": "structure",
+      "file": "05-structure-abertura-do-conteudo.html"
+    },
+    {
+      "label": "Abertura: Fotos & Vídeos",
+      "kind": "section",
+      "file": "06-section-solucao.html"
+    },
+    {
+      "label": "Em números",
+      "kind": "section",
+      "file": "07-section-otnums.html"
+    },
+    {
+      "label": "Trabalhos (galeria)",
+      "kind": "section",
+      "file": "09-section-trabalhos.html"
+    },
+    {
+      "label": "Sala de exibição",
+      "kind": "section",
+      "file": "10-section-sala.html"
+    },
+    {
+      "label": "Marcas",
+      "kind": "section",
+      "file": "11-section-marcas.html"
+    },
+    {
+      "label": "Processo",
+      "kind": "section",
+      "file": "12-section-processo.html"
+    },
+    {
+      "label": "Depoimentos",
+      "kind": "section",
+      "file": "13-section-depoimentos.html"
+    },
+    {
+      "label": "Chamada para contato",
+      "kind": "section",
+      "file": "14-section-contato.html"
+    },
+    {
+      "label": "Fechamento do conteúdo",
+      "kind": "structure",
+      "file": "15-structure-fechamento-do-conteudo.html"
+    },
+    {
+      "label": "Rodapé",
+      "kind": "footer",
+      "partial": "rodape"
+    },
+    {
+      "label": "Elementos flutuantes",
+      "kind": "extras",
+      "file": "17-extras-elementos-flutuantes.html"
+    },
+    {
+      "label": "Bibliotecas (GSAP, ScrollTrigger, Lenis)",
+      "kind": "script",
+      "partial": "bibliotecas"
+    },
+    {
+      "label": "Script da página",
+      "kind": "script",
+      "file": "19-script-script.html"
+    },
+    {
+      "label": "Câmera 360° (on-track)",
+      "kind": "script",
+      "file": "20-script-on-track-camera-real-360-que-viaja-do-he.html"
+    },
+    {
+      "label": "Script do rodapé",
+      "kind": "script",
+      "partial": "rodape-script"
+    },
+    {
+      "label": "Fim do documento",
+      "kind": "structure",
+      "partial": "fim-do-documento"
+    }
+  ]
+}

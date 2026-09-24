@@ -1,0 +1,20 @@
+<section class="sec t-ink hall wrap" id="solucoes" data-tone="ink" data-bg="ink">
+  <div class="hall-head">
+    <h2 class="display">Nossas <span class="it">soluções</span></h2>
+    <p>Tudo o que a Cobra faz pela sua marca, do posicionamento à venda. Passe o mouse para ler sobre cada solução e clique para ver os projetos.</p>
+  </div>
+  <div class="chips" role="group" aria-label="Filtrar soluções">
+    <button class="chip" aria-pressed="true" data-f="all">Todas</button>
+    <button class="chip" aria-pressed="false" data-f="marca">Marca</button>
+    <button class="chip" aria-pressed="false" data-f="conteudo">Conteúdo</button>
+    <button class="chip" aria-pressed="false" data-f="tecnologia">Tecnologia</button>
+    <button class="chip" aria-pressed="false" data-f="performance">Performance</button>
+    <button class="chip" aria-pressed="false" data-f="audiovisual">Audiovisual</button>
+  </div>
+  <div class="grid sol-grid" id="grid">
+{{#each content.solucoes as s}}    <a class="card sol" href="{{ s.href }}" data-k="{{ s.grupo }}"><div class="card-in"><img class="cv{{#if s.tall}} tall{{/if}}{{#if s.zoom}} zoom{{/if}}" src="{{ s.img }}" alt="{{ s.nome }}" loading="lazy"><span class="ty">{{ s.tag }}</span><span class="sd">{{ s.desc }}</span><span class="go" aria-hidden="true">Ver solução ↗</span><span class="lab">{{ s.nome }}</span></div></a>
+{{/each}}  </div>
+  <div class="hall-cta"><p>Quer ver os projetos<br>de cada solução?</p><a class="btn" href="portfolio.html">Ver portfólio completo <span class="arr">→</span></a></div>
+</section>
+
+<!-- OFFER -->

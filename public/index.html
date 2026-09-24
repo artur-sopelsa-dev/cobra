@@ -314,25 +314,25 @@ html.js .sec.offer{background:var(--paper)}
 .sticker{right:2%;bottom:14%;width:120px;height:120px;border-radius:50%;background:var(--lime);display:grid;place-items:center;text-align:center;font-weight:800;text-transform:uppercase;font-size:13px;line-height:1.05;transform:rotate(-12deg);box-shadow:0 14px 30px rgba(10,11,8,.2)}
 @media (max-width:860px){.o-grid{grid-template-columns:1fr}.offer{border-radius:50% 50% 0 0/40px 40px 0 0;margin-top:-40px}}
 
-/* ================= BRANDS (logos around the snake) ================= */
+/* ================= BRANDS (nomes nos dois lados, linha neon no centro) ================= */
 .brands{padding-block:clamp(80px,10vw,140px);overflow:clip}
 .b-head{text-align:center;position:relative;z-index:2;margin-bottom:40px}
 .b-head h2{margin:0;font-size:clamp(40px,5.6vw,90px)}
-.b-head h2 .it{display:block}
-.b-head p{margin:14px auto 0;max-width:44ch;color:#3b3e33}
+.b-head h2 .it{display:block;color:var(--lime)}
+.b-head p{margin:14px auto 0;max-width:44ch;opacity:.7}
 .b-grid{position:relative;display:grid;grid-template-columns:1fr 1fr 1.4fr 1fr 1fr;gap:var(--gut);min-height:120vh;z-index:2}
 .b-col{display:flex;flex-direction:column;gap:clamp(56px,9vh,110px);align-items:center;padding-top:6vh}
 .b-col:nth-child(2),.b-col:nth-child(4){padding-top:20vh}
-.b-col span{font-weight:800;font-size:clamp(18px,1.9vw,30px);letter-spacing:-.02em;text-transform:uppercase;white-space:nowrap}
+.b-col span{font-weight:800;font-size:clamp(18px,1.9vw,30px);letter-spacing:-.02em;text-transform:uppercase;white-space:nowrap;transition:color .35s}
 .b-col span:nth-child(2n){font-style:italic;font-weight:400;text-transform:none}
-.b-link{text-decoration:none;background:linear-gradient(var(--lime),var(--lime)) 0 100%/0 .32em no-repeat;transition:background-size .45s var(--ease)}
+.b-col span.on{color:var(--lime)}
+.b-link{color:inherit;text-decoration:none;background:linear-gradient(var(--lime),var(--lime)) 0 100%/0 .32em no-repeat;transition:background-size .45s var(--ease)}
 .b-link:hover{background-size:100% .32em}
 .b-center{position:relative;align-self:stretch;min-height:100%}
-#snakeSvg{position:absolute;left:-20%;top:0;width:140%;height:100%;overflow:visible;pointer-events:none}
+.b-line{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
 .b-cta{position:absolute;left:50%;bottom:0;transform:translateX(-50%);white-space:nowrap}
-.tongue{animation:flick 2.4s infinite;transform-origin:0 0}
-@keyframes flick{0%,70%,100%{transform:scaleX(0)}74%,86%{transform:scaleX(1)}}
-@media (max-width:860px){.b-grid{grid-template-columns:1fr 1fr;min-height:0}.b-center{grid-column:1/-1;order:2;min-height:0;display:flex;justify-content:center;margin-top:30px}#snakeSvg{display:none}.b-cta{position:static;transform:none}.b-col{padding-top:0!important;gap:28px}.b-col:nth-child(n+4){display:none}.b-col span:nth-child(n+4){display:none}}
+.brands .b-cta{background:var(--lime);color:var(--ink)}
+@media (max-width:860px){.b-grid{grid-template-columns:1fr 1fr;min-height:0}.b-center{grid-column:1/-1;order:2;min-height:0;display:flex;justify-content:center;margin-top:30px}.b-line{display:none}.b-cta{position:static;transform:none}.b-col{padding-top:0!important;gap:28px}.b-col:nth-child(n+4){display:none}.b-col span:nth-child(n+4){display:none}}
 
 /* ================= FAN ================= */
 .fan-sec{padding-block:clamp(60px,8vw,110px);text-align:center;overflow:hidden}
@@ -645,8 +645,8 @@ html:not(.js) .pixels{display:none}
 </section>
 
 <!-- BRANDS -->
-<section class="sec t-paper brands wrap" data-tone="paper" data-bg="paper">
-  <div class="gridlines" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+<section class="sec t-ink brands wrap" id="marcas" data-tone="ink" data-bg="ink">
+  <svg class="b-line" id="bLine" aria-hidden="true"></svg>
   <div class="b-head">
     <h2 class="display">Marcas que <span class="it">atendemos</span></h2>
     <p>Empresas de Timbó e região que confiam na Cobra para crescer no digital.</p>
@@ -654,7 +654,7 @@ html:not(.js) .pixels{display:none}
   <div class="b-grid" id="bGrid">
     <div class="b-col" data-speed="-0.6"><span>Ferana</span><span><a href="audiovisual.html#cliente-tipotil" class="b-link">Tipótil</a></span><span><a href="audiovisual.html#cliente-frigorifico-gessner" class="b-link">Gessner</a></span><span><a href="audiovisual.html#cliente-butzke" class="b-link">Butzke</a></span><span><a href="audiovisual.html#cliente-missner" class="b-link">Missner</a></span></div>
     <div class="b-col" data-speed="0.4"><span><a href="audiovisual.html#cliente-butzke" class="b-link">Butzke</a></span><span><a href="audiovisual.html#cliente-sfi-chips" class="b-link">SFI Chips</a></span><span><a href="audiovisual.html#cliente-missner" class="b-link">Missner</a></span><span>Ferana</span></div>
-    <div class="b-center" id="bCenter"><svg id="snakeSvg" aria-hidden="true"></svg><a class="btn ink b-cta" href="contato.html">Seja a próxima marca <span class="arr">»</span></a></div>
+    <div class="b-center" id="bCenter"><a class="btn b-cta" href="contato.html">Seja a próxima marca <span class="arr">»</span></a></div>
     <div class="b-col" data-speed="0.4"><span><a href="audiovisual.html#cliente-missner" class="b-link">Missner</a></span><span><a href="audiovisual.html#cliente-frigorifico-gessner" class="b-link">Gessner</a></span><span>Ferana</span><span><a href="audiovisual.html#cliente-tipotil" class="b-link">Tipótil</a></span></div>
     <div class="b-col" data-speed="-0.6"><span><a href="audiovisual.html#cliente-sfi-chips" class="b-link">SFI Chips</a></span><span><a href="audiovisual.html#cliente-butzke" class="b-link">Butzke</a></span><span><a href="audiovisual.html#cliente-tipotil" class="b-link">Tipótil</a></span><span><a href="audiovisual.html#cliente-frigorifico-gessner" class="b-link">Gessner</a></span><span><a href="audiovisual.html#cliente-sfi-chips" class="b-link">SFI Chips</a></span></div>
   </div>
@@ -916,47 +916,54 @@ html:not(.js) .pixels{display:none}
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .5 });
   document.querySelectorAll('.wipe').forEach(el => io.observe(el));
 
-  /* ---------- brands: a snake slithering down the centre ---------- */
-  const snakeSvg = document.getElementById('snakeSvg');
+  /* ---------- brands: the neon line works like the car of a race calendar ----------
+     its tip rides at the middle of the screen while the names scroll by, the names at the tip light up,
+     it enters from behind the previous section at the top edge and leaves under the next one (the section clips it) */
+  const bLine = document.getElementById('bLine'), bSec = bLine && bLine.closest('section');
+  const bNames = bSec ? [...bSec.querySelectorAll('.b-col span')] : [];
   const NS = 'http://www.w3.org/2000/svg';
-  let snake = null, snakeP = 0.55, snakeTarget = 0.55;
-  function buildSnake(){
-    const w = snakeSvg.clientWidth, h = snakeSvg.clientHeight; if (!w || !h) return;
-    snakeSvg.setAttribute('viewBox', `0 0 ${w} ${h}`);
-    const A = Math.min(w*0.3, 120), cx = w/2, step = 10; let d = '';
-    for (let y = -140; y <= h - 130; y += step){ const x = cx + A*Math.sin(y/170) * (0.75 + 0.25*Math.sin(y/410)); d += (d ? ' L' : 'M') + x.toFixed(1) + ' ' + y.toFixed(1); }
-    snakeSvg.innerHTML = `<defs><pattern id="scl" width="12" height="9" patternUnits="userSpaceOnUse"><rect width="12" height="9" fill="#101109"/><path d="M0 4.5 L6 0 L12 4.5 L6 9 Z" fill="#1d2016" stroke="#2c3022" stroke-width=".8"/><circle cx="6" cy="3" r=".9" fill="rgba(203,226,46,.25)"/></pattern></defs>
-      <path id="snPath" d="${d}" fill="none" stroke="none"/>
-      <g id="snBody" fill="none" stroke-linecap="round" stroke-linejoin="round"></g>
-      <g id="snHead"><path d="M34 0 C 30 -15, 8 -24, -14 -20 C -28 -17, -32 -9, -32 0 C -32 9, -28 17, -14 20 C 8 24, 30 15, 34 0 Z" fill="url(#scl)" stroke="#0A0B08" stroke-width="3"/>
-        <circle cx="12" cy="-9" r="3.6" fill="#CBE22E"/><circle cx="12" cy="9" r="3.6" fill="#CBE22E"/>
-        <path class="tongue" d="M34 0 L52 0 M52 0 L60 -6 M52 0 L60 6" stroke="#CBE22E" stroke-width="2.4" stroke-linecap="round"/></g>`;
-    const body = snakeSvg.querySelector('#snBody');
-    const layers = []; for (let i = 0; i < 12; i++){ const f = 0.5 + 0.5*(i/11), wd = 46 - 40*(i/11); layers.push([wd,'#0A0B08',f]); } for (let i = 0; i < 12; i++){ const f = 0.5 + 0.5*(i/11) - 0.01, wd = 40 - 38*(i/11); if (wd > 3) layers.push([wd,'url(#scl)',f]); }
-    const path = snakeSvg.querySelector('#snPath'), total = path.getTotalLength();
-    const bodyLen = Math.min(total*0.55, 900);
-    const segs = layers.map(([wd,col,f]) => { const p = document.createElementNS(NS,'path'); p.setAttribute('d', d); p.setAttribute('stroke', col); p.setAttribute('stroke-width', wd); body.appendChild(p); return { p, len: bodyLen*f }; });
-    snake = { path, total, segs, head: snakeSvg.querySelector('#snHead'), bodyLen };
-    placeSnake(snakeP);
+  let line = null, tipY = null;
+  function buildLine(){
+    const w = bSec.clientWidth, h = bSec.clientHeight; if (!w || !h || !bLine.clientWidth) { line = null; return; }
+    bLine.setAttribute('viewBox', `0 0 ${w} ${h}`);
+    const y0 = -60, y1 = h + 160, cx = w/2, A = Math.min(w*0.035, 46), trail = Math.min(innerHeight*0.55, 520);
+    const ys = [], ls = []; let d = '', len = 0, px, py;
+    for (let y = y0; y <= y1; y += 8){ const k = y - y0, x = cx + A*Math.sin(k/150)*(0.7 + 0.3*Math.sin(k/430));
+      if (px !== undefined) len += Math.hypot(x - px, y - py); px = x; py = y; ys.push(y); ls.push(len);
+      d += (d ? ' L' : 'M') + x.toFixed(1) + ' ' + y.toFixed(1); }
+    bLine.innerHTML = `<defs><filter id="bGlow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="8"/></filter></defs>
+      <path id="bPath" d="${d}" fill="none" stroke="none"/>
+      <g filter="url(#bGlow)" opacity=".85" fill="none" stroke-linecap="round" id="bGlowG"></g>
+      <g fill="none" stroke-linecap="round" stroke-linejoin="round" id="bCore"></g>
+      <circle id="bTip" r="9" fill="#E9FF5C" filter="url(#bGlow)"/><circle id="bTipCore" r="5" fill="#F6FFB8"/>`;
+    const path = bLine.querySelector('#bPath'), segs = [];
+    const add = (g, width, color, l) => { const p = document.createElementNS(NS,'path'); p.setAttribute('d', d); p.setAttribute('stroke', color); p.setAttribute('stroke-width', width); g.appendChild(p); segs.push({ p, len: l }); };
+    add(bLine.querySelector('#bGlowG'), 18, '#CBE22E', trail*0.85);
+    for (let i = 0; i < 10; i++) add(bLine.querySelector('#bCore'), 1.5 + 6*(i/9), '#CBE22E', trail*(1 - 0.85*(i/9)));
+    add(bLine.querySelector('#bCore'), 1.6, '#F6FFB8', trail*0.45);
+    line = { path, segs, ys, ls, y0, y1, total: len, tip: [bLine.querySelector('#bTip'), bLine.querySelector('#bTipCore')] };
   }
-  function placeSnake(p){
-    if (!snake) return;
-    const { path, total, segs, head, bodyLen } = snake;
-    const lead = bodyLen*0.6 + p*(total - bodyLen*0.6 - 10);
+  function lenAtY(y){ const { ys, ls } = line; let lo = 0, hi = ys.length - 1; while (hi - lo > 1){ const m = (lo + hi) >> 1; if (ys[m] < y) lo = m; else hi = m; } const t = (y - ys[lo]) / ((ys[hi] - ys[lo]) || 1); return ls[lo] + t*(ls[hi] - ls[lo]); }
+  function placeLine(){
+    const { path, segs, total, tip } = line, lead = lenAtY(tipY);
     segs.forEach(s => { s.p.setAttribute('stroke-dasharray', `${s.len} ${total*2}`); s.p.setAttribute('stroke-dashoffset', String(-(lead - s.len))); });
-    const a = path.getPointAtLength(Math.max(0, lead - 2)), b = path.getPointAtLength(Math.min(total, lead + 2));
-    const ang = Math.atan2(b.y - a.y, b.x - a.x) * 180 / Math.PI;
-    const pt = path.getPointAtLength(lead);
-    head.setAttribute('transform', `translate(${pt.x.toFixed(1)} ${pt.y.toFixed(1)}) rotate(${ang.toFixed(1)}) scale(1.45)`);
+    const pt = path.getPointAtLength(Math.max(0, lead));
+    tip.forEach(c => { c.setAttribute('cx', pt.x.toFixed(1)); c.setAttribute('cy', pt.y.toFixed(1)); c.style.opacity = lead > 1 ? 1 : 0; });
   }
-  if (snakeSvg){
-    buildSnake();
-    let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(buildSnake, 200); });
-    (function loop(t){ const idle = reduce ? 0 : Math.sin(t*0.0016)*0.006; snakeP += (snakeTarget - snakeP)*0.08; placeSnake(Math.max(0, Math.min(1, snakeP + idle))); requestAnimationFrame(loop); })(0);
-    if (hasG && !reduce){
-      ScrollTrigger.create({ trigger: '#bGrid', start: 'top 85%', end: 'bottom 40%', onUpdate: self => { snakeTarget = self.progress; }, onRefresh: buildSnake });
-      snakeP = snakeTarget = 0;
-    }
+  if (bSec){
+    buildLine();
+    let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(buildLine, 200); });
+    let lit = [];
+    (function loop(){
+      const sr = bSec.getBoundingClientRect(), mid = innerHeight*0.5;
+      if (sr.bottom > -200 && sr.top < innerHeight + 200){
+        // the names at the height of the tip light up
+        const band = 34, hit = bNames.filter(n => { const b = n.getBoundingClientRect(); return b.bottom > mid - band && b.top < mid + band; });
+        if (hit.length !== lit.length || hit.some((n, i) => n !== lit[i])){ lit.forEach(n => n.classList.remove('on')); hit.forEach(n => n.classList.add('on')); lit = hit; }
+        if (line){ const target = Math.max(line.y0, Math.min(line.y1, mid - sr.top)); tipY = (tipY === null || reduce) ? target : tipY + (target - tipY)*0.18; placeLine(); }
+      }
+      requestAnimationFrame(loop);
+    })();
   }
 
   /* hero: stage follows the pointer a little */
@@ -1103,7 +1110,8 @@ html:not(.js) .pixels{display:none}
   /* hall */
   gsap.utils.toArray('#grid .card').forEach(c => gsap.from(c, { y: 80, ease: 'none', scrollTrigger: { trigger: c, start: 'top bottom', end: 'top 60%', scrub: 1 } }));
 
-  /* brands columns + turning snake */
+
+  /* brands columns */
   mm.add('(min-width: 861px)', () => {
     document.querySelectorAll('.b-col').forEach(col => { const s = +col.dataset.speed; gsap.fromTo(col, { y: s*160 }, { y: -s*160, ease: 'none', scrollTrigger: { trigger: '#bGrid', start: 'top bottom', end: 'bottom top', scrub: true } }); });
   });

@@ -1,0 +1,119 @@
+{
+  "slug": "index",
+  "output": "index.html",
+  "title": "Agência Cobra | Marketing digital com foco em resultados reais",
+  "description": "",
+  "rodape_id": "contato",
+  "parts": [
+    {
+      "label": "Início do documento (head)",
+      "kind": "structure",
+      "partial": "documento-inicio"
+    },
+    {
+      "label": "Estilos da página",
+      "kind": "style",
+      "file": "01-style-estilos-da-pagina.html"
+    },
+    {
+      "label": "Estilos do rodapé",
+      "kind": "style",
+      "partial": "rodape-estilos"
+    },
+    {
+      "label": "Fim do head",
+      "kind": "structure",
+      "file": "03-structure-fim-do-head.html"
+    },
+    {
+      "label": "Cabeçalho e menu",
+      "kind": "header",
+      "file": "04-header-cabecalho-e-menu.html"
+    },
+    {
+      "label": "Abertura do conteúdo",
+      "kind": "structure",
+      "file": "05-structure-abertura-do-conteudo.html"
+    },
+    {
+      "label": "Hero (abertura)",
+      "kind": "section",
+      "file": "06-section-hero.html"
+    },
+    {
+      "label": "Manifesto",
+      "kind": "section",
+      "file": "07-section-sobre.html"
+    },
+    {
+      "label": "Rolagem horizontal",
+      "kind": "section",
+      "file": "08-section-hs.html"
+    },
+    {
+      "label": "Caminhos (o que você quer)",
+      "kind": "section",
+      "file": "09-section-caminhos.html"
+    },
+    {
+      "label": "Transição",
+      "kind": "section",
+      "file": "10-section-expand.html"
+    },
+    {
+      "label": "Nossas soluções",
+      "kind": "section",
+      "file": "11-section-solucoes.html"
+    },
+    {
+      "label": "Diagnóstico digital",
+      "kind": "section",
+      "file": "12-section-offer.html"
+    },
+    {
+      "label": "Marcas que atendemos",
+      "kind": "section",
+      "file": "13-section-brands.html"
+    },
+    {
+      "label": "Conteúdo (blog)",
+      "kind": "section",
+      "file": "14-section-fan-sec.html"
+    },
+    {
+      "label": "Fechamento do conteúdo",
+      "kind": "structure",
+      "file": "15-structure-fechamento-do-conteudo.html"
+    },
+    {
+      "label": "Rodapé",
+      "kind": "footer",
+      "partial": "rodape"
+    },
+    {
+      "label": "Elementos flutuantes",
+      "kind": "extras",
+      "file": "17-extras-elementos-flutuantes.html"
+    },
+    {
+      "label": "Bibliotecas (GSAP, ScrollTrigger, Lenis)",
+      "kind": "script",
+      "partial": "bibliotecas"
+    },
+    {
+      "label": "Script da página",
+      "kind": "script",
+      "file": "19-script-script.html"
+    },
+    {
+      "label": "Script do rodapé",
+      "kind": "script",
+      "partial": "rodape-script"
+    },
+    {
+      "label": "Fim do documento",
+      "kind": "structure",
+      "partial": "fim-do-documento"
+    }
+  ]
+}

@@ -1,0 +1,132 @@
+{
+  "fontes_url": "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500&family=Sedgwick+Ave+Display&display=swap",
+  "empresa": {
+    "nome": "Agência Cobra",
+    "razao_social": "Cobra Design LTDA",
+    "cnpj": "41.019.460/0001-49",
+    "ano": "2026",
+    "cidade": "Timbó · SC"
+  },
+  "whatsapp": {
+    "numero": "5547999150241",
+    "mensagem": "Olá! Vim pelo site da Cobra e gostaria de conversar sobre um projeto.",
+    "mensagem_audiovisual": "Olá! Vim pelo portfólio de fotos e vídeos da Cobra e gostaria de conversar sobre um projeto."
+  },
+  "menu": [
+    {
+      "id": "index",
+      "rotulo": "Home",
+      "href": "index.html"
+    },
+    {
+      "id": "sobre",
+      "rotulo": "Sobre",
+      "href": "sobre.html"
+    },
+    {
+      "id": "solucoes",
+      "rotulo": "Soluções",
+      "href": "index.html#solucoes"
+    },
+    {
+      "id": "portfolio",
+      "rotulo": "Portfólio",
+      "href": "portfolio.html"
+    },
+    {
+      "id": "audiovisual",
+      "rotulo": "Audiovisual",
+      "href": "audiovisual.html"
+    },
+    {
+      "id": "blog",
+      "rotulo": "Blog",
+      "href": "blog.html"
+    },
+    {
+      "id": "contato",
+      "rotulo": "Contato",
+      "href": "contato.html"
+    }
+  ],
+  "botao_topo": "Falar com a Cobra",
+  "numeros": {
+    "clientes": "+100",
+    "nota_google": "5.0",
+    "videos": "19",
+    "marcas": "12"
+  },
+  "redes": [
+    {
+      "nome": "Instagram",
+      "url": "https://www.instagram.com/agenciacobra.oficial/"
+    },
+    {
+      "nome": "Facebook",
+      "url": "https://www.facebook.com/agenciacobra.oficial/"
+    },
+    {
+      "nome": "LinkedIn",
+      "url": "https://br.linkedin.com/in/cobradesignoficial"
+    },
+    {
+      "nome": "YouTube",
+      "url": "https://www.youtube.com/@AgenciaCobra"
+    }
+  ],
+  "rodape": {
+    "titulo": "É aqui que as ideias",
+    "titulo_destaque": "ganham forma.",
+    "imagem": "assets/76faebec2532.webp",
+    "fatos": [
+      "★ 5.0 no Google",
+      "Timbó · SC",
+      "Meta Business Partner",
+      "Google Partner"
+    ],
+    "botao_whatsapp": "Agendar reunião no WhatsApp",
+    "paginas": [
+      {
+        "rotulo": "Home",
+        "href": "index.html",
+        "pagina": "index"
+      },
+      {
+        "rotulo": "Sobre nós",
+        "href": "sobre.html",
+        "pagina": "sobre"
+      },
+      {
+        "rotulo": "Soluções",
+        "href": "index.html#solucoes",
+        "pagina": ""
+      },
+      {
+        "rotulo": "Portfólio",
+        "href": "portfolio.html",
+        "pagina": "portfolio"
+      },
+      {
+        "rotulo": "Blog",
+        "href": "blog.html",
+        "pagina": "blog"
+      },
+      {
+        "rotulo": "Fale conosco",
+        "href": "contato.html",
+        "pagina": "contato",
+        "classe": "lime"
+      }
+    ],
+    "links_legais": [
+      {
+        "rotulo": "Privacidade",
+        "href": "#top"
+      },
+      {
+        "rotulo": "Cookies",
+        "href": "#top"
+      }
+    ]
+  }
+}

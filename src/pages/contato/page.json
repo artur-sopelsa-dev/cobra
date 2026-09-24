@@ -1,0 +1,94 @@
+{
+  "slug": "contato",
+  "output": "contato.html",
+  "title": "Fale com a Cobra | Contato",
+  "description": "Agência Cobra · marketing digital, conteúdo, tecnologia e audiovisual em Timbó, SC.",
+  "menu_ativo": "contato",
+  "parts": [
+    {
+      "label": "Início do documento (head)",
+      "kind": "structure",
+      "partial": "documento-inicio"
+    },
+    {
+      "label": "Estilos da página",
+      "kind": "style",
+      "file": "01-style-estilos-da-pagina.html"
+    },
+    {
+      "label": "Estilos do rodapé",
+      "kind": "style",
+      "partial": "rodape-estilos"
+    },
+    {
+      "label": "Fim do head",
+      "kind": "structure",
+      "file": "03-structure-fim-do-head.html"
+    },
+    {
+      "label": "Cabeçalho e menu",
+      "kind": "header",
+      "partial": "cabecalho-interno"
+    },
+    {
+      "label": "Abertura do conteúdo",
+      "kind": "structure",
+      "file": "05-structure-abertura-do-conteudo.html"
+    },
+    {
+      "label": "Abertura",
+      "kind": "section",
+      "file": "06-section-ct-hero.html"
+    },
+    {
+      "label": "Formulário",
+      "kind": "section",
+      "file": "07-section-form.html"
+    },
+    {
+      "label": "Localização",
+      "kind": "section",
+      "file": "08-section-local.html"
+    },
+    {
+      "label": "Fechamento do conteúdo",
+      "kind": "structure",
+      "file": "09-structure-fechamento-do-conteudo.html"
+    },
+    {
+      "label": "Rodapé",
+      "kind": "footer",
+      "partial": "rodape"
+    },
+    {
+      "label": "Elementos flutuantes",
+      "kind": "extras",
+      "file": "11-extras-elementos-flutuantes.html"
+    },
+    {
+      "label": "Bibliotecas (GSAP, ScrollTrigger, Lenis)",
+      "kind": "script",
+      "partial": "bibliotecas"
+    },
+    {
+      "label": "Script base das páginas internas",
+      "kind": "script",
+      "partial": "base-interna-script"
+    },
+    {
+      "label": "Script da página",
+      "kind": "script",
+      "file": "14-script-script.html"
+    },
+    {
+      "label": "Script do rodapé",
+      "kind": "script",
+      "partial": "rodape-script"
+    },
+    {
+      "label": "Fim do documento",
+      "kind": "structure",
+      "partial": "fim-do-documento"
+    }
+  ]
+}

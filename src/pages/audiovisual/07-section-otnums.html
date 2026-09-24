@@ -1,0 +1,13 @@
+<section class="sec ot-nums" id="otNums" data-tone="ink" data-bg="ink" aria-label="Em números: {{ site.numeros.clientes }} clientes atendidos">
+  <div class="ot-giant{{#if site.numeros.clientes}} long{{/if}}" aria-hidden="true"><span>{{ site.numeros.clientes | default site.numeros.videos }}</span></div>
+  <div class="ot-pics" id="otPics" aria-hidden="true"></div>
+  <div class="ot-nums-foot wrap">
+    <p class="ot-nlabel"><b>{{ site.numeros.clientes }}</b> clientes atendidos</p>
+    <div class="ot-mini"><div><b data-n="videos">{{ site.numeros.videos }}</b><span>vídeos no portfólio</span></div><div><b>{{ site.numeros.nota_google }}</b><span>nota no Google</span></div></div>
+    <div class="row"><button class="btn" type="button" id="reelBtn">Assistir showreel <span class="arr">▶</span></button><a class="btn ghost" href="#trabalhos">Ver trabalhos <span class="arr">↘</span></a></div>
+  </div>
+</section>
+
+<div class="cam-fly" id="camFly" aria-hidden="true"><div class="cam-halo"></div><canvas id="cam3d" width="675" height="501"></canvas></div>
+
+<!-- HERO -->

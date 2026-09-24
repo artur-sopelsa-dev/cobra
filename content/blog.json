@@ -1,0 +1,259 @@
+{
+  "imagens": {
+    "t1": "assets/816f70543663.jpg",
+    "t3": "assets/e8c86fb18710.jpg",
+    "t4": "assets/bd53f12073a2.jpg",
+    "t6": "assets/84a210205cc9.jpg",
+    "key": "assets/4f057ed32218.jpg",
+    "yt1": "assets/7cac61bf0baf.webp"
+  },
+  "posts": [
+    {
+      "slug": "marketing-para-contadores",
+      "cat": "Marketing digital",
+      "date": "2026-09-10",
+      "read": 6,
+      "img": "t1",
+      "title": "Marketing digital para contadores em SC",
+      "lede": "Como escritórios de contabilidade podem atrair clientes pelo Google e pelas redes sem perder a credibilidade.",
+      "body": [
+        [
+          "h2",
+          "Por que o contador também precisa aparecer"
+        ],
+        [
+          "p",
+          "Quem procura um contador hoje começa pelo Google, pergunta em grupos e confere o perfil no Instagram antes de ligar. Estar bem posicionado nesses lugares é o que coloca o escritório na lista de quem vai ser chamado."
+        ],
+        [
+          "h2",
+          "O básico que funciona"
+        ],
+        [
+          "ul",
+          [
+            "Perfil da empresa no Google completo, com fotos e avaliações respondidas",
+            "Site rápido, com os serviços claros e botão de WhatsApp",
+            "Conteúdo que responde dúvidas reais: prazos, MEI, abertura de empresa"
+          ]
+        ],
+        [
+          "blockquote",
+          "Conteúdo útil constrói confiança antes da primeira reunião."
+        ],
+        [
+          "h2",
+          "Onde o tráfego pago entra"
+        ],
+        [
+          "p",
+          "Campanhas no Google para buscas como “contador em Timbó” ou “abrir empresa em SC” trazem pessoas com intenção clara. O segredo é medir quais buscas viram contrato e ajustar o investimento toda semana."
+        ]
+      ]
+    },
+    {
+      "slug": "marketing-para-clinicas",
+      "cat": "Marketing digital",
+      "date": "2026-08-28",
+      "read": 5,
+      "img": "key",
+      "title": "Marketing digital para clínicas odontológicas em SC",
+      "lede": "O que muda quando a clínica trata o Instagram, o Google e o WhatsApp como uma única jornada do paciente.",
+      "body": [
+        [
+          "h2",
+          "A jornada começa antes da consulta"
+        ],
+        [
+          "p",
+          "O paciente compara clínicas pelo celular: vê as fotos, lê avaliações e observa se a comunicação transmite cuidado. Cada ponto de contato precisa contar a mesma história."
+        ],
+        [
+          "h2",
+          "Conteúdo que educa"
+        ],
+        [
+          "p",
+          "Explicar procedimentos com linguagem simples, mostrar a estrutura e a equipe e responder dúvidas frequentes aproxima o paciente e reduz a insegurança."
+        ],
+        [
+          "ul",
+          [
+            "Vídeos curtos mostrando o ambiente",
+            "Posts respondendo dúvidas frequentes",
+            "Página de agendamento simples, com WhatsApp"
+          ]
+        ],
+        [
+          "h2",
+          "Medir para crescer"
+        ],
+        [
+          "p",
+          "Saber quantas mensagens chegaram, quantas viraram consulta e de qual canal vieram é o que permite investir melhor no mês seguinte."
+        ]
+      ]
+    },
+    {
+      "slug": "antes-e-depois-de-um-site",
+      "cat": "Sites e tecnologia",
+      "date": "2026-08-14",
+      "read": 4,
+      "img": "t4",
+      "title": "Antes e depois de um site",
+      "lede": "O que muda quando o site deixa de ser um cartão de visitas e passa a trabalhar para gerar contatos.",
+      "body": [
+        [
+          "h2",
+          "O site parado"
+        ],
+        [
+          "p",
+          "Muitos sites foram feitos uma vez e nunca mais revisados: lentos no celular, com informações desatualizadas e sem um caminho claro para o contato."
+        ],
+        [
+          "h2",
+          "O site que trabalha"
+        ],
+        [
+          "ul",
+          [
+            "Carrega rápido no celular",
+            "Deixa claro o que a empresa faz em poucos segundos",
+            "Tem chamadas para o WhatsApp e formulários em pontos estratégicos",
+            "Mede cliques, formulários e origem das visitas"
+          ]
+        ],
+        [
+          "blockquote",
+          "Um bom site não é o mais bonito, é o que faz o visitante dar o próximo passo."
+        ],
+        [
+          "h2",
+          "Por onde começar"
+        ],
+        [
+          "p",
+          "Um diagnóstico rápido mostra o que está travando: velocidade, conteúdo, estrutura ou presença no Google."
+        ]
+      ]
+    },
+    {
+      "slug": "marketing-para-advogados",
+      "cat": "Marketing digital",
+      "date": "2026-07-30",
+      "read": 5,
+      "img": "t6",
+      "title": "Marketing digital para advogados em SC",
+      "lede": "Como construir autoridade on-line respeitando as regras da OAB para publicidade.",
+      "body": [
+        [
+          "h2",
+          "Autoridade antes de anúncio"
+        ],
+        [
+          "p",
+          "Na advocacia, a comunicação precisa informar sem prometer resultado. Conteúdo educativo sobre direitos e procedimentos é a forma mais segura de ser lembrado."
+        ],
+        [
+          "h2",
+          "Canais que fazem sentido"
+        ],
+        [
+          "ul",
+          [
+            "Artigos no site respondendo dúvidas comuns",
+            "Perfil do escritório no Google com informações completas",
+            "Presença consistente no LinkedIn e no Instagram"
+          ]
+        ],
+        [
+          "h2",
+          "Cuidados importantes"
+        ],
+        [
+          "p",
+          "Evite mensagens de captação direta e promessas. A estratégia deve estar alinhada ao código de ética e às orientações da OAB sobre publicidade."
+        ]
+      ]
+    },
+    {
+      "slug": "reels-que-vendem",
+      "cat": "Audiovisual",
+      "date": "2026-07-12",
+      "read": 4,
+      "img": "yt1",
+      "title": "Reels que vendem: o que aprendemos gravando para marcas locais",
+      "lede": "Roteiro curto, gancho nos primeiros segundos e bastidores reais: o que funciona na prática.",
+      "body": [
+        [
+          "h2",
+          "Os primeiros segundos"
+        ],
+        [
+          "p",
+          "O vídeo precisa mostrar logo de cara por que vale a pena continuar assistindo: um resultado, uma pergunta ou um movimento forte."
+        ],
+        [
+          "h2",
+          "Bastidores geram conexão"
+        ],
+        [
+          "p",
+          "Mostrar a produção, as pessoas e o cuidado com o produto aproxima o público da marca e aumenta a confiança."
+        ],
+        [
+          "ul",
+          [
+            "Roteiro de até 30 segundos",
+            "Legenda para quem assiste sem som",
+            "Chamada clara no final"
+          ]
+        ]
+      ]
+    },
+    {
+      "slug": "por-onde-comecar-no-trafego-pago",
+      "cat": "Tráfego pago",
+      "date": "2026-06-25",
+      "read": 6,
+      "img": "t3",
+      "title": "Tráfego pago: por onde começar sem desperdiçar verba",
+      "lede": "Objetivo, público e medição antes de colocar o primeiro real na campanha.",
+      "body": [
+        [
+          "h2",
+          "Comece pelo objetivo"
+        ],
+        [
+          "p",
+          "Vender pelo WhatsApp, gerar visitas na loja ou captar contatos são objetivos diferentes, com campanhas e métricas diferentes."
+        ],
+        [
+          "h2",
+          "Meça desde o primeiro dia"
+        ],
+        [
+          "ul",
+          [
+            "Pixel e conversões configurados",
+            "Mensagens identificadas por origem",
+            "Relatório simples, semanal"
+          ]
+        ],
+        [
+          "blockquote",
+          "Campanha boa é campanha acompanhada."
+        ],
+        [
+          "h2",
+          "Ajuste constante"
+        ],
+        [
+          "p",
+          "Os primeiros dias mostram quais públicos e criativos respondem melhor. É aí que o investimento começa a render."
+        ]
+      ]
+    }
+  ]
+}
