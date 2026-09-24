@@ -199,46 +199,55 @@
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .5 });
   document.querySelectorAll('.wipe').forEach(el => io.observe(el));
 
-  /* ---------- brands: a neon line that slides out from behind the heading and leaves under the next section ---------- */
+  /* ---------- brands: the neon line works like the car of a race calendar ----------
+     its tip rides at the middle of the screen while the list scrolls under it, the brand at the tip lights up,
+     it starts behind the heading and leaves under the next section (the section clips it) */
   const bLine = document.getElementById('bLine'), bSec = bLine && bLine.closest('section');
+  const bRows = bSec ? [...bSec.querySelectorAll('.b-row')] : [];
   const NS = 'http://www.w3.org/2000/svg';
-  let line = null, lineP = 0.55, lineTarget = 0.55;
+  let line = null, tipY = null;
   function buildLine(){
-    const w = bSec.clientWidth, h = bSec.clientHeight; if (!w || !h || !bLine.clientWidth) return;
+    const w = bSec.clientWidth, h = bSec.clientHeight; if (!w || !h || !bLine.clientWidth) { line = null; return; }
     bLine.setAttribute('viewBox', `0 0 ${w} ${h}`);
-    const sr = bSec.getBoundingClientRect(), hr = bSec.querySelector('.b-head h2').getBoundingClientRect(), cr = document.getElementById('bCenter').getBoundingClientRect();
-    const y0 = hr.top - sr.top + hr.height*0.5, cx = cr.left - sr.left + cr.width/2;
-    const A = Math.min(cr.width*0.42, 120), bodyLen = Math.min(h*0.55, 900), y1 = h + bodyLen + 80;
-    let d = '';
-    for (let y = y0; y <= y1; y += 10){ const k = y - y0, x = cx + A*Math.sin(k/170)*(0.75 + 0.25*Math.sin(k/410)); d += (d ? ' L' : 'M') + x.toFixed(1) + ' ' + y.toFixed(1); }
+    const sr = bSec.getBoundingClientRect(), hr = bSec.querySelector('.b-head h2').getBoundingClientRect();
+    const y0 = hr.top - sr.top + hr.height*0.5, y1 = h + 160, cx = w/2, A = Math.min(w*0.035, 46), trail = Math.min(innerHeight*0.55, 520);
+    const ys = [], ls = []; let d = '', len = 0, px, py;
+    for (let y = y0; y <= y1; y += 8){ const k = y - y0, x = cx + A*Math.sin(k/150)*(0.7 + 0.3*Math.sin(k/430));
+      if (px !== undefined) len += Math.hypot(x - px, y - py); px = x; py = y; ys.push(y); ls.push(len);
+      d += (d ? ' L' : 'M') + x.toFixed(1) + ' ' + y.toFixed(1); }
     bLine.innerHTML = `<defs><filter id="bGlow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="8"/></filter></defs>
       <path id="bPath" d="${d}" fill="none" stroke="none"/>
-      <g filter="url(#bGlow)" opacity=".8" fill="none" stroke-linecap="round" stroke-linejoin="round" id="bGlowG"></g>
+      <g filter="url(#bGlow)" opacity=".85" fill="none" stroke-linecap="round" id="bGlowG"></g>
       <g fill="none" stroke-linecap="round" stroke-linejoin="round" id="bCore"></g>
-      <circle id="bTip" r="6.5" fill="#E9FF5C" filter="url(#bGlow)"/><circle id="bTipCore" r="4.5" fill="#F6FFB8"/>`;
-    const path = bLine.querySelector('#bPath'), total = path.getTotalLength(), segs = [];
-    const add = (g, width, color, len) => { const p = document.createElementNS(NS,'path'); p.setAttribute('d', d); p.setAttribute('stroke', color); p.setAttribute('stroke-width', width); g.appendChild(p); segs.push({ p, len }); };
-    add(bLine.querySelector('#bGlowG'), 16, '#CBE22E', bodyLen*0.8);
-    for (let i = 0; i < 10; i++) add(bLine.querySelector('#bCore'), 1.5 + 7*(i/9), '#CBE22E', bodyLen*(1 - 0.85*(i/9)));   // thick near the tip, thin tail
-    add(bLine.querySelector('#bCore'), 1.6, '#F6FFB8', bodyLen*0.5);   // bright core
-    line = { path, total, segs, tip: [bLine.querySelector('#bTip'), bLine.querySelector('#bTipCore')] };
-    placeLine(lineP);
+      <circle id="bTip" r="9" fill="#E9FF5C" filter="url(#bGlow)"/><circle id="bTipCore" r="5" fill="#F6FFB8"/>`;
+    const path = bLine.querySelector('#bPath'), segs = [];
+    const add = (g, width, color, l) => { const p = document.createElementNS(NS,'path'); p.setAttribute('d', d); p.setAttribute('stroke', color); p.setAttribute('stroke-width', width); g.appendChild(p); segs.push({ p, len: l }); };
+    add(bLine.querySelector('#bGlowG'), 18, '#CBE22E', trail*0.85);
+    for (let i = 0; i < 10; i++) add(bLine.querySelector('#bCore'), 1.5 + 6*(i/9), '#CBE22E', trail*(1 - 0.85*(i/9)));
+    add(bLine.querySelector('#bCore'), 1.6, '#F6FFB8', trail*0.45);
+    line = { path, segs, ys, ls, y0, y1, total: len, tip: [bLine.querySelector('#bTip'), bLine.querySelector('#bTipCore')] };
   }
-  function placeLine(p){
-    if (!line) return;
-    const { path, total, segs, tip } = line, lead = p*total;
+  function lenAtY(y){ const { ys, ls } = line; let lo = 0, hi = ys.length - 1; while (hi - lo > 1){ const m = (lo + hi) >> 1; if (ys[m] < y) lo = m; else hi = m; } const t = (y - ys[lo]) / ((ys[hi] - ys[lo]) || 1); return ls[lo] + t*(ls[hi] - ls[lo]); }
+  function placeLine(){
+    const { path, segs, total, tip } = line, lead = lenAtY(tipY);
     segs.forEach(s => { s.p.setAttribute('stroke-dasharray', `${s.len} ${total*2}`); s.p.setAttribute('stroke-dashoffset', String(-(lead - s.len))); });
     const pt = path.getPointAtLength(Math.max(0, lead));
     tip.forEach(c => { c.setAttribute('cx', pt.x.toFixed(1)); c.setAttribute('cy', pt.y.toFixed(1)); c.style.opacity = lead > 1 ? 1 : 0; });
   }
-  if (bLine){
+  if (bSec){
     buildLine();
     let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(buildLine, 200); });
-    (function loop(t){ const idle = reduce ? 0 : Math.sin(t*0.0016)*0.006; lineP += (lineTarget - lineP)*0.08; placeLine(Math.max(0, Math.min(1, lineP + idle))); requestAnimationFrame(loop); })(0);
-    if (hasG && !reduce){
-      ScrollTrigger.create({ trigger: bSec, start: 'top 75%', end: 'bottom 40%', onUpdate: self => { lineTarget = self.progress; }, onRefresh: buildLine });
-      lineP = lineTarget = 0;
-    }
+    let onRow = null;
+    (function loop(){
+      const sr = bSec.getBoundingClientRect(), mid = innerHeight*0.5;
+      if (sr.bottom > -200 && sr.top < innerHeight + 200){
+        // the brand crossing the middle of the screen lights up
+        let hit = null; for (const r of bRows){ const b = r.getBoundingClientRect(); if (b.top <= mid && b.bottom > mid - 1){ hit = r; break; } }
+        if (hit !== onRow){ onRow && onRow.classList.remove('on'); hit && hit.classList.add('on'); onRow = hit; }
+        if (line){ const target = Math.max(line.y0, Math.min(line.y1, mid - sr.top)); tipY = (tipY === null || reduce) ? target : tipY + (target - tipY)*0.18; placeLine(); }
+      }
+      requestAnimationFrame(loop);
+    })();
   }
 
   /* hero: stage follows the pointer a little */
@@ -385,10 +394,6 @@
   /* hall */
   gsap.utils.toArray('#grid .card').forEach(c => gsap.from(c, { y: 80, ease: 'none', scrollTrigger: { trigger: c, start: 'top bottom', end: 'top 60%', scrub: 1 } }));
 
-  /* brands columns */
-  mm.add('(min-width: 861px)', () => {
-    document.querySelectorAll('.b-col').forEach(col => { const s = +col.dataset.speed; gsap.fromTo(col, { y: s*160 }, { y: -s*160, ease: 'none', scrollTrigger: { trigger: '#bGrid', start: 'top bottom', end: 'bottom top', scrub: true } }); });
-  });
 
   /* fan */
   const cards = gsap.utils.toArray('#fan .fcard'); const mid = (cards.length-1)/2;

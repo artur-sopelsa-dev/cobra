@@ -314,23 +314,24 @@ html.js .sec.offer{background:var(--paper)}
 .sticker{right:2%;bottom:14%;width:120px;height:120px;border-radius:50%;background:var(--lime);display:grid;place-items:center;text-align:center;font-weight:800;text-transform:uppercase;font-size:13px;line-height:1.05;transform:rotate(-12deg);box-shadow:0 14px 30px rgba(10,11,8,.2)}
 @media (max-width:860px){.o-grid{grid-template-columns:1fr}.offer{border-radius:50% 50% 0 0/40px 40px 0 0;margin-top:-40px}}
 
-/* ================= BRANDS (logos around the neon line) ================= */
+/* ================= BRANDS (lista + linha neon, como um calendário de corridas) ================= */
 .brands{padding-block:clamp(80px,10vw,140px);overflow:clip}
-.b-head{text-align:center;position:relative;z-index:2;margin-bottom:40px}
+.b-head{text-align:center;position:relative;z-index:2;margin-bottom:clamp(40px,6vw,80px)}
 .b-head h2{margin:0;font-size:clamp(40px,5.6vw,90px)}
-.b-head h2 .it{display:block}
-.b-head p{margin:14px auto 0;max-width:44ch;color:#3b3e33}
-.b-grid{position:relative;display:grid;grid-template-columns:1fr 1fr 1.4fr 1fr 1fr;gap:var(--gut);min-height:120vh;z-index:2}
-.b-col{display:flex;flex-direction:column;gap:clamp(56px,9vh,110px);align-items:center;padding-top:6vh}
-.b-col:nth-child(2),.b-col:nth-child(4){padding-top:20vh}
-.b-col span{font-weight:800;font-size:clamp(18px,1.9vw,30px);letter-spacing:-.02em;text-transform:uppercase;white-space:nowrap}
-.b-col span:nth-child(2n){font-style:italic;font-weight:400;text-transform:none}
-.b-link{text-decoration:none;background:linear-gradient(var(--lime),var(--lime)) 0 100%/0 .32em no-repeat;transition:background-size .45s var(--ease)}
-.b-link:hover{background-size:100% .32em}
-.b-center{position:relative;align-self:stretch;min-height:100%}
+.b-head h2 .it{display:block;color:var(--lime)}
+.b-head p{margin:14px auto 0;max-width:44ch;opacity:.7}
+.b-list{position:relative;z-index:2;list-style:none;margin:0;padding:0}
+.b-row{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:6px 24px;padding:clamp(20px,2.6vw,30px) 0 14px;border-bottom:1px solid rgba(238,240,227,.18);color:var(--paper);text-decoration:none;transition:color .35s,border-color .35s}
+.b-name{grid-column:1;font-weight:800;text-transform:uppercase;letter-spacing:-.03em;font-size:clamp(26px,3.4vw,54px);line-height:.95}
+.b-svc{grid-column:1;font-size:15px;opacity:.7;transition:opacity .35s}
+.b-side{grid-column:2;grid-row:1/3;font-size:14px;font-weight:700;white-space:nowrap}
+.b-row.on{color:var(--lime);border-color:var(--lime)}
+.b-row.on .b-svc{opacity:1}
+a.b-row:hover .b-side{text-decoration:underline}
+.b-cta-row{position:relative;z-index:2;display:flex;justify-content:center;margin-top:clamp(40px,5vw,64px)}
+.brands .b-cta{background:var(--lime);color:var(--ink)}
 .b-line{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
-.b-cta{position:absolute;left:50%;bottom:0;transform:translateX(-50%);white-space:nowrap}
-@media (max-width:860px){.b-grid{grid-template-columns:1fr 1fr;min-height:0}.b-center{grid-column:1/-1;order:2;min-height:0;display:flex;justify-content:center;margin-top:30px}.b-line{display:none}.b-cta{position:static;transform:none}.b-col{padding-top:0!important;gap:28px}.b-col:nth-child(n+4){display:none}.b-col span:nth-child(n+4){display:none}}
+@media (max-width:860px){.b-line{display:none}.b-side{display:none}.b-svc{font-size:13px}}
 
 /* ================= FAN ================= */
 .fan-sec{padding-block:clamp(60px,8vw,110px);text-align:center;overflow:hidden}
@@ -643,20 +644,24 @@ html:not(.js) .pixels{display:none}
 </section>
 
 <!-- BRANDS -->
-<section class="sec t-paper brands wrap" data-tone="paper" data-bg="paper">
-  <div class="gridlines" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+<section class="sec t-ink brands wrap" id="marcas" data-tone="ink" data-bg="ink">
   <svg class="b-line" id="bLine" aria-hidden="true"></svg>
   <div class="b-head">
     <h2 class="display">Marcas que <span class="it">atendemos</span></h2>
     <p>Empresas de Timbó e região que confiam na Cobra para crescer no digital.</p>
   </div>
-  <div class="b-grid" id="bGrid">
-    <div class="b-col" data-speed="-0.6"><span>Ferana</span><span><a href="audiovisual.html#cliente-tipotil" class="b-link">Tipótil</a></span><span><a href="audiovisual.html#cliente-frigorifico-gessner" class="b-link">Gessner</a></span><span><a href="audiovisual.html#cliente-butzke" class="b-link">Butzke</a></span><span><a href="audiovisual.html#cliente-missner" class="b-link">Missner</a></span></div>
-    <div class="b-col" data-speed="0.4"><span><a href="audiovisual.html#cliente-butzke" class="b-link">Butzke</a></span><span><a href="audiovisual.html#cliente-sfi-chips" class="b-link">SFI Chips</a></span><span><a href="audiovisual.html#cliente-missner" class="b-link">Missner</a></span><span>Ferana</span></div>
-    <div class="b-center" id="bCenter"><a class="btn ink b-cta" href="contato.html">Seja a próxima marca <span class="arr">»</span></a></div>
-    <div class="b-col" data-speed="0.4"><span><a href="audiovisual.html#cliente-missner" class="b-link">Missner</a></span><span><a href="audiovisual.html#cliente-frigorifico-gessner" class="b-link">Gessner</a></span><span>Ferana</span><span><a href="audiovisual.html#cliente-tipotil" class="b-link">Tipótil</a></span></div>
-    <div class="b-col" data-speed="-0.6"><span><a href="audiovisual.html#cliente-sfi-chips" class="b-link">SFI Chips</a></span><span><a href="audiovisual.html#cliente-butzke" class="b-link">Butzke</a></span><span><a href="audiovisual.html#cliente-tipotil" class="b-link">Tipótil</a></span><span><a href="audiovisual.html#cliente-frigorifico-gessner" class="b-link">Gessner</a></span><span><a href="audiovisual.html#cliente-sfi-chips" class="b-link">SFI Chips</a></span></div>
-  </div>
+  <ol class="b-list" id="bList">
+    <li><a class="b-row" href="audiovisual.html#cliente-frigorifico-gessner"><span class="b-name">Frigorífico Gessner</span><span class="b-svc">Tráfego pago · Redes sociais · Site · Vídeo</span><span class="b-side">Ver trabalhos ↗</span></a></li>
+    <li><a class="b-row" href="audiovisual.html#cliente-catarininho"><span class="b-name">Catarininho</span><span class="b-svc">Branding · Redes sociais · Vídeo</span><span class="b-side">Ver trabalhos ↗</span></a></li>
+    <li><a class="b-row" href="audiovisual.html#cliente-butzke"><span class="b-name">Butzke Móveis</span><span class="b-svc">Produção de vídeo</span><span class="b-side">Ver trabalhos ↗</span></a></li>
+    <li><a class="b-row" href="audiovisual.html#cliente-tipotil"><span class="b-name">Tipótil</span><span class="b-svc">Produção de vídeo</span><span class="b-side">Ver trabalhos ↗</span></a></li>
+    <li><a class="b-row" href="audiovisual.html#cliente-sonhar-decoracoes"><span class="b-name">Sonhar Decorações</span><span class="b-svc">Produção de vídeo</span><span class="b-side">Ver trabalhos ↗</span></a></li>
+    <li><a class="b-row" href="audiovisual.html#cliente-fidenza-club-casa"><span class="b-name">Fidenza Club &amp; Casa</span><span class="b-svc">Produção de vídeo</span><span class="b-side">Ver trabalhos ↗</span></a></li>
+    <li><a class="b-row" href="audiovisual.html#cliente-missner"><span class="b-name">Missner</span><span class="b-svc">Audiovisual</span><span class="b-side">Ver trabalhos ↗</span></a></li>
+    <li><a class="b-row" href="audiovisual.html#cliente-sfi-chips"><span class="b-name">SFI Chips</span><span class="b-svc">Audiovisual</span><span class="b-side">Ver trabalhos ↗</span></a></li>
+    <li><div class="b-row"><span class="b-name">Ferana</span><span class="b-svc">Cliente Cobra</span><span class="b-side"></span></div></li>
+  </ol>
+  <div class="b-cta-row"><a class="btn b-cta" href="contato.html">Seja a próxima marca <span class="arr">»</span></a></div>
 </section>
 
 <!-- FAN -->
@@ -915,46 +920,55 @@ html:not(.js) .pixels{display:none}
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .5 });
   document.querySelectorAll('.wipe').forEach(el => io.observe(el));
 
-  /* ---------- brands: a neon line that slides out from behind the heading and leaves under the next section ---------- */
+  /* ---------- brands: the neon line works like the car of a race calendar ----------
+     its tip rides at the middle of the screen while the list scrolls under it, the brand at the tip lights up,
+     it starts behind the heading and leaves under the next section (the section clips it) */
   const bLine = document.getElementById('bLine'), bSec = bLine && bLine.closest('section');
+  const bRows = bSec ? [...bSec.querySelectorAll('.b-row')] : [];
   const NS = 'http://www.w3.org/2000/svg';
-  let line = null, lineP = 0.55, lineTarget = 0.55;
+  let line = null, tipY = null;
   function buildLine(){
-    const w = bSec.clientWidth, h = bSec.clientHeight; if (!w || !h || !bLine.clientWidth) return;
+    const w = bSec.clientWidth, h = bSec.clientHeight; if (!w || !h || !bLine.clientWidth) { line = null; return; }
     bLine.setAttribute('viewBox', `0 0 ${w} ${h}`);
-    const sr = bSec.getBoundingClientRect(), hr = bSec.querySelector('.b-head h2').getBoundingClientRect(), cr = document.getElementById('bCenter').getBoundingClientRect();
-    const y0 = hr.top - sr.top + hr.height*0.5, cx = cr.left - sr.left + cr.width/2;
-    const A = Math.min(cr.width*0.42, 120), bodyLen = Math.min(h*0.55, 900), y1 = h + bodyLen + 80;
-    let d = '';
-    for (let y = y0; y <= y1; y += 10){ const k = y - y0, x = cx + A*Math.sin(k/170)*(0.75 + 0.25*Math.sin(k/410)); d += (d ? ' L' : 'M') + x.toFixed(1) + ' ' + y.toFixed(1); }
+    const sr = bSec.getBoundingClientRect(), hr = bSec.querySelector('.b-head h2').getBoundingClientRect();
+    const y0 = hr.top - sr.top + hr.height*0.5, y1 = h + 160, cx = w/2, A = Math.min(w*0.035, 46), trail = Math.min(innerHeight*0.55, 520);
+    const ys = [], ls = []; let d = '', len = 0, px, py;
+    for (let y = y0; y <= y1; y += 8){ const k = y - y0, x = cx + A*Math.sin(k/150)*(0.7 + 0.3*Math.sin(k/430));
+      if (px !== undefined) len += Math.hypot(x - px, y - py); px = x; py = y; ys.push(y); ls.push(len);
+      d += (d ? ' L' : 'M') + x.toFixed(1) + ' ' + y.toFixed(1); }
     bLine.innerHTML = `<defs><filter id="bGlow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="8"/></filter></defs>
       <path id="bPath" d="${d}" fill="none" stroke="none"/>
-      <g filter="url(#bGlow)" opacity=".8" fill="none" stroke-linecap="round" stroke-linejoin="round" id="bGlowG"></g>
+      <g filter="url(#bGlow)" opacity=".85" fill="none" stroke-linecap="round" id="bGlowG"></g>
       <g fill="none" stroke-linecap="round" stroke-linejoin="round" id="bCore"></g>
-      <circle id="bTip" r="6.5" fill="#E9FF5C" filter="url(#bGlow)"/><circle id="bTipCore" r="4.5" fill="#F6FFB8"/>`;
-    const path = bLine.querySelector('#bPath'), total = path.getTotalLength(), segs = [];
-    const add = (g, width, color, len) => { const p = document.createElementNS(NS,'path'); p.setAttribute('d', d); p.setAttribute('stroke', color); p.setAttribute('stroke-width', width); g.appendChild(p); segs.push({ p, len }); };
-    add(bLine.querySelector('#bGlowG'), 16, '#CBE22E', bodyLen*0.8);
-    for (let i = 0; i < 10; i++) add(bLine.querySelector('#bCore'), 1.5 + 7*(i/9), '#CBE22E', bodyLen*(1 - 0.85*(i/9)));   // thick near the tip, thin tail
-    add(bLine.querySelector('#bCore'), 1.6, '#F6FFB8', bodyLen*0.5);   // bright core
-    line = { path, total, segs, tip: [bLine.querySelector('#bTip'), bLine.querySelector('#bTipCore')] };
-    placeLine(lineP);
+      <circle id="bTip" r="9" fill="#E9FF5C" filter="url(#bGlow)"/><circle id="bTipCore" r="5" fill="#F6FFB8"/>`;
+    const path = bLine.querySelector('#bPath'), segs = [];
+    const add = (g, width, color, l) => { const p = document.createElementNS(NS,'path'); p.setAttribute('d', d); p.setAttribute('stroke', color); p.setAttribute('stroke-width', width); g.appendChild(p); segs.push({ p, len: l }); };
+    add(bLine.querySelector('#bGlowG'), 18, '#CBE22E', trail*0.85);
+    for (let i = 0; i < 10; i++) add(bLine.querySelector('#bCore'), 1.5 + 6*(i/9), '#CBE22E', trail*(1 - 0.85*(i/9)));
+    add(bLine.querySelector('#bCore'), 1.6, '#F6FFB8', trail*0.45);
+    line = { path, segs, ys, ls, y0, y1, total: len, tip: [bLine.querySelector('#bTip'), bLine.querySelector('#bTipCore')] };
   }
-  function placeLine(p){
-    if (!line) return;
-    const { path, total, segs, tip } = line, lead = p*total;
+  function lenAtY(y){ const { ys, ls } = line; let lo = 0, hi = ys.length - 1; while (hi - lo > 1){ const m = (lo + hi) >> 1; if (ys[m] < y) lo = m; else hi = m; } const t = (y - ys[lo]) / ((ys[hi] - ys[lo]) || 1); return ls[lo] + t*(ls[hi] - ls[lo]); }
+  function placeLine(){
+    const { path, segs, total, tip } = line, lead = lenAtY(tipY);
     segs.forEach(s => { s.p.setAttribute('stroke-dasharray', `${s.len} ${total*2}`); s.p.setAttribute('stroke-dashoffset', String(-(lead - s.len))); });
     const pt = path.getPointAtLength(Math.max(0, lead));
     tip.forEach(c => { c.setAttribute('cx', pt.x.toFixed(1)); c.setAttribute('cy', pt.y.toFixed(1)); c.style.opacity = lead > 1 ? 1 : 0; });
   }
-  if (bLine){
+  if (bSec){
     buildLine();
     let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(buildLine, 200); });
-    (function loop(t){ const idle = reduce ? 0 : Math.sin(t*0.0016)*0.006; lineP += (lineTarget - lineP)*0.08; placeLine(Math.max(0, Math.min(1, lineP + idle))); requestAnimationFrame(loop); })(0);
-    if (hasG && !reduce){
-      ScrollTrigger.create({ trigger: bSec, start: 'top 75%', end: 'bottom 40%', onUpdate: self => { lineTarget = self.progress; }, onRefresh: buildLine });
-      lineP = lineTarget = 0;
-    }
+    let onRow = null;
+    (function loop(){
+      const sr = bSec.getBoundingClientRect(), mid = innerHeight*0.5;
+      if (sr.bottom > -200 && sr.top < innerHeight + 200){
+        // the brand crossing the middle of the screen lights up
+        let hit = null; for (const r of bRows){ const b = r.getBoundingClientRect(); if (b.top <= mid && b.bottom > mid - 1){ hit = r; break; } }
+        if (hit !== onRow){ onRow && onRow.classList.remove('on'); hit && hit.classList.add('on'); onRow = hit; }
+        if (line){ const target = Math.max(line.y0, Math.min(line.y1, mid - sr.top)); tipY = (tipY === null || reduce) ? target : tipY + (target - tipY)*0.18; placeLine(); }
+      }
+      requestAnimationFrame(loop);
+    })();
   }
 
   /* hero: stage follows the pointer a little */
@@ -1101,10 +1115,6 @@ html:not(.js) .pixels{display:none}
   /* hall */
   gsap.utils.toArray('#grid .card').forEach(c => gsap.from(c, { y: 80, ease: 'none', scrollTrigger: { trigger: c, start: 'top bottom', end: 'top 60%', scrub: 1 } }));
 
-  /* brands columns */
-  mm.add('(min-width: 861px)', () => {
-    document.querySelectorAll('.b-col').forEach(col => { const s = +col.dataset.speed; gsap.fromTo(col, { y: s*160 }, { y: -s*160, ease: 'none', scrollTrigger: { trigger: '#bGrid', start: 'top bottom', end: 'bottom top', scrub: true } }); });
-  });
 
   /* fan */
   const cards = gsap.utils.toArray('#fan .fcard'); const mid = (cards.length-1)/2;
