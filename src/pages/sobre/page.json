@@ -1,0 +1,114 @@
+{
+  "slug": "sobre",
+  "output": "sobre.html",
+  "title": "Sobre a Cobra | Agência de marketing digital em Timbó, SC",
+  "description": "Agência Cobra · marketing digital, conteúdo, tecnologia e audiovisual em Timbó, SC.",
+  "menu_ativo": "sobre",
+  "parts": [
+    {
+      "label": "Início do documento (head)",
+      "kind": "structure",
+      "partial": "documento-inicio"
+    },
+    {
+      "label": "Estilos da página",
+      "kind": "style",
+      "file": "01-style-estilos-da-pagina.html"
+    },
+    {
+      "label": "Estilos do rodapé",
+      "kind": "style",
+      "partial": "rodape-estilos"
+    },
+    {
+      "label": "Fim do head",
+      "kind": "structure",
+      "file": "03-structure-fim-do-head.html"
+    },
+    {
+      "label": "Cabeçalho e menu",
+      "kind": "header",
+      "partial": "cabecalho-interno"
+    },
+    {
+      "label": "Abertura do conteúdo",
+      "kind": "structure",
+      "file": "05-structure-abertura-do-conteudo.html"
+    },
+    {
+      "label": "Abertura",
+      "kind": "section",
+      "file": "06-section-ab-hero.html"
+    },
+    {
+      "label": "Manifesto",
+      "kind": "section",
+      "file": "07-section-ab-man.html"
+    },
+    {
+      "label": "Em números",
+      "kind": "section",
+      "file": "08-section-ab-num.html"
+    },
+    {
+      "label": "O que a gente faz",
+      "kind": "section",
+      "file": "09-section-ab-svc.html"
+    },
+    {
+      "label": "Como a gente pensa",
+      "kind": "section",
+      "file": "10-section-ab-val.html"
+    },
+    {
+      "label": "Equipe",
+      "kind": "section",
+      "file": "11-section-equipe.html"
+    },
+    {
+      "label": "Localização",
+      "kind": "section",
+      "file": "12-section-ab-loc.html"
+    },
+    {
+      "label": "Fechamento do conteúdo",
+      "kind": "structure",
+      "file": "13-structure-fechamento-do-conteudo.html"
+    },
+    {
+      "label": "Rodapé",
+      "kind": "footer",
+      "partial": "rodape"
+    },
+    {
+      "label": "Elementos flutuantes",
+      "kind": "extras",
+      "file": "15-extras-elementos-flutuantes.html"
+    },
+    {
+      "label": "Bibliotecas (GSAP, ScrollTrigger, Lenis)",
+      "kind": "script",
+      "partial": "bibliotecas"
+    },
+    {
+      "label": "Script base das páginas internas",
+      "kind": "script",
+      "partial": "base-interna-script"
+    },
+    {
+      "label": "Script da página",
+      "kind": "script",
+      "file": "18-script-script.html"
+    },
+    {
+      "label": "Script do rodapé",
+      "kind": "script",
+      "partial": "rodape-script"
+    },
+    {
+      "label": "Fim do documento",
+      "kind": "structure",
+      "partial": "fim-do-documento"
+    }
+  ]
+}

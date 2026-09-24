@@ -1,0 +1,8 @@
+<section class="sec t-ink ab-team" id="equipe" data-bg="ink" data-tone="ink">
+  <div class="head"><h2 class="display" data-split>Quem faz <span class="it">a Cobra</span></h2><a class="btn ghost rv" href="contato.html">Trabalhe com a gente <span class="arr">→</span></a></div>
+  <div class="team" id="team">
+{{#each content.equipe as m}}    <div class="mb rv"{{#if @index | mod 4 == 1}} data-d=".06"{{/if}}{{#if @index | mod 4 == 2}} data-d=".12"{{/if}}{{#if @index | mod 4 == 3}} data-d=".18"{{/if}}><div class="ph">{{#if m.foto}}<img class="foto" src="{{ m.foto }}" alt="{{ m.nome }}" loading="lazy">{{else}}<canvas></canvas><svg class="sil" viewBox="0 0 120 130" fill="currentColor" aria-hidden="true"><circle cx="60" cy="42" r="26"/><path d="M8 130c2-34 24-52 52-52s50 18 52 52z"/></svg><small>Foto em breve</small>{{/if}}</div><h3>{{ m.nome }}</h3><p>{{ m.cargo }}</p></div>
+{{/each}}  </div>
+  <p class="team-note">Protótipo: nomes, cargos e fotos da equipe entram aqui (editáveis pelo painel).</p>
+</section>
+

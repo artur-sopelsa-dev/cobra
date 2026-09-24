@@ -1,0 +1,40 @@
+<script>
+(function(){
+  const C = window.__cobra || {}; const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  C.reveal && C.reveal();
+  /* curvas que reagem ao mouse no topo */
+  const cv=document.getElementById('ctCv'), sec=cv.parentElement; let mx=-999,my=-999; const t0=performance.now();
+  sec.addEventListener('pointermove', e=>{ const r=cv.getBoundingClientRect(); mx=e.clientX-r.left; my=e.clientY-r.top; });
+  (function loop(t){ const F=C.fit(cv,1.5); if (F){ F.ctx.clearRect(0,0,F.w,F.h);
+      C.contour(F.ctx,F.w,F.h,{cell:18,scale:150,levels:[-1.5,-1,-.5,0,.5,1,1.5],lw:1,line:'rgba(203,226,46,.12)',ox:0,oy:0},reduce?0:(t-t0)*.00025);
+      if (mx>-999){ const g=F.ctx.createRadialGradient(mx,my,0,mx,my,220); g.addColorStop(0,'rgba(203,226,46,.16)'); g.addColorStop(1,'rgba(203,226,46,0)'); F.ctx.fillStyle=g; F.ctx.fillRect(0,0,F.w,F.h); } }
+    if (!reduce) setTimeout(()=>requestAnimationFrame(loop),50); })(t0);
+  const m=document.getElementById('mapCv'); const drawMap=()=>{ const F=C.fit(m,1.5); if (F){ F.ctx.clearRect(0,0,F.w,F.h); C.contour(F.ctx,F.w,F.h,{cell:8,scale:70,levels:[-2,-1.5,-1,-.5,0,.5,1,1.5,2],lw:1,line:'rgba(203,226,46,.3)',ox:400,oy:200},1.3); } };
+  drawMap(); addEventListener('resize', ()=>{ clearTimeout(drawMap._t); drawMap._t=setTimeout(drawMap,200); });
+  /* formulário → WhatsApp */
+  const f=document.getElementById('leadForm'), WA_NUM='5547999150241';
+  const tel=f.tel; tel.addEventListener('input', ()=>{ let d=tel.value.replace(/\D/g,'').slice(0,11); tel.value = d.length>6 ? `(${d.slice(0,2)}) ${d.slice(2,d.length-4)}-${d.slice(-4)}` : d.length>2 ? `(${d.slice(0,2)}) ${d.slice(2)}` : d; });
+  function err(inp, msg){ const l=inp.closest('.fld'); l.classList.toggle('err', !!msg); l.querySelector('.msg').textContent=msg||''; }
+  f.addEventListener('submit', e=>{
+    e.preventDefault();
+    const nome=f.nome.value.trim(), t=f.tel.value.replace(/\D/g,'');
+    err(f.nome, nome?'':'Como podemos te chamar?'); err(f.tel, t.length>=10?'':'Informe um WhatsApp com DDD.');
+    if (!nome || t.length<10){ (nome?f.tel:f.nome).focus(); return; }
+    const ints=[...f.querySelectorAll('[name=int]:checked')].map(i=>i.value);
+    const linhas=[`Olá! Vim pelo site da Cobra e gostaria de conversar sobre um projeto.`, ``, `*Nome:* ${nome}`];
+    if (f.empresa.value.trim()) linhas.push(`*Empresa:* ${f.empresa.value.trim()}`);
+    linhas.push(`*WhatsApp:* ${f.tel.value}`);
+    if (f.email.value.trim()) linhas.push(`*E-mail:* ${f.email.value.trim()}`);
+    if (ints.length) linhas.push(`*Interesse:* ${ints.join(', ')}`);
+    if (f.quando.value) linhas.push(`*Quando:* ${f.quando.value}`);
+    if (f.msg.value.trim()) linhas.push(``, f.msg.value.trim());
+    const url='https://wa.me/'+WA_NUM+'?text='+encodeURIComponent(linhas.join('\n'));
+    document.getElementById('waAgain').href=url;
+    window.open(url,'_blank','noopener');
+    f.classList.add('sent'); C.refresh && C.refresh();
+  });
+  document.getElementById('again').addEventListener('click', ()=>{ f.reset(); f.classList.remove('sent'); });
+  C.goHash = h => { if (h==='diagnostico'){ const c=f.querySelector('[value="Diagnóstico digital"]'); if (c) c.checked=true; h='form'; } const el=h && document.getElementById(h); if (el) C.scrollTo(el,true); else C.scrollTo(0,true); };
+  const pre=(location.hash||'').slice(1); if (pre) setTimeout(()=>C.goHash(pre),300);
+})();
+</script>
