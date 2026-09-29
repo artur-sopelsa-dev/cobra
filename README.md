@@ -26,7 +26,16 @@ bin/build.php           Gera public/*.html
 tests/run.php           Testes do motor e do build
 ```
 
-Páginas: `index` (home), `sobre`, `solucao` (modelo único; cada solução é um hash, como `solucao.html#solucao-seo`), `audiovisual`, `portfolio`, `blog` e `contato`.
+Páginas: `index` (home), `sobre`, `solucoes`, `solucao`, `audiovisual`, `portfolio`, `blog` e `contato`.
+
+### Soluções nas URLs do site antigo
+
+As soluções mantêm os endereços do cobra.art.br atual, para não perder SEO e indexação:
+
+- `solucoes` gera `/solucoes-em-marketing-digital/` (lista de todas as soluções).
+- `solucao` é um modelo com `"colecao": "solucoes"` no `page.json`. O gerador cria uma página para cada item de `content/solucoes.json` que tenha `url` (por exemplo, `solucoes-em-marketing-digital/branding/` gera `.../branding/index.html`, e `lojas-virtuais/` fica na raiz).
+- Nessas páginas o texto sai pronto no HTML (não é montado por JS). Elas têm `<base href="/">`, canonical, Open Graph e dados estruturados (Service, BreadcrumbList e FAQPage).
+- Campos de cada solução, além dos visuais: `seo.titulo`, `seo.descricao`, `h1`, `conteudo` (blocos com `titulo`, `paragrafos` e `lista`), `faq` (itens com `pergunta` e `resposta`, sendo a resposta uma lista de parágrafos) e `link_extra`.
 
 ## Como editar
 
@@ -43,7 +52,7 @@ As partes são HTML comum com marcações simples (não executam PHP):
 |---|---|
 | `{{ site.whatsapp.numero }}` | valor com escape de HTML |
 | `{{{ valor }}}` | valor sem escape |
-| `{{ texto \| url }}` | filtros: `url`, `js`, `json`, `upper`, `lower`, `count`, `mod N`, `default "x"` |
+| `{{ texto \| url }}` | filtros: `url`, `js`, `json`, `upper`, `lower`, `count`, `mod N`, `mais N` (soma), `join` (lista em texto), `default "x"` |
 | `{{#if cond}}…{{else}}…{{/if}}` | condição: `caminho`, `not caminho`, `a == b`, `a != b` |
 | `{{#each lista as item}}…{{/each}}` | repetição, com `@index`, `@first`, `@last` |
 | `{{> rodape }}` | inclui `src/partials/rodape.html` |
@@ -74,7 +83,7 @@ No template, `site` é o `content/site.json`, `content.<arquivo>` é qualquer ar
 ## Pendências conhecidas
 
 - **Clientes por solução:** só Gessner e Catarininho estão ligados a soluções (`content/solucoes.json`, campo `clientes`). A seção "Marcas que confiaram" some quando a lista está vazia.
-- **Textos "O que entregamos" e títulos em grafite** das páginas de solução: rascunho, aguardando revisão da redação.
+- **Conteúdo das soluções:** falta trazer o texto das páginas atuais do cobra.art.br para `conteudo`, `faq` e `seo` em `content/solucoes.json`. Os textos "O que entregamos" e os títulos em grafite ainda são rascunho.
 - **Posts do blog:** 6 textos de exemplo marcados como "Texto de exemplo".
 - **Objeto 3D** das outras soluções no estilo da câmera do Audiovisual: ainda não definido.
 - **Painel administrativo:** em PHP no cPanel, usando o gerador de `app/`. Próximas etapas: painel base (login, páginas e seções, mídia, configurações), blog/portfólio/soluções/clientes, SEO/GEO com IA e gerador de posts por tendências.

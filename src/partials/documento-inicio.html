@@ -4,8 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <style>[hidden]{display:none!important}</style>
-<title>{{ page.title }}</title>
+{{#if page.url}}<base href="/">
+{{/if}}<title>{{ page.title }}</title>
 {{#if page.description}}<meta name="description" content="{{ page.description }}">
-{{/if}}<link rel="preconnect" href="https://fonts.googleapis.com">
+{{/if}}{{#if page.url}}<link rel="canonical" href="{{ site.dominio }}/{{ page.url }}">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Agência Cobra">
+<meta property="og:title" content="{{ page.title }}">
+<meta property="og:description" content="{{ page.description }}">
+<meta property="og:url" content="{{ site.dominio }}/{{ page.url }}">
+{{#if item.img}}<meta property="og:image" content="{{ site.dominio }}/{{ item.img }}">
+{{/if}}{{/if}}<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="{{#if page.fontes_url}}{{{ page.fontes_url }}}{{else}}{{{ site.fontes_url }}}{{/if}}">

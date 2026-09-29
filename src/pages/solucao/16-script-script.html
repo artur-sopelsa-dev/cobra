@@ -1,29 +1,17 @@
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"Service","name":{{{ item.nome | json }}},"description":{{{ item.desc | json }}},"url":"{{ site.dominio }}/{{ item.url }}","serviceType":{{{ item.nome | json }}},"areaServed":"BR","provider":{"@type":"Organization","name":"Agência Cobra","url":"{{ site.dominio }}/"}},
+{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Início","item":"{{ site.dominio }}/"},{"@type":"ListItem","position":2,"name":"Soluções","item":"{{ site.dominio }}/solucoes-em-marketing-digital/"},{"@type":"ListItem","position":3,"name":{{{ item.nome | json }}},"item":"{{ site.dominio }}/{{ item.url }}"}]}{{#if item.faq}},
+{"@type":"FAQPage","mainEntity":[{{#each item.faq as q}}{"@type":"Question","name":{{{ q.pergunta | json }}},"acceptedAnswer":{"@type":"Answer","text":{{{ q.resposta | join | json }}}}}{{#if not @last}},{{/if}}{{/each}}]}{{/if}}
+]}
+</script>
 <script>
 (function(){
-  const C = window.__cobra || {}; const SOLS = {{{ content.solucoes | js }}};
+  const C = window.__cobra || {};
   const $ = id => document.getElementById(id);
-  const zoomCls = s => /T_H4/.test(s.yt||'') ? 'zoom' : (s.tall ? 'tall' : '');
   function fitBig(){ const el=$('soBig'); el.style.fontSize=''; const max=el.parentElement.clientWidth; const w=el.scrollWidth; if (w>max && max>0) el.style.fontSize=(parseFloat(getComputedStyle(el).fontSize)*max/w*0.98)+'px'; }
-  function render(slug, scroll){
-    const s = SOLS.find(x=>x.slug===slug && !x.link) || SOLS.find(x=>!x.link);
-    document.title = s.nome + ' | Soluções | Agência Cobra';
-    $('soTitle').setAttribute('aria-label', s.nome);
-    $('soTag').textContent = s.nome; $('soScript').textContent = s.script; $('soBig').textContent = s.big;
-    const im=$('soImg'); im.src = s.img; im.className = zoomCls(s); $('soTy').textContent = s.tag; $('soLab').textContent = s.nome;
-    $('soLead').textContent = s.desc;
-    $('soList').innerHTML = s.entregas.map(e=>`<li>${e}<i aria-hidden="true">→</i></li>`).join('');
-    const mk=$('marcas'); mk.hidden = !s.clientes.length;
-    $('logos').innerHTML = s.clientes.map(c=>`<a class="lg${c.logo?'':' txt'}${c.branca?' w':''}" href="audiovisual.html#${c.key}" aria-label="Ver portfólio de ${c.nome}">${c.logo?`<img src="${c.logo}" alt="${c.nome}">`:`<b>${c.nome}</b>`}<i class="cnt">Cliente</i><span>Ver portfólio →</span></a>`).join('');
-    $('soRail').innerHTML = SOLS.filter(x=>x.slug!==s.slug).map(x=>`<a class="so-card" href="${x.href}"><div class="in"><img class="${zoomCls(x)}" src="${x.img}" alt="" loading="lazy"><span class="ty">${x.tag}</span><span class="lab">${x.nome}</span></div></a>`).join('');
-    document.querySelectorAll('.hf [data-sol]').forEach(a=>{ if (a.dataset.sol===s.slug) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current'); });
-    requestAnimationFrame(fitBig);
-    if (scroll){ C.scrollTo ? C.scrollTo(0,true) : scrollTo(0,0); }
-    C.refresh && C.refresh();
-  }
-  const fromHash = h => (h||'').replace(/^#/,'').replace(/^solucao-/,'');
-  render(fromHash(location.hash), false);
-  C.goHash = h => render(fromHash(h), true);
-  addEventListener('hashchange', () => render(fromHash(location.hash), true));
+  document.querySelectorAll('.hf [data-sol="{{ item.slug }}"]').forEach(a=>a.setAttribute('aria-current','page'));
+  requestAnimationFrame(fitBig);
   addEventListener('resize', fitBig); if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitBig);
   C.reveal && C.reveal();
   if (window.gsap && window.ScrollTrigger && !matchMedia('(prefers-reduced-motion: reduce)').matches){

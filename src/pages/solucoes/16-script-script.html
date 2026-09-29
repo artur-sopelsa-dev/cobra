@@ -1,0 +1,6 @@
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"ItemList","name":"Soluções em marketing digital","itemListElement":[{{#each content.solucoes as x}}{"@type":"ListItem","position":{{ @index | mais }},"name":{{{ x.nome | json }}},"url":"{{ site.dominio }}/{{ x.url }}"}{{#if not @last}},{{/if}}{{/each}}]}
+</script>
+<script>
+(function(){ const C = window.__cobra || {}; C.reveal && C.reveal(); })();
+</script>

@@ -174,6 +174,8 @@ final class Template
                 'lower' => mb_strtolower($this->str($value)),
                 'count' => is_array($value) ? count($value) : ($value instanceof \stdClass ? count(get_object_vars($value)) : 0),
                 'mod' => (int) $value % max(1, (int) $arg),
+                'mais' => (int) $value + (int) ($arg ?? 1),
+                'join' => is_array($value) ? implode(' ', array_map(fn($v) => $this->str($v), $value)) : $this->str($value),
                 'default' => $this->truthy($value) ? $value : $this->value((string) $arg, $ctx),
                 default => throw new \RuntimeException("Filtro desconhecido: $name"),
             };
