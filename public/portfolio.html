@@ -346,7 +346,7 @@ div.wc{cursor:default}
     const attr=s.link?`href="${s.link}"`:`type="button" data-svc="${s.id}"`, tag=s.link?'a':'button';
     return `<${tag} class="wc svc ${tone}" ${attr}><small>Serviço</small><h3>${esc(s.nome)}</h3><p>${esc(s.lead)}</p>${s.deliv.length?`<ul>${s.deliv.slice(0,4).map(d=>`<li>${esc(d)}</li>`).join('')}</ul>`:''}<span class="ft"><span>${s.link?'Página dedicada':(n+(n===1?' projeto':' projetos'))}</span><i aria-hidden="true">→</i></span></${tag}>`; };
   const ctaCard=`<a class="wc cta" href="contato.html"><small>Próximo projeto</small><p class="big">Tem uma ideia? <em>Vamos tirar do papel.</em></p><span class="ft"><span>Falar com a gente</span><i aria-hidden="true">→</i></span></a>`
-  const tones=['lime','','paper','',''];
+  const tones=['','','','',''];
   const sv=SERVICES.map((s,i)=>svcCard(s,tones[i%tones.length]));
   /* mural fixo: os serviços e a chamada para contato, centralizados */
   wall.innerHTML=sv.join('')+ctaCard;
