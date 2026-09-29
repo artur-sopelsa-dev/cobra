@@ -35,15 +35,11 @@
   const svcCard=(s,tone)=>{ const n=CASES.filter(c=>c.svcs.includes(s.id)).length;
     const attr=s.link?`href="${s.link}"`:`type="button" data-svc="${s.id}"`, tag=s.link?'a':'button';
     return `<${tag} class="wc svc ${tone}" ${attr}><small>Serviço</small><h3>${esc(s.nome)}</h3><p>${esc(s.lead)}</p>${s.deliv.length?`<ul>${s.deliv.slice(0,4).map(d=>`<li>${esc(d)}</li>`).join('')}</ul>`:''}<span class="ft"><span>${s.link?'Página dedicada':(n+(n===1?' projeto':' projetos'))}</span><i aria-hidden="true">→</i></span></${tag}>`; };
-  const textCards=[
-    `<div class="wc q"><small>Como trabalhamos</small><p class="big">Estratégia, criatividade e tecnologia <em>no mesmo time.</em></p></div>`,
-    `<a class="wc cta" href="contato.html"><small>Próximo projeto</small><p class="big">Tem uma ideia? <em>Vamos tirar do papel.</em></p><span class="ft"><span>Falar com a gente</span><i aria-hidden="true">→</i></span></a>`,
-    `<div class="wc q"><small>Do planejamento à entrega</small><p class="big">Cada projeto começa com o objetivo do cliente <em>e termina em resultado.</em></p></div>`
-  ];
+  const ctaCard=`<a class="wc cta" href="contato.html"><small>Próximo projeto</small><p class="big">Tem uma ideia? <em>Vamos tirar do papel.</em></p><span class="ft"><span>Falar com a gente</span><i aria-hidden="true">→</i></span></a>`
   const tones=['lime','','paper','',''];
   const sv=SERVICES.map((s,i)=>svcCard(s,tones[i%tones.length]));
-  /* mural fixo, só com cards de texto: serviços intercalados com as chamadas */
-  wall.innerHTML=[sv[0],textCards[0],sv[1],sv[2],sv[3],textCards[2],sv[4],textCards[1]].filter(Boolean).join('');
+  /* mural fixo: os serviços e a chamada para contato, centralizados */
+  wall.innerHTML=sv.join('')+ctaCard;
   function caseCard(c){ const svcNames=c.svcs.map(id=>svcById[id].curto);
     return `<button class="case" type="button" data-case="${c.id}" data-svcs="${c.svcs.join(' ')}" aria-label="Abrir case ${c.cliente}"><div class="v">${c.img?`<img src="${c.img}" alt="">`:''}</div><div class="b"><small>${svcNames.join(' · ')}</small><h3>${c.cliente}</h3><div class="tags">${c.tags.slice(0,3).map(t=>`<span>${t}</span>`).join('')}</div></div></button>`; }
   const soonCard = (svc) => `<div class="case soon" aria-label="Case em breve"><div class="v"></div><div class="b"><small>${svc?svc.curto:'Em breve'}</small><h3>Case em breve</h3><div class="tags"><span>A cadastrar</span></div></div></div>`;
