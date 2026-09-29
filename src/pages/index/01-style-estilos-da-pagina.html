@@ -93,16 +93,17 @@ html.js .sec.hero{background:var(--ink)}
 .soft.s2{width:26vw;height:30vw;left:6vw;bottom:-14vw;animation-duration:22s}
 .soft.s3{width:30vw;height:24vw;right:-10vw;top:28%;animation-duration:26s}
 @keyframes drift{50%{border-radius:40% 60% 44% 56%/58% 42% 58% 42%;transform:translate(2vw,1vw) rotate(8deg)}100%{border-radius:52% 48% 38% 62%/42% 52% 48% 58%;transform:translate(-1vw,2vw) rotate(-6deg)}}
-.stage{position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:min(54vw,82svh,720px);aspect-ratio:700/646;z-index:2;cursor:crosshair}
+.stage{position:absolute;left:66%;bottom:0;transform:translateX(-50%);width:min(54vw,82svh,720px);aspect-ratio:700/646;z-index:2;cursor:crosshair}
 .stage img,.stage canvas{position:absolute;inset:0;width:100%;height:100%}
 .stage .glow{position:absolute;left:10%;top:22%;width:40%;height:40%;background:radial-gradient(circle,rgba(203,226,46,.28),transparent 65%);filter:blur(10px);pointer-events:none}
 .h-stats{position:absolute;left:var(--gut);top:clamp(110px,18vh,170px);z-index:3;display:flex;flex-direction:column;gap:22px}
 .h-stat b{display:block;font-weight:800;font-size:clamp(26px,2.6vw,40px);line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
 .h-stat span{font-size:12px;color:#55594b;font-weight:500}
-.h-copy{position:absolute;left:var(--gut);bottom:clamp(24px,5vh,48px);z-index:3;max-width:min(430px,36vw)}
-.h-copy h1{margin:0 0 12px;font-size:clamp(26px,2.9vw,46px)}
+.h-copy{position:absolute;left:var(--gut);bottom:clamp(28px,6vh,56px);z-index:3;max-width:min(600px,42vw)}
+.h-copy h1{margin:0 0 18px;font-size:clamp(40px,4.4vw,76px)}
 .h-copy h1 mark{background:var(--lime);color:var(--ink);padding:0 .12em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
-.h-copy p{margin:0 0 18px;font-size:14px;color:#3b3e33;max-width:40ch}
+.h-copy p{margin:0 0 24px;font-size:clamp(16px,1.25vw,19px);line-height:1.5;color:#3b3e33;max-width:40ch}
+.h-copy .btn{height:54px;padding:0 24px;font-size:14px}
 .h-copy .row{display:flex;gap:10px;flex-wrap:wrap}
 .h-right{position:absolute;right:var(--gut);top:clamp(110px,18vh,170px);z-index:3;text-align:right;max-width:240px;font-size:13px;font-weight:600;line-height:1.35}
 .case-card{position:absolute;right:var(--gut);bottom:clamp(24px,5vh,48px);z-index:3;width:210px;border:1px solid rgba(10,11,8,.18);border-radius:8px;padding:12px;background:rgba(238,240,227,.7);backdrop-filter:blur(6px);text-decoration:none;color:var(--ink);transition:border-color .3s,transform .3s var(--ease)}
@@ -119,7 +120,7 @@ html.js .sec.hero{background:var(--ink)}
 .h-sign{position:absolute;left:50%;top:50%;width:min(44vw,520px);transform:translate(-50%,-50%) rotate(-6deg);z-index:4;pointer-events:none;filter:drop-shadow(0 8px 24px rgba(0,0,0,.4))}
 .h-sign path{stroke-dasharray:1;stroke-dashoffset:1}
 html:not(.js) .h-sign{display:none}
-@media (min-width:861px) and (max-height:860px){.h-stats{flex-direction:row;gap:34px}.h-copy h1{font-size:clamp(24px,2.5vw,40px)}}
+@media (min-width:861px) and (max-height:860px){.h-stats{flex-direction:row;gap:34px}.h-copy h1{font-size:clamp(34px,3.6vw,62px)}}
 @media (max-width:860px){
   .stage{width:min(108vw,600px);left:56%}
   .h-right,.case-card,.hint,.h-stats{display:none}
