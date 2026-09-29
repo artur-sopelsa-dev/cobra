@@ -103,16 +103,17 @@ html.js .sec.hero{background:var(--ink)}
 .soft.s2{width:26vw;height:30vw;left:6vw;bottom:-14vw;animation-duration:22s}
 .soft.s3{width:30vw;height:24vw;right:-10vw;top:28%;animation-duration:26s}
 @keyframes drift{50%{border-radius:40% 60% 44% 56%/58% 42% 58% 42%;transform:translate(2vw,1vw) rotate(8deg)}100%{border-radius:52% 48% 38% 62%/42% 52% 48% 58%;transform:translate(-1vw,2vw) rotate(-6deg)}}
-.stage{position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:min(54vw,82svh,720px);aspect-ratio:700/646;z-index:2;cursor:crosshair}
+.stage{position:absolute;left:66%;bottom:0;transform:translateX(-50%);width:min(54vw,82svh,720px);aspect-ratio:700/646;z-index:2;cursor:crosshair}
 .stage img,.stage canvas{position:absolute;inset:0;width:100%;height:100%}
 .stage .glow{position:absolute;left:10%;top:22%;width:40%;height:40%;background:radial-gradient(circle,rgba(203,226,46,.28),transparent 65%);filter:blur(10px);pointer-events:none}
 .h-stats{position:absolute;left:var(--gut);top:clamp(110px,18vh,170px);z-index:3;display:flex;flex-direction:column;gap:22px}
 .h-stat b{display:block;font-weight:800;font-size:clamp(26px,2.6vw,40px);line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
 .h-stat span{font-size:12px;color:#55594b;font-weight:500}
-.h-copy{position:absolute;left:var(--gut);bottom:clamp(24px,5vh,48px);z-index:3;max-width:min(430px,36vw)}
-.h-copy h1{margin:0 0 12px;font-size:clamp(26px,2.9vw,46px)}
+.h-copy{position:absolute;left:var(--gut);bottom:clamp(28px,6vh,56px);z-index:3;max-width:min(600px,42vw)}
+.h-copy h1{margin:0 0 18px;font-size:clamp(40px,4.4vw,76px)}
 .h-copy h1 mark{background:var(--lime);color:var(--ink);padding:0 .12em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
-.h-copy p{margin:0 0 18px;font-size:14px;color:#3b3e33;max-width:40ch}
+.h-copy p{margin:0 0 24px;font-size:clamp(16px,1.25vw,19px);line-height:1.5;color:#3b3e33;max-width:40ch}
+.h-copy .btn{height:54px;padding:0 24px;font-size:14px}
 .h-copy .row{display:flex;gap:10px;flex-wrap:wrap}
 .h-right{position:absolute;right:var(--gut);top:clamp(110px,18vh,170px);z-index:3;text-align:right;max-width:240px;font-size:13px;font-weight:600;line-height:1.35}
 .case-card{position:absolute;right:var(--gut);bottom:clamp(24px,5vh,48px);z-index:3;width:210px;border:1px solid rgba(10,11,8,.18);border-radius:8px;padding:12px;background:rgba(238,240,227,.7);backdrop-filter:blur(6px);text-decoration:none;color:var(--ink);transition:border-color .3s,transform .3s var(--ease)}
@@ -129,7 +130,7 @@ html.js .sec.hero{background:var(--ink)}
 .h-sign{position:absolute;left:50%;top:50%;width:min(44vw,520px);transform:translate(-50%,-50%) rotate(-6deg);z-index:4;pointer-events:none;filter:drop-shadow(0 8px 24px rgba(0,0,0,.4))}
 .h-sign path{stroke-dasharray:1;stroke-dashoffset:1}
 html:not(.js) .h-sign{display:none}
-@media (min-width:861px) and (max-height:860px){.h-stats{flex-direction:row;gap:34px}.h-copy h1{font-size:clamp(24px,2.5vw,40px)}}
+@media (min-width:861px) and (max-height:860px){.h-stats{flex-direction:row;gap:34px}.h-copy h1{font-size:clamp(34px,3.6vw,62px)}}
 @media (max-width:860px){
   .stage{width:min(108vw,600px);left:56%}
   .h-right,.case-card,.hint,.h-stats{display:none}
@@ -506,19 +507,12 @@ html:not(.js) .pixels{display:none}
       <img src="assets/76faebec2532.webp" alt="" id="handImg" draggable="false">
       <canvas id="fx"></canvas>
     </div>
-    <div class="hint" aria-hidden="true"><i></i> passe o mouse na cobra</div>
 
     <div class="h-copy">
       <h1 class="display">Marketing digital com foco em <mark>resultados reais.</mark></h1>
       <p>Transformamos cliques em clientes combinando estratégia, criatividade e dados.</p>
       <div class="row"><a class="btn ink" href="contato.html">Falar com a gente <span class="arr">→</span></a></div>
     </div>
-    <a class="case-card" href="#solucoes">
-      <span class="eyebrow">Nossos serviços</span>
-      <svg viewBox="0 0 190 46" aria-hidden="true"><path class="cc-path" pathLength="1" d="M4 4 H40 V40 H4 Z M52 4 H88 V40 H52 Z M100 4 H136 V40 H100 Z M148 4 H184 V40 H148 Z" fill="none" stroke="#0A0B08" stroke-width="2" stroke-linejoin="round"/></svg>
-      <p>12 soluções para a sua marca</p>
-      <small>Ver todos os serviços →</small>
-    </a>
   </div>
   <svg class="sig h-sign" viewBox="0 0 400 160" aria-hidden="true"><path pathLength="1" d="M80 46 C 62 26, 22 38, 20 78 C 18 118, 60 124, 84 102 C 92 94, 96 86, 104 80 C 94 80, 92 112, 112 112 C 132 112, 136 80, 116 76 C 106 74, 104 84, 114 88 C 124 92, 132 86, 140 78 C 152 64, 164 28, 158 14 C 152 2, 136 16, 140 52 L 143 110 C 150 92, 176 84, 178 98 C 180 112, 160 118, 146 110 C 160 106, 172 96, 186 88 C 192 84, 196 78, 198 74 C 202 84, 200 100, 199 112 C 203 90, 213 76, 228 80 C 234 82, 238 84, 246 82 C 236 74, 214 84, 216 100 C 218 116, 242 112, 250 90 L 249 104 C 249 114, 258 116, 270 106 C 296 86, 334 68, 378 58" fill="none" stroke="#CBE22E" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><path pathLength="1" d="M40 138 C 140 120, 270 126, 372 112" fill="none" stroke="#CBE22E" stroke-width="5.6" stroke-linecap="round"/></svg>
 </section>
@@ -972,7 +966,7 @@ html:not(.js) .pixels{display:none}
     const endInset = ctx.conditions.d ? 'inset(27% 33% 27% 33% round 22px)' : 'inset(32% 14% 32% 14% round 18px)';
     const tl = gsap.timeline({ scrollTrigger: { trigger: '#hero', start: 'top top', end: '+=110%', pin: true, scrub: 0.6 } });
     tl.fromTo('#hFrame', { clipPath: 'inset(0% 0% 0% 0% round 0px)' }, { clipPath: endInset, ease: 'none', duration: 1 }, 0)
-      .to('.h-stats, .h-copy, .h-right, .case-card, .hint', { opacity: 0, y: -20, duration: .35, ease: 'none' }, 0)
+      .to('.h-copy, .h-right', { opacity: 0, y: -20, duration: .35, ease: 'none' }, 0)
       .fromTo('#stage', { scale: 1, yPercent: 0 }, { scale: .5, yPercent: -24, ease: 'none', duration: 1 }, 0)
       .fromTo('#hFrame', { rotate: 0 }, { rotate: ctx.conditions.d ? -3 : -2, ease: 'none', duration: 1 }, 0)
       .fromTo('.h-mq .mq', { xPercent: 0 }, { xPercent: i => i ? 12 : -12, ease: 'none', duration: 1 }, 0)
