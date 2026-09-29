@@ -84,23 +84,24 @@ div.wc{cursor:default}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
 .chip{border:1px solid var(--line);background:transparent;border-radius:999px;padding:9px 15px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;color:var(--paper);transition:all .3s}
 .chip:hover{border-color:var(--lime)}.chip[aria-pressed="true"]{background:var(--lime);color:var(--ink);border-color:var(--lime)}
-.cases{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-.case{position:relative;display:block;border:0;padding:0;background:var(--char);border-radius:10px;overflow:hidden;cursor:pointer;text-align:left;color:var(--paper);aspect-ratio:4/5;isolation:isolate}
-.case:nth-child(3n+2){transform:translateY(40px)}
+.cases{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.case{position:relative;display:block;border:0;padding:0;background:var(--char);border-radius:10px;overflow:hidden;cursor:pointer;text-align:left;color:var(--paper);aspect-ratio:1/1;isolation:isolate}
+.case:nth-child(even){transform:translateY(20px)}
 .case .v{position:absolute;inset:0;background:var(--char) var(--contour) center/cover}
 .case .v img{width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease),filter .6s;filter:grayscale(.3)}
 .case:hover .v img{transform:scale(1.06);filter:none}
 .case::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 40%,rgba(10,11,8,.92));z-index:1}
 .case .b{position:absolute;left:18px;right:18px;bottom:16px;z-index:2;display:flex;flex-direction:column;gap:8px}
-.case .b h3{margin:0;font-size:clamp(22px,2.2vw,34px);font-weight:800;letter-spacing:-.03em;text-transform:uppercase;line-height:1}
+.case .b h3{margin:0;font-size:clamp(20px,1.6vw,26px);font-weight:800;letter-spacing:-.03em;text-transform:uppercase;line-height:1}
 .case .b small{font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--lime)}
 .case .tags{display:flex;flex-wrap:wrap;gap:6px}
 .case .tags span{font-size:9px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(238,240,227,.35);border-radius:999px;padding:4px 8px}
 .case.soon .v{opacity:.6}
 .case.soon .b h3{color:var(--mute)}
 .case.out{display:none}
-@media (max-width:900px){.cases{grid-template-columns:repeat(2,minmax(0,1fr))}.case:nth-child(3n+2){transform:none}}
-@media (max-width:560px){.cases{grid-template-columns:1fr}}
+@media (max-width:1100px){.cases{grid-template-columns:repeat(3,minmax(0,1fr))}.case:nth-child(even){transform:none}.case:nth-child(3n+2){transform:translateY(28px)}}
+@media (max-width:800px){.cases{grid-template-columns:repeat(2,minmax(0,1fr))}.case:nth-child(3n+2){transform:none}}
+@media (max-width:480px){.cases{grid-template-columns:1fr}}
 
 /* SERVICE PAGE */
 .s-hero{position:relative;min-height:min(100svh,960px);padding:clamp(130px,16vh,170px) var(--gut) clamp(40px,5vw,70px);display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,.8fr);gap:clamp(24px,4vw,60px);align-items:end;overflow:hidden}
