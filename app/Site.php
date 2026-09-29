@@ -62,14 +62,18 @@ final class Site
         return $data;
     }
 
-    public function renderPage(string $slug, ?array $content = null): string
+    public function renderPage(string $slug, ?array $content = null, ?\stdClass $item = null): string
     {
         $page = $this->page($slug);
         $content ??= $this->content();
+        if ($item !== null) {
+            $page = $this->pageForItem($page, $item, $content);
+        }
         $ctx = [
             'site' => $content['site'] ?? new \stdClass(),
             'content' => $content,
             'page' => $page,
+            'item' => $item,
         ];
         $html = '';
         foreach ($page->parts as $part) {
@@ -85,6 +89,39 @@ final class Site
     }
 
     /**
+     * Itens de uma página-modelo: page.json com "colecao" gera uma página por item
+     * de content/<colecao>.json que tenha "url" (ex.: "solucoes-em-marketing-digital/branding/").
+     * @return list<\stdClass>
+     */
+    public function items(\stdClass $page, array $content): array
+    {
+        if (empty($page->colecao)) {
+            return [];
+        }
+        $list = $content[self::assertName($page->colecao)] ?? [];
+        return array_values(array_filter(is_array($list) ? $list : [], fn($i) => $i instanceof \stdClass && !empty($i->url)));
+    }
+
+    /** Título, descrição e endereço da página de um item da coleção. */
+    private function pageForItem(\stdClass $page, \stdClass $item, array $content): \stdClass
+    {
+        $p = clone $page;
+        $seo = $item->seo ?? new \stdClass();
+        $p->title = $seo->titulo ?? (($item->nome ?? '') . ' | ' . $page->title);
+        $p->description = $seo->descricao ?? ($item->desc ?? $page->description ?? '');
+        $p->output = self::outputFor($item->url);
+        $p->url = self::assertPath($item->url);
+        return $p;
+    }
+
+    /** "pasta/sub/" vira "pasta/sub/index.html". */
+    public static function outputFor(string $url): string
+    {
+        $url = self::assertPath($url);
+        return str_ends_with($url, '/') ? $url . 'index.html' : $url;
+    }
+
+    /**
      * Gera todas as páginas em $outDir.
      * @return array<string, int> arquivo => bytes
      */
@@ -94,15 +131,32 @@ final class Site
         $written = [];
         foreach ($this->pageSlugs() as $slug) {
             $page = $this->page($slug);
-            $file = $outDir . '/' . self::assertName($page->output);
-            $html = $this->renderPage($slug, $content);
-            $tmp = $file . '.tmp';
-            if (file_put_contents($tmp, $html) === false || !rename($tmp, $file)) {
-                throw new \RuntimeException("Falha ao gravar $file");
+            $items = $this->items($page, $content);
+            if ($items) {
+                foreach ($items as $item) {
+                    $out = self::outputFor($item->url);
+                    $written[$out] = $this->write($outDir, $out, $this->renderPage($slug, $content, $item));
+                }
+                continue;
             }
-            $written[$page->output] = strlen($html);
+            $out = self::assertPath($page->output);
+            $written[$out] = $this->write($outDir, $out, $this->renderPage($slug, $content));
         }
         return $written;
+    }
+
+    private function write(string $outDir, string $rel, string $html): int
+    {
+        $file = $outDir . '/' . $rel;
+        $dir = dirname($file);
+        if (!is_dir($dir) && !mkdir($dir, 0775, true)) {
+            throw new \RuntimeException("Falha ao criar $dir");
+        }
+        $tmp = $file . '.tmp';
+        if (file_put_contents($tmp, $html) === false || !rename($tmp, $file)) {
+            throw new \RuntimeException("Falha ao gravar $file");
+        }
+        return strlen($html);
     }
 
     private function partialSource(string $name): string
@@ -117,6 +171,19 @@ final class Site
             throw new \RuntimeException("Arquivo não encontrado: $file");
         }
         return $s;
+    }
+
+    /** Caminho relativo de saída: segmentos simples separados por "/" (sem .., sem barra inicial). */
+    public static function assertPath(string $path): string
+    {
+        $trim = rtrim($path, '/');
+        if ($trim === '' || str_starts_with($path, '/')) {
+            throw new \InvalidArgumentException("Caminho inválido: $path");
+        }
+        foreach (explode('/', $trim) as $seg) {
+            self::assertName($seg);
+        }
+        return $path;
     }
 
     /** Aceita só nomes simples de arquivo (sem barras nem ..). */

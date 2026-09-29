@@ -65,19 +65,40 @@ try {
     $nomeInvalido = true;
 }
 check('bloqueia caminho com ..', $nomeInvalido, true);
+check('saída de URL com barra final', Site::outputFor('solucoes-em-marketing-digital/branding/'), 'solucoes-em-marketing-digital/branding/index.html');
+$caminhoInvalido = 0;
+foreach (['/raiz/', 'a/../b/', 'a//b/', ''] as $c) {
+    try {
+        Site::assertPath($c);
+    } catch (InvalidArgumentException) {
+        $caminhoInvalido++;
+    }
+}
+check('bloqueia caminhos de saída inválidos', $caminhoInvalido, 4);
 
 // O site inteiro precisa gerar sem erros.
 $site = new Site(dirname(__DIR__));
 $tmp = sys_get_temp_dir() . '/cobra-build-' . getmypid();
 @mkdir($tmp);
 $written = $site->build($tmp);
-check('gera todas as páginas', count($written), count($site->pageSlugs()));
+$content = $site->content();
+$esperadas = 0;
+foreach ($site->pageSlugs() as $slug) {
+    $esperadas += max(1, count($site->items($site->page($slug), $content)));
+}
+check('gera todas as páginas', count($written), $esperadas);
 foreach ($written as $file => $bytes) {
     $html = file_get_contents("$tmp/$file");
     check("$file sem marcações de template sobrando", preg_match('/\{\{|\}\}\}/', $html) === 0, true);
-    unlink("$tmp/$file");
 }
-rmdir($tmp);
+$rm = function (string $d) use (&$rm): void {
+    foreach (scandir($d) ?: [] as $f) {
+        if ($f === '.' || $f === '..') continue;
+        is_dir("$d/$f") ? $rm("$d/$f") : unlink("$d/$f");
+    }
+    rmdir($d);
+};
+$rm($tmp);
 
 echo $failures ? "\n$failures falha(s)\n" : "\nTudo certo.\n";
 exit($failures ? 1 : 0);
