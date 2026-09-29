@@ -1,6 +1,7 @@
 [
   {
     "slug": "branding",
+    "url": "solucoes-em-marketing-digital/branding/",
     "nome": "Branding",
     "script": "Identidade",
     "big": "Branding",
@@ -16,7 +17,7 @@
       "Aplicações em papelaria, redes e ponto de venda"
     ],
     "curto": "Branding",
-    "href": "solucao.html#solucao-branding",
+    "href": "/solucoes-em-marketing-digital/branding/",
     "clientes": [
       {
         "nome": "Catarininho",
@@ -25,10 +26,14 @@
     ],
     "link": false,
     "tall": false,
-    "yt": "assets/c65205a981d5.webp"
+    "yt": "assets/c65205a981d5.webp",
+    "seo": {},
+    "conteudo": [],
+    "faq": []
   },
   {
     "slug": "sites-institucionais",
+    "url": "solucoes-em-marketing-digital/criacao-de-sites-profissionais/",
     "nome": "Sites Institucionais",
     "script": "Presença",
     "big": "Sites",
@@ -44,7 +49,7 @@
       "Painel para editar textos e imagens"
     ],
     "curto": "Sites",
-    "href": "solucao.html#solucao-sites-institucionais",
+    "href": "/solucoes-em-marketing-digital/criacao-de-sites-profissionais/",
     "clientes": [
       {
         "nome": "Frigorífico Gessner",
@@ -53,10 +58,14 @@
     ],
     "link": false,
     "tall": false,
-    "yt": "assets/e8c86fb18710.jpg"
+    "yt": "assets/e8c86fb18710.jpg",
+    "seo": {},
+    "conteudo": [],
+    "faq": []
   },
   {
     "slug": "e-commerce",
+    "url": "lojas-virtuais/",
     "nome": "E-Commerce",
     "script": "Vendas",
     "big": "E-commerce",
@@ -72,14 +81,18 @@
       "Ajustes de conversão e checkout"
     ],
     "curto": "E-commerce",
-    "href": "solucao.html#solucao-e-commerce",
+    "href": "/lojas-virtuais/",
     "clientes": [],
     "link": false,
     "tall": false,
-    "yt": "assets/4f057ed32218.jpg"
+    "yt": "assets/4f057ed32218.jpg",
+    "seo": {},
+    "conteudo": [],
+    "faq": []
   },
   {
     "slug": "midias-sociais",
+    "url": "solucoes-em-marketing-digital/midias-sociais/",
     "nome": "Mídias Sociais",
     "script": "Conteúdo",
     "big": "Social",
@@ -95,7 +108,7 @@
       "Relatórios mensais"
     ],
     "curto": "Redes sociais",
-    "href": "solucao.html#solucao-midias-sociais",
+    "href": "/solucoes-em-marketing-digital/midias-sociais/",
     "clientes": [
       {
         "nome": "Frigorífico Gessner",
@@ -108,10 +121,14 @@
     ],
     "link": false,
     "tall": false,
-    "yt": "assets/7cac61bf0baf.webp"
+    "yt": "assets/7cac61bf0baf.webp",
+    "seo": {},
+    "conteudo": [],
+    "faq": []
   },
   {
     "slug": "embalagens-e-tags",
+    "url": "solucoes-em-marketing-digital/design-de-embalagens/",
     "nome": "Embalagens e Tags de Produto",
     "script": "Na gôndola",
     "big": "Embalagens",
@@ -127,14 +144,18 @@
       "Acompanhamento de prova de cor"
     ],
     "curto": "Embalagens",
-    "href": "solucao.html#solucao-embalagens-e-tags",
+    "href": "/solucoes-em-marketing-digital/design-de-embalagens/",
     "clientes": [],
     "link": false,
     "tall": true,
-    "yt": "assets/87c9ce7128b3.webp"
+    "yt": "assets/87c9ce7128b3.webp",
+    "seo": {},
+    "conteudo": [],
+    "faq": []
   },
   {
     "slug": "trafego-pago",
+    "url": "solucoes-em-marketing-digital/trafego-pago/",
     "nome": "Tráfego Pago",
     "script": "Resultados",
     "big": "Tráfego",
@@ -150,7 +171,7 @@
       "Otimização contínua e relatórios"
     ],
     "curto": "Tráfego pago",
-    "href": "solucao.html#solucao-trafego-pago",
+    "href": "/solucoes-em-marketing-digital/trafego-pago/",
     "clientes": [
       {
         "nome": "Frigorífico Gessner",
@@ -159,10 +180,14 @@
     ],
     "link": false,
     "tall": false,
-    "yt": "assets/a761a95cc979.jpg"
+    "yt": "assets/a761a95cc979.jpg",
+    "seo": {},
+    "conteudo": [],
+    "faq": []
   },
   {
     "slug": "consultoria",
+    "url": "solucoes-em-marketing-digital/consultoria-de-marketing-digital/",
     "nome": "Consultoria",
     "script": "Direção",
     "big": "Consultoria",
@@ -178,15 +203,19 @@
       "Treinamento da equipe interna"
     ],
     "curto": "Consultoria",
-    "href": "solucao.html#solucao-consultoria",
+    "href": "/solucoes-em-marketing-digital/consultoria-de-marketing-digital/",
     "clientes": [],
     "link": false,
     "tall": false,
     "yt": "assets/d39e458249f1.webp",
-    "zoom": true
+    "zoom": true,
+    "seo": {},
+    "conteudo": [],
+    "faq": []
   },
   {
     "slug": "design-de-estampas",
+    "url": "solucoes-em-marketing-digital/design-de-estampas/",
     "nome": "Design de Estampas",
     "script": "Coleções",
     "big": "Estampas",
@@ -202,48 +231,80 @@
       "Arquivos prontos para produção"
     ],
     "curto": "Estampas",
-    "href": "solucao.html#solucao-design-de-estampas",
+    "href": "/solucoes-em-marketing-digital/design-de-estampas/",
     "clientes": [],
     "link": false,
     "tall": false,
-    "yt": "assets/bd53f12073a2.jpg"
+    "yt": "assets/bd53f12073a2.jpg",
+    "seo": {},
+    "conteudo": [],
+    "faq": []
   },
   {
     "slug": "fotografia",
+    "url": "solucoes-em-marketing-digital/fotografia-profissional/",
     "nome": "Fotografia",
     "grupo": "audiovisual",
     "tag": "Audiovisual",
     "img": "assets/8b5fe5d2962a.webp",
-    "href": "audiovisual.html",
+    "href": "/solucoes-em-marketing-digital/fotografia-profissional/",
     "desc": "Produzimos fotos profissionais para produtos, ambientes, equipes e campanhas, valorizando a percepção da marca e criando materiais visuais mais fortes para canais digitais e impressos.",
     "curto": "Fotografia",
     "clientes": [],
-    "link": true,
+    "link": false,
     "tall": true,
     "yt": "assets/8b5fe5d2962a.webp",
-    "script": "",
+    "script": "Imagem",
     "big": "Fotografia",
-    "entregas": []
+    "entregas": [
+      "Fotos de produtos",
+      "Fotos de ambientes e empresa",
+      "Retratos da equipe",
+      "Fotos para campanhas",
+      "Tratamento e entrega em alta resolução"
+    ],
+    "seo": {},
+    "conteudo": [],
+    "faq": [],
+    "link_extra": {
+      "rotulo": "Ver o Audiovisual",
+      "href": "audiovisual.html"
+    }
   },
   {
     "slug": "producao-de-video",
+    "url": "solucoes-em-marketing-digital/producao-de-video/",
     "nome": "Produção de Vídeo",
     "grupo": "audiovisual",
     "tag": "Audiovisual",
     "img": "assets/576924ed87dd.webp",
-    "href": "audiovisual.html#sala",
+    "href": "/solucoes-em-marketing-digital/producao-de-video/",
     "desc": "Criamos vídeos para apresentar empresas, produtos e serviços, com planejamento da mensagem, dos formatos e dos canais em que o conteúdo será usado.",
     "curto": "Vídeo",
     "clientes": [],
-    "link": true,
+    "link": false,
     "tall": true,
     "yt": "assets/576924ed87dd.webp",
-    "script": "",
-    "big": "Produção de Vídeo",
-    "entregas": []
+    "script": "Movimento",
+    "big": "Vídeo",
+    "entregas": [
+      "Roteiro e planejamento",
+      "Vídeos institucionais",
+      "Vídeos de produto",
+      "Cobertura de eventos",
+      "Edição e versões para redes"
+    ],
+    "seo": {},
+    "conteudo": [],
+    "faq": [],
+    "link_extra": {
+      "rotulo": "Ver o Audiovisual",
+      "href": "audiovisual.html"
+    }
   },
   {
     "slug": "seo",
+    "url": "solucoes-em-marketing-digital/seo-otimizacao-de-sites/",
     "nome": "SEO e Otimização",
     "script": "No Google",
     "big": "SEO",
@@ -259,14 +320,18 @@
       "Google Meu Negócio e acompanhamento"
     ],
     "curto": "SEO",
-    "href": "solucao.html#solucao-seo",
+    "href": "/solucoes-em-marketing-digital/seo-otimizacao-de-sites/",
     "clientes": [],
     "link": false,
     "tall": false,
-    "yt": "assets/84a210205cc9.jpg"
+    "yt": "assets/84a210205cc9.jpg",
+    "seo": {},
+    "conteudo": [],
+    "faq": []
   },
   {
     "slug": "manutencao-de-sites",
+    "url": "solucoes-em-marketing-digital/manutencao-de-sites/",
     "nome": "Manutenção de Sites",
     "script": "Cuidado",
     "big": "Manutenção",
@@ -282,10 +347,13 @@
       "Suporte mensal sob demanda"
     ],
     "curto": "Manutenção",
-    "href": "solucao.html#solucao-manutencao-de-sites",
+    "href": "/solucoes-em-marketing-digital/manutencao-de-sites/",
     "clientes": [],
     "link": false,
     "tall": false,
-    "yt": "assets/76faebec2532.webp"
+    "yt": "assets/76faebec2532.webp",
+    "seo": {},
+    "conteudo": [],
+    "faq": []
   }
 ]

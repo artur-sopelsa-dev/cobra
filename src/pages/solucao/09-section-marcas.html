@@ -1,5 +1,12 @@
-<section class="sec t-paper brands wrap" id="marcas" data-tone="paper" data-bg="paper" hidden>
-  <div class="b-head"><h2 class="display">Marcas que confiaram <span class="it">nesta solução</span></h2><p>Clientes que contrataram a Cobra para esta frente. Clique em uma marca para ver o portfólio completo.</p></div>
-  <div class="logos" id="logos"></div>
+{{#if item.faq}}
+<section class="sec t-paper so-faq" id="perguntas" data-bg="paper" data-tone="paper">
+  <h2 class="display">Perguntas <span class="it">frequentes</span></h2>
+  <div class="so-qs">{{#each item.faq as q}}<details class="so-q"><summary>{{ q.pergunta }}<i aria-hidden="true">+</i></summary><div>{{#each q.resposta as t}}<p>{{ t }}</p>{{/each}}</div></details>{{/each}}</div>
 </section>
-
+{{/if}}
+{{#if item.clientes}}
+<section class="sec t-paper brands wrap" id="marcas" data-tone="paper" data-bg="paper">
+  <div class="b-head"><h2 class="display">Marcas que confiaram <span class="it">nesta solução</span></h2><p>Clientes que contrataram a Cobra para esta frente. Clique em uma marca para ver o portfólio completo.</p></div>
+  <div class="logos">{{#each item.clientes as c}}<a class="lg{{#if not c.logo}} txt{{/if}}{{#if c.branca}} w{{/if}}" href="audiovisual.html#{{ c.key }}" aria-label="Ver portfólio de {{ c.nome }}">{{#if c.logo}}<img src="{{ c.logo }}" alt="{{ c.nome }}">{{else}}<b>{{ c.nome }}</b>{{/if}}<i class="cnt">Cliente</i><span>Ver portfólio →</span></a>{{/each}}</div>
+</section>
+{{/if}}

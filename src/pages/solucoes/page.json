@@ -1,9 +1,9 @@
 {
-  "slug": "solucao",
-  "output": "solucao.html",
-  "colecao": "solucoes",
-  "title": "Soluções | Agência Cobra",
-  "description": "Agência Cobra · marketing digital, conteúdo, tecnologia e audiovisual em Timbó, SC.",
+  "slug": "solucoes",
+  "output": "solucoes-em-marketing-digital/index.html",
+  "url": "solucoes-em-marketing-digital/",
+  "title": "Soluções em Marketing Digital | Agência Cobra",
+  "description": "Soluções em marketing digital da Agência Cobra, em Timbó (SC): branding, sites, lojas virtuais, redes sociais, tráfego pago, SEO, fotografia, vídeo e mais.",
   "menu_ativo": "solucoes",
   "parts": [
     {
@@ -37,29 +37,19 @@
       "file": "05-structure-abertura-do-conteudo.html"
     },
     {
-      "label": "Abertura da solução",
+      "label": "Abertura",
       "kind": "section",
-      "file": "06-section-so-hero.html"
+      "file": "06-section-sl-hero.html"
     },
     {
-      "label": "O que entregamos",
+      "label": "Lista de soluções",
       "kind": "section",
-      "file": "07-section-entregas.html"
+      "file": "07-section-sl-grid.html"
     },
     {
       "label": "Como a gente trabalha",
       "kind": "section",
       "file": "08-section-so-proc.html"
-    },
-    {
-      "label": "Perguntas frequentes e marcas que confiaram",
-      "kind": "section",
-      "file": "09-section-marcas.html"
-    },
-    {
-      "label": "Outras soluções",
-      "kind": "section",
-      "file": "10-section-so-more.html"
     },
     {
       "label": "Fechamento do conteúdo",

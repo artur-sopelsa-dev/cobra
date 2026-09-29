@@ -42,6 +42,7 @@ check('filtro js objeto vazio', $t->render('{{{ obj.vazio | js }}}', $ctx), '{}'
 check('each com @index', $t->render('{{#each lista as i}}{{ @index }}{{ i }}{{#if not @last}},{{/if}}{{/each}}', $ctx), '0a,1b,2c');
 check('if/else', $t->render('{{#if nada}}s{{else}}n{{/if}}{{#if lista}}S{{/if}}', $ctx), 'nS');
 check('comparação', $t->render('{{#each lista as i}}{{#if i == "b"}}[{{ i }}]{{/if}}{{/each}}', $ctx), '[b]');
+check('filtro mais e join', $t->render('{{ n | mais }} {{ l | join }}', ['n' => 0, 'l' => ['a', 'b']]), '1 a b');
 check('filtro count', $t->render('{{ lista | count }}', $ctx), '3');
 check('filtro em condição', $t->render('{{#each lista as i}}{{#if @index | mod 2 == 0}}{{ i }}{{/if}}{{/each}}', $ctx), 'ac');
 check('partial', $t->render('{{> saudacao }}', $ctx), 'Olá, Cobra &amp; Cia &lt;b&gt;!');
@@ -91,6 +92,12 @@ foreach ($written as $file => $bytes) {
     $html = file_get_contents("$tmp/$file");
     check("$file sem marcações de template sobrando", preg_match('/\{\{|\}\}\}/', $html) === 0, true);
 }
+$urls = array_map(fn($i) => $i->url, $site->items($site->page('solucao'), $content));
+$urls[] = $site->page('solucoes')->url;
+foreach (['solucoes-em-marketing-digital/', 'solucoes-em-marketing-digital/branding/', 'lojas-virtuais/', 'solucoes-em-marketing-digital/manutencao-de-sites/'] as $u) {
+    check("gera a URL /$u", is_file("$tmp/" . Site::outputFor($u)), true);
+}
+check('13 URLs antigas de soluções', count(array_unique($urls)), 13);
 $rm = function (string $d) use (&$rm): void {
     foreach (scandir($d) ?: [] as $f) {
         if ($f === '.' || $f === '..') continue;

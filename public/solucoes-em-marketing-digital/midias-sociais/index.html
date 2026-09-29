@@ -4,8 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <style>[hidden]{display:none!important}</style>
-<title>Soluções | Agência Cobra</title>
-<meta name="description" content="Agência Cobra · marketing digital, conteúdo, tecnologia e audiovisual em Timbó, SC.">
+<base href="/">
+<title>Mídias Sociais | Soluções | Agência Cobra</title>
+<meta name="description" content="Planejamos e produzimos conteúdos para redes sociais com foco em posicionamento, consistência visual, relacionamento com o público e fortalecimento da marca.">
+<link rel="canonical" href="https://cobra.art.br/solucoes-em-marketing-digital/midias-sociais/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Agência Cobra">
+<meta property="og:title" content="Mídias Sociais | Soluções | Agência Cobra">
+<meta property="og:description" content="Planejamos e produzimos conteúdos para redes sociais com foco em posicionamento, consistência visual, relacionamento com o público e fortalecimento da marca.">
+<meta property="og:url" content="https://cobra.art.br/solucoes-em-marketing-digital/midias-sociais/">
+<meta property="og:image" content="https://cobra.art.br/assets/7cac61bf0baf.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500&family=Sedgwick+Ave+Display&display=swap">
@@ -120,6 +129,23 @@ html:not(.js) .rv,.reduce .rv{opacity:1;transform:none}
 .so-row{display:flex;gap:10px;flex-wrap:wrap}
 @media (max-width:900px){.so-hero{grid-template-columns:1fr;grid-template-rows:auto;align-items:start}.so-vis{justify-self:start;max-width:320px}}
 /* entregas */
+.sr{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.so-txt{padding:clamp(40px,6vw,90px) var(--gut) clamp(80px,10vw,140px);display:grid;gap:clamp(50px,7vw,100px)}
+.so-blk{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,5vw,90px);align-items:start;border-top:1px solid rgba(10,11,8,.15);padding-top:clamp(26px,3vw,44px)}
+.so-blk h2{margin:0;font-size:clamp(30px,3.6vw,58px);line-height:.95}
+.so-body{font-size:clamp(16px,1.2vw,19px);line-height:1.65;max-width:62ch}
+.so-body p{margin:0 0 1em}.so-body ul{margin:0;padding-left:1.1em}.so-body li{margin:.35em 0}
+@media (max-width:860px){.so-blk{grid-template-columns:1fr}}
+.so-faq{padding:clamp(90px,11vw,160px) var(--gut)}
+.so-faq h2{font-size:clamp(40px,5.6vw,92px);margin:0 0 40px}.so-faq h2 .it{color:var(--lime-deep)}
+.so-qs{border-top:1px solid rgba(10,11,8,.15)}
+.so-q{border-bottom:1px solid rgba(10,11,8,.15)}
+.so-q summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:clamp(18px,2vw,28px) 0;font-size:clamp(19px,1.8vw,28px);font-weight:800;letter-spacing:-.02em;line-height:1.15}
+.so-q summary::-webkit-details-marker{display:none}
+.so-q summary i{font-style:normal;flex:0 0 auto;width:40px;height:40px;border-radius:50%;border:1.5px solid currentColor;display:grid;place-items:center;font-size:20px;transition:transform .4s var(--ease),background .3s}
+.so-q[open] summary i{transform:rotate(45deg);background:var(--ink);color:var(--lime)}
+.so-q div{padding:0 0 clamp(20px,2vw,30px);max-width:70ch;font-size:16px;line-height:1.65}
+.so-q div p{margin:0 0 .8em}
 .so-del{padding:clamp(90px,11vw,160px) var(--gut)}
 .so-del .head{display:grid;grid-template-columns:1fr 1fr;gap:var(--gut);align-items:end;margin-bottom:40px}
 .so-del h2{font-size:clamp(40px,5.6vw,92px)}.so-del h2 .it{color:var(--lime)}
@@ -213,27 +239,27 @@ html:not(.js) .rv,.reduce .rv{opacity:1;transform:none}
 <canvas id="topo" aria-hidden="true"></canvas>
 <header class="hdr" id="hdr" data-tone="ink">
   <a class="logo" href="index.html" aria-label="Agência Cobra, página inicial"><svg class="sig " viewBox="0 0 400 160" role="img" aria-label="Cobra"><path pathLength="1" d="M80 46 C 62 26, 22 38, 20 78 C 18 118, 60 124, 84 102 C 92 94, 96 86, 104 80 C 94 80, 92 112, 112 112 C 132 112, 136 80, 116 76 C 106 74, 104 84, 114 88 C 124 92, 132 86, 140 78 C 152 64, 164 28, 158 14 C 152 2, 136 16, 140 52 L 143 110 C 150 92, 176 84, 178 98 C 180 112, 160 118, 146 110 C 160 106, 172 96, 186 88 C 192 84, 196 78, 198 74 C 202 84, 200 100, 199 112 C 203 90, 213 76, 228 80 C 234 82, 238 84, 246 82 C 236 74, 214 84, 216 100 C 218 116, 242 112, 250 90 L 249 104 C 249 114, 258 116, 270 106 C 296 86, 334 68, 378 58" fill="none" stroke="currentColor" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/><path pathLength="1" d="M40 138 C 140 120, 270 126, 372 112" fill="none" stroke="currentColor" stroke-width="8.8" stroke-linecap="round"/></svg></a>
-  <nav aria-label="Menu principal"><a href="index.html">Home</a><a href="sobre.html">Sobre</a><a href="index.html#solucoes" class="on" aria-current="page">Soluções</a><a href="portfolio.html">Portfólio</a><a href="audiovisual.html">Audiovisual</a><a href="blog.html">Blog</a><a href="contato.html">Contato</a></nav>
+  <nav aria-label="Menu principal"><a href="index.html">Home</a><a href="sobre.html">Sobre</a><a href="/solucoes-em-marketing-digital/" class="on" aria-current="page">Soluções</a><a href="portfolio.html">Portfólio</a><a href="audiovisual.html">Audiovisual</a><a href="blog.html">Blog</a><a href="contato.html">Contato</a></nav>
   <div style="display:flex;gap:10px;align-items:center"><a class="btn" href="https://wa.me/5547999150241?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Cobra%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto." target="_blank" rel="noopener"><span class="lbl">Falar com a Cobra</span><span class="arr" aria-hidden="true">↗</span></a><button class="burger" id="burger" type="button" aria-label="Abrir menu" aria-expanded="false"><i></i></button></div>
 </header>
-<nav class="mnav" aria-label="Menu"><a href="index.html">Home</a><a href="sobre.html">Sobre</a><a href="index.html#solucoes" class="on" aria-current="page">Soluções</a><a href="portfolio.html">Portfólio</a><a href="audiovisual.html">Audiovisual</a><a href="blog.html">Blog</a><a href="contato.html">Contato</a></nav>
+<nav class="mnav" aria-label="Menu"><a href="index.html">Home</a><a href="sobre.html">Sobre</a><a href="/solucoes-em-marketing-digital/" class="on" aria-current="page">Soluções</a><a href="portfolio.html">Portfólio</a><a href="audiovisual.html">Audiovisual</a><a href="blog.html">Blog</a><a href="contato.html">Contato</a></nav>
 
 <main id="top">
 <section class="sec t-paper so-hero" data-bg="paper" data-tone="paper">
-  <p class="eyebrow so-crumb"><a href="index.html#solucoes">Soluções</a><span aria-hidden="true">/</span><b id="soTag" style="color:var(--ink)">—</b></p>
+  <nav class="eyebrow so-crumb" aria-label="Você está em"><a href="index.html">Início</a><span aria-hidden="true">/</span><a href="solucoes-em-marketing-digital/">Soluções</a><span aria-hidden="true">/</span><b style="color:var(--ink)" aria-current="page">Mídias Sociais</b></nav>
   <div class="so-main">
-    <h1 class="so-title" id="soTitle"><span class="so-script" id="soScript" aria-hidden="true"></span><span class="so-big" id="soBig" aria-hidden="true"></span></h1>
-    <p class="so-lead" id="soLead"></p>
+    <h1 class="sr">Mídias Sociais</h1>
+    <div class="so-title" aria-hidden="true"><span class="so-script" id="soScript">Conteúdo</span><span class="so-big" id="soBig">Social</span></div>
+    <p class="so-lead">Planejamos e produzimos conteúdos para redes sociais com foco em posicionamento, consistência visual, relacionamento com o público e fortalecimento da marca.</p>
     <div class="so-row"><a class="btn" href="https://wa.me/5547999150241?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Cobra%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto." target="_blank" rel="noopener">Quero essa solução <span class="arr">↗</span></a><a class="btn ghost" href="#entregas">Ver entregas <span class="arr">↓</span></a></div>
   </div>
-  <div class="so-vis" aria-hidden="true"><div class="so-frame"><div class="in"><img id="soImg" alt=""><span class="ty" id="soTy"></span><span class="lab" id="soLab"></span></div></div></div>
+  <div class="so-vis" aria-hidden="true"><div class="so-frame"><div class="in"><img src="assets/7cac61bf0baf.webp" alt=""><span class="ty">Conteúdo</span><span class="lab">Mídias Sociais</span></div></div></div>
 </section>
 
 <section class="sec t-ink so-del" id="entregas" data-bg="ink" data-tone="ink">
   <div class="head"><h2 class="display">O que <span class="it">entregamos</span></h2><p>Cada projeto é montado conforme o momento da empresa. Estes são os entregáveis mais comuns desta solução.</p></div>
-  <ul class="so-list" id="soList"></ul>
+  <ul class="so-list"><li>Planejamento e calendário editorial<i aria-hidden="true">→</i></li><li>Criação de posts, carrosséis e stories<i aria-hidden="true">→</i></li><li>Roteiro e edição de reels<i aria-hidden="true">→</i></li><li>Linha visual para o perfil<i aria-hidden="true">→</i></li><li>Relatórios mensais<i aria-hidden="true">→</i></li></ul>
 </section>
-
 <section class="sec t-char so-proc" data-bg="char" data-tone="ink">
   <h2 class="display">Como a gente <span class="it">trabalha</span></h2>
   <div class="so-steps">
@@ -244,14 +270,16 @@ html:not(.js) .rv,.reduce .rv{opacity:1;transform:none}
   </div>
 </section>
 
-<section class="sec t-paper brands wrap" id="marcas" data-tone="paper" data-bg="paper" hidden>
+
+
+<section class="sec t-paper brands wrap" id="marcas" data-tone="paper" data-bg="paper">
   <div class="b-head"><h2 class="display">Marcas que confiaram <span class="it">nesta solução</span></h2><p>Clientes que contrataram a Cobra para esta frente. Clique em uma marca para ver o portfólio completo.</p></div>
-  <div class="logos" id="logos"></div>
+  <div class="logos"><a class="lg txt" href="audiovisual.html#cliente-frigorifico-gessner" aria-label="Ver portfólio de Frigorífico Gessner"><b>Frigorífico Gessner</b><i class="cnt">Cliente</i><span>Ver portfólio →</span></a><a class="lg txt" href="audiovisual.html#cliente-catarininho" aria-label="Ver portfólio de Catarininho"><b>Catarininho</b><i class="cnt">Cliente</i><span>Ver portfólio →</span></a></div>
 </section>
 
 <section class="sec t-ink so-more" data-bg="ink" data-tone="ink">
-  <div class="head"><h2 class="display">Outras <span class="it">soluções</span></h2><a class="btn ghost" href="index.html#solucoes">Ver todas <span class="arr">→</span></a></div>
-  <div class="so-rail" id="soRail"></div>
+  <div class="head"><h2 class="display">Outras <span class="it">soluções</span></h2><a class="btn ghost" href="solucoes-em-marketing-digital/">Ver todas <span class="arr">→</span></a></div>
+  <div class="so-rail"><a class="so-card" href="solucoes-em-marketing-digital/branding/"><div class="in"><img src="assets/c65205a981d5.webp" alt="" loading="lazy"><span class="ty">Marca</span><span class="lab">Branding</span></div></a><a class="so-card" href="solucoes-em-marketing-digital/criacao-de-sites-profissionais/"><div class="in"><img src="assets/e8c86fb18710.jpg" alt="" loading="lazy"><span class="ty">Tecnologia</span><span class="lab">Sites Institucionais</span></div></a><a class="so-card" href="lojas-virtuais/"><div class="in"><img src="assets/4f057ed32218.jpg" alt="" loading="lazy"><span class="ty">Tecnologia</span><span class="lab">E-Commerce</span></div></a><a class="so-card" href="solucoes-em-marketing-digital/design-de-embalagens/"><div class="in"><img class="tall" src="assets/87c9ce7128b3.webp" alt="" loading="lazy"><span class="ty">Marca</span><span class="lab">Embalagens e Tags de Produto</span></div></a><a class="so-card" href="solucoes-em-marketing-digital/trafego-pago/"><div class="in"><img src="assets/a761a95cc979.jpg" alt="" loading="lazy"><span class="ty">Performance</span><span class="lab">Tráfego Pago</span></div></a><a class="so-card" href="solucoes-em-marketing-digital/consultoria-de-marketing-digital/"><div class="in"><img class="zoom" src="assets/d39e458249f1.webp" alt="" loading="lazy"><span class="ty">Estratégia</span><span class="lab">Consultoria</span></div></a><a class="so-card" href="solucoes-em-marketing-digital/design-de-estampas/"><div class="in"><img src="assets/bd53f12073a2.jpg" alt="" loading="lazy"><span class="ty">Marca</span><span class="lab">Design de Estampas</span></div></a><a class="so-card" href="solucoes-em-marketing-digital/fotografia-profissional/"><div class="in"><img class="tall" src="assets/8b5fe5d2962a.webp" alt="" loading="lazy"><span class="ty">Audiovisual</span><span class="lab">Fotografia</span></div></a><a class="so-card" href="solucoes-em-marketing-digital/producao-de-video/"><div class="in"><img class="tall" src="assets/576924ed87dd.webp" alt="" loading="lazy"><span class="ty">Audiovisual</span><span class="lab">Produção de Vídeo</span></div></a><a class="so-card" href="solucoes-em-marketing-digital/seo-otimizacao-de-sites/"><div class="in"><img src="assets/84a210205cc9.jpg" alt="" loading="lazy"><span class="ty">Tecnologia</span><span class="lab">SEO e Otimização</span></div></a><a class="so-card" href="solucoes-em-marketing-digital/manutencao-de-sites/"><div class="in"><img src="assets/76faebec2532.webp" alt="" loading="lazy"><span class="ty">Tecnologia</span><span class="lab">Manutenção de Sites</span></div></a></div>
 </section>
 </main>
 <footer class="hf sec" data-tone="lime" data-bg="lime">
@@ -262,7 +290,7 @@ html:not(.js) .rv,.reduce .rv{opacity:1;transform:none}
     <div class="hf-mid">
       <nav class="hf-col" aria-label="Páginas"><div class="hf-eye">Páginas</div><a href="index.html">Home</a><a href="sobre.html">Sobre nós</a><a href="index.html#solucoes">Soluções</a><a href="portfolio.html">Portfólio</a><a href="blog.html">Blog</a><a href="contato.html" class="lime">Fale conosco</a></nav>
       <div class="hf-hand" aria-hidden="true"><img src="assets/76faebec2532.webp" alt=""></div>
-      <nav class="hf-col hf-sols" aria-label="Soluções"><div class="hf-eye">Soluções</div><div class="hf-sgrid"><a href="solucao.html#solucao-branding" data-sol="branding" title="Branding">Branding</a><a href="solucao.html#solucao-sites-institucionais" data-sol="sites-institucionais" title="Sites Institucionais">Sites</a><a href="solucao.html#solucao-e-commerce" data-sol="e-commerce" title="E-Commerce">E-commerce</a><a href="solucao.html#solucao-midias-sociais" data-sol="midias-sociais" title="Mídias Sociais">Redes sociais</a><a href="solucao.html#solucao-embalagens-e-tags" data-sol="embalagens-e-tags" title="Embalagens e Tags de Produto">Embalagens</a><a href="solucao.html#solucao-trafego-pago" data-sol="trafego-pago" title="Tráfego Pago">Tráfego pago</a><a href="solucao.html#solucao-consultoria" data-sol="consultoria" title="Consultoria">Consultoria</a><a href="solucao.html#solucao-design-de-estampas" data-sol="design-de-estampas" title="Design de Estampas">Estampas</a><a href="audiovisual.html" data-sol="fotografia" title="Fotografia">Fotografia</a><a href="audiovisual.html#sala" data-sol="producao-de-video" title="Produção de Vídeo">Vídeo</a><a href="solucao.html#solucao-seo" data-sol="seo" title="SEO e Otimização">SEO</a><a href="solucao.html#solucao-manutencao-de-sites" data-sol="manutencao-de-sites" title="Manutenção de Sites">Manutenção</a></div></nav>
+      <nav class="hf-col hf-sols" aria-label="Soluções"><div class="hf-eye">Soluções</div><div class="hf-sgrid"><a href="/solucoes-em-marketing-digital/branding/" data-sol="branding" title="Branding">Branding</a><a href="/solucoes-em-marketing-digital/criacao-de-sites-profissionais/" data-sol="sites-institucionais" title="Sites Institucionais">Sites</a><a href="/lojas-virtuais/" data-sol="e-commerce" title="E-Commerce">E-commerce</a><a href="/solucoes-em-marketing-digital/midias-sociais/" data-sol="midias-sociais" title="Mídias Sociais">Redes sociais</a><a href="/solucoes-em-marketing-digital/design-de-embalagens/" data-sol="embalagens-e-tags" title="Embalagens e Tags de Produto">Embalagens</a><a href="/solucoes-em-marketing-digital/trafego-pago/" data-sol="trafego-pago" title="Tráfego Pago">Tráfego pago</a><a href="/solucoes-em-marketing-digital/consultoria-de-marketing-digital/" data-sol="consultoria" title="Consultoria">Consultoria</a><a href="/solucoes-em-marketing-digital/design-de-estampas/" data-sol="design-de-estampas" title="Design de Estampas">Estampas</a><a href="/solucoes-em-marketing-digital/fotografia-profissional/" data-sol="fotografia" title="Fotografia">Fotografia</a><a href="/solucoes-em-marketing-digital/producao-de-video/" data-sol="producao-de-video" title="Produção de Vídeo">Vídeo</a><a href="/solucoes-em-marketing-digital/seo-otimizacao-de-sites/" data-sol="seo" title="SEO e Otimização">SEO</a><a href="/solucoes-em-marketing-digital/manutencao-de-sites/" data-sol="manutencao-de-sites" title="Manutenção de Sites">Manutenção</a></div></nav>
     </div>
     <div class="hf-bar">
       <div class="hf-facts"><span>★ 5.0 no Google</span><span>Timbó · SC</span><span>Meta Business Partner</span><span>Google Partner</span></div>
@@ -366,32 +394,19 @@ html:not(.js) .rv,.reduce .rv{opacity:1;transform:none}
 
 </script>
 
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"Service","name":"Mídias Sociais","description":"Planejamos e produzimos conteúdos para redes sociais com foco em posicionamento, consistência visual, relacionamento com o público e fortalecimento da marca.","url":"https://cobra.art.br/solucoes-em-marketing-digital/midias-sociais/","serviceType":"Mídias Sociais","areaServed":"BR","provider":{"@type":"Organization","name":"Agência Cobra","url":"https://cobra.art.br/"}},
+{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Início","item":"https://cobra.art.br/"},{"@type":"ListItem","position":2,"name":"Soluções","item":"https://cobra.art.br/solucoes-em-marketing-digital/"},{"@type":"ListItem","position":3,"name":"Mídias Sociais","item":"https://cobra.art.br/solucoes-em-marketing-digital/midias-sociais/"}]}
+]}
+</script>
 <script>
 (function(){
-  const C = window.__cobra || {}; const SOLS = [{"slug": "branding", "nome": "Branding", "script": "Identidade", "big": "Branding", "grupo": "marca", "tag": "Marca", "img": "assets/c65205a981d5.webp", "desc": "Criamos identidades visuais, posicionamento de marca e sistemas visuais para empresas que precisam comunicar valor, profissionalismo e diferenciação no mercado.", "entregas": ["Diagnóstico e posicionamento de marca", "Logotipo e identidade visual", "Paleta, tipografia e elementos gráficos", "Manual de marca", "Aplicações em papelaria, redes e ponto de venda"], "curto": "Branding", "href": "solucao.html#solucao-branding", "clientes": [{"nome": "Catarininho", "key": "cliente-catarininho"}], "link": false, "tall": false, "yt": "assets/c65205a981d5.webp"}, {"slug": "sites-institucionais", "nome": "Sites Institucionais", "script": "Presença", "big": "Sites", "grupo": "tecnologia", "tag": "Tecnologia", "img": "assets/e8c86fb18710.jpg", "desc": "Desenvolvemos sites institucionais profissionais para empresas que querem apresentar seus serviços com clareza, fortalecer sua presença digital e gerar mais oportunidades pelo Google.", "entregas": ["Arquitetura de páginas e conteúdo", "Layout exclusivo e responsivo", "Formulários e integração com WhatsApp", "Estrutura otimizada para o Google", "Painel para editar textos e imagens"], "curto": "Sites", "href": "solucao.html#solucao-sites-institucionais", "clientes": [{"nome": "Frigorífico Gessner", "key": "cliente-frigorifico-gessner"}], "link": false, "tall": false, "yt": "assets/e8c86fb18710.jpg"}, {"slug": "e-commerce", "nome": "E-Commerce", "script": "Vendas", "big": "E-commerce", "grupo": "tecnologia", "tag": "Tecnologia", "img": "assets/4f057ed32218.jpg", "desc": "Criamos lojas virtuais estratégicas para empresas que desejam vender online com estrutura profissional, boa experiência de navegação, design confiável e foco em conversão.", "entregas": ["Escolha e configuração da plataforma", "Layout da loja e páginas de produto", "Meios de pagamento e frete", "Cadastro e organização do catálogo", "Ajustes de conversão e checkout"], "curto": "E-commerce", "href": "solucao.html#solucao-e-commerce", "clientes": [], "link": false, "tall": false, "yt": "assets/4f057ed32218.jpg"}, {"slug": "midias-sociais", "nome": "Mídias Sociais", "script": "Conteúdo", "big": "Social", "grupo": "conteudo", "tag": "Conteúdo", "img": "assets/7cac61bf0baf.webp", "desc": "Planejamos e produzimos conteúdos para redes sociais com foco em posicionamento, consistência visual, relacionamento com o público e fortalecimento da marca.", "entregas": ["Planejamento e calendário editorial", "Criação de posts, carrosséis e stories", "Roteiro e edição de reels", "Linha visual para o perfil", "Relatórios mensais"], "curto": "Redes sociais", "href": "solucao.html#solucao-midias-sociais", "clientes": [{"nome": "Frigorífico Gessner", "key": "cliente-frigorifico-gessner"}, {"nome": "Catarininho", "key": "cliente-catarininho"}], "link": false, "tall": false, "yt": "assets/7cac61bf0baf.webp"}, {"slug": "embalagens-e-tags", "nome": "Embalagens e Tags de Produto", "script": "Na gôndola", "big": "Embalagens", "grupo": "marca", "tag": "Marca", "img": "assets/87c9ce7128b3.webp", "desc": "Desenvolvemos embalagens estratégicas para produtos que precisam se destacar no ponto de venda, comunicar valor e fortalecer a identidade da marca.", "entregas": ["Estudo de ponto de venda e concorrência", "Design de embalagem e rótulo", "Tags e etiquetas de produto", "Arquivos finais para gráfica", "Acompanhamento de prova de cor"], "curto": "Embalagens", "href": "solucao.html#solucao-embalagens-e-tags", "clientes": [], "link": false, "tall": true, "yt": "assets/87c9ce7128b3.webp"}, {"slug": "trafego-pago", "nome": "Tráfego Pago", "script": "Resultados", "big": "Tráfego", "grupo": "performance", "tag": "Performance", "img": "assets/a761a95cc979.jpg", "desc": "Planejamos campanhas de tráfego pago para empresas que querem atrair clientes, divulgar produtos, gerar leads e melhorar seus resultados em canais como Google, Instagram e Facebook.", "entregas": ["Planejamento de campanhas e públicos", "Google Ads, Meta Ads (Instagram e Facebook)", "Criativos para anúncios", "Configuração de mensuração e conversões", "Otimização contínua e relatórios"], "curto": "Tráfego pago", "href": "solucao.html#solucao-trafego-pago", "clientes": [{"nome": "Frigorífico Gessner", "key": "cliente-frigorifico-gessner"}], "link": false, "tall": false, "yt": "assets/a761a95cc979.jpg"}, {"slug": "consultoria", "nome": "Consultoria", "script": "Direção", "big": "Consultoria", "grupo": "performance", "tag": "Estratégia", "img": "assets/d39e458249f1.webp", "desc": "Analisamos o momento da marca, identificamos oportunidades e orientamos decisões de marketing, comunicação e presença digital com mais clareza e direção.", "entregas": ["Diagnóstico de marketing e presença digital", "Análise de concorrência", "Plano de ação priorizado", "Reuniões de acompanhamento", "Treinamento da equipe interna"], "curto": "Consultoria", "href": "solucao.html#solucao-consultoria", "clientes": [], "link": false, "tall": false, "yt": "assets/d39e458249f1.webp", "zoom": true}, {"slug": "design-de-estampas", "nome": "Design de Estampas", "script": "Coleções", "big": "Estampas", "grupo": "marca", "tag": "Marca", "img": "assets/bd53f12073a2.jpg", "desc": "Criamos estampas personalizadas para marcas, produtos e coleções, unindo conceito visual, aplicação comercial e linguagem alinhada ao posicionamento da empresa.", "entregas": ["Conceito e pesquisa de referências", "Estampas exclusivas e rapport", "Variações de cor por coleção", "Mockups de aplicação", "Arquivos prontos para produção"], "curto": "Estampas", "href": "solucao.html#solucao-design-de-estampas", "clientes": [], "link": false, "tall": false, "yt": "assets/bd53f12073a2.jpg"}, {"slug": "fotografia", "nome": "Fotografia", "grupo": "audiovisual", "tag": "Audiovisual", "img": "assets/8b5fe5d2962a.webp", "href": "audiovisual.html", "desc": "Produzimos fotos profissionais para produtos, ambientes, equipes e campanhas, valorizando a percepção da marca e criando materiais visuais mais fortes para canais digitais e impressos.", "curto": "Fotografia", "clientes": [], "link": true, "tall": true, "yt": "assets/8b5fe5d2962a.webp", "script": "", "big": "Fotografia", "entregas": []}, {"slug": "producao-de-video", "nome": "Produção de Vídeo", "grupo": "audiovisual", "tag": "Audiovisual", "img": "assets/576924ed87dd.webp", "href": "audiovisual.html#sala", "desc": "Criamos vídeos para apresentar empresas, produtos e serviços, com planejamento da mensagem, dos formatos e dos canais em que o conteúdo será usado.", "curto": "Vídeo", "clientes": [], "link": true, "tall": true, "yt": "assets/576924ed87dd.webp", "script": "", "big": "Produção de Vídeo", "entregas": []}, {"slug": "seo", "nome": "SEO e Otimização", "script": "No Google", "big": "SEO", "grupo": "tecnologia", "tag": "Tecnologia", "img": "assets/84a210205cc9.jpg", "desc": "Organizamos conteúdo, páginas e links internos e avaliamos aspectos técnicos para facilitar a descoberta do site e a compreensão dos serviços da empresa.", "entregas": ["Auditoria técnica do site", "Pesquisa de palavras-chave", "Organização de páginas e links internos", "Otimização de títulos, textos e imagens", "Google Meu Negócio e acompanhamento"], "curto": "SEO", "href": "solucao.html#solucao-seo", "clientes": [], "link": false, "tall": false, "yt": "assets/84a210205cc9.jpg"}, {"slug": "manutencao-de-sites", "nome": "Manutenção de Sites", "script": "Cuidado", "big": "Manutenção", "grupo": "tecnologia", "tag": "Tecnologia", "img": "assets/76faebec2532.webp", "desc": "Avaliamos sites existentes para atualizar informações, investigar falhas de funcionamento e definir os cuidados necessários conforme a estrutura de cada projeto.", "entregas": ["Diagnóstico do site atual", "Correção de falhas e erros", "Atualização de textos, imagens e plugins", "Backups e segurança", "Suporte mensal sob demanda"], "curto": "Manutenção", "href": "solucao.html#solucao-manutencao-de-sites", "clientes": [], "link": false, "tall": false, "yt": "assets/76faebec2532.webp"}];
+  const C = window.__cobra || {};
   const $ = id => document.getElementById(id);
-  const zoomCls = s => /T_H4/.test(s.yt||'') ? 'zoom' : (s.tall ? 'tall' : '');
   function fitBig(){ const el=$('soBig'); el.style.fontSize=''; const max=el.parentElement.clientWidth; const w=el.scrollWidth; if (w>max && max>0) el.style.fontSize=(parseFloat(getComputedStyle(el).fontSize)*max/w*0.98)+'px'; }
-  function render(slug, scroll){
-    const s = SOLS.find(x=>x.slug===slug && !x.link) || SOLS.find(x=>!x.link);
-    document.title = s.nome + ' | Soluções | Agência Cobra';
-    $('soTitle').setAttribute('aria-label', s.nome);
-    $('soTag').textContent = s.nome; $('soScript').textContent = s.script; $('soBig').textContent = s.big;
-    const im=$('soImg'); im.src = s.img; im.className = zoomCls(s); $('soTy').textContent = s.tag; $('soLab').textContent = s.nome;
-    $('soLead').textContent = s.desc;
-    $('soList').innerHTML = s.entregas.map(e=>`<li>${e}<i aria-hidden="true">→</i></li>`).join('');
-    const mk=$('marcas'); mk.hidden = !s.clientes.length;
-    $('logos').innerHTML = s.clientes.map(c=>`<a class="lg${c.logo?'':' txt'}${c.branca?' w':''}" href="audiovisual.html#${c.key}" aria-label="Ver portfólio de ${c.nome}">${c.logo?`<img src="${c.logo}" alt="${c.nome}">`:`<b>${c.nome}</b>`}<i class="cnt">Cliente</i><span>Ver portfólio →</span></a>`).join('');
-    $('soRail').innerHTML = SOLS.filter(x=>x.slug!==s.slug).map(x=>`<a class="so-card" href="${x.href}"><div class="in"><img class="${zoomCls(x)}" src="${x.img}" alt="" loading="lazy"><span class="ty">${x.tag}</span><span class="lab">${x.nome}</span></div></a>`).join('');
-    document.querySelectorAll('.hf [data-sol]').forEach(a=>{ if (a.dataset.sol===s.slug) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current'); });
-    requestAnimationFrame(fitBig);
-    if (scroll){ C.scrollTo ? C.scrollTo(0,true) : scrollTo(0,0); }
-    C.refresh && C.refresh();
-  }
-  const fromHash = h => (h||'').replace(/^#/,'').replace(/^solucao-/,'');
-  render(fromHash(location.hash), false);
-  C.goHash = h => render(fromHash(h), true);
-  addEventListener('hashchange', () => render(fromHash(location.hash), true));
+  document.querySelectorAll('.hf [data-sol="midias-sociais"]').forEach(a=>a.setAttribute('aria-current','page'));
+  requestAnimationFrame(fitBig);
   addEventListener('resize', fitBig); if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitBig);
   C.reveal && C.reveal();
   if (window.gsap && window.ScrollTrigger && !matchMedia('(prefers-reduced-motion: reduce)').matches){
