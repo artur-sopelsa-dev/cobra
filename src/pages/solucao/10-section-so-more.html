@@ -1,12 +1,10 @@
-{{#if item.cta}}
-<section class="sec t-lime so-cta" data-bg="lime" data-tone="paper">
-  <h2 class="display">{{ item.cta.titulo }}</h2>
-  <p>{{ item.cta.texto }}</p>
-  <a class="btn ink" href="https://wa.me/{{ site.whatsapp.numero }}?text={{ site.whatsapp.mensagem | url }}" target="_blank" rel="noopener">{{ item.cta.botao }} <span class="arr">↗</span></a>
-</section>
+{{#if item.relacionadas}}
+<section class="sec t-ink sx-rel" data-bg="ink" data-tone="ink">
+  <div class="sx-rel-h"><div><p class="eyebrow lime">Complete o projeto</p><h2>Soluções que se conectam</h2></div><a class="btn ghost" href="solucoes-em-marketing-digital/">Ver todas as soluções <span class="arr">→</span></a></div>
+  <div class="sx-rel-g">{{#each item.relacionadas as r}}<a class="sx-rc" href="{{ r.url }}"><span class="im"><img src="{{ r.img }}" alt="" loading="lazy"{{#if r.zoom}} class="zoom"{{else}}{{#if r.tall}} class="tall"{{/if}}{{/if}}></span><span class="t"><small>{{ r.tag }}</small><b>{{ r.nome }}</b></span><i aria-hidden="true">→</i></a>{{/each}}<a class="sx-rc is-pf" href="portfolio.html"><span class="t"><small>Cases</small><b>Conhecer o portfólio da Cobra</b></span><i aria-hidden="true">→</i></a></div>
+</div></section>
 {{/if}}
-<section class="sec t-ink so-more" data-bg="ink" data-tone="ink">
-  {{#if item.relacionadas}}<div class="so-rel"><h2 class="display">Soluções que <span class="it">se conectam</span></h2><p>Conheça outros serviços da Cobra que podem complementar o seu projeto.</p><div class="so-rel-l">{{#each item.relacionadas as r}}<a href="{{ r.url }}">{{ r.nome }} <span aria-hidden="true">→</span></a>{{/each}}<a href="portfolio.html">Conhecer o portfólio da Cobra <span aria-hidden="true">→</span></a></div></div>{{/if}}
-  <div class="head"><h2 class="display">Outras <span class="it">soluções</span></h2><a class="btn ghost" href="solucoes-em-marketing-digital/">Ver todas <span class="arr">→</span></a></div>
-  <div class="so-rail">{{#each content.solucoes as x}}{{#if x.slug != item.slug}}<a class="so-card" href="{{ x.url }}"><div class="in"><img{{#if x.zoom}} class="zoom"{{else}}{{#if x.tall}} class="tall"{{/if}}{{/if}} src="{{ x.img }}" alt="" loading="lazy"><span class="ty">{{ x.tag }}</span><span class="lab">{{ x.nome }}</span></div></a>{{/if}}{{/each}}</div>
-</section>
+<section class="sec t-ink sx-cta-sec" data-bg="ink" data-tone="ink"><div class="sx-cta">
+  <h2>{{#if item.cta}}{{ item.cta.titulo }}{{else}}Vamos conversar sobre {{ item.nome | lower }}?{{/if}}</h2>
+  <div><p>{{#if item.cta}}{{ item.cta.texto }}{{else}}A Cobra está em Timbó, Santa Catarina. Conte o seu objetivo para alinharmos o escopo e os próximos passos.{{/if}}</p><a class="btn ink" href="https://wa.me/{{ site.whatsapp.numero }}?text={{ site.whatsapp.mensagem | url }}" target="_blank" rel="noopener">{{#if item.cta}}{{ item.cta.botao }}{{else}}Solicitar uma proposta{{/if}} <span class="arr">↗</span></a></div>
+</div></section>

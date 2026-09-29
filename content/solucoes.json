@@ -91,15 +91,22 @@
     "relacionadas": [
       {
         "nome": "Design de embalagens",
-        "url": "solucoes-em-marketing-digital/design-de-embalagens/"
+        "url": "solucoes-em-marketing-digital/design-de-embalagens/",
+        "img": "assets/87c9ce7128b3.webp",
+        "tag": "Marca",
+        "tall": true
       },
       {
         "nome": "Design de estampas",
-        "url": "solucoes-em-marketing-digital/design-de-estampas/"
+        "url": "solucoes-em-marketing-digital/design-de-estampas/",
+        "img": "assets/bd53f12073a2.jpg",
+        "tag": "Marca"
       },
       {
         "nome": "Mídias sociais",
-        "url": "solucoes-em-marketing-digital/midias-sociais/"
+        "url": "solucoes-em-marketing-digital/midias-sociais/",
+        "img": "assets/7cac61bf0baf.webp",
+        "tag": "Conteúdo"
       }
     ]
   },
@@ -181,15 +188,21 @@
     "relacionadas": [
       {
         "nome": "SEO e otimização",
-        "url": "solucoes-em-marketing-digital/seo-otimizacao-de-sites/"
+        "url": "solucoes-em-marketing-digital/seo-otimizacao-de-sites/",
+        "img": "assets/84a210205cc9.jpg",
+        "tag": "Tecnologia"
       },
       {
         "nome": "Manutenção de sites",
-        "url": "solucoes-em-marketing-digital/manutencao-de-sites/"
+        "url": "solucoes-em-marketing-digital/manutencao-de-sites/",
+        "img": "assets/76faebec2532.webp",
+        "tag": "Tecnologia"
       },
       {
         "nome": "Lojas virtuais",
-        "url": "lojas-virtuais/"
+        "url": "lojas-virtuais/",
+        "img": "assets/4f057ed32218.jpg",
+        "tag": "Tecnologia"
       }
     ]
   },
@@ -249,15 +262,22 @@
     "relacionadas": [
       {
         "nome": "Criação de sites",
-        "url": "solucoes-em-marketing-digital/criacao-de-sites-profissionais/"
+        "url": "solucoes-em-marketing-digital/criacao-de-sites-profissionais/",
+        "img": "assets/e8c86fb18710.jpg",
+        "tag": "Tecnologia"
       },
       {
         "nome": "Fotografia profissional",
-        "url": "solucoes-em-marketing-digital/fotografia-profissional/"
+        "url": "solucoes-em-marketing-digital/fotografia-profissional/",
+        "img": "assets/8b5fe5d2962a.webp",
+        "tag": "Audiovisual",
+        "tall": true
       },
       {
         "nome": "Tráfego pago",
-        "url": "solucoes-em-marketing-digital/trafego-pago/"
+        "url": "solucoes-em-marketing-digital/trafego-pago/",
+        "img": "assets/a761a95cc979.jpg",
+        "tag": "Performance"
       }
     ]
   },
@@ -357,15 +377,23 @@
     "relacionadas": [
       {
         "nome": "Tráfego pago",
-        "url": "solucoes-em-marketing-digital/trafego-pago/"
+        "url": "solucoes-em-marketing-digital/trafego-pago/",
+        "img": "assets/a761a95cc979.jpg",
+        "tag": "Performance"
       },
       {
         "nome": "Produção de vídeo",
-        "url": "solucoes-em-marketing-digital/producao-de-video/"
+        "url": "solucoes-em-marketing-digital/producao-de-video/",
+        "img": "assets/576924ed87dd.webp",
+        "tag": "Audiovisual",
+        "tall": true
       },
       {
         "nome": "Fotografia profissional",
-        "url": "solucoes-em-marketing-digital/fotografia-profissional/"
+        "url": "solucoes-em-marketing-digital/fotografia-profissional/",
+        "img": "assets/8b5fe5d2962a.webp",
+        "tag": "Audiovisual",
+        "tall": true
       }
     ]
   },
@@ -438,15 +466,22 @@
     "relacionadas": [
       {
         "nome": "Branding",
-        "url": "solucoes-em-marketing-digital/branding/"
+        "url": "solucoes-em-marketing-digital/branding/",
+        "img": "assets/c65205a981d5.webp",
+        "tag": "Marca"
       },
       {
         "nome": "Design de estampas",
-        "url": "solucoes-em-marketing-digital/design-de-estampas/"
+        "url": "solucoes-em-marketing-digital/design-de-estampas/",
+        "img": "assets/bd53f12073a2.jpg",
+        "tag": "Marca"
       },
       {
         "nome": "Fotografia profissional",
-        "url": "solucoes-em-marketing-digital/fotografia-profissional/"
+        "url": "solucoes-em-marketing-digital/fotografia-profissional/",
+        "img": "assets/8b5fe5d2962a.webp",
+        "tag": "Audiovisual",
+        "tall": true
       }
     ]
   },
@@ -542,15 +577,22 @@
     "relacionadas": [
       {
         "nome": "Mídias sociais",
-        "url": "solucoes-em-marketing-digital/midias-sociais/"
+        "url": "solucoes-em-marketing-digital/midias-sociais/",
+        "img": "assets/7cac61bf0baf.webp",
+        "tag": "Conteúdo"
       },
       {
         "nome": "SEO e otimização",
-        "url": "solucoes-em-marketing-digital/seo-otimizacao-de-sites/"
+        "url": "solucoes-em-marketing-digital/seo-otimizacao-de-sites/",
+        "img": "assets/84a210205cc9.jpg",
+        "tag": "Tecnologia"
       },
       {
         "nome": "Consultoria de marketing",
-        "url": "solucoes-em-marketing-digital/consultoria-de-marketing-digital/"
+        "url": "solucoes-em-marketing-digital/consultoria-de-marketing-digital/",
+        "img": "assets/d39e458249f1.webp",
+        "tag": "Estratégia",
+        "zoom": true
       }
     ]
   },
@@ -658,15 +700,21 @@
     "relacionadas": [
       {
         "nome": "Branding",
-        "url": "solucoes-em-marketing-digital/branding/"
+        "url": "solucoes-em-marketing-digital/branding/",
+        "img": "assets/c65205a981d5.webp",
+        "tag": "Marca"
       },
       {
         "nome": "Tráfego pago",
-        "url": "solucoes-em-marketing-digital/trafego-pago/"
+        "url": "solucoes-em-marketing-digital/trafego-pago/",
+        "img": "assets/a761a95cc979.jpg",
+        "tag": "Performance"
       },
       {
         "nome": "Mídias sociais",
-        "url": "solucoes-em-marketing-digital/midias-sociais/"
+        "url": "solucoes-em-marketing-digital/midias-sociais/",
+        "img": "assets/7cac61bf0baf.webp",
+        "tag": "Conteúdo"
       }
     ],
     "cta": {
@@ -778,15 +826,23 @@
     "relacionadas": [
       {
         "nome": "Branding",
-        "url": "solucoes-em-marketing-digital/branding/"
+        "url": "solucoes-em-marketing-digital/branding/",
+        "img": "assets/c65205a981d5.webp",
+        "tag": "Marca"
       },
       {
         "nome": "Design de embalagens",
-        "url": "solucoes-em-marketing-digital/design-de-embalagens/"
+        "url": "solucoes-em-marketing-digital/design-de-embalagens/",
+        "img": "assets/87c9ce7128b3.webp",
+        "tag": "Marca",
+        "tall": true
       },
       {
         "nome": "Fotografia profissional",
-        "url": "solucoes-em-marketing-digital/fotografia-profissional/"
+        "url": "solucoes-em-marketing-digital/fotografia-profissional/",
+        "img": "assets/8b5fe5d2962a.webp",
+        "tag": "Audiovisual",
+        "tall": true
       }
     ],
     "cta": {
@@ -902,15 +958,22 @@
     "relacionadas": [
       {
         "nome": "Criação de sites",
-        "url": "solucoes-em-marketing-digital/criacao-de-sites-profissionais/"
+        "url": "solucoes-em-marketing-digital/criacao-de-sites-profissionais/",
+        "img": "assets/e8c86fb18710.jpg",
+        "tag": "Tecnologia"
       },
       {
         "nome": "Lojas virtuais",
-        "url": "lojas-virtuais/"
+        "url": "lojas-virtuais/",
+        "img": "assets/4f057ed32218.jpg",
+        "tag": "Tecnologia"
       },
       {
         "nome": "Produção de vídeo",
-        "url": "solucoes-em-marketing-digital/producao-de-video/"
+        "url": "solucoes-em-marketing-digital/producao-de-video/",
+        "img": "assets/576924ed87dd.webp",
+        "tag": "Audiovisual",
+        "tall": true
       }
     ],
     "cta": {
@@ -1064,15 +1127,22 @@
     "relacionadas": [
       {
         "nome": "Fotografia profissional",
-        "url": "solucoes-em-marketing-digital/fotografia-profissional/"
+        "url": "solucoes-em-marketing-digital/fotografia-profissional/",
+        "img": "assets/8b5fe5d2962a.webp",
+        "tag": "Audiovisual",
+        "tall": true
       },
       {
         "nome": "Mídias sociais",
-        "url": "solucoes-em-marketing-digital/midias-sociais/"
+        "url": "solucoes-em-marketing-digital/midias-sociais/",
+        "img": "assets/7cac61bf0baf.webp",
+        "tag": "Conteúdo"
       },
       {
         "nome": "Tráfego pago",
-        "url": "solucoes-em-marketing-digital/trafego-pago/"
+        "url": "solucoes-em-marketing-digital/trafego-pago/",
+        "img": "assets/a761a95cc979.jpg",
+        "tag": "Performance"
       }
     ],
     "cta": {
@@ -1190,15 +1260,22 @@
     "relacionadas": [
       {
         "nome": "Criação de sites",
-        "url": "solucoes-em-marketing-digital/criacao-de-sites-profissionais/"
+        "url": "solucoes-em-marketing-digital/criacao-de-sites-profissionais/",
+        "img": "assets/e8c86fb18710.jpg",
+        "tag": "Tecnologia"
       },
       {
         "nome": "Manutenção de sites",
-        "url": "solucoes-em-marketing-digital/manutencao-de-sites/"
+        "url": "solucoes-em-marketing-digital/manutencao-de-sites/",
+        "img": "assets/76faebec2532.webp",
+        "tag": "Tecnologia"
       },
       {
         "nome": "Consultoria de marketing",
-        "url": "solucoes-em-marketing-digital/consultoria-de-marketing-digital/"
+        "url": "solucoes-em-marketing-digital/consultoria-de-marketing-digital/",
+        "img": "assets/d39e458249f1.webp",
+        "tag": "Estratégia",
+        "zoom": true
       }
     ],
     "cta": {
@@ -1310,15 +1387,21 @@
     "relacionadas": [
       {
         "nome": "Criação de sites",
-        "url": "solucoes-em-marketing-digital/criacao-de-sites-profissionais/"
+        "url": "solucoes-em-marketing-digital/criacao-de-sites-profissionais/",
+        "img": "assets/e8c86fb18710.jpg",
+        "tag": "Tecnologia"
       },
       {
         "nome": "SEO e otimização",
-        "url": "solucoes-em-marketing-digital/seo-otimizacao-de-sites/"
+        "url": "solucoes-em-marketing-digital/seo-otimizacao-de-sites/",
+        "img": "assets/84a210205cc9.jpg",
+        "tag": "Tecnologia"
       },
       {
         "nome": "Lojas virtuais",
-        "url": "lojas-virtuais/"
+        "url": "lojas-virtuais/",
+        "img": "assets/4f057ed32218.jpg",
+        "tag": "Tecnologia"
       }
     ],
     "cta": {

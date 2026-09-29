@@ -202,38 +202,6 @@ html:not(.js) .rv,.reduce .rv{opacity:1;transform:none}
 .so-card .lab{position:absolute;right:12px;top:calc(100% - 38px);height:38px;max-width:56%;display:flex;align-items:center;justify-content:flex-end;text-align:right;font-weight:800;font-size:13px;line-height:1.05;color:var(--paper);z-index:2}
 .so-card[aria-current] {background:var(--lime)}
 
-.sl-hero{padding:clamp(130px,17vh,190px) var(--gut) clamp(50px,7vw,90px)}
-.sl-hero .so-crumb{margin-bottom:26px}
-.sl-hero h1{margin:0;font-size:clamp(48px,8.4vw,150px);font-weight:800;text-transform:uppercase;letter-spacing:-.05em;line-height:.86}
-.sl-hero h1 .it{display:block;font-family:var(--graf);text-transform:none;letter-spacing:0;color:var(--lime-deep);font-weight:400;font-size:.62em;line-height:1.1;transform:rotate(-3deg);transform-origin:0 100%}
-.sl-hero .intro{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:var(--gut);align-items:end;margin-top:34px}
-.sl-hero .intro p{margin:0;max-width:56ch;font-size:clamp(17px,1.4vw,21px);line-height:1.5}
-@media (max-width:760px){.sl-hero .intro{grid-template-columns:1fr}}
-.sl-grid-sec{padding:0 var(--gut) clamp(90px,11vw,150px)}
-.sl-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:26px 18px}
-.sl-item{display:flex;flex-direction:column;text-decoration:none;color:inherit}
-.sl-grid .so-card{flex:none;width:100%;background:rgba(10,11,8,.18)}
-.sl-item:hover .so-card{background:var(--lime)}.sl-item:hover .so-card img{filter:none}
-.sl-card-txt{display:block;padding:14px 4px 0;font-size:14px;line-height:1.5;opacity:.75}
-.sl-item:hover .sl-card-txt{opacity:1}
-@media (max-width:1100px){.sl-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media (max-width:800px){.sl-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:520px){.sl-grid{grid-template-columns:1fr}}
-.sl-item .so-card,.sl-item .so-card .in{display:block}
-.sl-grid .sl-item h2.sr{position:absolute}
-.sl-full{padding:0 var(--gut) clamp(60px,7vw,100px);display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,5vw,90px);align-items:start}
-.sl-full h2{margin:0;font-size:clamp(32px,4vw,64px)}.sl-full h2 .it{color:var(--lime-deep)}
-.sl-full p{margin:0 0 1em;font-size:clamp(16px,1.2vw,19px);line-height:1.65;max-width:62ch}
-.sl-more{padding:clamp(90px,11vw,150px) var(--gut)}
-.sl-two{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(30px,5vw,90px);align-items:start}
-.sl-two h2{margin:0 0 20px;font-size:clamp(34px,4.4vw,72px)}.sl-two h2 .it,.sl-cta h2 .it{color:var(--lime)}
-.sl-two p{margin:0;font-size:clamp(16px,1.2vw,19px);line-height:1.65;opacity:.85;max-width:56ch}
-.sl-mv{display:grid;gap:14px}.sl-mv>div{border:1px solid var(--line);border-radius:14px;padding:24px 26px}
-.sl-mv h3{margin:0 0 8px;color:var(--lime);font-size:18px;font-weight:800;text-transform:uppercase;letter-spacing:.02em}
-.sl-cta{margin-top:clamp(70px,9vw,130px);border-top:1px solid var(--line);padding-top:clamp(40px,5vw,70px);display:grid;gap:22px;justify-items:start}
-.sl-cta h2{margin:0;font-size:clamp(32px,4vw,64px);max-width:20ch}
-.sl-cta p{margin:0;max-width:60ch;opacity:.85;font-size:clamp(16px,1.2vw,19px)}
-@media (max-width:860px){.sl-full,.sl-two{grid-template-columns:1fr}}
 .ab-num{padding:clamp(80px,10vw,140px) var(--gut)}
 .ab-num .head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:40px;flex-wrap:wrap}
 .ab-num h2{font-size:clamp(40px,5.6vw,92px)}
@@ -278,7 +246,160 @@ html:not(.js) .rv,.reduce .rv{opacity:1;transform:none}
 .hf-bottom a{text-decoration:none;margin-left:18px;color:var(--hi)}
 @media (max-width:1100px){.hf-bar{grid-template-columns:1fr 1fr}.hf-wa{grid-column:1/-1;grid-row:1}}
 @media (max-width:760px){.hf-mid{grid-template-columns:1fr}.hf-hand{order:-1;max-width:320px;margin:0 auto}.hf-sols{justify-self:center}.hf-bar{grid-template-columns:1fr;text-align:center}.hf-facts,.hf-soc{justify-content:center}.hf-wa{white-space:normal;height:auto;min-height:46px;text-align:center}}
-@media (prefers-reduced-motion: reduce){</style>
+@media (prefers-reduced-motion: reduce){/* ===== Soluções (páginas de solução e lista geral) ===== */
+.sx-h1{margin:0;font-size:clamp(34px,4.4vw,68px);font-weight:800;letter-spacing:-.04em;line-height:1;text-wrap:balance}
+.sx-hero h2,.sx-txt h2,.sx-proc h2,.sx-faq h2,.sx-rel h2,.sx-list h2,.sx-why h2{margin:0;font-weight:800;letter-spacing:-.035em;line-height:1.04;text-wrap:balance}
+/* topo */
+.sx-hero{padding:clamp(120px,15vh,150px) var(--gut) clamp(40px,5vw,70px);display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:clamp(28px,5vw,80px);align-items:center}
+.sx-hero-txt{display:grid;gap:20px;align-content:center;min-width:0}
+.sx-crumb{display:flex;gap:10px;flex-wrap:wrap;align-items:center;color:rgba(10,11,8,.55)}
+.sx-crumb a{text-decoration:none}.sx-crumb a:hover{color:var(--ink)}.sx-crumb b{color:var(--ink)}
+.sx-kicker{margin:0;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.sx-kicker .graf{font-size:clamp(28px,2.6vw,40px);line-height:1;color:var(--lime-deep);transform:rotate(-4deg);display:inline-block}
+.sx-kicker span+span{font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;border:1px solid rgba(10,11,8,.2);border-radius:99px;padding:7px 12px}
+.sx-lead{margin:0;font-size:clamp(16px,1.25vw,19px);line-height:1.6;max-width:58ch;color:rgba(10,11,8,.78)}
+.sx-row{display:flex;gap:10px;flex-wrap:wrap}
+.sx-vis{position:relative;aspect-ratio:1/1.08;width:100%;max-width:min(400px,56vh);justify-self:end}
+.sx-ent{grid-column:1/-1;border-top:1px solid rgba(10,11,8,.14);padding-top:22px;display:flex;gap:18px 26px;align-items:center;flex-wrap:wrap}
+.sx-ent ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.sx-ent li{font-size:13px;font-weight:700;padding:9px 14px;border-radius:99px;background:rgba(255,255,255,.55);border:1px solid rgba(10,11,8,.1)}
+.sx-ent li::before{content:"✓";color:var(--lime-deep);font-weight:800;margin-right:8px}
+.sx-ent.is-full{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,3vw,48px);align-items:start;padding-top:clamp(28px,3vw,40px)}
+.sx-ent.is-full h2{font-size:clamp(24px,2.4vw,36px)}
+.sx-ent.is-full p{margin:0;font-size:15px;line-height:1.65;color:rgba(10,11,8,.75)}
+@media (max-width:900px){.sx-hero{grid-template-columns:1fr}.sx-vis{justify-self:start;max-width:240px}.sx-ent.is-full{grid-template-columns:1fr}}
+/* mosaico da lista geral */
+.sx-mos{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;align-self:center}
+.sx-mos span{position:relative;aspect-ratio:3/4;border-radius:12px;overflow:hidden;background:var(--ink)}
+.sx-mos span:nth-child(3n+2){transform:translateY(28px)}
+.sx-mos span:nth-child(n+7){display:none}
+.sx-mos img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.05);transition:filter .6s,transform .9s var(--ease)}
+.sx-mos img.tall{transform:scale(1.5)}.sx-mos img.zoom{transform:scale(1.3)}
+.sx-mos span:hover img{filter:none}
+.sx-mos em{position:absolute;left:8px;bottom:8px;font-style:normal;font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;background:rgba(10,11,8,.75);color:var(--paper);padding:5px 8px;border-radius:99px}
+@media (max-width:900px){.sx-mos{max-width:460px;margin-bottom:16px}.sx-mos span:nth-child(n+4){display:none}.sx-mos span:nth-child(3n+2){transform:translateY(16px)}}
+/* conteúdo */
+.sx-txt{padding:clamp(50px,6vw,90px) var(--gut) clamp(70px,8vw,120px);display:grid;gap:clamp(50px,6vw,90px)}
+.sx-blk h2{font-size:clamp(26px,2.6vw,40px)}
+.sx-blk p{margin:14px 0 0;font-size:16px;line-height:1.7;color:rgba(10,11,8,.78);max-width:62ch}
+.sx-blk.is-its{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(24px,4vw,70px);align-items:start}
+.sx-blk.is-its .sx-blk-h{position:sticky;top:110px}
+.sx-its{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;counter-reset:it}
+.sx-it{position:relative;padding:22px 22px 24px;border-radius:14px;background:rgba(255,255,255,.6);border:1px solid rgba(10,11,8,.08);counter-increment:it;transition:background .35s,color .35s,transform .45s var(--ease)}
+.sx-it::before{content:counter(it,decimal-leading-zero);display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--lime);color:var(--ink);font-size:12px;font-weight:800;margin-bottom:18px}
+.sx-it h3{margin:0 0 8px;font-size:17px;font-weight:800;letter-spacing:-.01em;line-height:1.2}
+.sx-it p{margin:0;font-size:14.5px;line-height:1.6;opacity:.8}
+.sx-it:hover{background:var(--ink);color:var(--paper);transform:translateY(-4px)}
+.sx-blk.is-say{position:relative;overflow:hidden;border-radius:20px;background:var(--ink);color:var(--paper);padding:clamp(30px,4vw,60px);padding-right:max(40%,clamp(30px,4vw,60px))}
+.sx-blk.is-say::after{content:"";position:absolute;top:0;right:0;bottom:0;width:38%;background:var(--img) center/cover;filter:grayscale(1) contrast(1.05);opacity:.55;-webkit-mask-image:linear-gradient(90deg,transparent,#000 60%);mask-image:linear-gradient(90deg,transparent,#000 60%)}
+.sx-blk.is-say:nth-of-type(odd){background:var(--char)}
+.sx-blk.is-say h2{color:var(--lime);font-size:clamp(24px,2.4vw,36px)}
+.sx-blk.is-say p{color:rgba(238,240,227,.85);font-size:clamp(16px,1.25vw,19px)}
+.sx-check{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:10px}
+.sx-check li{display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.5}
+.sx-check li::before{content:"✓";flex:0 0 22px;height:22px;border-radius:50%;display:grid;place-items:center;background:var(--lime);color:var(--ink);font-size:12px;font-weight:800}
+.sx-links{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:18px!important}
+.sx-links a{font-weight:800;font-size:12px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border-bottom:2px solid var(--lime);padding-bottom:3px}
+@media (max-width:900px){.sx-blk.is-its{grid-template-columns:1fr}.sx-blk.is-its .sx-blk-h{position:static}.sx-blk.is-say{padding-right:clamp(24px,5vw,40px)}.sx-blk.is-say::after{opacity:.18;width:100%}}
+/* passo a passo */
+.sx-proc{padding:clamp(70px,9vw,130px) var(--gut)}
+.sx-sh{display:grid;gap:12px;max-width:760px;margin-bottom:clamp(30px,4vw,50px)}
+.sx-sh h2{font-size:clamp(28px,3.2vw,48px)}
+.sx-sh p:not(.eyebrow){margin:0;opacity:.75;font-size:17px}
+.sx-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;counter-reset:st}
+.sx-steps li{position:relative;counter-increment:st;padding-top:62px}
+.sx-steps li::before{content:counter(st,decimal-leading-zero);position:absolute;left:0;top:0;width:46px;height:46px;border-radius:50%;border:1.5px solid var(--lime);color:var(--lime);display:grid;place-items:center;font-weight:800;font-size:14px;background:var(--char);z-index:1;transition:background .3s,color .3s}
+.sx-steps li::after{content:"";position:absolute;left:46px;right:-18px;top:23px;height:1px;background:linear-gradient(90deg,var(--lime),rgba(203,226,46,.1))}
+.sx-steps li:last-child::after{display:none}
+.sx-steps li:hover::before{background:var(--lime);color:var(--ink)}
+.sx-steps h3{margin:0 0 8px;font-size:19px;font-weight:800;letter-spacing:-.01em}
+.sx-steps p{margin:0;font-size:15px;line-height:1.6;opacity:.75;max-width:34ch}
+.sx-prep{margin-top:clamp(36px,4vw,56px);display:flex;gap:18px;align-items:flex-start;border-radius:16px;padding:24px 26px;background:rgba(203,226,46,.08);border:1px solid rgba(203,226,46,.3);max-width:980px}
+.sx-prep>span{flex:0 0 40px;height:40px;border-radius:50%;background:var(--lime);color:var(--ink);display:grid;place-items:center}
+.sx-prep h3{margin:0 0 6px;font-size:17px;font-weight:800;color:var(--lime)}
+.sx-prep p{margin:0;opacity:.85;line-height:1.6}
+@media (max-width:700px){.sx-steps{gap:22px}.sx-steps li{padding:0 0 0 62px;min-height:46px}.sx-steps li::after{display:block;left:23px;right:auto;top:46px;bottom:-22px;width:1px;height:auto;background:linear-gradient(var(--lime),rgba(203,226,46,.1))}.sx-steps li:last-child::after{display:none}}
+/* perguntas */
+.sx-faq{padding:clamp(70px,9vw,130px) var(--gut);display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(28px,5vw,80px);align-items:start}
+.sx-faq-h{display:grid;gap:14px;justify-items:start;position:sticky;top:110px}
+.sx-faq-h h2{font-size:clamp(28px,3.2vw,48px)}
+.sx-faq-h p:not(.eyebrow){margin:0;color:rgba(10,11,8,.7);max-width:40ch}
+.sx-qs{display:grid;gap:10px}
+.sx-q{border-radius:14px;background:rgba(255,255,255,.6);border:1px solid rgba(10,11,8,.08);transition:background .3s}
+.sx-q[open]{background:#fff}
+.sx-q summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:18px;padding:18px 20px;font-size:16px;font-weight:800;line-height:1.3}
+.sx-q summary::-webkit-details-marker{display:none}
+.sx-q summary i{font-style:normal;flex:0 0 32px;height:32px;border-radius:50%;background:var(--ink);color:var(--lime);display:grid;place-items:center;font-size:18px;transition:transform .4s var(--ease)}
+.sx-q[open] summary i{transform:rotate(45deg)}
+.sx-q div{padding:0 20px 20px}
+.sx-q div p{margin:0;font-size:15px;line-height:1.65;color:rgba(10,11,8,.75)}
+@media (max-width:900px){.sx-faq{grid-template-columns:1fr}.sx-faq-h{position:static}}
+/* relacionadas */
+.sx-rel{padding:clamp(70px,9vw,120px) var(--gut)}
+.sx-rel-h{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:30px}
+.sx-rel-h h2{font-size:clamp(28px,3.2vw,48px);margin-top:10px}
+.sx-rel-g{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.sx-rc{display:grid;grid-template-rows:auto 1fr;border-radius:16px;overflow:hidden;background:var(--char);border:1px solid var(--line);text-decoration:none;position:relative;transition:border-color .3s,transform .45s var(--ease)}
+.sx-rc .im{display:block;aspect-ratio:16/10;overflow:hidden}
+.sx-rc img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) brightness(.85);transition:filter .6s,transform .9s var(--ease)}
+.sx-rc img.tall{transform:scale(1.6)}.sx-rc img.zoom{transform:scale(1.3)}
+.sx-rc .t{display:grid;gap:6px;padding:18px 60px 20px 18px}
+.sx-rc small{font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--lime)}
+.sx-rc b{font-size:18px;font-weight:800;line-height:1.2}
+.sx-rc>i{position:absolute;right:16px;bottom:18px;font-style:normal;width:34px;height:34px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;transition:all .4s var(--ease)}
+.sx-rc:hover{border-color:var(--lime);transform:translateY(-4px)}
+.sx-rc:hover img{filter:none}
+.sx-rc:hover>i{background:var(--lime);color:var(--ink);border-color:var(--lime);transform:rotate(-45deg)}
+.sx-rc.is-pf{grid-template-rows:1fr;background:var(--lime);color:var(--ink);border-color:var(--lime);align-content:end;min-height:200px}
+.sx-rc.is-pf small{color:var(--ink);opacity:.7}.sx-rc.is-pf b{font-size:22px}
+.sx-rc.is-pf>i{border-color:var(--ink)}
+@media (max-width:1000px){.sx-rel-g{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.sx-rel-g{grid-template-columns:1fr}}
+/* chamada final */
+.sx-cta-sec{padding:0 var(--gut) clamp(60px,7vw,100px)}
+.sx-rel+.sx-cta-sec{margin-top:calc(-1 * clamp(30px,5vw,70px))}
+.sx-cta{background:var(--lime);color:var(--ink);border-radius:22px;padding:clamp(34px,5vw,70px);display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(24px,4vw,70px);align-items:end}
+.sx-cta h2{margin:0;font-size:clamp(30px,3.6vw,56px);font-weight:800;letter-spacing:-.04em;line-height:1;text-wrap:balance}
+.sx-cta p{margin:0 0 20px;font-size:17px;line-height:1.6;max-width:46ch}
+@media (max-width:800px){.sx-cta{grid-template-columns:1fr}}
+/* lista geral */
+.sx-list{padding:clamp(70px,9vw,120px) var(--gut)}
+.sx-list-h{display:flex;justify-content:space-between;align-items:end;gap:20px 40px;flex-wrap:wrap;margin-bottom:30px}
+.sx-list-h h2{font-size:clamp(28px,3.2vw,48px);margin-top:10px}
+.sx-chips{display:flex;flex-wrap:wrap;gap:8px}
+.sx-chips button{border:1px solid var(--line);background:transparent;border-radius:99px;padding:10px 16px;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;color:var(--paper);transition:all .3s}
+.sx-chips button:hover{border-color:var(--lime)}
+.sx-chips button[aria-pressed="true"]{background:var(--lime);color:var(--ink);border-color:var(--lime)}
+.sx-cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.sx-card{display:grid;grid-template-rows:auto 1fr;border-radius:16px;overflow:hidden;background:var(--char);border:1px solid var(--line);text-decoration:none;transition:border-color .3s,transform .45s var(--ease)}
+.sx-card[hidden]{display:none}
+.sx-card .im{position:relative;display:block;aspect-ratio:16/10;overflow:hidden}
+.sx-card img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) brightness(.85);transition:filter .6s,transform .9s var(--ease)}
+.sx-card img.tall{transform:scale(1.6)}.sx-card img.zoom{transform:scale(1.3)}
+.sx-card .im small{position:absolute;left:12px;top:12px;font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;background:rgba(10,11,8,.75);padding:6px 9px;border-radius:99px}
+.sx-card .bd{display:flex;flex-direction:column;gap:10px;padding:18px 18px 20px}
+.sx-card h3{margin:0;font-size:19px;font-weight:800;letter-spacing:-.01em;line-height:1.2}
+.sx-card p{margin:0;font-size:14px;line-height:1.55;opacity:.7;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.sx-card .go{margin-top:auto;padding-top:6px;display:flex;align-items:center;gap:10px;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--lime)}
+.sx-card .go i{font-style:normal;transition:transform .4s var(--ease)}
+.sx-card:hover{border-color:var(--lime);transform:translateY(-4px)}
+.sx-card:hover img{filter:none;transform:scale(1.05)}.sx-card:hover img.tall{transform:scale(1.65)}
+.sx-card:hover .go i{transform:translateX(6px)}
+@media (max-width:1100px){.sx-cards{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:800px){.sx-cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.sx-cards{grid-template-columns:1fr}}
+/* por que a cobra */
+.sx-why{padding:clamp(70px,9vw,120px) var(--gut);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,80px);align-items:center}
+.sx-why-t{display:grid;gap:14px}
+.sx-why h2{font-size:clamp(28px,3.2vw,48px)}
+.sx-why-t p:not(.eyebrow){margin:0;font-size:17px;line-height:1.65;color:rgba(10,11,8,.75);max-width:54ch}
+.sx-mv{display:grid;gap:12px}
+.sx-mv>div{display:grid;grid-template-columns:44px 1fr;gap:4px 16px;padding:22px;border-radius:16px;background:rgba(255,255,255,.6);border:1px solid rgba(10,11,8,.08)}
+.sx-mv span{grid-row:span 2;width:44px;height:44px;border-radius:50%;background:var(--ink);color:var(--lime);display:grid;place-items:center}
+.sx-mv h3{margin:0;font-size:17px;font-weight:800}
+.sx-mv p{margin:0;font-size:15px;line-height:1.6;color:rgba(10,11,8,.75)}
+@media (max-width:900px){.sx-why{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
 <canvas id="topo" aria-hidden="true"></canvas>
@@ -290,24 +411,25 @@ html:not(.js) .rv,.reduce .rv{opacity:1;transform:none}
 <nav class="mnav" aria-label="Menu"><a href="index.html">Home</a><a href="sobre.html">Sobre</a><a href="/solucoes-em-marketing-digital/" class="on" aria-current="page">Soluções</a><a href="portfolio.html">Portfólio</a><a href="audiovisual.html">Audiovisual</a><a href="blog.html">Blog</a><a href="contato.html">Contato</a></nav>
 
 <main id="top">
-<section class="sec t-paper sl-hero" data-bg="paper" data-tone="paper">
-  <nav class="eyebrow so-crumb" aria-label="Você está em"><a href="index.html">Início</a><span aria-hidden="true">/</span><b style="color:var(--ink)" aria-current="page">Soluções</b></nav>
-  <h1>Soluções em marketing digital <span class="it">para empresas</span></h1>
-  <div class="intro"><p>A Cobra desenvolve soluções em marketing digital, design e tecnologia para empresas que precisam fortalecer sua presença, comunicar melhor sua marca e gerar mais oportunidades.</p><a class="btn" href="https://wa.me/5547999150241?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Cobra%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto." target="_blank" rel="noopener">Solicitar diagnóstico <span class="arr">↗</span></a></div>
-</section>
-<section class="sec t-paper sl-full" data-bg="paper" data-tone="paper">
-  <h2 class="display">Somos agência <span class="it">full service</span></h2>
-  <div><p>Isso significa que conseguimos atender diferentes necessidades de comunicação, design e presença digital, desde campanhas pontuais até estratégias contínuas para marcas que querem crescer.</p><p>Atuamos com estratégia, branding, criação de sites, e-commerce, gestão de redes sociais, tráfego pago, fotografia, vídeo e soluções criativas adaptadas ao momento de cada negócio.</p></div>
-</section>
-<section class="sec t-paper sl-grid-sec" data-bg="paper" data-tone="paper" aria-label="Todas as soluções">
-  <div class="sl-grid"><a class="sl-item" href="solucoes-em-marketing-digital/branding/"><span class="so-card"><span class="in"><img src="assets/c65205a981d5.webp" alt="" loading="lazy"><span class="ty">Marca</span><span class="lab">Branding</span></span></span><h3 class="sr">Branding</h3><span class="sl-card-txt">Criamos identidades visuais, posicionamento de marca e sistemas visuais para empresas que precisam comunicar valor, profissionalismo e diferenciação no mercado.</span></a><a class="sl-item" href="solucoes-em-marketing-digital/criacao-de-sites-profissionais/"><span class="so-card"><span class="in"><img src="assets/e8c86fb18710.jpg" alt="" loading="lazy"><span class="ty">Tecnologia</span><span class="lab">Sites Institucionais</span></span></span><h3 class="sr">Sites Institucionais</h3><span class="sl-card-txt">Desenvolvemos sites institucionais profissionais para empresas que querem apresentar seus serviços com clareza, fortalecer sua presença digital e gerar mais oportunidades pelo Google.</span></a><a class="sl-item" href="lojas-virtuais/"><span class="so-card"><span class="in"><img src="assets/4f057ed32218.jpg" alt="" loading="lazy"><span class="ty">Tecnologia</span><span class="lab">E-Commerce</span></span></span><h3 class="sr">E-Commerce</h3><span class="sl-card-txt">Criamos lojas virtuais estratégicas para empresas que desejam vender online com estrutura profissional, boa experiência de navegação, design confiável e foco em conversão.</span></a><a class="sl-item" href="solucoes-em-marketing-digital/midias-sociais/"><span class="so-card"><span class="in"><img src="assets/7cac61bf0baf.webp" alt="" loading="lazy"><span class="ty">Conteúdo</span><span class="lab">Mídias Sociais</span></span></span><h3 class="sr">Mídias Sociais</h3><span class="sl-card-txt">Planejamos e produzimos conteúdos para redes sociais com foco em posicionamento, consistência visual, relacionamento com o público e fortalecimento da marca.</span></a><a class="sl-item" href="solucoes-em-marketing-digital/design-de-embalagens/"><span class="so-card"><span class="in"><img class="tall" src="assets/87c9ce7128b3.webp" alt="" loading="lazy"><span class="ty">Marca</span><span class="lab">Embalagens e Tags de Produto</span></span></span><h3 class="sr">Embalagens e Tags de Produto</h3><span class="sl-card-txt">Desenvolvemos embalagens estratégicas para produtos que precisam se destacar no ponto de venda, comunicar valor e fortalecer a identidade da marca.</span></a><a class="sl-item" href="solucoes-em-marketing-digital/trafego-pago/"><span class="so-card"><span class="in"><img src="assets/a761a95cc979.jpg" alt="" loading="lazy"><span class="ty">Performance</span><span class="lab">Tráfego Pago</span></span></span><h3 class="sr">Tráfego Pago</h3><span class="sl-card-txt">Planejamos campanhas de tráfego pago para empresas que querem atrair clientes, divulgar produtos, gerar leads e melhorar seus resultados em canais como Google, Instagram e Facebook.</span></a><a class="sl-item" href="solucoes-em-marketing-digital/consultoria-de-marketing-digital/"><span class="so-card"><span class="in"><img class="zoom" src="assets/d39e458249f1.webp" alt="" loading="lazy"><span class="ty">Estratégia</span><span class="lab">Consultoria</span></span></span><h3 class="sr">Consultoria</h3><span class="sl-card-txt">Analisamos o momento da marca, identificamos oportunidades e orientamos decisões de marketing, comunicação e presença digital com mais clareza e direção.</span></a><a class="sl-item" href="solucoes-em-marketing-digital/design-de-estampas/"><span class="so-card"><span class="in"><img src="assets/bd53f12073a2.jpg" alt="" loading="lazy"><span class="ty">Marca</span><span class="lab">Design de Estampas</span></span></span><h3 class="sr">Design de Estampas</h3><span class="sl-card-txt">Criamos estampas personalizadas para marcas, produtos e coleções, unindo conceito visual, aplicação comercial e linguagem alinhada ao posicionamento da empresa.</span></a><a class="sl-item" href="solucoes-em-marketing-digital/fotografia-profissional/"><span class="so-card"><span class="in"><img class="tall" src="assets/8b5fe5d2962a.webp" alt="" loading="lazy"><span class="ty">Audiovisual</span><span class="lab">Fotografia</span></span></span><h3 class="sr">Fotografia</h3><span class="sl-card-txt">Produzimos fotos profissionais para produtos, ambientes, equipes e campanhas, valorizando a percepção da marca e criando materiais visuais mais fortes para canais digitais e impressos.</span></a><a class="sl-item" href="solucoes-em-marketing-digital/producao-de-video/"><span class="so-card"><span class="in"><img class="tall" src="assets/576924ed87dd.webp" alt="" loading="lazy"><span class="ty">Audiovisual</span><span class="lab">Produção de Vídeo</span></span></span><h3 class="sr">Produção de Vídeo</h3><span class="sl-card-txt">Criamos vídeos para apresentar empresas, produtos e serviços, com planejamento da mensagem, dos formatos e dos canais em que o conteúdo será usado.</span></a><a class="sl-item" href="solucoes-em-marketing-digital/seo-otimizacao-de-sites/"><span class="so-card"><span class="in"><img src="assets/84a210205cc9.jpg" alt="" loading="lazy"><span class="ty">Tecnologia</span><span class="lab">SEO e Otimização</span></span></span><h3 class="sr">SEO e Otimização</h3><span class="sl-card-txt">Organizamos conteúdo, páginas e links internos e avaliamos aspectos técnicos para facilitar a descoberta do site e a compreensão dos serviços da empresa.</span></a><a class="sl-item" href="solucoes-em-marketing-digital/manutencao-de-sites/"><span class="so-card"><span class="in"><img src="assets/76faebec2532.webp" alt="" loading="lazy"><span class="ty">Tecnologia</span><span class="lab">Manutenção de Sites</span></span></span><h3 class="sr">Manutenção de Sites</h3><span class="sl-card-txt">Avaliamos sites existentes para atualizar informações, investigar falhas de funcionamento e definir os cuidados necessários conforme a estrutura de cada projeto.</span></a></div>
-</section>
-<section class="sec t-ink sl-more" data-bg="ink" data-tone="ink">
-  <div class="sl-two">
-    <div><h2 class="display">Cada empresa vive um <span class="it">momento diferente.</span></h2><p>Por isso, a Cobra não trabalha com soluções engessadas. Entendemos o cenário da marca, seus objetivos e suas necessidades para indicar o caminho mais eficiente entre estratégia, design, conteúdo, tecnologia e performance.</p></div>
-    <div class="sl-mv"><div><h3>Nossa missão</h3><p>Na Agência Cobra, nossa missão é ajudar nossos clientes a alcançar seus objetivos de negócios através de soluções de marketing digital inovadoras e criativas.</p></div><div><h3>Nossos valores</h3><p>Buscamos a excelência em tudo o que fazemos, desde a qualidade do trabalho que entregamos até o serviço que prestamos aos nossos clientes.</p></div></div>
+<section class="sec t-paper sx-hero is-hub" data-bg="paper" data-tone="paper">
+  <div class="sx-hero-txt">
+    <nav class="eyebrow sx-crumb" aria-label="Você está em"><a href="index.html">Início</a><span aria-hidden="true">/</span><b aria-current="page">Soluções</b></nav>
+    <p class="sx-kicker"><span class="graf">Full service</span><span>Estratégia • Design • Tecnologia</span></p>
+    <h1 class="sx-h1">Soluções em marketing digital para empresas</h1>
+    <p class="sx-lead">A Cobra desenvolve soluções em marketing digital, design e tecnologia para empresas que precisam fortalecer sua presença, comunicar melhor sua marca e gerar mais oportunidades.</p>
+    <div class="sx-row"><a class="btn" href="https://wa.me/5547999150241?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Cobra%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto." target="_blank" rel="noopener">Solicitar diagnóstico <span class="arr">↗</span></a><a class="btn ghost" href="#lista">Ver soluções <span class="arr">↓</span></a></div>
   </div>
-  <div class="sl-cta"><h2 class="display">Qual solução faz sentido para o momento da <span class="it">sua marca?</span></h2><p>Fale com a Cobra e descubra como podemos ajudar sua empresa a fortalecer a presença digital, melhorar a comunicação e transformar ideias em projetos mais estratégicos.</p><a class="btn" href="https://wa.me/5547999150241?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Cobra%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto." target="_blank" rel="noopener">Solicitar diagnóstico <span class="arr">↗</span></a></div>
+  <div class="sx-mos" aria-hidden="true"><span><img src="assets/c65205a981d5.webp" alt=""><em>Branding</em></span><span><img src="assets/e8c86fb18710.jpg" alt=""><em>Sites</em></span><span><img src="assets/4f057ed32218.jpg" alt=""><em>E-commerce</em></span><span><img src="assets/7cac61bf0baf.webp" alt=""><em>Redes sociais</em></span><span><img src="assets/87c9ce7128b3.webp" alt="" class="tall"><em>Embalagens</em></span><span><img src="assets/a761a95cc979.jpg" alt=""><em>Tráfego pago</em></span><span><img src="assets/d39e458249f1.webp" alt="" class="zoom"><em>Consultoria</em></span><span><img src="assets/bd53f12073a2.jpg" alt=""><em>Estampas</em></span><span><img src="assets/8b5fe5d2962a.webp" alt="" class="tall"><em>Fotografia</em></span><span><img src="assets/576924ed87dd.webp" alt="" class="tall"><em>Vídeo</em></span><span><img src="assets/84a210205cc9.jpg" alt=""><em>SEO</em></span><span><img src="assets/76faebec2532.webp" alt=""><em>Manutenção</em></span></div>
+  <div class="sx-ent is-full"><h2>Somos agência full service</h2><p>Isso significa que conseguimos atender diferentes necessidades de comunicação, design e presença digital, desde campanhas pontuais até estratégias contínuas para marcas que querem crescer.</p><p>Atuamos com estratégia, branding, criação de sites, e-commerce, gestão de redes sociais, tráfego pago, fotografia, vídeo e soluções criativas adaptadas ao momento de cada negócio.</p></div>
+</section>
+<section class="sec t-ink sx-list" id="lista" data-bg="ink" data-tone="ink">
+  <div class="sx-list-h"><div><p class="eyebrow lime">12 soluções</p><h2>Escolha por onde começar</h2></div>
+    <div class="sx-chips" id="sxChips" role="group" aria-label="Filtrar soluções"><button type="button" data-f="all" aria-pressed="true">Todas</button><button type="button" data-f="marca" aria-pressed="false">Marca</button><button type="button" data-f="conteudo" aria-pressed="false">Conteúdo</button><button type="button" data-f="tecnologia" aria-pressed="false">Tecnologia</button><button type="button" data-f="performance" aria-pressed="false">Performance</button><button type="button" data-f="audiovisual" aria-pressed="false">Audiovisual</button></div></div>
+  <div class="sx-cards"><a class="sx-card" href="solucoes-em-marketing-digital/branding/" data-g="marca"><span class="im"><img src="assets/c65205a981d5.webp" alt="" loading="lazy"><small>Marca</small></span><span class="bd"><h3>Branding</h3><p>Criamos identidades visuais, posicionamento de marca e sistemas visuais para empresas que precisam comunicar valor, profissionalismo e diferenciação no mercado.</p><span class="go">Conhecer <i aria-hidden="true">→</i></span></span></a><a class="sx-card" href="solucoes-em-marketing-digital/criacao-de-sites-profissionais/" data-g="tecnologia"><span class="im"><img src="assets/e8c86fb18710.jpg" alt="" loading="lazy"><small>Tecnologia</small></span><span class="bd"><h3>Sites Institucionais</h3><p>Desenvolvemos sites institucionais profissionais para empresas que querem apresentar seus serviços com clareza, fortalecer sua presença digital e gerar mais oportunidades pelo Google.</p><span class="go">Conhecer <i aria-hidden="true">→</i></span></span></a><a class="sx-card" href="lojas-virtuais/" data-g="tecnologia"><span class="im"><img src="assets/4f057ed32218.jpg" alt="" loading="lazy"><small>Tecnologia</small></span><span class="bd"><h3>E-Commerce</h3><p>Criamos lojas virtuais estratégicas para empresas que desejam vender online com estrutura profissional, boa experiência de navegação, design confiável e foco em conversão.</p><span class="go">Conhecer <i aria-hidden="true">→</i></span></span></a><a class="sx-card" href="solucoes-em-marketing-digital/midias-sociais/" data-g="conteudo"><span class="im"><img src="assets/7cac61bf0baf.webp" alt="" loading="lazy"><small>Conteúdo</small></span><span class="bd"><h3>Mídias Sociais</h3><p>Planejamos e produzimos conteúdos para redes sociais com foco em posicionamento, consistência visual, relacionamento com o público e fortalecimento da marca.</p><span class="go">Conhecer <i aria-hidden="true">→</i></span></span></a><a class="sx-card" href="solucoes-em-marketing-digital/design-de-embalagens/" data-g="marca"><span class="im"><img src="assets/87c9ce7128b3.webp" alt="" loading="lazy" class="tall"><small>Marca</small></span><span class="bd"><h3>Embalagens e Tags de Produto</h3><p>Desenvolvemos embalagens estratégicas para produtos que precisam se destacar no ponto de venda, comunicar valor e fortalecer a identidade da marca.</p><span class="go">Conhecer <i aria-hidden="true">→</i></span></span></a><a class="sx-card" href="solucoes-em-marketing-digital/trafego-pago/" data-g="performance"><span class="im"><img src="assets/a761a95cc979.jpg" alt="" loading="lazy"><small>Performance</small></span><span class="bd"><h3>Tráfego Pago</h3><p>Planejamos campanhas de tráfego pago para empresas que querem atrair clientes, divulgar produtos, gerar leads e melhorar seus resultados em canais como Google, Instagram e Facebook.</p><span class="go">Conhecer <i aria-hidden="true">→</i></span></span></a><a class="sx-card" href="solucoes-em-marketing-digital/consultoria-de-marketing-digital/" data-g="performance"><span class="im"><img src="assets/d39e458249f1.webp" alt="" loading="lazy" class="zoom"><small>Estratégia</small></span><span class="bd"><h3>Consultoria</h3><p>Analisamos o momento da marca, identificamos oportunidades e orientamos decisões de marketing, comunicação e presença digital com mais clareza e direção.</p><span class="go">Conhecer <i aria-hidden="true">→</i></span></span></a><a class="sx-card" href="solucoes-em-marketing-digital/design-de-estampas/" data-g="marca"><span class="im"><img src="assets/bd53f12073a2.jpg" alt="" loading="lazy"><small>Marca</small></span><span class="bd"><h3>Design de Estampas</h3><p>Criamos estampas personalizadas para marcas, produtos e coleções, unindo conceito visual, aplicação comercial e linguagem alinhada ao posicionamento da empresa.</p><span class="go">Conhecer <i aria-hidden="true">→</i></span></span></a><a class="sx-card" href="solucoes-em-marketing-digital/fotografia-profissional/" data-g="audiovisual"><span class="im"><img src="assets/8b5fe5d2962a.webp" alt="" loading="lazy" class="tall"><small>Audiovisual</small></span><span class="bd"><h3>Fotografia</h3><p>Produzimos fotos profissionais para produtos, ambientes, equipes e campanhas, valorizando a percepção da marca e criando materiais visuais mais fortes para canais digitais e impressos.</p><span class="go">Conhecer <i aria-hidden="true">→</i></span></span></a><a class="sx-card" href="solucoes-em-marketing-digital/producao-de-video/" data-g="audiovisual"><span class="im"><img src="assets/576924ed87dd.webp" alt="" loading="lazy" class="tall"><small>Audiovisual</small></span><span class="bd"><h3>Produção de Vídeo</h3><p>Criamos vídeos para apresentar empresas, produtos e serviços, com planejamento da mensagem, dos formatos e dos canais em que o conteúdo será usado.</p><span class="go">Conhecer <i aria-hidden="true">→</i></span></span></a><a class="sx-card" href="solucoes-em-marketing-digital/seo-otimizacao-de-sites/" data-g="tecnologia"><span class="im"><img src="assets/84a210205cc9.jpg" alt="" loading="lazy"><small>Tecnologia</small></span><span class="bd"><h3>SEO e Otimização</h3><p>Organizamos conteúdo, páginas e links internos e avaliamos aspectos técnicos para facilitar a descoberta do site e a compreensão dos serviços da empresa.</p><span class="go">Conhecer <i aria-hidden="true">→</i></span></span></a><a class="sx-card" href="solucoes-em-marketing-digital/manutencao-de-sites/" data-g="tecnologia"><span class="im"><img src="assets/76faebec2532.webp" alt="" loading="lazy"><small>Tecnologia</small></span><span class="bd"><h3>Manutenção de Sites</h3><p>Avaliamos sites existentes para atualizar informações, investigar falhas de funcionamento e definir os cuidados necessários conforme a estrutura de cada projeto.</p><span class="go">Conhecer <i aria-hidden="true">→</i></span></span></a></div>
+</section>
+<section class="sec t-paper sx-why" data-bg="paper" data-tone="paper">
+  <div class="sx-why-t"><p class="eyebrow">Sob medida</p><h2>Cada empresa vive um momento diferente.</h2><p>Por isso, a Cobra não trabalha com soluções engessadas. Entendemos o cenário da marca, seus objetivos e suas necessidades para indicar o caminho mais eficiente entre estratégia, design, conteúdo, tecnologia e performance.</p></div>
+  <div class="sx-mv"><div><span aria-hidden="true">◎</span><h3>Nossa missão</h3><p>Na Agência Cobra, nossa missão é ajudar nossos clientes a alcançar seus objetivos de negócios através de soluções de marketing digital inovadoras e criativas.</p></div><div><span aria-hidden="true">✦</span><h3>Nossos valores</h3><p>Buscamos a excelência em tudo o que fazemos, desde a qualidade do trabalho que entregamos até o serviço que prestamos aos nossos clientes.</p></div></div>
 </section>
 <section class="sec t-ink ab-num" data-bg="ink" data-tone="ink">
   <div class="head"><h2 class="display" data-split>Em <span class="it">números</span></h2><p class="muted rv" style="max-width:40ch;margin:0">Ajudamos a sua empresa a se destacar online. Nosso trabalho é garantir que sua marca tenha o reconhecimento que merece.</p></div>
@@ -318,16 +440,10 @@ html:not(.js) .rv,.reduce .rv{opacity:1;transform:none}
     <div class="rv"><b><i data-count="3">3</i><sup>MI+</sup></b><span>Em ativos gerenciados</span></div>
   </div>
 </section>
-<section class="sec t-char so-proc" data-bg="char" data-tone="ink">
-  <h2 class="display">Como a gente <span class="it">trabalha</span></h2>
-  <div class="so-steps">
-    <div class="so-step"><div><span class="ic" aria-hidden="true">◎</span><b>Diagnóstico</b></div><p>Entendemos o negócio, o público e o ponto de partida antes de propor qualquer coisa.</p></div>
-    <div class="so-step"><div><span class="ic" aria-hidden="true">↗</span><b>Estratégia</b></div><p>Definimos objetivos, prioridades e o formato de entrega que faz sentido para você.</p></div>
-    <div class="so-step"><div><span class="ic" aria-hidden="true">✦</span><b>Execução</b></div><p>Criamos, produzimos e publicamos com aprovação em cada etapa.</p></div>
-    <div class="so-step"><div><span class="ic" aria-hidden="true">↻</span><b>Acompanhamento</b></div><p>Medimos, ajustamos e mantemos a marca evoluindo depois da entrega.</p></div>
-  </div>
-</section>
-
+<section class="sec t-ink sx-cta-sec" data-bg="ink" data-tone="ink"><div class="sx-cta">
+  <h2>Qual solução faz sentido para o momento da sua marca?</h2>
+  <div><p>Fale com a Cobra e descubra como podemos ajudar sua empresa a fortalecer a presença digital, melhorar a comunicação e transformar ideias em projetos mais estratégicos.</p><a class="btn ink" href="https://wa.me/5547999150241?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Cobra%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto." target="_blank" rel="noopener">Solicitar diagnóstico <span class="arr">↗</span></a></div>
+</div></section>
 </main>
 <footer class="hf sec" data-tone="lime" data-bg="lime">
   <div class="hf-card">
@@ -445,13 +561,28 @@ html:not(.js) .rv,.reduce .rv{opacity:1;transform:none}
 {"@context":"https://schema.org","@type":"ItemList","name":"Soluções em marketing digital","itemListElement":[{"@type":"ListItem","position":1,"name":"Branding","url":"https://cobra.art.br/solucoes-em-marketing-digital/branding/"},{"@type":"ListItem","position":2,"name":"Sites Institucionais","url":"https://cobra.art.br/solucoes-em-marketing-digital/criacao-de-sites-profissionais/"},{"@type":"ListItem","position":3,"name":"E-Commerce","url":"https://cobra.art.br/lojas-virtuais/"},{"@type":"ListItem","position":4,"name":"Mídias Sociais","url":"https://cobra.art.br/solucoes-em-marketing-digital/midias-sociais/"},{"@type":"ListItem","position":5,"name":"Embalagens e Tags de Produto","url":"https://cobra.art.br/solucoes-em-marketing-digital/design-de-embalagens/"},{"@type":"ListItem","position":6,"name":"Tráfego Pago","url":"https://cobra.art.br/solucoes-em-marketing-digital/trafego-pago/"},{"@type":"ListItem","position":7,"name":"Consultoria","url":"https://cobra.art.br/solucoes-em-marketing-digital/consultoria-de-marketing-digital/"},{"@type":"ListItem","position":8,"name":"Design de Estampas","url":"https://cobra.art.br/solucoes-em-marketing-digital/design-de-estampas/"},{"@type":"ListItem","position":9,"name":"Fotografia","url":"https://cobra.art.br/solucoes-em-marketing-digital/fotografia-profissional/"},{"@type":"ListItem","position":10,"name":"Produção de Vídeo","url":"https://cobra.art.br/solucoes-em-marketing-digital/producao-de-video/"},{"@type":"ListItem","position":11,"name":"SEO e Otimização","url":"https://cobra.art.br/solucoes-em-marketing-digital/seo-otimizacao-de-sites/"},{"@type":"ListItem","position":12,"name":"Manutenção de Sites","url":"https://cobra.art.br/solucoes-em-marketing-digital/manutencao-de-sites/"}]}
 </script>
 <script>
+/* Soluções: entrada do topo, cards surgindo ao rolar, filtro da lista e contadores */
 (function(){
   const C = window.__cobra || {}; C.reveal && C.reveal();
-  /* contadores */
-  if (window.gsap && window.ScrollTrigger && !matchMedia('(prefers-reduced-motion: reduce)').matches) document.querySelectorAll('[data-count]').forEach(el=>{ const v=parseFloat(el.dataset.count), dec=el.dataset.count.includes('.')?1:0, o={v:0};
-    gsap.to(o,{ v, duration:1.6, ease:'power2.out', scrollTrigger:{ trigger:el, start:'top 88%', once:true }, onUpdate:()=>el.textContent=o.v.toFixed(dec) }); });
+  const anim = window.gsap && window.ScrollTrigger && !matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (anim){
+    gsap.from('.sx-hero-txt > *', { y:40, opacity:0, duration:1, stagger:.07, ease:'expo.out', delay:.1 });
+    gsap.from('.sx-vis, .sx-mos', { y:60, opacity:0, duration:1.2, ease:'expo.out', delay:.3 });
+    gsap.to('.sx-vis .so-frame', { yPercent:-6, ease:'none', scrollTrigger:{ trigger:'.sx-hero', start:'top top', end:'bottom top', scrub:true } });
+    ScrollTrigger.batch('.sx-ent li, .sx-it, .sx-steps li, .sx-q, .sx-rc, .sx-card, .sx-mv > div, .sx-blk.is-say', { start:'top 92%', once:true,
+      onEnter: els => gsap.fromTo(els, { y:36, opacity:0 }, { y:0, opacity:1, duration:.8, stagger:.06, ease:'expo.out', overwrite:true }) });
+    document.querySelectorAll('[data-count]').forEach(el=>{ const v=parseFloat(el.dataset.count), dec=el.dataset.count.includes('.')?1:0, o={v:0};
+      gsap.to(o,{ v, duration:1.6, ease:'power2.out', scrollTrigger:{ trigger:el, start:'top 88%', once:true }, onUpdate:()=>el.textContent=o.v.toFixed(dec) }); });
+  }
+  const chips=document.getElementById('sxChips'), cards=[...document.querySelectorAll('.sx-card')];
+  if (chips) chips.addEventListener('click', e=>{ const b=e.target.closest('button'); if (!b) return;
+    chips.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed', String(x===b)));
+    const f=b.dataset.f; cards.forEach(c=>c.hidden = f!=='all' && c.dataset.g!==f);
+    if (anim) gsap.fromTo(cards.filter(c=>!c.hidden), { y:24, opacity:0 }, { y:0, opacity:1, duration:.6, stagger:.04, ease:'expo.out' });
+    window.ScrollTrigger && ScrollTrigger.refresh(); });
 })();
 </script>
+
 <script>
 (function(){
   var ft=document.querySelector('.hf'); if(!ft) return;

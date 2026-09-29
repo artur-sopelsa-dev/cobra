@@ -22,6 +22,11 @@
       "partial": "rodape-estilos"
     },
     {
+      "label": "Estilos das páginas de soluções",
+      "kind": "style",
+      "partial": "solucoes-estilos"
+    },
+    {
       "label": "Fim do head",
       "kind": "structure",
       "file": "03-structure-fim-do-head.html"
@@ -42,12 +47,12 @@
       "file": "06-section-so-hero.html"
     },
     {
-      "label": "O que entregamos",
+      "label": "Conteúdo da solução",
       "kind": "section",
       "file": "07-section-entregas.html"
     },
     {
-      "label": "Como a gente trabalha",
+      "label": "Passo a passo",
       "kind": "section",
       "file": "08-section-so-proc.html"
     },
@@ -57,7 +62,7 @@
       "file": "09-section-marcas.html"
     },
     {
-      "label": "Outras soluções",
+      "label": "Soluções que se conectam e chamada final",
       "kind": "section",
       "file": "10-section-so-more.html"
     },
