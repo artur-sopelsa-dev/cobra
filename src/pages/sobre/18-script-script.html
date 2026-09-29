@@ -4,7 +4,7 @@
   C.reveal && C.reveal();
   /* curvas animadas atrás da mão */
   const cv = document.getElementById('abCv'), t0 = performance.now();
-  (function loop(t){ const F = C.fit && C.fit(cv, 1.5); if (F){ F.ctx.clearRect(0,0,F.w,F.h); C.contour(F.ctx,F.w,F.h,{cell:12,scale:90,levels:[-1.6,-.8,0,.8,1.6],lw:1.4,line:'rgba(203,226,46,.35)',ox:0,oy:0},reduce?0:(t-t0)*.0004); }
+  (function loop(t){ const F = C.fit && C.fit(cv, 1.5); if (F){ F.ctx.clearRect(0,0,F.w,F.h); C.contour(F.ctx,F.w,F.h,{cell:12,scale:90,levels:[-1.6,-.8,0,.8,1.6],lw:1.2,line:'rgba(203,226,46,.26)',ox:0,oy:0},reduce?0:(t-t0)*.0004); }
     if (!reduce) setTimeout(()=>requestAnimationFrame(loop), 50); })(t0);
   /* manifesto: palavras acendem com o scroll */
   const man = document.getElementById('abMan');
@@ -16,12 +16,6 @@
   /* contadores */
   if (hasG && !reduce) document.querySelectorAll('[data-count]').forEach(el=>{ const v=parseFloat(el.dataset.count), dec=el.dataset.count.includes('.')?1:0, o={v:0};
     gsap.to(o,{ v, duration:1.6, ease:'power2.out', scrollTrigger:{ trigger:el, start:'top 88%', once:true }, onUpdate:()=>el.textContent=o.v.toFixed(dec) }); });
-  /* imagem que segue o mouse nos serviços */
-  const peek=document.getElementById('peek'), pimg=peek.querySelector('img');
-  if (matchMedia('(hover:hover)').matches){ let x=0,y=0,px=0,py=0;
-    document.getElementById('svcs').addEventListener('pointermove', e=>{ x=e.clientX; y=e.clientY; });
-    document.querySelectorAll('.svc').forEach(a=>{ a.addEventListener('pointerenter', ()=>{ pimg.src=a.dataset.img; peek.classList.add('on'); }); a.addEventListener('pointerleave', ()=>peek.classList.remove('on')); });
-    (function f(){ px+=(x-px)*.15; py+=(y-py)*.15; peek.style.left=px+'px'; peek.style.top=py+'px'; requestAnimationFrame(f); })(); }
   /* curvas nos cards (valores e equipe) + mapa */
   function still(cv, o){ const F=C.fit(cv,1.5); if (!F) return; F.ctx.clearRect(0,0,F.w,F.h); C.contour(F.ctx,F.w,F.h,o,o.t||0); }
   const draw=()=>{
