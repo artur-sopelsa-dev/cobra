@@ -169,7 +169,6 @@ html:not(.js) .h-sign{display:none}
 .hs-quote .sig path{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.6s cubic-bezier(.5,0,.3,1)}
 .hs-quote .sig path+path{transition-delay:1.2s;transition-duration:.5s}
 .hs-item.on .sig path,html:not(.js) .hs-quote .sig path{stroke-dashoffset:0}
-.bit{position:absolute;width:14px;height:10px;background:var(--lime);border-radius:1px}
 .stat{border:1.5px solid currentColor;border-radius:8px;padding:14px 18px;display:flex;gap:14px;align-items:center}
 .stat b{font-size:44px;line-height:1;font-weight:800}
 .stat span{font-size:11px;letter-spacing:.12em;text-transform:uppercase;line-height:1.3;font-weight:700}
@@ -315,25 +314,6 @@ html.js .sec.offer{background:var(--paper)}
 .sticker{right:2%;bottom:14%;width:120px;height:120px;border-radius:50%;background:var(--lime);display:grid;place-items:center;text-align:center;font-weight:800;text-transform:uppercase;font-size:13px;line-height:1.05;transform:rotate(-12deg);box-shadow:0 14px 30px rgba(10,11,8,.2)}
 @media (max-width:860px){.o-grid{grid-template-columns:1fr}.offer{border-radius:50% 50% 0 0/40px 40px 0 0;margin-top:-40px}}
 
-/* ================= BRANDS (nomes nos dois lados, linha neon no centro) ================= */
-.brands{padding-block:clamp(80px,10vw,140px);overflow:clip}
-.b-head{text-align:center;position:relative;z-index:2;margin-bottom:40px}
-.b-head h2{margin:0;font-size:clamp(40px,5.6vw,90px)}
-.b-head h2 .it{display:block;color:var(--lime)}
-.b-head p{margin:14px auto 0;max-width:44ch;opacity:.7}
-.b-grid{position:relative;display:grid;grid-template-columns:1fr 1fr 1.4fr 1fr 1fr;gap:var(--gut);min-height:120vh;z-index:2}
-.b-col{display:flex;flex-direction:column;gap:clamp(56px,9vh,110px);align-items:center;padding-top:6vh}
-.b-col:nth-child(2),.b-col:nth-child(4){padding-top:20vh}
-.b-col span{font-weight:800;font-size:clamp(18px,1.9vw,30px);letter-spacing:-.02em;text-transform:uppercase;white-space:nowrap;transition:color .35s}
-.b-col span:nth-child(2n){font-style:italic;font-weight:400;text-transform:none}
-.b-col span.on{color:var(--lime)}
-.b-link{color:inherit;text-decoration:none;background:linear-gradient(var(--lime),var(--lime)) 0 100%/0 .32em no-repeat;transition:background-size .45s var(--ease)}
-.b-link:hover{background-size:100% .32em}
-.b-center{position:relative;align-self:stretch;min-height:100%}
-.b-line{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
-.b-cta{position:absolute;left:50%;bottom:0;transform:translateX(-50%);white-space:nowrap}
-.brands .b-cta{background:var(--lime);color:var(--ink)}
-@media (max-width:860px){.b-grid{grid-template-columns:1fr 1fr;min-height:0}.b-center{grid-column:1/-1;order:2;min-height:0;display:flex;justify-content:center;margin-top:30px}.b-line{display:none}.b-cta{position:static;transform:none}.b-col{padding-top:0!important;gap:28px}.b-col:nth-child(n+4){display:none}.b-col span:nth-child(n+4){display:none}}
 
 /* ================= FAN ================= */
 .fan-sec{padding-block:clamp(60px,8vw,110px);text-align:center;overflow:hidden}
@@ -404,6 +384,19 @@ html:not(.js) .pixels{display:none}
 .co-close{position:absolute;right:var(--gut);top:18px;width:46px;height:46px;border-radius:10px;border:1.5px solid var(--paper);background:transparent;color:var(--paper);font-size:22px;cursor:pointer;z-index:2}
 @media (max-width:800px){.case-ov{grid-template-columns:1fr;grid-template-rows:42vh 1fr}}
 /* gallery big word + chapter bar */
+/* marcas na galeria horizontal */
+.hs-intro{max-width:34ch;gap:14px}
+.hs-intro h2{margin:0;font-size:clamp(40px,4.6vw,78px);line-height:.9}
+.hs-intro h2 .it{display:block;color:var(--lime)}
+.hs-intro p{margin:0;font-size:clamp(16px,1.3vw,19px);line-height:1.45;opacity:.8}
+.logo-tile{display:grid;place-items:center;width:clamp(200px,17vw,270px);aspect-ratio:1;padding:13%;border-radius:6px;background:#EEF0E3;color:var(--ink);text-decoration:none;filter:grayscale(1);opacity:.85;transition:filter .8s var(--ease),transform .8s var(--ease),opacity .8s}
+.logo-tile img{max-width:100%;max-height:100%;object-fit:contain}
+.logo-tile.w{background:#0A0B08;border:1px solid rgba(238,240,227,.14)}
+.logo-tile.type{background:#0A0B08;border:1px solid rgba(203,226,46,.35);color:var(--lime)}
+.logo-tile.type b{font-weight:900;text-transform:uppercase;letter-spacing:-.03em;font-size:clamp(18px,1.7vw,28px);line-height:1;text-align:center;overflow-wrap:anywhere;hyphens:auto}
+.hs-item.on .logo-tile,a.logo-tile:hover{filter:none;opacity:1;transform:scale(1.03)}
+.hs-end{gap:18px;align-items:flex-start}
+.hs-end .btn{background:var(--lime);color:var(--ink)}
 .hs-word{position:absolute;left:0;top:50%;transform:translateY(-50%);font-size:24vw;font-weight:900;letter-spacing:-.05em;line-height:.8;white-space:nowrap;color:transparent;-webkit-text-stroke:1.5px currentColor;opacity:.12;pointer-events:none;z-index:0;text-transform:uppercase}
 .hs-track{position:relative;z-index:1}
 .chap-bar{height:2px;background:rgba(238,240,227,.15);margin-top:30px;max-width:320px}
@@ -538,6 +531,32 @@ html:not(.js) .pixels{display:none}
 </section>
 
 <!-- HORIZONTAL GALLERY -->
+<section class="sec t-char hs" id="hs" data-tone="char" data-bg="hs" aria-labelledby="marcasTitle">
+  <div class="hs-pin">
+    <div class="hs-word" id="hsWord" aria-hidden="true">Marcas · Marcas</div>
+    <div class="hs-track" id="hsTrack">
+      <div class="hs-item hs-intro"><span class="cap">Clientes Cobra</span><h2 class="display" id="marcasTitle">Marcas que <span class="it">atendemos</span></h2><p>Empresas de Timbó e região que confiam na Cobra para crescer no digital, da indústria à gastronomia.</p></div>
+      <div class="hs-item up"><span class="cap">Frigorífico Gessner · Site · Tráfego · Redes · Vídeo</span><a class="logo-tile type" href="audiovisual.html#cliente-frigorifico-gessner"><b>Frigorífico Gessner</b></a></div>
+      <div class="hs-item"><span class="cap">Butzke · Produção de vídeo</span><a class="logo-tile" href="audiovisual.html#cliente-butzke"><img src="assets/57280a13afb4.svg" alt="Butzke" loading="lazy"></a></div>
+      <div class="hs-item down"><span class="cap">SFI Chips · Audiovisual</span><div class="logo-tile w"><img src="assets/ca84b33c40e5.png" alt="SFI Chips" loading="lazy"></div></div>
+      <div class="hs-item up"><span class="cap">Catarininho · Branding · Redes · Vídeo</span><a class="logo-tile type" href="audiovisual.html#cliente-catarininho"><b>Catarininho</b></a></div>
+      <div class="hs-item"><span class="cap">Calesita · Audiovisual</span><div class="logo-tile"><img src="assets/8b9a926de880.png" alt="Calesita" loading="lazy"></div></div>
+      <div class="hs-item down"><span class="cap">Missner · Audiovisual</span><div class="logo-tile"><img src="assets/90d6615987d4.png" alt="Missner" loading="lazy"></div></div>
+      <div class="hs-item up"><span class="cap">Tipótil · Produção de vídeo</span><a class="logo-tile type" href="audiovisual.html#cliente-tipotil"><b>Tipótil</b></a></div>
+      <div class="hs-item"><div class="hs-quote">Grandes projetos começam com <b>parcerias estratégicas.</b><svg class="sig sig-s" viewBox="0 0 400 160" aria-hidden="true"><path pathLength="1" d="M80 46 C 62 26, 22 38, 20 78 C 18 118, 60 124, 84 102 C 92 94, 96 86, 104 80 C 94 80, 92 112, 112 112 C 132 112, 136 80, 116 76 C 106 74, 104 84, 114 88 C 124 92, 132 86, 140 78 C 152 64, 164 28, 158 14 C 152 2, 136 16, 140 52 L 143 110 C 150 92, 176 84, 178 98 C 180 112, 160 118, 146 110 C 160 106, 172 96, 186 88 C 192 84, 196 78, 198 74 C 202 84, 200 100, 199 112 C 203 90, 213 76, 228 80 C 234 82, 238 84, 246 82 C 236 74, 214 84, 216 100 C 218 116, 242 112, 250 90 L 249 104 C 249 114, 258 116, 270 106 C 296 86, 334 68, 378 58" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/><path pathLength="1" d="M40 138 C 140 120, 270 126, 372 112" fill="none" stroke="currentColor" stroke-width="7.2" stroke-linecap="round"/></svg></div></div>
+      <div class="hs-item"><span class="cap">F.A. Colchões · Audiovisual</span><div class="logo-tile"><img src="assets/2efd4f46e899.svg" alt="F.A. Colchões" loading="lazy"></div></div>
+      <div class="hs-item down"><span class="cap">Linshalm · Audiovisual</span><div class="logo-tile w"><img src="assets/c10cd357338b.png" alt="Linshalm" loading="lazy"></div></div>
+      <div class="hs-item up"><span class="cap">Sonhar Decorações · Produção de vídeo</span><a class="logo-tile type" href="audiovisual.html#cliente-sonhar-decoracoes"><b>Sonhar Decorações</b></a></div>
+      <div class="hs-item"><span class="cap">TaTeTi · Audiovisual</span><div class="logo-tile"><img src="assets/b6f13a38409f.png" alt="TaTeTi" loading="lazy"></div></div>
+      <div class="hs-item down"><span class="cap">Kitutte · Audiovisual</span><div class="logo-tile"><img src="assets/69222b666fb0.png" alt="Kitutte" loading="lazy"></div></div>
+      <div class="hs-item up"><span class="cap">Fidenza Club &amp; Casa · Produção de vídeo</span><a class="logo-tile type" href="audiovisual.html#cliente-fidenza-club-casa"><b>Fidenza Club &amp; Casa</b></a></div>
+      <div class="hs-item"><span class="cap">Ferana · Cliente Cobra</span><div class="logo-tile type"><b>Ferana</b></div></div>
+      <div class="hs-item hs-end"><div class="hs-quote">A próxima marca pode ser a sua.</div><a class="btn" href="contato.html">Seja a próxima marca <span class="arr">»</span></a></div>
+    </div>
+  </div>
+</section>
+
+<!-- DOORS -->
 <section class="sec t-paper doors wrap" id="caminhos" data-tone="paper" data-bg="paper">
   <div class="d-side l" aria-hidden="true">
     <svg viewBox="0 0 200 260"><rect x="6" y="6" width="188" height="248" rx="14" fill="#0A0B08"/><g fill="#CBE22E"><rect x="30" y="170" width="22" height="60"/><rect x="62" y="140" width="22" height="90"/><rect x="94" y="110" width="22" height="120"/><rect x="126" y="70" width="22" height="160"/></g><path d="M30 120 L70 96 L110 82 L160 40" stroke="#EEF0E3" stroke-width="3" fill="none"/></svg>
@@ -609,22 +628,6 @@ html:not(.js) .pixels{display:none}
 </section>
 
 <!-- BRANDS -->
-<section class="sec t-ink brands wrap" id="marcas" data-tone="ink" data-bg="ink">
-  <svg class="b-line" id="bLine" aria-hidden="true"></svg>
-  <div class="b-head">
-    <h2 class="display">Marcas que <span class="it">atendemos</span></h2>
-    <p>Empresas de Timbó e região que confiam na Cobra para crescer no digital.</p>
-  </div>
-  <div class="b-grid" id="bGrid">
-    <div class="b-col" data-speed="-0.6"><span>Ferana</span><span><a href="audiovisual.html#cliente-tipotil" class="b-link">Tipótil</a></span><span><a href="audiovisual.html#cliente-frigorifico-gessner" class="b-link">Gessner</a></span><span><a href="audiovisual.html#cliente-butzke" class="b-link">Butzke</a></span><span><a href="audiovisual.html#cliente-missner" class="b-link">Missner</a></span></div>
-    <div class="b-col" data-speed="0.4"><span><a href="audiovisual.html#cliente-butzke" class="b-link">Butzke</a></span><span><a href="audiovisual.html#cliente-sfi-chips" class="b-link">SFI Chips</a></span><span><a href="audiovisual.html#cliente-missner" class="b-link">Missner</a></span><span>Ferana</span></div>
-    <div class="b-center" id="bCenter"><a class="btn b-cta" href="contato.html">Seja a próxima marca <span class="arr">»</span></a></div>
-    <div class="b-col" data-speed="0.4"><span><a href="audiovisual.html#cliente-missner" class="b-link">Missner</a></span><span><a href="audiovisual.html#cliente-frigorifico-gessner" class="b-link">Gessner</a></span><span>Ferana</span><span><a href="audiovisual.html#cliente-tipotil" class="b-link">Tipótil</a></span></div>
-    <div class="b-col" data-speed="-0.6"><span><a href="audiovisual.html#cliente-sfi-chips" class="b-link">SFI Chips</a></span><span><a href="audiovisual.html#cliente-butzke" class="b-link">Butzke</a></span><span><a href="audiovisual.html#cliente-tipotil" class="b-link">Tipótil</a></span><span><a href="audiovisual.html#cliente-frigorifico-gessner" class="b-link">Gessner</a></span><span><a href="audiovisual.html#cliente-sfi-chips" class="b-link">SFI Chips</a></span></div>
-  </div>
-</section>
-
-<!-- FAN -->
 <section class="sec t-paper fan-sec wrap" data-tone="paper" data-bg="paper">
   <h2 class="display">Conteúdo pra <span class="it">quem quer crescer</span></h2>
   <div class="fan" id="fan">
@@ -738,13 +741,13 @@ html:not(.js) .pixels{display:none}
   function sectionAt(y){ let cur = secs[0]; for (const s of secs){ if (s.getBoundingClientRect().top <= y) cur = s; } return cur; }
   function targets(){
     const s = sectionAt(innerHeight*0.6); const key = s.dataset.bg || 'ink';
-    if (key === 'hs'){ const t = smooth(0.35, 0.8, hsST ? hsST.progress : 0); return { bg: mix(COL.char, COL.paper, t), fg: mix(FG.char, FG.paper, t) }; }
+    if (key === 'hs'){ const t = smooth(0.86, 1, hsST ? hsST.progress : 0); return { bg: mix(COL.char, COL.paper, t), fg: mix(FG.char, FG.paper, t) }; }
     return { bg: COL[key], fg: FG[key] };
   }
   function headerTone(){
     const s = sectionAt(46); let tone = s.dataset.tone || 'ink';
     if (s.id === 'hero') tone = (heroST && heroST.progress > 0.22) ? 'ink' : 'paper';
-    if (s.id === 'hs') tone = (hsST && hsST.progress > 0.6) ? 'paper' : 'char';
+    if (s.id === 'hs') tone = (hsST && hsST.progress > 0.93) ? 'paper' : 'char';
     if (hdr.dataset.tone !== tone) hdr.dataset.tone = tone;
   }
 
@@ -879,56 +882,6 @@ html:not(.js) .pixels{display:none}
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .5 });
   document.querySelectorAll('.wipe').forEach(el => io.observe(el));
 
-  /* ---------- brands: the neon line works like the car of a race calendar ----------
-     its tip rides at the middle of the screen while the names scroll by, the names at the tip light up,
-     it enters from behind the previous section at the top edge and leaves under the next one (the section clips it) */
-  const bLine = document.getElementById('bLine'), bSec = bLine && bLine.closest('section');
-  const bNames = bSec ? [...bSec.querySelectorAll('.b-col span')] : [];
-  const NS = 'http://www.w3.org/2000/svg';
-  let line = null, tipY = null;
-  function buildLine(){
-    const w = bSec.clientWidth, h = bSec.clientHeight; if (!w || !h || !bLine.clientWidth) { line = null; return; }
-    bLine.setAttribute('viewBox', `0 0 ${w} ${h}`);
-    const y0 = -60, y1 = h + 160, cx = w/2, A = Math.min(w*0.035, 46), trail = Math.min(innerHeight*0.55, 520);
-    const ys = [], ls = []; let d = '', len = 0, px, py;
-    for (let y = y0; y <= y1; y += 8){ const k = y - y0, x = cx + A*Math.sin(k/150)*(0.7 + 0.3*Math.sin(k/430));
-      if (px !== undefined) len += Math.hypot(x - px, y - py); px = x; py = y; ys.push(y); ls.push(len);
-      d += (d ? ' L' : 'M') + x.toFixed(1) + ' ' + y.toFixed(1); }
-    bLine.innerHTML = `<defs><filter id="bGlow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="8"/></filter></defs>
-      <path id="bPath" d="${d}" fill="none" stroke="none"/>
-      <g filter="url(#bGlow)" opacity=".85" fill="none" stroke-linecap="round" id="bGlowG"></g>
-      <g fill="none" stroke-linecap="round" stroke-linejoin="round" id="bCore"></g>
-      <circle id="bTip" r="9" fill="#E9FF5C" filter="url(#bGlow)"/><circle id="bTipCore" r="5" fill="#F6FFB8"/>`;
-    const path = bLine.querySelector('#bPath'), segs = [];
-    const add = (g, width, color, l) => { const p = document.createElementNS(NS,'path'); p.setAttribute('d', d); p.setAttribute('stroke', color); p.setAttribute('stroke-width', width); g.appendChild(p); segs.push({ p, len: l }); };
-    add(bLine.querySelector('#bGlowG'), 18, '#CBE22E', trail*0.85);
-    for (let i = 0; i < 10; i++) add(bLine.querySelector('#bCore'), 1.5 + 6*(i/9), '#CBE22E', trail*(1 - 0.85*(i/9)));
-    add(bLine.querySelector('#bCore'), 1.6, '#F6FFB8', trail*0.45);
-    line = { path, segs, ys, ls, y0, y1, total: len, tip: [bLine.querySelector('#bTip'), bLine.querySelector('#bTipCore')] };
-  }
-  function lenAtY(y){ const { ys, ls } = line; let lo = 0, hi = ys.length - 1; while (hi - lo > 1){ const m = (lo + hi) >> 1; if (ys[m] < y) lo = m; else hi = m; } const t = (y - ys[lo]) / ((ys[hi] - ys[lo]) || 1); return ls[lo] + t*(ls[hi] - ls[lo]); }
-  function placeLine(){
-    const { path, segs, total, tip } = line, lead = lenAtY(tipY);
-    segs.forEach(s => { s.p.setAttribute('stroke-dasharray', `${s.len} ${total*2}`); s.p.setAttribute('stroke-dashoffset', String(-(lead - s.len))); });
-    const pt = path.getPointAtLength(Math.max(0, lead));
-    tip.forEach(c => { c.setAttribute('cx', pt.x.toFixed(1)); c.setAttribute('cy', pt.y.toFixed(1)); c.style.opacity = lead > 1 ? 1 : 0; });
-  }
-  if (bSec){
-    buildLine();
-    let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(buildLine, 200); });
-    let lit = [];
-    (function loop(){
-      const sr = bSec.getBoundingClientRect(), mid = innerHeight*0.5;
-      if (sr.bottom > -200 && sr.top < innerHeight + 200){
-        // the names at the height of the tip light up
-        const band = 34, hit = bNames.filter(n => { const b = n.getBoundingClientRect(); return b.bottom > mid - band && b.top < mid + band; });
-        if (hit.length !== lit.length || hit.some((n, i) => n !== lit[i])){ lit.forEach(n => n.classList.remove('on')); hit.forEach(n => n.classList.add('on')); lit = hit; }
-        if (line){ const target = Math.max(line.y0, Math.min(line.y1, mid - sr.top)); tipY = (tipY === null || reduce) ? target : tipY + (target - tipY)*0.18; placeLine(); }
-      }
-      requestAnimationFrame(loop);
-    })();
-  }
-
   /* hero: stage follows the pointer a little */
   const hero = document.getElementById('hero');
   if (fine && !reduce){
@@ -1046,6 +999,16 @@ html:not(.js) .pixels{display:none}
   document.querySelectorAll('.float[data-speed]').forEach(el => { const s = +el.dataset.speed; gsap.fromTo(el, { y: s*90 }, { y: -s*90, ease: 'none', scrollTrigger: { trigger: '.mani', start: 'top bottom', end: 'bottom top', scrub: true } }); });
   document.querySelectorAll('.collage [data-speed]').forEach(el => { const s = +el.dataset.speed; gsap.fromTo(el, { y: s*60 }, { y: -s*60, ease: 'none', scrollTrigger: { trigger: '.collage', start: 'top bottom', end: 'bottom top', scrub: true } }); });
 
+  /* horizontal gallery: brands */
+  mm.add('(min-width: 800px)', () => {
+    const track = document.getElementById('hsTrack'); const dist = () => track.scrollWidth - innerWidth;
+    const tween = gsap.to(track, { x: () => -dist(), ease: 'none', scrollTrigger: { trigger: '#hs', pin: '.hs-pin', start: 'top top', end: () => '+=' + dist(), scrub: 0.6, invalidateOnRefresh: true } });
+    hsST = tween.scrollTrigger;
+    gsap.to('#hsWord', { x: () => -dist()*0.35, ease: 'none', scrollTrigger: { trigger: '#hs', start: 'top top', end: () => '+=' + dist(), scrub: 1, invalidateOnRefresh: true } });
+    track.querySelectorAll('.hs-item').forEach(it => ScrollTrigger.create({ trigger: it, containerAnimation: tween, start: 'left 72%', end: 'right 28%', toggleClass: 'on' }));
+    return () => { hsST = null; };
+  });
+
   /* doors */
   gsap.fromTo('.graf', { clipPath: 'inset(-20% 100% -20% -10%)' }, { clipPath: 'inset(-20% -10% -20% -10%)', ease: 'none', scrollTrigger: { trigger: '#caminhos', start: 'top 75%', end: 'top 30%', scrub: 1 } });
   gsap.from('.d-side.l', { xPercent: -60, rotate: -12, ease: 'none', scrollTrigger: { trigger: '#caminhos', start: 'top bottom', end: 'center center', scrub: 1 } });
@@ -1054,11 +1017,6 @@ html:not(.js) .pixels{display:none}
   /* hall */
   gsap.utils.toArray('#grid .card').forEach(c => gsap.from(c, { y: 80, ease: 'none', scrollTrigger: { trigger: c, start: 'top bottom', end: 'top 60%', scrub: 1 } }));
 
-
-  /* brands columns */
-  mm.add('(min-width: 861px)', () => {
-    document.querySelectorAll('.b-col').forEach(col => { const s = +col.dataset.speed; gsap.fromTo(col, { y: s*160 }, { y: -s*160, ease: 'none', scrollTrigger: { trigger: '#bGrid', start: 'top bottom', end: 'bottom top', scrub: true } }); });
-  });
 
   /* fan */
   const cards = gsap.utils.toArray('#fan .fcard'); const mid = (cards.length-1)/2;

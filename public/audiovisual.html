@@ -507,16 +507,6 @@ html.js .sec.ot{background:transparent}
   </div>
 </section>
 
-<section class="sec ot-nums" id="otNums" data-tone="ink" data-bg="ink" aria-label="Em números: +100 clientes atendidos">
-  <div class="ot-giant long" aria-hidden="true"><span>+100</span></div>
-  <div class="ot-pics" id="otPics" aria-hidden="true"></div>
-  <div class="ot-nums-foot wrap">
-    <p class="ot-nlabel"><b>+100</b> clientes atendidos</p>
-    <div class="ot-mini"><div><b data-n="videos">19</b><span>vídeos no portfólio</span></div><div><b>5.0</b><span>nota no Google</span></div></div>
-    <div class="row"><button class="btn" type="button" id="reelBtn">Assistir showreel <span class="arr">▶</span></button><a class="btn ghost" href="#trabalhos">Ver trabalhos <span class="arr">↘</span></a></div>
-  </div>
-</section>
-
 <div class="cam-fly" id="camFly" aria-hidden="true"><div class="cam-halo"></div><canvas id="cam3d" width="675" height="501"></canvas></div>
 
 <!-- HERO -->
@@ -832,7 +822,7 @@ html.js .sec.ot{background:transparent}
   document.getElementById('lbNext').addEventListener('click', ()=>fillLb(lbIdx+1,1));
   document.addEventListener('keydown', e=>{ if (!lb.classList.contains('open')) return; if (e.key==='Escape') closeLb(); if (e.key==='ArrowRight') fillLb(lbIdx+1,1); if (e.key==='ArrowLeft') fillLb(lbIdx-1,-1); });
   let sx=null; lbFrame.addEventListener('pointerdown', e=>{ sx=e.clientX; }); lbFrame.addEventListener('pointerup', e=>{ if (sx===null) return; const d=e.clientX-sx; if (Math.abs(d)>50) fillLb(lbIdx+(d<0?1:-1), d<0?1:-1); sx=null; });
-  document.getElementById('reelBtn').addEventListener('click', e=>{ const i=ITEMS.findIndex(x=>x.id==='T_H4qGNrM4s'); openLb(i, e.currentTarget, ITEMS); });
+  document.getElementById('reelBtn')?.addEventListener('click', e=>{ const i=ITEMS.findIndex(x=>x.id==='T_H4qGNrM4s'); openLb(i, e.currentTarget, ITEMS); });
 
   /* ---------- screening room ---------- */
   const S={ list:ITEMS.slice(), i:0, auto:null };

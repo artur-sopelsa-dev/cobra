@@ -46,6 +46,11 @@
       "file": "07-section-sobre.html"
     },
     {
+      "label": "Marcas que atendemos",
+      "kind": "section",
+      "file": "08-section-marcas.html"
+    },
+    {
       "label": "Caminhos (o que você quer)",
       "kind": "section",
       "file": "09-section-caminhos.html"
@@ -59,11 +64,6 @@
       "label": "Diagnóstico digital",
       "kind": "section",
       "file": "12-section-offer.html"
-    },
-    {
-      "label": "Marcas que atendemos",
-      "kind": "section",
-      "file": "13-section-brands.html"
     },
     {
       "label": "Conteúdo (blog)",

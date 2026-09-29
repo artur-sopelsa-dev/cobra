@@ -183,7 +183,7 @@
   document.getElementById('lbNext').addEventListener('click', ()=>fillLb(lbIdx+1,1));
   document.addEventListener('keydown', e=>{ if (!lb.classList.contains('open')) return; if (e.key==='Escape') closeLb(); if (e.key==='ArrowRight') fillLb(lbIdx+1,1); if (e.key==='ArrowLeft') fillLb(lbIdx-1,-1); });
   let sx=null; lbFrame.addEventListener('pointerdown', e=>{ sx=e.clientX; }); lbFrame.addEventListener('pointerup', e=>{ if (sx===null) return; const d=e.clientX-sx; if (Math.abs(d)>50) fillLb(lbIdx+(d<0?1:-1), d<0?1:-1); sx=null; });
-  document.getElementById('reelBtn').addEventListener('click', e=>{ const i=ITEMS.findIndex(x=>x.id==='T_H4qGNrM4s'); openLb(i, e.currentTarget, ITEMS); });
+  document.getElementById('reelBtn')?.addEventListener('click', e=>{ const i=ITEMS.findIndex(x=>x.id==='T_H4qGNrM4s'); openLb(i, e.currentTarget, ITEMS); });
 
   /* ---------- screening room ---------- */
   const S={ list:ITEMS.slice(), i:0, auto:null };
