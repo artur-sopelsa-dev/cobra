@@ -27,9 +27,81 @@
     "link": false,
     "tall": false,
     "yt": "assets/c65205a981d5.webp",
-    "seo": {},
-    "conteudo": [],
-    "faq": []
+    "seo": {
+      "titulo": "Branding - Agência Cobra | Marketing Digital em Timbó, Santa Catarina",
+      "descricao": "Branding em Timbó (SC): criação de identidade visual, estratégia de posicionamento e manual de marca. A Cobra cria marcas que conectam e inspiram."
+    },
+    "conteudo": [
+      {
+        "titulo": "Crie uma marca que conecta e inspira",
+        "paragrafos": [
+          "Na Cobra Design, ajudamos sua marca a se destacar desde a criação até o posicionamento estratégico no mercado. Construímos marcas que falam diretamente com seu público e criam conexões duradouras."
+        ]
+      },
+      {
+        "titulo": "Por que o branding é essencial?",
+        "itens": [
+          {
+            "titulo": "Primeira impressão conta",
+            "texto": "Sua marca é o primeiro ponto de contato com seu cliente. Vamos torná-la memorável."
+          },
+          {
+            "titulo": "Posicionamento claro",
+            "texto": "Marcas fortes ocupam espaços únicos na mente do consumidor."
+          },
+          {
+            "titulo": "Fidelização de clientes",
+            "texto": "Um branding eficaz constrói confiança e lealdade."
+          }
+        ]
+      },
+      {
+        "titulo": "O que a Agência Cobra Design faz?",
+        "itens": [
+          {
+            "titulo": "Criação de identidade visual",
+            "texto": "Desenvolvemos logotipos, paletas de cores, tipografias e todos os elementos visuais que definem sua marca."
+          },
+          {
+            "titulo": "Estratégia de posicionamento",
+            "texto": "Identificamos seu público-alvo e criamos uma mensagem que ressoe com ele."
+          },
+          {
+            "titulo": "Manual de marca",
+            "texto": "Diretrizes claras para garantir que sua marca seja representada de forma consistente em todos os canais."
+          }
+        ]
+      },
+      {
+        "titulo": "Por que fazer seu branding com a Cobra Design?",
+        "paragrafos": [
+          "Transformamos ideias em marcas de sucesso. Agende uma reunião gratuita e descubra como podemos ajudar. Vamos criar a identidade que o seu negócio merece."
+        ],
+        "lista": [
+          "Localizados em Timbó (SC), entendemos o mercado da nossa região.",
+          "Soluções criativas e personalizadas para cada cliente.",
+          "Equipe com experiência em transformar negócios em marcas memoráveis."
+        ]
+      }
+    ],
+    "faq": [],
+    "h1": "Branding",
+    "olho": "Criação de logo",
+    "intro": "Criatividade, qualidade e resultados – é isso que oferecemos por aqui. Na Cobra Design, ajudamos sua marca a se destacar desde a criação até o posicionamento estratégico no mercado.",
+    "relacionadas": [
+      {
+        "nome": "Design de embalagens",
+        "url": "solucoes-em-marketing-digital/design-de-embalagens/"
+      },
+      {
+        "nome": "Design de estampas",
+        "url": "solucoes-em-marketing-digital/design-de-estampas/"
+      },
+      {
+        "nome": "Mídias sociais",
+        "url": "solucoes-em-marketing-digital/midias-sociais/"
+      }
+    ]
   },
   {
     "slug": "sites-institucionais",
@@ -59,9 +131,67 @@
     "link": false,
     "tall": false,
     "yt": "assets/e8c86fb18710.jpg",
-    "seo": {},
-    "conteudo": [],
-    "faq": []
+    "seo": {
+      "titulo": "Criação de Sites Profissionais | Cobra Agência",
+      "descricao": "Criação de sites profissionais para empresas, com SEO, design estratégico, alta performance e desenvolvimento web personalizado."
+    },
+    "conteudo": [
+      {
+        "titulo": "Antes do primeiro contato, o cliente já entrou na sua empresa.",
+        "paragrafos": [
+          "Pesquisa, primeira impressão, confiança e contato. Seu site é o caminho que conecta curiosidade à decisão. Cada etapa dessa jornada acontece antes mesmo da primeira conversa e define se o cliente escolhe você ou o concorrente."
+        ]
+      },
+      {
+        "titulo": "Cada página tem uma função.",
+        "paragrafos": [
+          "Sites que representam empresas reais: cada página é pensada para apresentar a empresa, explicar os serviços e levar o visitante até o contato."
+        ]
+      },
+      {
+        "titulo": "Um site que apenas existe, ou um site que representa sua empresa.",
+        "paragrafos": [
+          "Sua empresa tem valor. Seu site precisa deixar isso claro. Site pronto para representar e converter."
+        ]
+      }
+    ],
+    "faq": [],
+    "h1": "Sua empresa tem muito a dizer. Seu site precisa mostrar isso.",
+    "intro": "Criamos sites institucionais que transformam a estrutura, a identidade e o valor da sua empresa em uma presença digital forte.",
+    "etapas_titulo": "Não começamos pelo layout.",
+    "etapas_intro": "Começamos entendendo o que sua empresa precisa comunicar.",
+    "etapas": [
+      {
+        "titulo": "Estrutura",
+        "texto": "Mapeamos objetivos, públicos e informações essenciais."
+      },
+      {
+        "titulo": "Conteúdo",
+        "texto": "Organizamos mensagens claras que geram compreensão e valor."
+      },
+      {
+        "titulo": "Design",
+        "texto": "Criamos uma experiência visual alinhada à identidade e ao posicionamento."
+      },
+      {
+        "titulo": "Desenvolvimento",
+        "texto": "Transformamos tudo em performance, estabilidade e conversão."
+      }
+    ],
+    "relacionadas": [
+      {
+        "nome": "SEO e otimização",
+        "url": "solucoes-em-marketing-digital/seo-otimizacao-de-sites/"
+      },
+      {
+        "nome": "Manutenção de sites",
+        "url": "solucoes-em-marketing-digital/manutencao-de-sites/"
+      },
+      {
+        "nome": "Lojas virtuais",
+        "url": "lojas-virtuais/"
+      }
+    ]
   },
   {
     "slug": "e-commerce",
@@ -86,9 +216,50 @@
     "link": false,
     "tall": false,
     "yt": "assets/4f057ed32218.jpg",
-    "seo": {},
-    "conteudo": [],
-    "faq": []
+    "seo": {
+      "titulo": "Lojas Virtuais - Agência Cobra | E-commerce em Timbó, Santa Catarina",
+      "descricao": "Lojas virtuais com identidade: a Cobra projeta e-commerces com estrutura inteligente, navegação intuitiva e design que conecta, encanta e converte."
+    },
+    "conteudo": [
+      {
+        "titulo": "Mais do que uma loja. Uma experiência de marca.",
+        "paragrafos": [
+          "Unimos estratégia, design e tecnologia para criar lojas que vão além da venda. Cada projeto é pensado para oferecer a melhor jornada de compra, fortalecer a identidade da marca e gerar resultados consistentes."
+        ],
+        "itens": [
+          {
+            "titulo": "Estrutura",
+            "texto": "Arquitetura inteligente que organiza informações e facilita a jornada do usuário."
+          },
+          {
+            "titulo": "Experiência",
+            "texto": "Design centrado no usuário, com navegação intuitiva e interações que geram conexão."
+          },
+          {
+            "titulo": "Conversão",
+            "texto": "Cada detalhe projetado para transformar visitas em clientes e impulsionar resultados."
+          }
+        ]
+      }
+    ],
+    "faq": [],
+    "h1": "Lojas com identidade. Experiências que vendem.",
+    "olho": "Portfólio de e-commerce",
+    "intro": "Projetamos lojas virtuais que traduzem a essência da sua marca em cada detalhe. Estrutura inteligente, navegação intuitiva e design que conecta, encanta e converte.",
+    "relacionadas": [
+      {
+        "nome": "Criação de sites",
+        "url": "solucoes-em-marketing-digital/criacao-de-sites-profissionais/"
+      },
+      {
+        "nome": "Fotografia profissional",
+        "url": "solucoes-em-marketing-digital/fotografia-profissional/"
+      },
+      {
+        "nome": "Tráfego pago",
+        "url": "solucoes-em-marketing-digital/trafego-pago/"
+      }
+    ]
   },
   {
     "slug": "midias-sociais",
@@ -122,9 +293,81 @@
     "link": false,
     "tall": false,
     "yt": "assets/7cac61bf0baf.webp",
-    "seo": {},
-    "conteudo": [],
-    "faq": []
+    "seo": {
+      "titulo": "Mídias Sociais - Agência Cobra | Gestão de Redes Sociais em Timbó, SC",
+      "descricao": "Gestão de mídias sociais em Timbó (SC): criação de conteúdo, gestão completa e análise de resultados para Instagram, Facebook, LinkedIn e mais."
+    },
+    "conteudo": [
+      {
+        "titulo": "De criativos impactantes à análise de resultados.",
+        "paragrafos": [
+          "Transformamos sua presença online em resultados reais. Nossa equipe cria imagens, escreve textos e gerencia suas redes sociais para que você possa focar no que realmente importa: crescer o seu negócio."
+        ]
+      },
+      {
+        "titulo": "Por que apostar nas mídias sociais?",
+        "itens": [
+          {
+            "titulo": "Aumente sua visibilidade",
+            "texto": "Esteja onde seus clientes estão: Instagram, Facebook, LinkedIn e mais."
+          },
+          {
+            "titulo": "Gere engajamento",
+            "texto": "Criação de conteúdo estratégico para atrair e fidelizar."
+          },
+          {
+            "titulo": "Venda mais",
+            "texto": "Transformamos cliques em conversões com campanhas direcionadas."
+          }
+        ]
+      },
+      {
+        "titulo": "O que a Agência Cobra Design oferece",
+        "itens": [
+          {
+            "titulo": "Criação de conteúdo",
+            "texto": "Design profissional, textos criativos e conteúdo alinhado à identidade da sua marca."
+          },
+          {
+            "titulo": "Gestão completa",
+            "texto": "Postagens regulares, stories, engajamento com seguidores e monitoramento de performance."
+          },
+          {
+            "titulo": "Análise de resultados",
+            "texto": "Relatórios claros e ações ajustadas para garantir o máximo retorno sobre o investimento."
+          }
+        ]
+      },
+      {
+        "titulo": "Por que escolher a Cobra Design?",
+        "paragrafos": [
+          "Entre em contato e solicite uma reunião gratuita. Juntos, vamos criar uma estratégia de mídias sociais sob medida para o seu negócio."
+        ],
+        "lista": [
+          "Localizados em Timbó (SC), entendemos o mercado da nossa região.",
+          "Atendimento personalizado e suporte direto para sua empresa.",
+          "Experiência comprovada no gerenciamento de mídias sociais para diversas áreas."
+        ]
+      }
+    ],
+    "faq": [],
+    "h1": "Mídias Sociais",
+    "olho": "Gerenciamento de redes sociais",
+    "intro": "Criatividade, qualidade e resultados – é isso que oferecemos por aqui. De criativos impactantes à análise de resultados.",
+    "relacionadas": [
+      {
+        "nome": "Tráfego pago",
+        "url": "solucoes-em-marketing-digital/trafego-pago/"
+      },
+      {
+        "nome": "Produção de vídeo",
+        "url": "solucoes-em-marketing-digital/producao-de-video/"
+      },
+      {
+        "nome": "Fotografia profissional",
+        "url": "solucoes-em-marketing-digital/fotografia-profissional/"
+      }
+    ]
   },
   {
     "slug": "embalagens-e-tags",
@@ -149,9 +392,63 @@
     "link": false,
     "tall": true,
     "yt": "assets/87c9ce7128b3.webp",
-    "seo": {},
-    "conteudo": [],
-    "faq": []
+    "seo": {
+      "titulo": "Design de Embalagens - Agência Cobra | Timbó, Santa Catarina",
+      "descricao": "Design de embalagens criativas e estratégicas para destacar sua marca no mercado. Agência Cobra transforma sua embalagem em um poderoso canal de vendas."
+    },
+    "conteudo": [
+      {
+        "titulo": "Destaque-se no mercado com embalagens inovadoras e criativas",
+        "paragrafos": [
+          "Nossa equipe especializada cria designs exclusivos que refletem a essência da sua marca e capturam a atenção no ponto de venda."
+        ],
+        "itens": [
+          {
+            "titulo": "Soluções sustentáveis e personalizadas",
+            "texto": "Oferecemos opções ecológicas e sob medida, atendendo às necessidades específicas do seu produto e do seu público-alvo."
+          },
+          {
+            "titulo": "Processo colaborativo e centrado no cliente",
+            "texto": "Trabalhamos em parceria com você, desde a concepção até a produção, garantindo que cada detalhe da embalagem atenda às suas expectativas e objetivos de mercado."
+          },
+          {
+            "titulo": "Design estratégico de embalagens",
+            "texto": "Alinhamos estética e funcionalidade para criar embalagens que se destacam nas prateleiras e reforçam a identidade da sua marca."
+          }
+        ]
+      },
+      {
+        "titulo": "Conquiste clientes com embalagens que impressionam.",
+        "paragrafos": [
+          "Cada detalhe é cuidadosamente planejado para capturar a atenção, transmitir a essência do seu produto e criar uma conexão emocional com o consumidor, resultando em maior visibilidade, engajamento e conversões no ponto de venda.",
+          "Fortalecer seu produto vai fazer sua marca vender mais!"
+        ]
+      },
+      {
+        "titulo": "Seu produto merece mais do que uma embalagem comum.",
+        "paragrafos": [
+          "Entregamos soluções estratégicas que fortalecem a percepção da sua marca."
+        ]
+      }
+    ],
+    "faq": [],
+    "h1": "Transforme a embalagem do seu produto em uma poderosa ferramenta de vendas",
+    "olho": "Design de embalagens",
+    "intro": "Desenvolvemos embalagens que não apenas protegem seu produto, mas também encantam e atraem seus clientes, impulsionando suas vendas.",
+    "relacionadas": [
+      {
+        "nome": "Branding",
+        "url": "solucoes-em-marketing-digital/branding/"
+      },
+      {
+        "nome": "Design de estampas",
+        "url": "solucoes-em-marketing-digital/design-de-estampas/"
+      },
+      {
+        "nome": "Fotografia profissional",
+        "url": "solucoes-em-marketing-digital/fotografia-profissional/"
+      }
+    ]
   },
   {
     "slug": "trafego-pago",
@@ -181,9 +478,81 @@
     "link": false,
     "tall": false,
     "yt": "assets/a761a95cc979.jpg",
-    "seo": {},
-    "conteudo": [],
-    "faq": []
+    "seo": {
+      "titulo": "Tráfego Pago - Agência Cobra | Google Ads e Meta Ads em Timbó, SC",
+      "descricao": "Tráfego pago em Timbó (SC): campanhas estratégicas no Facebook, Instagram e Google Ads para atrair mais clientes e aumentar suas vendas."
+    },
+    "conteudo": [
+      {
+        "titulo": "Anúncios estratégicos que transformam cliques em vendas",
+        "paragrafos": [
+          "Na Cobra Design, criamos e gerenciamos campanhas estratégicas no Facebook, Instagram e Google Ads, focadas em atrair mais clientes e aumentar suas vendas. Combinamos criatividade, dados e performance para maximizar o retorno sobre o investimento."
+        ]
+      },
+      {
+        "titulo": "Por que investir em campanhas pagas?",
+        "itens": [
+          {
+            "titulo": "Resultados rápidos",
+            "texto": "Alcance seu público ideal com anúncios segmentados."
+          },
+          {
+            "titulo": "Alta visibilidade",
+            "texto": "Fique no topo das buscas no Google e nas redes sociais mais acessadas."
+          },
+          {
+            "titulo": "Controle total",
+            "texto": "Monitoramos e ajustamos suas campanhas para garantir o máximo desempenho."
+          }
+        ]
+      },
+      {
+        "titulo": "O que a Agência Cobra Design faz?",
+        "itens": [
+          {
+            "titulo": "Planejamento estratégico de anúncios",
+            "texto": "Definimos objetivos claros, segmentamos o público-alvo e criamos estratégias alinhadas às suas metas."
+          },
+          {
+            "titulo": "Criação de anúncios criativos",
+            "texto": "Imagens, vídeos e textos que captam a atenção e convertem."
+          },
+          {
+            "titulo": "Gestão de campanhas",
+            "texto": "Monitoramento constante, otimização de desempenho e relatórios detalhados."
+          }
+        ]
+      },
+      {
+        "titulo": "Por que a Cobra Design é sua melhor escolha?",
+        "paragrafos": [
+          "Entre em contato e tenha campanhas criadas por especialistas. Estamos prontos para planejar e executar campanhas que tragam resultados para o seu negócio."
+        ],
+        "lista": [
+          "Localizados em Timbó (SC), entendemos o mercado da nossa região.",
+          "Expertise em anúncios para diferentes nichos de mercado.",
+          "Atendimento próximo e foco em resultados tangíveis."
+        ]
+      }
+    ],
+    "faq": [],
+    "h1": "Tráfego Pago",
+    "olho": "Campanhas pagas",
+    "intro": "Criatividade, qualidade e resultados – é isso que oferecemos por aqui. Anúncios estratégicos que transformam cliques em vendas.",
+    "relacionadas": [
+      {
+        "nome": "Mídias sociais",
+        "url": "solucoes-em-marketing-digital/midias-sociais/"
+      },
+      {
+        "nome": "SEO e otimização",
+        "url": "solucoes-em-marketing-digital/seo-otimizacao-de-sites/"
+      },
+      {
+        "nome": "Consultoria de marketing",
+        "url": "solucoes-em-marketing-digital/consultoria-de-marketing-digital/"
+      }
+    ]
   },
   {
     "slug": "consultoria",
@@ -209,9 +578,102 @@
     "tall": false,
     "yt": "assets/d39e458249f1.webp",
     "zoom": true,
-    "seo": {},
-    "conteudo": [],
-    "faq": []
+    "seo": {
+      "titulo": "Consultoria de Marketing Digital em Timbó | Cobra",
+      "descricao": "Consultoria de marketing digital em Timbó: análise da presença da marca, definição de prioridades e orientação para decisões de comunicação. Fale com a Cobra."
+    },
+    "conteudo": [
+      {
+        "titulo": "Como podemos ajudar",
+        "paragrafos": [
+          "Para empresas que precisam de uma direção mais clara antes de investir em canais, campanhas ou uma nova apresentação da marca."
+        ],
+        "itens": [
+          {
+            "titulo": "Diagnóstico da presença digital",
+            "texto": "Leitura do site, das redes sociais e da comunicação atual para identificar lacunas, incoerências e oportunidades."
+          },
+          {
+            "titulo": "Posicionamento e mensagem",
+            "texto": "Organização do que a empresa oferece, para quem e com quais diferenciais reais, criando uma base para a comunicação."
+          },
+          {
+            "titulo": "Prioridades de marketing",
+            "texto": "Orientação sobre canais, conteúdos e ações que fazem sentido para o estágio do negócio e os recursos disponíveis."
+          }
+        ]
+      },
+      {
+        "titulo": "Quando faz sentido buscar uma consultoria?",
+        "paragrafos": [
+          "Se sua empresa publica sem uma linha clara, recebe contatos pouco alinhados ou tem dificuldade para escolher entre site, redes sociais e anúncios, vale começar pelo diagnóstico. A análise também ajuda quando a empresa muda de posicionamento, lança um produto ou precisa alinhar a comunicação entre equipes."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "pergunta": "Consultoria inclui a execução das ações?",
+        "resposta": [
+          "Consultoria e execução são escopos diferentes. A proposta deve indicar se o trabalho contempla apenas análise e orientação ou também serviços como conteúdo, site e campanhas."
+        ]
+      },
+      {
+        "pergunta": "É preciso já investir em anúncios?",
+        "resposta": [
+          "Não. A consultoria pode ajudar a avaliar se a estrutura e a mensagem da empresa estão prontas para receber investimento em mídia."
+        ]
+      },
+      {
+        "pergunta": "Quanto custa uma consultoria de marketing?",
+        "resposta": [
+          "O valor depende da profundidade do diagnóstico, dos canais avaliados e do acompanhamento necessário. O orçamento é definido após a conversa sobre o cenário da empresa."
+        ]
+      },
+      {
+        "pergunta": "A consultoria garante aumento de vendas?",
+        "resposta": [
+          "Não há garantia de vendas. O objetivo é melhorar a qualidade das decisões; os resultados também dependem da oferta, do mercado, do atendimento e da execução."
+        ]
+      }
+    ],
+    "h1": "Consultoria de marketing digital em Timbó",
+    "olho": "Estratégia • Clareza • Direção",
+    "intro": "A consultoria de marketing digital ajuda a entender o momento da empresa, organizar prioridades e decidir onde concentrar os esforços de comunicação. A Cobra, agência em Timbó, Santa Catarina, analisa a presença da marca e orienta os próximos passos de acordo com seus objetivos.",
+    "etapas_titulo": "Como o projeto é organizado",
+    "etapas": [
+      {
+        "titulo": "Entender o negócio",
+        "texto": "Compartilhe os serviços, o público, o objetivo e o que já foi feito em marketing."
+      },
+      {
+        "titulo": "Analisar o cenário",
+        "texto": "Avaliamos os materiais e canais definidos no escopo, considerando as dúvidas do cliente e a jornada até o contato."
+      },
+      {
+        "titulo": "Organizar os próximos passos",
+        "texto": "As prioridades e recomendações são alinhadas para orientar a execução. Formato, profundidade e acompanhamento são definidos na proposta."
+      }
+    ],
+    "preparar": "Envie o endereço do site, os perfis da empresa, os principais produtos ou serviços e o desafio que motivou a procura. Se houver relatórios de campanhas, compartilhe apenas os dados necessários para a análise.",
+    "relacionadas": [
+      {
+        "nome": "Branding",
+        "url": "solucoes-em-marketing-digital/branding/"
+      },
+      {
+        "nome": "Tráfego pago",
+        "url": "solucoes-em-marketing-digital/trafego-pago/"
+      },
+      {
+        "nome": "Mídias sociais",
+        "url": "solucoes-em-marketing-digital/midias-sociais/"
+      }
+    ],
+    "cta": {
+      "titulo": "Vamos entender o que sua empresa precisa?",
+      "texto": "A Cobra Agência está em Timbó, Santa Catarina. Conte o seu objetivo para alinharmos o escopo e os próximos passos.",
+      "botao": "Solicitar uma proposta"
+    }
   },
   {
     "slug": "design-de-estampas",
@@ -236,9 +698,102 @@
     "link": false,
     "tall": false,
     "yt": "assets/bd53f12073a2.jpg",
-    "seo": {},
-    "conteudo": [],
-    "faq": []
+    "seo": {
+      "titulo": "Design de Estampas para Marcas e Produtos | Cobra",
+      "descricao": "Design de estampas personalizadas para marcas, produtos e coleções. A Cobra, em Timbó, une conceito visual e aplicação comercial. Converse sobre seu projeto."
+    },
+    "conteudo": [
+      {
+        "titulo": "Como podemos ajudar",
+        "paragrafos": [
+          "Para marcas que precisam transformar referências e conceitos em uma linguagem visual coerente para seus produtos."
+        ],
+        "itens": [
+          {
+            "titulo": "Conceito da coleção",
+            "texto": "Referências, temas e direção visual relacionados ao público e ao posicionamento da marca."
+          },
+          {
+            "titulo": "Composição e cores",
+            "texto": "Desenvolvimento visual da estampa, considerando elementos gráficos, paleta e proporções."
+          },
+          {
+            "titulo": "Aplicação no produto",
+            "texto": "Planejamento do uso da arte de acordo com a área de aplicação e as informações técnicas fornecidas pelo fabricante."
+          }
+        ]
+      },
+      {
+        "titulo": "Uma estampa começa pelo produto",
+        "paragrafos": [
+          "O desenho precisa conversar com o material, o tamanho da peça e o modo como será produzido. Por isso, é importante definir o tipo de produto e consultar o fornecedor antes de fechar os arquivos. Repetição, escala, número de cores e processo de impressão podem mudar as decisões de criação."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "pergunta": "A Cobra também fabrica ou imprime os produtos?",
+        "resposta": [
+          "Esta página trata do serviço de design. Fabricação, impressão e contratação de fornecedores precisam ser alinhadas separadamente e não devem ser presumidas como parte da criação."
+        ]
+      },
+      {
+        "pergunta": "É possível criar uma coleção com várias estampas?",
+        "resposta": [
+          "Sim, o projeto pode considerar uma coleção com linguagem comum. A quantidade de artes, variações de cor e aplicações deve constar no escopo."
+        ]
+      },
+      {
+        "pergunta": "A estampa será exclusiva da minha marca?",
+        "resposta": [
+          "Exclusividade, licença de uso e cessão de direitos precisam ser definidos na proposta ou no contrato. Esses termos devem estar claros antes da aprovação do projeto."
+        ]
+      },
+      {
+        "pergunta": "O que influencia o orçamento?",
+        "resposta": [
+          "Quantidade de estampas, complexidade da criação, variações, aplicações e requisitos de entrega. Envie o briefing para receber uma proposta adequada."
+        ]
+      }
+    ],
+    "h1": "Design de estampas para marcas e coleções",
+    "olho": "Conceito • Identidade • Aplicação",
+    "intro": "Design de estampas é a criação de composições visuais para aplicação em produtos e coleções. A Cobra desenvolve estampas personalizadas, conectando o conceito da marca à linguagem visual e ao contexto de uso de cada peça.",
+    "etapas_titulo": "Como o projeto é organizado",
+    "etapas": [
+      {
+        "titulo": "Briefing e referências",
+        "texto": "Alinhamos produto, público, conceito, referências e restrições de uso."
+      },
+      {
+        "titulo": "Desenvolvimento visual",
+        "texto": "A direção escolhida orienta a criação das estampas e os ajustes previstos no escopo."
+      },
+      {
+        "titulo": "Preparação da entrega",
+        "texto": "Formatos, variações e especificações dos arquivos são combinados conforme as necessidades de aplicação."
+      }
+    ],
+    "preparar": "Para começar, envie referências visuais, a identidade da marca, exemplos dos produtos e as especificações do fornecedor. Informe também a quantidade de estampas e variações desejadas.",
+    "relacionadas": [
+      {
+        "nome": "Branding",
+        "url": "solucoes-em-marketing-digital/branding/"
+      },
+      {
+        "nome": "Design de embalagens",
+        "url": "solucoes-em-marketing-digital/design-de-embalagens/"
+      },
+      {
+        "nome": "Fotografia profissional",
+        "url": "solucoes-em-marketing-digital/fotografia-profissional/"
+      }
+    ],
+    "cta": {
+      "titulo": "Vamos entender o que sua empresa precisa?",
+      "texto": "A Cobra Agência está em Timbó, Santa Catarina. Conte o seu objetivo para alinharmos o escopo e os próximos passos.",
+      "botao": "Solicitar uma proposta"
+    }
   },
   {
     "slug": "fotografia",
@@ -263,12 +818,105 @@
       "Fotos para campanhas",
       "Tratamento e entrega em alta resolução"
     ],
-    "seo": {},
-    "conteudo": [],
-    "faq": [],
+    "seo": {
+      "titulo": "Fotografia Profissional em Timbó para Empresas | Cobra",
+      "descricao": "Fotografia profissional para produtos, ambientes, equipes e campanhas em Timbó. Conheça a proposta da Cobra e planeje imagens alinhadas à sua marca."
+    },
+    "conteudo": [
+      {
+        "titulo": "Como podemos ajudar",
+        "paragrafos": [
+          "Imagens para sites, lojas virtuais, redes sociais e materiais de comunicação, planejadas a partir da necessidade de cada projeto."
+        ],
+        "itens": [
+          {
+            "titulo": "Produtos",
+            "texto": "Fotografias que ajudam a apresentar características, detalhes e contexto de uso dos produtos."
+          },
+          {
+            "titulo": "Ambientes e equipes",
+            "texto": "Registros de espaços e pessoas para aproximar o público da empresa e apoiar sua apresentação institucional."
+          },
+          {
+            "titulo": "Campanhas e conteúdo",
+            "texto": "Produção visual orientada à mensagem e aos formatos de uma campanha ou calendário de comunicação."
+          }
+        ]
+      },
+      {
+        "titulo": "Planejar o uso das fotos melhora a produção",
+        "paragrafos": [
+          "Uma foto para o topo de um site precisa de um enquadramento diferente de uma imagem de produto para uma loja virtual. Definir os canais antes da sessão ajuda a prever cortes, orientação horizontal ou vertical, espaço para texto e os detalhes que precisam aparecer. Também evita escolher imagens apenas pela estética, sem considerar sua função."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "pergunta": "As fotos podem ser usadas em site e redes sociais?",
+        "resposta": [
+          "Os usos e formatos devem ser previstos no briefing. Assim, enquadramento e entrega podem atender a necessidades como páginas do site, catálogo e publicações."
+        ]
+      },
+      {
+        "pergunta": "A sessão é feita no local da empresa?",
+        "resposta": [
+          "O local é definido conforme o tipo de fotografia e a estrutura necessária. Informe endereço e condições do ambiente para avaliar a logística da produção."
+        ]
+      },
+      {
+        "pergunta": "Quantas fotos estão incluídas?",
+        "resposta": [
+          "A quantidade de imagens finais, as etapas de seleção e o tratamento são definidos na proposta. Não há um pacote único que sirva a todos os projetos."
+        ]
+      },
+      {
+        "pergunta": "É preciso autorização das pessoas fotografadas?",
+        "resposta": [
+          "Antes de publicar imagens de pessoas ou espaços de terceiros, alinhe as autorizações e condições de uso aplicáveis ao projeto. A responsabilidade por providenciá-las deve ficar definida entre as partes."
+        ]
+      }
+    ],
     "link_extra": {
       "rotulo": "Ver o Audiovisual",
       "href": "audiovisual.html"
+    },
+    "h1": "Fotografia profissional para empresas em Timbó",
+    "olho": "Produtos • Pessoas • Ambientes",
+    "intro": "A fotografia profissional apresenta produtos, ambientes e pessoas com clareza e coerência visual. A Cobra produz fotos para empresas e campanhas, pensando nos canais em que as imagens serão usadas e na percepção que a marca deseja construir.",
+    "etapas_titulo": "Como o projeto é organizado",
+    "etapas": [
+      {
+        "titulo": "Objetivo e roteiro de imagens",
+        "texto": "Alinhamos o que será fotografado, a mensagem, os canais e as referências de estilo."
+      },
+      {
+        "titulo": "Organização da produção",
+        "texto": "Local, produtos, participantes e necessidades da sessão são definidos conforme o escopo."
+      },
+      {
+        "titulo": "Seleção e entrega",
+        "texto": "Quantidade de fotos, tratamento e formatos finais são combinados na proposta."
+      }
+    ],
+    "preparar": "Envie referências, fotos atuais do local ou dos produtos, a lista de itens que precisam aparecer e os canais de uso. Informe a cidade da produção e a disponibilidade das pessoas envolvidas.",
+    "relacionadas": [
+      {
+        "nome": "Criação de sites",
+        "url": "solucoes-em-marketing-digital/criacao-de-sites-profissionais/"
+      },
+      {
+        "nome": "Lojas virtuais",
+        "url": "lojas-virtuais/"
+      },
+      {
+        "nome": "Produção de vídeo",
+        "url": "solucoes-em-marketing-digital/producao-de-video/"
+      }
+    ],
+    "cta": {
+      "titulo": "Vamos entender o que sua empresa precisa?",
+      "texto": "A Cobra Agência está em Timbó, Santa Catarina. Conte o seu objetivo para alinharmos o escopo e os próximos passos.",
+      "botao": "Solicitar uma proposta"
     }
   },
   {
@@ -294,12 +942,143 @@
       "Cobertura de eventos",
       "Edição e versões para redes"
     ],
-    "seo": {},
-    "conteudo": [],
-    "faq": [],
-    "link_extra": {
-      "rotulo": "Ver o Audiovisual",
-      "href": "audiovisual.html"
+    "seo": {
+      "titulo": "Produção de Vídeo para Empresas em Timbó | Cobra",
+      "descricao": "Produção de vídeo em Timbó: conheça trabalhos da Cobra para empresas, produtos e eventos. Assista aos vídeos do canal e converse sobre o seu projeto."
+    },
+    "conteudo": [
+      {
+        "titulo": "Vídeos produzidos pela Cobra",
+        "paragrafos": [
+          "Conheça trabalhos de vídeo institucional, apresentação de produtos e cobertura de eventos publicados no canal da Agência Cobra."
+        ],
+        "itens": [
+          {
+            "titulo": "Vídeo institucional · Frigorífico Gessner",
+            "texto": "Apresentação institucional do Frigorífico Gessner, em versão publicada para Instagram Reels."
+          },
+          {
+            "titulo": "Cobertura de evento · Tipotil",
+            "texto": "Registro do evento de encerramento anual de 2024 da Tipotil."
+          },
+          {
+            "titulo": "Cobertura de evento · Fidenza • Club & Casa",
+            "texto": "Cobertura do evento da Fidenza com o Club & Casa, em Blumenau."
+          },
+          {
+            "titulo": "Vídeo de produto · Sonhar Decorações",
+            "texto": "Apresentação de produto para a Sonhar Decorações, de Timbó, Santa Catarina."
+          },
+          {
+            "titulo": "Vídeo industrial · Butzke Móveis",
+            "texto": "Registro institucional do chão de fábrica da Butzke Móveis."
+          },
+          {
+            "titulo": "Apresentação de solução · AMS • Blocok",
+            "texto": "Vídeo sobre as vantagens de construir com paredes prontas Blocok, para a AMS."
+          }
+        ],
+        "links": [
+          {
+            "rotulo": "Ver os vídeos no Audiovisual",
+            "href": "audiovisual.html"
+          },
+          {
+            "rotulo": "Conhecer o canal da Cobra no YouTube",
+            "href": "https://www.youtube.com/@AgenciaCobra"
+          }
+        ]
+      },
+      {
+        "titulo": "Como podemos ajudar",
+        "paragrafos": [
+          "O ponto de partida é definir o que o público precisa entender e qual ação o conteúdo deve ajudar a estimular."
+        ],
+        "itens": [
+          {
+            "titulo": "Apresentação da empresa",
+            "texto": "Conteúdo para comunicar a atuação da marca, seus ambientes e sua forma de trabalhar."
+          },
+          {
+            "titulo": "Produtos e serviços",
+            "texto": "Vídeos para mostrar detalhes, aplicações e informações que ajudam o público a compreender uma oferta."
+          },
+          {
+            "titulo": "Conteúdo para canais digitais",
+            "texto": "Planejamento de vídeos conforme o contexto de uso em sites, redes sociais e campanhas."
+          }
+        ]
+      },
+      {
+        "titulo": "O formato vem depois do objetivo",
+        "paragrafos": [
+          "Vídeos curtos, demonstrações e apresentações institucionais atendem a momentos diferentes da comunicação. O roteiro precisa considerar a mensagem principal, o tempo disponível e onde o conteúdo será visto. Orientação da imagem, legendas e versões de duração devem ser discutidas antes da produção para evitar adaptações inadequadas depois."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "pergunta": "A produção inclui roteiro, gravação e edição?",
+        "resposta": [
+          "Essas etapas podem compor o projeto, mas a proposta deve detalhar quais estão incluídas. Também são definidos os materiais que a empresa precisa fornecer."
+        ]
+      },
+      {
+        "pergunta": "Um vídeo pode ter versão horizontal e vertical?",
+        "resposta": [
+          "As versões podem ser planejadas no briefing. É importante prever os enquadramentos e a quantidade de adaptações antes da gravação."
+        ]
+      },
+      {
+        "pergunta": "É possível trabalhar com imagens já existentes?",
+        "resposta": [
+          "A possibilidade depende da qualidade, do formato e dos direitos de uso dos arquivos. O material precisa ser avaliado para definir como poderá participar da edição."
+        ]
+      },
+      {
+        "pergunta": "Quanto tempo leva a produção?",
+        "resposta": [
+          "O prazo depende do roteiro, da logística de gravação, das aprovações e do número de versões. O cronograma é combinado após a definição do escopo."
+        ]
+      }
+    ],
+    "h1": "Produção de vídeo para empresas em Timbó",
+    "olho": "Mensagem • Imagem • Movimento",
+    "intro": "A produção de vídeo transforma uma mensagem em conteúdo audiovisual para apresentar uma empresa, explicar uma oferta ou apoiar a comunicação digital. A Cobra trabalha com vídeo integrado à estratégia e à identidade da marca.",
+    "etapas_titulo": "Como o projeto é organizado",
+    "etapas": [
+      {
+        "titulo": "Briefing e roteiro",
+        "texto": "Definimos objetivo, público, mensagem e referências para orientar o conteúdo."
+      },
+      {
+        "titulo": "Planejamento da gravação",
+        "texto": "Participantes, local, cenas e recursos necessários são alinhados conforme o projeto."
+      },
+      {
+        "titulo": "Edição e finalização",
+        "texto": "Montagem, identidade visual, ajustes e versões finais seguem o escopo aprovado."
+      }
+    ],
+    "preparar": "Envie o objetivo do vídeo, os canais de publicação, referências de linguagem e informações sobre o local. Se já houver imagens, textos ou materiais da marca, indique o que pode ser utilizado e em quais condições.",
+    "relacionadas": [
+      {
+        "nome": "Fotografia profissional",
+        "url": "solucoes-em-marketing-digital/fotografia-profissional/"
+      },
+      {
+        "nome": "Mídias sociais",
+        "url": "solucoes-em-marketing-digital/midias-sociais/"
+      },
+      {
+        "nome": "Tráfego pago",
+        "url": "solucoes-em-marketing-digital/trafego-pago/"
+      }
+    ],
+    "cta": {
+      "titulo": "Vamos entender o que sua empresa precisa?",
+      "texto": "A Cobra Agência está em Timbó, Santa Catarina. Conte o seu objetivo para alinharmos o escopo e os próximos passos.",
+      "botao": "Solicitar uma proposta"
     }
   },
   {
@@ -325,9 +1104,108 @@
     "link": false,
     "tall": false,
     "yt": "assets/84a210205cc9.jpg",
-    "seo": {},
-    "conteudo": [],
-    "faq": []
+    "seo": {
+      "titulo": "SEO e Otimização de Sites em Timbó | Cobra",
+      "descricao": "SEO para organizar conteúdo, melhorar a estrutura e facilitar a descoberta do seu site. Conheça a abordagem da Cobra em Timbó e solicite uma avaliação."
+    },
+    "conteudo": [
+      {
+        "titulo": "Como podemos ajudar",
+        "paragrafos": [
+          "Uma base para buscas tradicionais e para experiências de pesquisa com inteligência artificial, construída com informação útil e estrutura consistente."
+        ],
+        "itens": [
+          {
+            "titulo": "Estrutura do site",
+            "texto": "Organização de páginas, navegação e links internos para que cada serviço tenha um caminho claro."
+          },
+          {
+            "titulo": "Conteúdo e intenção de busca",
+            "texto": "Textos que respondem às dúvidas reais do público, com títulos e descrições coerentes com cada página."
+          },
+          {
+            "titulo": "Aspectos técnicos",
+            "texto": "Avaliação de pontos como acesso às páginas, indexação, experiência em dispositivos móveis e desempenho, conforme o escopo."
+          }
+        ]
+      },
+      {
+        "titulo": "Como SEO se relaciona com as buscas com IA?",
+        "paragrafos": [
+          "GEO é um termo usado para o trabalho de tornar informações úteis e compreensíveis em experiências de busca generativa. Nesse contexto, a base continua sendo um site acessível, com conteúdo confiável, respostas claras e dados coerentes sobre a empresa. Não existe uma marcação especial que garanta citação por uma IA. Na orientação oficial do Google, os fundamentos de SEO também se aplicam às suas experiências de busca com IA."
+        ],
+        "links": [
+          {
+            "rotulo": "Referência: orientações do Google para recursos de IA e sites",
+            "href": "https://developers.google.com/search/docs/appearance/ai-features"
+          }
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "pergunta": "SEO garante o primeiro lugar no Google?",
+        "resposta": [
+          "Não. Posições dependem de vários fatores e mudam ao longo do tempo. O trabalho busca melhorar a qualidade e a compreensão do site, sem garantia de classificação."
+        ]
+      },
+      {
+        "pergunta": "Qual é a diferença entre SEO e tráfego pago?",
+        "resposta": [
+          "SEO atua na descoberta orgânica e na qualidade do site. Tráfego pago envolve campanhas com investimento em mídia. As estratégias podem se complementar e possuem custos e formas de acompanhamento diferentes."
+        ]
+      },
+      {
+        "pergunta": "Quanto tempo leva para perceber resultados?",
+        "resposta": [
+          "O tempo varia com o estado do site, a concorrência e a implementação das melhorias. A publicação de uma página não garante sua indexação imediata."
+        ]
+      },
+      {
+        "pergunta": "O conteúdo pode aparecer em respostas de inteligência artificial?",
+        "resposta": [
+          "Um conteúdo público, claro e acessível pode ser considerado por sistemas de busca com IA, de acordo com os critérios de cada plataforma. Não é possível garantir citações ou controlar quais respostas serão apresentadas."
+        ]
+      }
+    ],
+    "h1": "SEO e otimização de sites em Timbó",
+    "olho": "Estrutura • Conteúdo • Descoberta",
+    "intro": "SEO é o trabalho de melhorar a estrutura e o conteúdo de um site para facilitar sua compreensão por pessoas e mecanismos de busca. A Cobra avalia a presença digital da empresa e orienta ajustes para que produtos e serviços sejam apresentados de forma clara e encontrável.",
+    "etapas_titulo": "Como o projeto é organizado",
+    "etapas": [
+      {
+        "titulo": "Diagnóstico e prioridades",
+        "texto": "Entendemos o site atual, os serviços principais e as dificuldades de descoberta e navegação."
+      },
+      {
+        "titulo": "Plano de melhorias",
+        "texto": "Organizamos ajustes de estrutura, conteúdo e aspectos técnicos de acordo com o impacto e a viabilidade."
+      },
+      {
+        "titulo": "Implementação e acompanhamento",
+        "texto": "Execução, métricas e periodicidade de análise são definidos na proposta. Acesso às ferramentas é alinhado quando necessário."
+      }
+    ],
+    "preparar": "Envie o endereço do site, as soluções prioritárias e as regiões em que a empresa atua. Se já houver dados de Search Console ou Analytics, eles podem ajudar a entender o cenário sem depender apenas de hipóteses.",
+    "relacionadas": [
+      {
+        "nome": "Criação de sites",
+        "url": "solucoes-em-marketing-digital/criacao-de-sites-profissionais/"
+      },
+      {
+        "nome": "Manutenção de sites",
+        "url": "solucoes-em-marketing-digital/manutencao-de-sites/"
+      },
+      {
+        "nome": "Consultoria de marketing",
+        "url": "solucoes-em-marketing-digital/consultoria-de-marketing-digital/"
+      }
+    ],
+    "cta": {
+      "titulo": "Vamos entender o que sua empresa precisa?",
+      "texto": "A Cobra Agência está em Timbó, Santa Catarina. Conte o seu objetivo para alinharmos o escopo e os próximos passos.",
+      "botao": "Solicitar uma proposta"
+    }
   },
   {
     "slug": "manutencao-de-sites",
@@ -352,8 +1230,101 @@
     "link": false,
     "tall": false,
     "yt": "assets/76faebec2532.webp",
-    "seo": {},
-    "conteudo": [],
-    "faq": []
+    "seo": {
+      "titulo": "Manutenção de Sites para Empresas | Cobra em Timbó",
+      "descricao": "Manutenção de sites para cuidar do conteúdo e investigar falhas de funcionamento. A Cobra avalia sua estrutura e define as melhorias necessárias. Fale conosco."
+    },
+    "conteudo": [
+      {
+        "titulo": "Como podemos ajudar",
+        "paragrafos": [
+          "Para empresas que já têm um site e precisam atualizar conteúdo, corrigir falhas ou organizar uma rotina de cuidados."
+        ],
+        "itens": [
+          {
+            "titulo": "Atualizações de conteúdo",
+            "texto": "Ajustes em textos, contatos, serviços e links para que o site acompanhe as mudanças da empresa."
+          },
+          {
+            "titulo": "Investigação de falhas",
+            "texto": "Análise de problemas de carregamento, páginas, navegação e recursos, dentro das condições de acesso disponíveis."
+          },
+          {
+            "titulo": "Cuidados com a estrutura",
+            "texto": "Avaliação de compatibilidade, atualizações e rotina de cópias de segurança conforme a plataforma e o escopo contratado."
+          }
+        ]
+      },
+      {
+        "titulo": "Antes de alterar, é preciso entender o site",
+        "paragrafos": [
+          "Um problema pode estar no conteúdo da página, no tema, em uma extensão ou na hospedagem. Alterar vários componentes ao mesmo tempo dificulta descobrir a causa. Uma avaliação inicial ajuda a organizar prioridades, registrar a situação e escolher os ajustes adequados. Quando o trabalho envolve mudanças na estrutura, cópias de segurança e uma forma de recuperação precisam ser combinadas."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "pergunta": "A manutenção serve para um site feito por outra empresa?",
+        "resposta": [
+          "O primeiro passo é avaliar a plataforma, os acessos e as condições da estrutura atual. Essa análise permite definir se o atendimento é viável e qual escopo faz sentido."
+        ]
+      },
+      {
+        "pergunta": "Hospedagem e licenças estão incluídas?",
+        "resposta": [
+          "Hospedagem, domínio e licenças de terceiros são itens que precisam estar discriminados na proposta. Não são automaticamente incluídos no serviço de manutenção."
+        ]
+      },
+      {
+        "pergunta": "É possível solicitar apenas uma correção?",
+        "resposta": [
+          "O atendimento pode ser avaliado a partir de uma demanda específica. Frequência, prazo, acompanhamento e demais condições são definidos conforme a necessidade."
+        ]
+      },
+      {
+        "pergunta": "Manutenção substitui a criação de um site novo?",
+        "resposta": [
+          "Nem sempre. Se a estrutura limita a experiência ou exige mudanças extensas, pode ser mais adequado planejar uma reconstrução. Essa decisão deve considerar o diagnóstico e os objetivos da empresa."
+        ]
+      }
+    ],
+    "h1": "Manutenção de sites para empresas",
+    "olho": "Continuidade • Organização • Cuidado",
+    "intro": "A manutenção de sites reúne cuidados para manter informações atualizadas e identificar problemas de funcionamento. A Cobra avalia a estrutura existente e define com a empresa quais ajustes são necessários para preservar uma experiência de navegação clara e útil.",
+    "etapas_titulo": "Como o projeto é organizado",
+    "etapas": [
+      {
+        "titulo": "Relato e avaliação",
+        "texto": "Informe o endereço, descreva o que falhou e em qual situação o problema aparece."
+      },
+      {
+        "titulo": "Definição do escopo",
+        "texto": "Avaliamos plataforma, acessos necessários e dependências para propor os ajustes."
+      },
+      {
+        "titulo": "Correção e conferência",
+        "texto": "As alterações previstas são realizadas e o funcionamento afetado é conferido. A continuidade do atendimento depende do plano acordado."
+      }
+    ],
+    "preparar": "Envie a URL, uma descrição do problema e, se possível, capturas de tela. Informe a plataforma e a empresa de hospedagem. Não envie senhas por formulários públicos; os acessos necessários são alinhados por um meio adequado.",
+    "relacionadas": [
+      {
+        "nome": "Criação de sites",
+        "url": "solucoes-em-marketing-digital/criacao-de-sites-profissionais/"
+      },
+      {
+        "nome": "SEO e otimização",
+        "url": "solucoes-em-marketing-digital/seo-otimizacao-de-sites/"
+      },
+      {
+        "nome": "Lojas virtuais",
+        "url": "lojas-virtuais/"
+      }
+    ],
+    "cta": {
+      "titulo": "Vamos entender o que sua empresa precisa?",
+      "texto": "A Cobra Agência está em Timbó, Santa Catarina. Conte o seu objetivo para alinharmos o escopo e os próximos passos.",
+      "botao": "Solicitar uma proposta"
+    }
   }
 ]

@@ -29,33 +29,21 @@
   const clientsSet = new Set(CASES.map(c=>c.cliente));
   document.getElementById('nCases').textContent = CASES.length;
   document.getElementById('nClients').textContent = clientsSet.size;
-  /* mural de cards: colunas em loop (páginas largas) ou lista fixa (celular / movimento reduzido) */
+  /* mural de cards de texto (serviços e chamadas) */
   const wall=document.getElementById('wall');
   const esc=t=>String(t).replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
   const svcCard=(s,tone)=>{ const n=CASES.filter(c=>c.svcs.includes(s.id)).length;
     const attr=s.link?`href="${s.link}"`:`type="button" data-svc="${s.id}"`, tag=s.link?'a':'button';
     return `<${tag} class="wc svc ${tone}" ${attr}><small>Serviço</small><h3>${esc(s.nome)}</h3><p>${esc(s.lead)}</p>${s.deliv.length?`<ul>${s.deliv.slice(0,4).map(d=>`<li>${esc(d)}</li>`).join('')}</ul>`:''}<span class="ft"><span>${s.link?'Página dedicada':(n+(n===1?' projeto':' projetos'))}</span><i aria-hidden="true">→</i></span></${tag}>`; };
-  const caseWall=c=>`<button class="wc pic" type="button" data-case="${c.id}" aria-label="Abrir case ${esc(c.cliente)}">${c.img?`<span class="im"><img src="${c.img}" alt="" loading="lazy"></span>`:''}<span class="bd"><small>${c.svcs.map(id=>svcById[id].curto).join(' · ')}</small><h3>${esc(c.cliente)}</h3><p>${esc(c.desc)}</p><span class="ft"><span>Ver case</span><i aria-hidden="true">→</i></span></span></button>`;
   const textCards=[
     `<div class="wc q"><small>Como trabalhamos</small><p class="big">Estratégia, criatividade e tecnologia <em>no mesmo time.</em></p></div>`,
     `<a class="wc cta" href="contato.html"><small>Próximo projeto</small><p class="big">Tem uma ideia? <em>Vamos tirar do papel.</em></p><span class="ft"><span>Falar com a gente</span><i aria-hidden="true">→</i></span></a>`,
     `<div class="wc q"><small>Do planejamento à entrega</small><p class="big">Cada projeto começa com o objetivo do cliente <em>e termina em resultado.</em></p></div>`
   ];
   const tones=['lime','','paper','',''];
-  const cards=[]; const sv=SERVICES.map((s,i)=>svcCard(s,tones[i%tones.length])), cs=CASES.map(caseWall);
-  for (let i=0;i<Math.max(sv.length,cs.length,textCards.length);i++){ if (sv[i]) cards.push(sv[i]); if (cs[i]) cards.push(cs[i]); if (textCards[i] && i%2===0) cards.push(textCards[i]); if (textCards[i] && i%2===1) cards.push(textCards[i]); }
-  let wallCols=0;
-  function buildWall(){ const w=innerWidth, cols= w>=1200?4 : w>=900?3 : w>=640?2 : 1, still = reduce || cols===1;
-    if (cols===wallCols) return; wallCols=cols;
-    wall.classList.toggle('still', still); wall.style.setProperty('--cols', still?Math.min(cols,2):cols);
-    if (still){ wall.innerHTML=cards.join(''); return; }
-    const sets=Array.from({length:cols},()=>[]); cards.forEach((c,i)=>sets[i%cols].push(c));
-    wall.innerHTML=sets.map((s,i)=>`<div class="wcol${i%2?' down':''}"><div class="wtrack" style="--dur:${58+i*9}s"><div class="wset">${s.join('')}</div></div></div>`).join('');
-    const H=wall.clientHeight;
-    wall.querySelectorAll('.wtrack').forEach(t=>{ const set=t.firstElementChild, base=set.innerHTML; let k=0; while (set.offsetHeight < H+40 && k++<4) set.insertAdjacentHTML('beforeend', base);
-      const dup=set.cloneNode(true); dup.setAttribute('aria-hidden','true'); dup.inert=true; t.appendChild(dup); });
-  }
-  buildWall(); let rsz; addEventListener('resize', ()=>{ clearTimeout(rsz); rsz=setTimeout(buildWall,200); });
+  const sv=SERVICES.map((s,i)=>svcCard(s,tones[i%tones.length]));
+  /* mural fixo, só com cards de texto: serviços intercalados com as chamadas */
+  wall.innerHTML=[sv[0],textCards[0],sv[1],sv[2],sv[3],textCards[2],sv[4],textCards[1]].filter(Boolean).join('');
   function caseCard(c){ const svcNames=c.svcs.map(id=>svcById[id].curto);
     return `<button class="case" type="button" data-case="${c.id}" data-svcs="${c.svcs.join(' ')}" aria-label="Abrir case ${c.cliente}"><div class="v">${c.img?`<img src="${c.img}" alt="">`:''}</div><div class="b"><small>${svcNames.join(' · ')}</small><h3>${c.cliente}</h3><div class="tags">${c.tags.slice(0,3).map(t=>`<span>${t}</span>`).join('')}</div></div></button>`; }
   const soonCard = (svc) => `<div class="case soon" aria-label="Case em breve"><div class="v"></div><div class="b"><small>${svc?svc.curto:'Em breve'}</small><h3>Case em breve</h3><div class="tags"><span>A cadastrar</span></div></div></div>`;
@@ -131,7 +119,7 @@
     let mx=innerWidth/2,my=innerHeight/2,rx=mx,ry=my; addEventListener('pointermove',e=>{ mx=e.clientX; my=e.clientY; dot.style.transform=`translate(${mx}px,${my}px)`; });
     (function cl(){ rx+=(mx-rx)*.18; ry+=(my-ry)*.18; ring.style.transform=`translate(${rx}px,${ry}px)`; requestAnimationFrame(cl); })();
     document.addEventListener('pointerover', e=>{ const t=e.target; const m=(k,txt)=>{ ring.classList.toggle('link',k==='link'); ring.classList.toggle('label',k==='label'); if (txt) lab.textContent=txt; };
-      if (t.closest('.case:not(.soon)')) m('label','ver case'); else if (t.closest('.wc.pic')) m('label','ver case'); else if (t.closest('.wc.svc')) m('label','abrir'); else if (t.closest('a,button')) m('link'); else m(''); }); }
+      if (t.closest('.case:not(.soon)')) m('label','ver case'); else if (t.closest('.wc.svc')) m('label','abrir'); else if (t.closest('a,button')) m('link'); else m(''); }); }
 
   const start=(location.hash||'').slice(1); show(start, false);
   if (hasG) addEventListener('load', ()=>ScrollTrigger.refresh());

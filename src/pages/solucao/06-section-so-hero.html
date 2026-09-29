@@ -1,9 +1,10 @@
 <section class="sec t-paper so-hero" data-bg="paper" data-tone="paper">
   <nav class="eyebrow so-crumb" aria-label="Você está em"><a href="index.html">Início</a><span aria-hidden="true">/</span><a href="solucoes-em-marketing-digital/">Soluções</a><span aria-hidden="true">/</span><b style="color:var(--ink)" aria-current="page">{{ item.nome }}</b></nav>
   <div class="so-main">
-    <h1 class="sr">{{ item.h1 | default item.nome }}</h1>
+    {{#if item.olho}}<p class="eyebrow so-olho">{{ item.olho }}</p>
+    {{/if}}<h1 class="sr">{{ item.h1 | default item.nome }}</h1>
     <div class="so-title" aria-hidden="true"><span class="so-script" id="soScript">{{ item.script }}</span><span class="so-big" id="soBig">{{ item.big }}</span></div>
-    <p class="so-lead">{{ item.desc }}</p>
+    <p class="so-lead">{{ item.intro | default item.desc }}</p>
     <div class="so-row"><a class="btn" href="https://wa.me/{{ site.whatsapp.numero }}?text={{ site.whatsapp.mensagem | url }}" target="_blank" rel="noopener">Quero essa solução <span class="arr">↗</span></a><a class="btn ghost" href="#entregas">Ver entregas <span class="arr">↓</span></a>{{#if item.link_extra}}<a class="btn ghost" href="{{ item.link_extra.href }}">{{ item.link_extra.rotulo }} <span class="arr">→</span></a>{{/if}}</div>
   </div>
   <div class="so-vis" aria-hidden="true"><div class="so-frame"><div class="in"><img src="{{ item.img }}" alt=""{{#if item.zoom}} class="zoom"{{else}}{{#if item.tall}} class="tall"{{/if}}{{/if}}><span class="ty">{{ item.tag }}</span><span class="lab">{{ item.nome }}</span></div></div></div>
@@ -12,7 +13,7 @@
 <section class="sec t-paper so-txt" data-bg="paper" data-tone="paper">
 {{#each item.conteudo as b}}  <article class="so-blk">
     <h2 class="display">{{ b.titulo }}</h2>
-    <div class="so-body">{{#each b.paragrafos as t}}<p>{{ t }}</p>{{/each}}{{#if b.lista}}<ul>{{#each b.lista as li}}<li>{{ li }}</li>{{/each}}</ul>{{/if}}</div>
+    <div class="so-body">{{#each b.paragrafos as t}}<p>{{ t }}</p>{{/each}}{{#if b.lista}}<ul>{{#each b.lista as li}}<li>{{ li }}</li>{{/each}}</ul>{{/if}}{{#if b.itens}}<div class="so-its">{{#each b.itens as x}}<div class="so-it"><h3>{{ x.titulo }}</h3><p>{{ x.texto }}</p></div>{{/each}}</div>{{/if}}{{#if b.links}}<p class="so-links">{{#each b.links as l}}<a href="{{ l.href }}">{{ l.rotulo }} →</a>{{/each}}</p>{{/if}}</div>
   </article>
 {{/each}}</section>
 {{/if}}
