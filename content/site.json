@@ -52,10 +52,38 @@
   ],
   "botao_topo": "Falar com a Cobra",
   "numeros": {
-    "clientes": "+100",
+    "clientes": "+500",
     "nota_google": "5.0",
     "videos": "19",
-    "marcas": "12"
+    "marcas": "12",
+    "titulo": "Ajudamos a sua empresa a se destacar online.",
+    "texto": "Nosso trabalho é garantir que sua marca tenha o reconhecimento que merece.",
+    "lista": [
+      {
+        "antes": "+",
+        "valor": "500",
+        "depois": "",
+        "rotulo": "Clientes"
+      },
+      {
+        "antes": "",
+        "valor": "15",
+        "depois": "+",
+        "rotulo": "Anos de experiência"
+      },
+      {
+        "antes": "",
+        "valor": "650",
+        "depois": "+",
+        "rotulo": "Projetos"
+      },
+      {
+        "antes": "",
+        "valor": "3",
+        "depois": "MI+",
+        "rotulo": "Em ativos gerenciados"
+      }
+    ]
   },
   "redes": [
     {

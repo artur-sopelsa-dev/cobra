@@ -1,0 +1,6 @@
+<section class="sec t-ink ab-num" data-bg="ink" data-tone="ink">
+  <div class="head"><h2 class="display" data-split>Em <span class="it">números</span></h2><p class="muted rv" style="max-width:40ch;margin:0">{{ site.numeros.titulo }} {{ site.numeros.texto }}</p></div>
+  <div class="nums">{{#each site.numeros.lista as n}}
+    <div class="rv"><b>{{#if n.antes}}<sup>{{ n.antes }}</sup>{{/if}}<i data-count="{{ n.valor }}">{{ n.valor }}</i>{{#if n.depois}}<sup>{{ n.depois }}</sup>{{/if}}</b><span>{{ n.rotulo }}</span></div>{{/each}}
+  </div>
+</section>

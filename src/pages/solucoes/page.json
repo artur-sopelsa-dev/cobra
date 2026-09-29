@@ -52,6 +52,11 @@
       "file": "08-section-sl-full.html"
     },
     {
+      "label": "Em números",
+      "kind": "section",
+      "partial": "numeros"
+    },
+    {
       "label": "Como a gente trabalha",
       "kind": "section",
       "file": "08-section-so-proc.html"
