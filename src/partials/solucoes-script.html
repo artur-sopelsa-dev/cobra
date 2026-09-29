@@ -6,7 +6,7 @@
   if (anim){
     gsap.from('.sx-hero-txt > *', { y:40, opacity:0, duration:1, stagger:.07, ease:'expo.out', delay:.1 });
     gsap.from('.sx-vis, .sx-mos', { y:60, opacity:0, duration:1.2, ease:'expo.out', delay:.3 });
-    gsap.to('.sx-vis .so-frame', { yPercent:-6, ease:'none', scrollTrigger:{ trigger:'.sx-hero', start:'top top', end:'bottom top', scrub:true } });
+    if (document.querySelector('.sx-vis .so-frame')) gsap.to('.sx-vis .so-frame', { yPercent:-6, ease:'none', scrollTrigger:{ trigger:'.sx-hero', start:'top top', end:'bottom top', scrub:true } });
     ScrollTrigger.batch('.sx-ent li, .sx-it, .sx-steps li, .sx-q, .sx-rc, .sx-card, .sx-mv > div, .sx-blk.is-say', { start:'top 92%', once:true,
       onEnter: els => gsap.fromTo(els, { y:36, opacity:0 }, { y:0, opacity:1, duration:.8, stagger:.06, ease:'expo.out', overwrite:true }) });
     document.querySelectorAll('[data-count]').forEach(el=>{ const v=parseFloat(el.dataset.count), dec=el.dataset.count.includes('.')?1:0, o={v:0};
