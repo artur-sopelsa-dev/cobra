@@ -39,15 +39,7 @@ main,footer{position:relative;z-index:1}
 .hub-intro .count div b{display:block;font-size:clamp(34px,4vw,56px);font-weight:800;letter-spacing:-.04em;line-height:1}
 .hub-intro .count div span{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
 /* mural de cards */
-.wall{--cols:4;--g:16px;position:relative;height:min(100svh,960px);margin:0 var(--gut);display:grid;grid-template-columns:repeat(var(--cols),minmax(0,1fr));gap:var(--g);overflow:hidden;-webkit-mask-image:linear-gradient(transparent,#000 9%,#000 91%,transparent);mask-image:linear-gradient(transparent,#000 9%,#000 91%,transparent)}
-.wcol{min-width:0}
-.wtrack{display:flex;flex-direction:column;gap:var(--g);animation:wUp var(--dur,60s) linear infinite;will-change:transform}
-.wcol.down .wtrack{animation-name:wDown}
-.wset{display:flex;flex-direction:column;gap:var(--g)}
-.wall:hover .wtrack,.wall:focus-within .wtrack{animation-play-state:paused}
-@keyframes wUp{from{transform:translateY(0)}to{transform:translateY(calc(-50% - var(--g)/2))}}
-@keyframes wDown{from{transform:translateY(calc(-50% - var(--g)/2))}to{transform:translateY(0)}}
-.wall.still{height:auto;-webkit-mask-image:none;mask-image:none;align-items:start}
+.wall{margin:0 var(--gut);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;align-items:stretch}
 .wc{position:relative;display:flex;flex-direction:column;gap:12px;width:100%;padding:24px;border-radius:12px;background:var(--char);border:1px solid var(--line);color:var(--paper);text-align:left;text-decoration:none;cursor:pointer;font:inherit;overflow:hidden;transition:transform .45s var(--ease),border-color .3s}
 div.wc{cursor:default}
 .wc:hover{transform:translateY(-4px);border-color:var(--lime)}div.wc:hover{transform:none;border-color:var(--line)}
@@ -56,7 +48,7 @@ div.wc{cursor:default}
 .wc p{margin:0;font-size:14px;line-height:1.5;color:#c9ccbd}
 .wc ul{list-style:none;margin:2px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
 .wc li{font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;border:1px solid rgba(238,240,227,.3);border-radius:999px;padding:5px 9px}
-.wc .ft{margin-top:6px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+.wc .ft{margin-top:auto;padding-top:6px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
 .wc .ft i{font-style:normal;width:40px;height:40px;border-radius:50%;border:1.5px solid currentColor;display:grid;place-items:center;font-size:17px;transition:transform .45s var(--ease)}
 .wc:hover .ft i{transform:rotate(-45deg)}
 .wc.lime,.wc.cta{background:var(--lime);color:var(--ink);border-color:var(--lime)}
@@ -70,14 +62,9 @@ div.wc{cursor:default}
 .wc .big{font-size:clamp(22px,1.9vw,30px);font-weight:800;letter-spacing:-.03em;line-height:1.05;text-transform:uppercase;color:inherit}
 .wc .big em{font-style:italic;font-weight:400;text-transform:none;color:var(--lime)}
 .wc.cta .big,.wc.cta .big em{color:var(--ink)}
-.wc.pic{padding:0;gap:0}
-.wc.pic .im{display:block;aspect-ratio:4/3;overflow:hidden;background:var(--char) var(--contour) center/cover}
-.wc.pic .im img{width:100%;height:100%;object-fit:cover;filter:grayscale(.3);transition:transform .9s var(--ease),filter .6s}
-.wc.pic:hover .im img{transform:scale(1.06);filter:none}
-.wc.pic .bd{display:flex;flex-direction:column;gap:10px;padding:20px 22px 22px}
 @media (max-width:860px){.hub-intro{grid-template-columns:1fr}.hub-intro .count{justify-self:start}}
-@media (max-width:639px){.wall.still{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin:0;padding:0 var(--gut) 8px;scrollbar-width:none;align-items:stretch}.wall.still::-webkit-scrollbar{display:none}.wall.still .wc{flex:0 0 82%;scroll-snap-align:center}}
-@media (prefers-reduced-motion:reduce){.wtrack{animation:none}}
+@media (max-width:1100px){.wall{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.wall{grid-template-columns:1fr}}
 .all{padding:clamp(80px,10vw,140px) var(--gut)}
 .all-head{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:30px}
 .all-head h2{margin:0;font-size:clamp(40px,5.4vw,86px)}

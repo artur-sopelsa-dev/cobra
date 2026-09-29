@@ -2,8 +2,8 @@
   "slug": "solucoes",
   "output": "solucoes-em-marketing-digital/index.html",
   "url": "solucoes-em-marketing-digital/",
-  "title": "Soluções em Marketing Digital | Agência Cobra",
-  "description": "Soluções em marketing digital da Agência Cobra, em Timbó (SC): branding, sites, lojas virtuais, redes sociais, tráfego pago, SEO, fotografia, vídeo e mais.",
+  "title": "Soluções em Marketing Digital | Sites, Branding e Tráfego Pago",
+  "description": "Conheça as soluções da Cobra em marketing digital: sites, e-commerce, branding, social media, tráfego pago, fotografia, vídeo e SEO.",
   "menu_ativo": "solucoes",
   "parts": [
     {
@@ -45,6 +45,11 @@
       "label": "Lista de soluções",
       "kind": "section",
       "file": "07-section-sl-grid.html"
+    },
+    {
+      "label": "Agência full service",
+      "kind": "section",
+      "file": "08-section-sl-full.html"
     },
     {
       "label": "Como a gente trabalha",

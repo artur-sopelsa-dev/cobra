@@ -1,3 +1,11 @@
+{{#if item.etapas}}
+<section class="sec t-char so-proc" id="como-funciona" data-bg="char" data-tone="ink">
+  <h2 class="display">{{ item.etapas_titulo }}</h2>
+  {{#if item.etapas_intro}}<p class="so-proc-intro">{{ item.etapas_intro }}</p>{{/if}}
+  <ol class="so-steps">{{#each item.etapas as e}}<li class="so-step"><div><span class="ic" aria-hidden="true">{{ @index | mais }}</span><h3>{{ e.titulo }}</h3></div><p>{{ e.texto }}</p></li>{{/each}}</ol>
+  {{#if item.preparar}}<div class="so-prep"><h3>O que preparar para a primeira conversa</h3><p>{{ item.preparar }}</p></div>{{/if}}
+</section>
+{{else}}
 <section class="sec t-char so-proc" data-bg="char" data-tone="ink">
   <h2 class="display">Como a gente <span class="it">trabalha</span></h2>
   <div class="so-steps">
@@ -8,3 +16,4 @@
   </div>
 </section>
 
+{{/if}}
