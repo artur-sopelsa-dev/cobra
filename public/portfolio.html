@@ -60,7 +60,7 @@ div.wc{cursor:default}
 .wc p{margin:0;font-size:14px;line-height:1.5;color:#c9ccbd}
 .wc ul{list-style:none;margin:2px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
 .wc li{font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;border:1px solid rgba(238,240,227,.3);border-radius:999px;padding:5px 9px}
-.wc .ft{margin-top:auto;padding-top:6px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+.wc .ft{margin-top:auto;padding-top:6px;display:flex;align-items:center;justify-content:flex-end;gap:12px;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
 .wc .ft i{font-style:normal;width:40px;height:40px;border-radius:50%;border:1.5px solid currentColor;display:grid;place-items:center;font-size:17px;transition:transform .45s var(--ease)}
 .wc:hover .ft i{transform:rotate(-45deg)}
 .wc.lime,.wc.cta{background:var(--lime);color:var(--ink);border-color:var(--lime)}
@@ -69,7 +69,7 @@ div.wc{cursor:default}
 .wc.lime p,.wc.paper p,.wc.cta p{color:rgba(10,11,8,.78)}
 .wc.lime li,.wc.paper li{border-color:rgba(10,11,8,.35)}
 .wc.lime:hover,.wc.cta:hover{border-color:var(--ink)}.wc.paper:hover{border-color:var(--lime)}
-.wc.svc:not(.lime):not(.paper){background:var(--char) var(--contour) center/cover}
+.wc.svc:not(.lime):not(.paper){background:var(--char)}
 .wc.q{background:transparent;border-style:dashed}
 .wc .big{font-size:clamp(22px,1.9vw,30px);font-weight:800;letter-spacing:-.03em;line-height:1.05;text-transform:uppercase;color:inherit}
 .wc .big em{font-style:italic;font-weight:400;text-transform:none;color:var(--lime)}
@@ -342,10 +342,10 @@ div.wc{cursor:default}
   /* mural de cards de texto (serviços e chamadas) */
   const wall=document.getElementById('wall');
   const esc=t=>String(t).replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
-  const svcCard=(s,tone)=>{ const n=CASES.filter(c=>c.svcs.includes(s.id)).length;
+  const svcCard=(s,tone)=>{
     const attr=s.link?`href="${s.link}"`:`type="button" data-svc="${s.id}"`, tag=s.link?'a':'button';
-    return `<${tag} class="wc svc ${tone}" ${attr}><small>Serviço</small><h3>${esc(s.nome)}</h3><p>${esc(s.lead)}</p>${s.deliv.length?`<ul>${s.deliv.slice(0,4).map(d=>`<li>${esc(d)}</li>`).join('')}</ul>`:''}<span class="ft"><span>${s.link?'Página dedicada':(n+(n===1?' projeto':' projetos'))}</span><i aria-hidden="true">→</i></span></${tag}>`; };
-  const ctaCard=`<a class="wc cta" href="contato.html"><small>Próximo projeto</small><p class="big">Tem uma ideia? <em>Vamos tirar do papel.</em></p><span class="ft"><span>Falar com a gente</span><i aria-hidden="true">→</i></span></a>`
+    return `<${tag} class="wc svc ${tone}" ${attr}><small>Serviço</small><h3>${esc(s.nome)}</h3><p>${esc(s.lead)}</p>${s.deliv.length?`<ul>${s.deliv.slice(0,4).map(d=>`<li>${esc(d)}</li>`).join('')}</ul>`:''}<span class="ft"><i aria-hidden="true">→</i></span></${tag}>`; };
+  const ctaCard=`<a class="wc cta" href="contato.html"><small>Próximo projeto</small><p class="big">Tem uma ideia? <em>Vamos tirar do papel.</em></p><span class="ft"><i aria-hidden="true">→</i></span></a>`
   const tones=['','','','',''];
   const sv=SERVICES.map((s,i)=>svcCard(s,tones[i%tones.length]));
   /* mural fixo: os serviços e a chamada para contato, centralizados */
