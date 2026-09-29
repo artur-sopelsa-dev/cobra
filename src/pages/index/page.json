@@ -46,19 +46,9 @@
       "file": "07-section-sobre.html"
     },
     {
-      "label": "Rolagem horizontal",
-      "kind": "section",
-      "file": "08-section-hs.html"
-    },
-    {
       "label": "Caminhos (o que você quer)",
       "kind": "section",
       "file": "09-section-caminhos.html"
-    },
-    {
-      "label": "Transição",
-      "kind": "section",
-      "file": "10-section-expand.html"
     },
     {
       "label": "Nossas soluções",

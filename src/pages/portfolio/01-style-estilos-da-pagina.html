@@ -51,8 +51,8 @@ main,footer{position:relative;z-index:1}
 .svc-row .c{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;justify-self:end}
 .svc-row .go{justify-self:end;width:52px;height:52px;border-radius:50%;border:1.5px solid currentColor;display:grid;place-items:center;font-size:20px;transition:transform .45s var(--ease),background .3s}
 .svc-row:hover .go{transform:rotate(-45deg);background:var(--ink);color:var(--lime);border-color:var(--ink)}
-.peek{position:fixed;left:0;top:0;width:clamp(220px,22vw,340px);aspect-ratio:4/5;border-radius:10px;overflow:hidden;pointer-events:none;z-index:40;opacity:0;transform:translate(-50%,-50%) scale(.6) rotate(-6deg);transition:opacity .35s,transform .45s var(--ease);box-shadow:0 30px 70px rgba(0,0,0,.5)}
-.peek.on{opacity:1;transform:translate(-50%,-50%) scale(1) rotate(-4deg)}
+.peek{position:fixed;left:0;top:0;width:clamp(120px,10vw,160px);aspect-ratio:4/5;border-radius:10px;overflow:hidden;pointer-events:none;z-index:40;opacity:0;transform:translate(32px,-50%) scale(.6) rotate(-6deg);transition:opacity .35s,transform .45s var(--ease);box-shadow:0 20px 50px rgba(0,0,0,.45)}
+.peek.on{opacity:1;transform:translate(32px,-50%) scale(1) rotate(-4deg)}
 .peek>*{position:absolute;inset:0}
 @media (max-width:860px){.svc-row{grid-template-columns:44px minmax(0,1fr) 44px}.svc-row p,.svc-row .c{display:none}.svc-row .go{width:42px;height:42px}.hub-intro{grid-template-columns:1fr}.hub-intro .count{justify-self:start}.peek{display:none}}
 .all{padding:clamp(80px,10vw,140px) var(--gut)}

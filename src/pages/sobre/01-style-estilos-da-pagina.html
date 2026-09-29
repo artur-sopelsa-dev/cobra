@@ -31,6 +31,8 @@ html.js .sec.t-paper{color:var(--ink)}
 .btn:hover .arr{transform:translateX(4px) rotate(-45deg)}
 .btn.ink{background:var(--ink);color:var(--lime)}
 .btn.ghost{background:transparent;color:inherit;border:1.5px solid currentColor}
+.btn.dark{background:var(--ink);color:var(--lime);border:1.5px solid var(--lime)}
+.btn.dark:hover{background:var(--lime);color:var(--ink)}
 .btn.ghost:hover{background:var(--lime);color:var(--ink);border-color:var(--lime)}
 /* header */
 .hdr{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:16px var(--gut);pointer-events:none;--hc:var(--paper);transition:transform .5s var(--ease)}
@@ -183,7 +185,9 @@ html:not(.js) .rv,.reduce .rv{opacity:1;transform:none}
 .ab-loc address{font-style:normal;font-size:clamp(17px,1.4vw,21px);line-height:1.5;margin:24px 0}
 .ab-loc .row{display:flex;gap:10px;flex-wrap:wrap}
 .map{position:relative;aspect-ratio:1.25;border-radius:22px;overflow:hidden;background:var(--ink)}
-.map canvas{position:absolute;inset:0;width:100%;height:100%}
+.map canvas,.map iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.map iframe{filter:grayscale(1) contrast(1.05);transition:filter .4s}
+.map:hover iframe{filter:none}
 .map .pin{position:absolute;left:54%;top:46%;transform:translate(-50%,-100%);display:flex;flex-direction:column;align-items:center;gap:6px}
 .map .pin b{background:var(--lime);color:var(--ink);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:8px 12px;border-radius:99px;white-space:nowrap}
 .map .pin i{width:14px;height:14px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 0 rgba(203,226,46,.6);animation:ping 2s infinite}

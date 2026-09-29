@@ -42,6 +42,7 @@ check('filtro js objeto vazio', $t->render('{{{ obj.vazio | js }}}', $ctx), '{}'
 check('each com @index', $t->render('{{#each lista as i}}{{ @index }}{{ i }}{{#if not @last}},{{/if}}{{/each}}', $ctx), '0a,1b,2c');
 check('if/else', $t->render('{{#if nada}}s{{else}}n{{/if}}{{#if lista}}S{{/if}}', $ctx), 'nS');
 check('comparação', $t->render('{{#each lista as i}}{{#if i == "b"}}[{{ i }}]{{/if}}{{/each}}', $ctx), '[b]');
+check('filtro count', $t->render('{{ lista | count }}', $ctx), '3');
 check('filtro em condição', $t->render('{{#each lista as i}}{{#if @index | mod 2 == 0}}{{ i }}{{/if}}{{/each}}', $ctx), 'ac');
 check('partial', $t->render('{{> saudacao }}', $ctx), 'Olá, Cobra &amp; Cia &lt;b&gt;!');
 check('comentário some', $t->render('a{{! nota }}b', $ctx), 'ab');

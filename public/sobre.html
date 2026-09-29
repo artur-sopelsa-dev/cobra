@@ -42,6 +42,8 @@ html.js .sec.t-paper{color:var(--ink)}
 .btn:hover .arr{transform:translateX(4px) rotate(-45deg)}
 .btn.ink{background:var(--ink);color:var(--lime)}
 .btn.ghost{background:transparent;color:inherit;border:1.5px solid currentColor}
+.btn.dark{background:var(--ink);color:var(--lime);border:1.5px solid var(--lime)}
+.btn.dark:hover{background:var(--lime);color:var(--ink)}
 .btn.ghost:hover{background:var(--lime);color:var(--ink);border-color:var(--lime)}
 /* header */
 .hdr{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:16px var(--gut);pointer-events:none;--hc:var(--paper);transition:transform .5s var(--ease)}
@@ -194,7 +196,9 @@ html:not(.js) .rv,.reduce .rv{opacity:1;transform:none}
 .ab-loc address{font-style:normal;font-size:clamp(17px,1.4vw,21px);line-height:1.5;margin:24px 0}
 .ab-loc .row{display:flex;gap:10px;flex-wrap:wrap}
 .map{position:relative;aspect-ratio:1.25;border-radius:22px;overflow:hidden;background:var(--ink)}
-.map canvas{position:absolute;inset:0;width:100%;height:100%}
+.map canvas,.map iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.map iframe{filter:grayscale(1) contrast(1.05);transition:filter .4s}
+.map:hover iframe{filter:none}
 .map .pin{position:absolute;left:54%;top:46%;transform:translate(-50%,-100%);display:flex;flex-direction:column;align-items:center;gap:6px}
 .map .pin b{background:var(--lime);color:var(--ink);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:8px 12px;border-radius:99px;white-space:nowrap}
 .map .pin i{width:14px;height:14px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 0 rgba(203,226,46,.6);animation:ping 2s infinite}
@@ -249,7 +253,7 @@ html:not(.js) .rv,.reduce .rv{opacity:1;transform:none}
   <div>
     <h1 class="display"><span class="l">Somos a</span><span class="l"><span class="sig" role="img" aria-label="Cobra"><svg class="sig " viewBox="0 0 400 160" aria-hidden="true"><path pathLength="1" d="M80 46 C 62 26, 22 38, 20 78 C 18 118, 60 124, 84 102 C 92 94, 96 86, 104 80 C 94 80, 92 112, 112 112 C 132 112, 136 80, 116 76 C 106 74, 104 84, 114 88 C 124 92, 132 86, 140 78 C 152 64, 164 28, 158 14 C 152 2, 136 16, 140 52 L 143 110 C 150 92, 176 84, 178 98 C 180 112, 160 118, 146 110 C 160 106, 172 96, 186 88 C 192 84, 196 78, 198 74 C 202 84, 200 100, 199 112 C 203 90, 213 76, 228 80 C 234 82, 238 84, 246 82 C 236 74, 214 84, 216 100 C 218 116, 242 112, 250 90 L 249 104 C 249 114, 258 116, 270 106 C 296 86, 334 68, 378 58" fill="none" stroke="#CBE22E" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/><path pathLength="1" d="M40 138 C 140 120, 270 126, 372 112" fill="none" stroke="#CBE22E" stroke-width="7.2" stroke-linecap="round"/></svg></span></span></h1>
     <p class="sub rv">Uma agência de marketing digital que une <b>estratégia, design e tecnologia</b> para empresas que querem crescer com clareza e consistência.</p>
-    <div class="row rv" data-d=".1"><a class="btn" href="#equipe">Conhecer a equipe <span class="arr">↓</span></a><a class="btn ghost" href="contato.html">Falar com a gente</a></div>
+    <div class="row rv" data-d=".1"><a class="btn" href="contato.html">Falar com a gente <span class="arr">→</span></a><a class="btn dark" href="portfolio.html">Ver portfólio <span class="arr">↗</span></a></div>
     <div class="ab-meta rv" data-d=".2"><span>★ 5.0 no Google</span><span>Timbó · SC</span><span>Marketing · Conteúdo · Sites · Audiovisual · Branding</span></div>
   </div>
   <div class="ab-vis" aria-hidden="true"><canvas id="abCv"></canvas><img src="assets/76faebec2532.webp" alt=""></div>
@@ -292,29 +296,14 @@ html:not(.js) .rv,.reduce .rv{opacity:1;transform:none}
   </div>
 </section>
 
-<section class="sec t-ink ab-team" id="equipe" data-bg="ink" data-tone="ink">
-  <div class="head"><h2 class="display" data-split>Quem faz <span class="it">a Cobra</span></h2><a class="btn ghost rv" href="contato.html">Trabalhe com a gente <span class="arr">→</span></a></div>
-  <div class="team" id="team">
-    <div class="mb rv"><div class="ph"><canvas></canvas><svg class="sil" viewBox="0 0 120 130" fill="currentColor" aria-hidden="true"><circle cx="60" cy="42" r="26"/><path d="M8 130c2-34 24-52 52-52s50 18 52 52z"/></svg><small>Foto em breve</small></div><h3>Nome da pessoa</h3><p>Direção e estratégia</p></div>
-    <div class="mb rv" data-d=".06"><div class="ph"><canvas></canvas><svg class="sil" viewBox="0 0 120 130" fill="currentColor" aria-hidden="true"><circle cx="60" cy="42" r="26"/><path d="M8 130c2-34 24-52 52-52s50 18 52 52z"/></svg><small>Foto em breve</small></div><h3>Nome da pessoa</h3><p>Tráfego pago e performance</p></div>
-    <div class="mb rv" data-d=".12"><div class="ph"><canvas></canvas><svg class="sil" viewBox="0 0 120 130" fill="currentColor" aria-hidden="true"><circle cx="60" cy="42" r="26"/><path d="M8 130c2-34 24-52 52-52s50 18 52 52z"/></svg><small>Foto em breve</small></div><h3>Nome da pessoa</h3><p>Design e criação</p></div>
-    <div class="mb rv" data-d=".18"><div class="ph"><canvas></canvas><svg class="sil" viewBox="0 0 120 130" fill="currentColor" aria-hidden="true"><circle cx="60" cy="42" r="26"/><path d="M8 130c2-34 24-52 52-52s50 18 52 52z"/></svg><small>Foto em breve</small></div><h3>Nome da pessoa</h3><p>Audiovisual e fotografia</p></div>
-    <div class="mb rv"><div class="ph"><canvas></canvas><svg class="sil" viewBox="0 0 120 130" fill="currentColor" aria-hidden="true"><circle cx="60" cy="42" r="26"/><path d="M8 130c2-34 24-52 52-52s50 18 52 52z"/></svg><small>Foto em breve</small></div><h3>Nome da pessoa</h3><p>Social media e conteúdo</p></div>
-    <div class="mb rv" data-d=".06"><div class="ph"><canvas></canvas><svg class="sil" viewBox="0 0 120 130" fill="currentColor" aria-hidden="true"><circle cx="60" cy="42" r="26"/><path d="M8 130c2-34 24-52 52-52s50 18 52 52z"/></svg><small>Foto em breve</small></div><h3>Nome da pessoa</h3><p>Sites e tecnologia</p></div>
-    <div class="mb rv" data-d=".12"><div class="ph"><canvas></canvas><svg class="sil" viewBox="0 0 120 130" fill="currentColor" aria-hidden="true"><circle cx="60" cy="42" r="26"/><path d="M8 130c2-34 24-52 52-52s50 18 52 52z"/></svg><small>Foto em breve</small></div><h3>Nome da pessoa</h3><p>Atendimento</p></div>
-    <div class="mb rv" data-d=".18"><div class="ph"><canvas></canvas><svg class="sil" viewBox="0 0 120 130" fill="currentColor" aria-hidden="true"><circle cx="60" cy="42" r="26"/><path d="M8 130c2-34 24-52 52-52s50 18 52 52z"/></svg><small>Foto em breve</small></div><h3>Nome da pessoa</h3><p>Planejamento</p></div>
-  </div>
-  <p class="team-note">Protótipo: nomes, cargos e fotos da equipe entram aqui (editáveis pelo painel).</p>
-</section>
-
 <section class="sec t-paper ab-loc" data-bg="paper" data-tone="paper">
   <div>
     <p class="eyebrow">Onde estamos</p>
-    <h2 class="display" data-split style="margin-top:12px">Base em <span class="it">Timbó.</span></h2>
+    <h2 class="display" data-split style="margin-top:12px">Localizados em <span class="it">Timbó.</span></h2>
     <address class="rv">Rua Blumenau, 702 · Sala 02, segundo piso<br>Bairro dos Estados · Timbó, SC · 89093-438<br>contato@cobra.art.br</address>
     <div class="row rv"><a class="btn ink" href="https://www.google.com/maps/search/?api=1&amp;query=Rua+Blumenau+702+Timb%C3%B3+SC" target="_blank" rel="noopener">Abrir no mapa <span class="arr">↗</span></a><a class="btn ghost" href="https://wa.me/5547999150241?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Cobra%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto." target="_blank" rel="noopener">Marcar um café</a></div>
   </div>
-  <div class="map rv" aria-hidden="true"><canvas id="mapCv"></canvas><span class="lbl" style="left:8%;top:10%">Vale do Itajaí</span><span class="lbl" style="right:8%;bottom:10%">Santa Catarina</span><div class="pin"><b>Cobra · Timbó</b><i></i></div></div>
+  <div class="map rv"><iframe src="https://www.google.com/maps?q=Rua+Blumenau,+702,+Bairro+dos+Estados,+Timb%C3%B3+-+SC,+89093-438&amp;z=16&amp;output=embed" title="Mapa: Agência Cobra, Rua Blumenau 702, Timbó, SC" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
 </section>
 </main>
 <footer class="hf sec" data-tone="lime" data-bg="lime">

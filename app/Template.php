@@ -8,7 +8,7 @@ namespace Cobra;
  *
  *   {{ caminho.do.valor }}          valor escapado para HTML (serve em texto e atributos)
  *   {{{ caminho }}}                 valor sem escape (HTML confiável)
- *   {{ valor | url }}               filtros: url, js, json, upper, lower, mod N, default "texto"
+ *   {{ valor | url }}               filtros: url, js, json, upper, lower, count, mod N, default "texto"
  *   {{#if expr}} ... {{else}} ... {{/if}}      expr: caminho, not caminho, a == b, a != b (aceitam filtros)
  *   {{#each lista as item}} ... {{/each}}      dentro: item, @index, @first, @last
  *   {{> nome-do-partial }}          inclui src/partials/<nome>.html
@@ -172,6 +172,7 @@ final class Template
                 'json' => Json::encode($value),
                 'upper' => mb_strtoupper($this->str($value)),
                 'lower' => mb_strtolower($this->str($value)),
+                'count' => is_array($value) ? count($value) : ($value instanceof \stdClass ? count(get_object_vars($value)) : 0),
                 'mod' => (int) $value % max(1, (int) $arg),
                 'default' => $this->truthy($value) ? $value : $this->value((string) $arg, $ctx),
                 default => throw new \RuntimeException("Filtro desconhecido: $name"),

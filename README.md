@@ -18,7 +18,6 @@ src/
 content/                Conteúdo editável
   site.json             WhatsApp, redes, menu, rodapé, números, dados da empresa
   solucoes.json         As 12 soluções (home, página de solução e rodapé usam esta lista)
-  equipe.json           Equipe (página Sobre)
   blog.json             Posts e imagens do blog
   portfolio.json        Serviços, cases e miniaturas do portfólio
   audiovisual.json      Vídeos, marcas e depoimentos do Audiovisual
@@ -44,7 +43,7 @@ As partes são HTML comum com marcações simples (não executam PHP):
 |---|---|
 | `{{ site.whatsapp.numero }}` | valor com escape de HTML |
 | `{{{ valor }}}` | valor sem escape |
-| `{{ texto \| url }}` | filtros: `url`, `js`, `json`, `upper`, `lower`, `mod N`, `default "x"` |
+| `{{ texto \| url }}` | filtros: `url`, `js`, `json`, `upper`, `lower`, `count`, `mod N`, `default "x"` |
 | `{{#if cond}}…{{else}}…{{/if}}` | condição: `caminho`, `not caminho`, `a == b`, `a != b` |
 | `{{#each lista as item}}…{{/each}}` | repetição, com `@index`, `@first`, `@last` |
 | `{{> rodape }}` | inclui `src/partials/rodape.html` |
@@ -76,8 +75,7 @@ No template, `site` é o `content/site.json`, `content.<arquivo>` é qualquer ar
 
 - **Clientes por solução:** só Gessner e Catarininho estão ligados a soluções (`content/solucoes.json`, campo `clientes`). A seção "Marcas que confiaram" some quando a lista está vazia.
 - **Textos "O que entregamos" e títulos em grafite** das páginas de solução: rascunho, aguardando revisão da redação.
-- **Equipe** (`content/equipe.json`): 8 vagas com "Nome da pessoa" e "Foto em breve".
 - **Posts do blog:** 6 textos de exemplo marcados como "Texto de exemplo".
 - **Objeto 3D** das outras soluções no estilo da câmera do Audiovisual: ainda não definido.
-- **Painel administrativo:** em PHP no cPanel, usando o gerador de `app/`. Próximas etapas: painel base (login, páginas e seções, mídia, configurações), blog/portfólio/soluções/equipe, SEO/GEO com IA e gerador de posts por tendências.
+- **Painel administrativo:** em PHP no cPanel, usando o gerador de `app/`. Próximas etapas: painel base (login, páginas e seções, mídia, configurações), blog/portfólio/soluções/clientes, SEO/GEO com IA e gerador de posts por tendências.
 - Links de Privacidade e Cookies no rodapé ainda apontam para o topo.

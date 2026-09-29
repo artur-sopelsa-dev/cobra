@@ -366,29 +366,10 @@
   document.querySelectorAll('.float[data-speed]').forEach(el => { const s = +el.dataset.speed; gsap.fromTo(el, { y: s*90 }, { y: -s*90, ease: 'none', scrollTrigger: { trigger: '.mani', start: 'top bottom', end: 'bottom top', scrub: true } }); });
   document.querySelectorAll('.collage [data-speed]').forEach(el => { const s = +el.dataset.speed; gsap.fromTo(el, { y: s*60 }, { y: -s*60, ease: 'none', scrollTrigger: { trigger: '.collage', start: 'top bottom', end: 'bottom top', scrub: true } }); });
 
-  /* horizontal gallery */
-  mm.add('(min-width: 800px)', () => {
-    const track = document.getElementById('hsTrack'); const dist = () => track.scrollWidth - innerWidth;
-    const tween = gsap.to(track, { x: () => -dist(), ease: 'none', scrollTrigger: { trigger: '#hs', pin: '.hs-pin', start: 'top top', end: () => '+=' + dist(), scrub: 0.6, invalidateOnRefresh: true } });
-    hsST = tween.scrollTrigger;
-    gsap.to('#hsWord', { x: () => -dist()*0.35, ease: 'none', scrollTrigger: { trigger: '#hs', start: 'top top', end: () => '+=' + dist(), scrub: 1, invalidateOnRefresh: true } });
-    track.querySelectorAll('.hs-item').forEach(it => ScrollTrigger.create({ trigger: it, containerAnimation: tween, start: 'left 72%', end: 'right 28%', toggleClass: 'on' }));
-    const pin = document.querySelector('.hs-pin'); const bits = [];
-    for (let i=0;i<7;i++){ const b = document.createElement('i'); b.className = 'bit'; b.style.left = (10+Math.random()*80)+'%'; b.style.top = (12+Math.random()*76)+'%'; b.style.transform = `scale(${0.5+Math.random()*1.3})`; pin.appendChild(b); bits.push(b);
-      gsap.to(b, { xPercent: -300 - Math.random()*900, ease: 'none', scrollTrigger: { trigger: '#hs', start: 'top top', end: () => '+=' + dist(), scrub: 1.5 } }); }
-    return () => { hsST = null; bits.forEach(b => b.remove()); };
-  });
-
   /* doors */
   gsap.fromTo('.graf', { clipPath: 'inset(-20% 100% -20% -10%)' }, { clipPath: 'inset(-20% -10% -20% -10%)', ease: 'none', scrollTrigger: { trigger: '#caminhos', start: 'top 75%', end: 'top 30%', scrub: 1 } });
   gsap.from('.d-side.l', { xPercent: -60, rotate: -12, ease: 'none', scrollTrigger: { trigger: '#caminhos', start: 'top bottom', end: 'center center', scrub: 1 } });
   gsap.from('.d-side.r', { xPercent: 50, rotate: 10, ease: 'none', scrollTrigger: { trigger: '#caminhos', start: 'top bottom', end: 'center center', scrub: 1 } });
-
-  /* expand */
-  gsap.timeline({ scrollTrigger: { trigger: '#expand', start: 'top 85%', end: 'top 5%', scrub: 0.6 } })
-    .fromTo('#exFrame', { clipPath: 'inset(18% 26% 18% 26% round 18px)' }, { clipPath: 'inset(0% 0% 0% 0% round 0px)', ease: 'none' }, 0)
-    .fromTo('#exImg', { scale: 1.25 }, { scale: 1, ease: 'none' }, 0)
-    .fromTo('.ex-copy', { yPercent: 60, opacity: 0 }, { yPercent: 0, opacity: 1, ease: 'none' }, .45);
 
   /* hall */
   gsap.utils.toArray('#grid .card').forEach(c => gsap.from(c, { y: 80, ease: 'none', scrollTrigger: { trigger: c, start: 'top bottom', end: 'top 60%', scrub: 1 } }));
