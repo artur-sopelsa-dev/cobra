@@ -58,13 +58,13 @@
   function sectionAt(y){ let cur = secs[0]; for (const s of secs){ if (s.getBoundingClientRect().top <= y) cur = s; } return cur; }
   function targets(){
     const s = sectionAt(innerHeight*0.6); const key = s.dataset.bg || 'ink';
-    if (key === 'hs'){ const t = smooth(0.86, 1, hsST ? hsST.progress : 0); return { bg: mix(COL.char, COL.paper, t), fg: mix(FG.char, FG.paper, t) }; }
+    if (key === 'hs'){ const t = smooth(0.86, 1, hsST ? hsST.progress : 0), nx = (document.getElementById('hs').nextElementSibling && document.getElementById('hs').nextElementSibling.closest('.sec')) ? document.getElementById('hs').nextElementSibling.dataset.bg : 'paper', to = COL[nx] ? nx : 'paper'; return { bg: mix(COL.char, COL[to], t), fg: mix(FG.char, FG[to] || FG.char, t) }; }
     return { bg: COL[key], fg: FG[key] };
   }
   function headerTone(){
     const s = sectionAt(46); let tone = s.dataset.tone || 'ink';
     if (s.id === 'hero') tone = (heroST && heroST.progress > 0.22) ? 'ink' : 'paper';
-    if (s.id === 'hs') tone = (hsST && hsST.progress > 0.93) ? 'paper' : 'char';
+    if (s.id === 'hs') tone = (hsST && hsST.progress > 0.93) ? (s.nextElementSibling && s.nextElementSibling.dataset.tone || 'paper') : 'char';
     if (hdr.dataset.tone !== tone) hdr.dataset.tone = tone;
   }
 

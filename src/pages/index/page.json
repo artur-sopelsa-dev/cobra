@@ -46,14 +46,14 @@
       "file": "07-section-sobre.html"
     },
     {
-      "label": "Marcas que atendemos",
-      "kind": "section",
-      "file": "08-section-marcas.html"
-    },
-    {
       "label": "Caminhos (o que você quer)",
       "kind": "section",
       "file": "09-section-caminhos.html"
+    },
+    {
+      "label": "Marcas que atendemos",
+      "kind": "section",
+      "file": "08-section-marcas.html"
     },
     {
       "label": "Nossas soluções",
