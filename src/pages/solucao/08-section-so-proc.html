@@ -1,19 +1,5 @@
-{{#if item.etapas}}
-<section class="sec t-char so-proc" id="como-funciona" data-bg="char" data-tone="ink">
-  <h2 class="display">{{ item.etapas_titulo }}</h2>
-  {{#if item.etapas_intro}}<p class="so-proc-intro">{{ item.etapas_intro }}</p>{{/if}}
-  <ol class="so-steps">{{#each item.etapas as e}}<li class="so-step"><div><span class="ic" aria-hidden="true">{{ @index | mais }}</span><h3>{{ e.titulo }}</h3></div><p>{{ e.texto }}</p></li>{{/each}}</ol>
-  {{#if item.preparar}}<div class="so-prep"><h3>O que preparar para a primeira conversa</h3><p>{{ item.preparar }}</p></div>{{/if}}
+<section class="sec t-char sx-proc" id="como-funciona" data-bg="char" data-tone="ink">
+  <div class="sx-sh"><p class="eyebrow lime">Passo a passo</p><h2>{{#if item.etapas_titulo}}{{ item.etapas_titulo }}{{else}}Como a gente trabalha{{/if}}</h2>{{#if item.etapas_intro}}<p>{{ item.etapas_intro }}</p>{{/if}}</div>
+  <ol class="sx-steps">{{#if item.etapas}}{{#each item.etapas as e}}<li><h3>{{ e.titulo }}</h3><p>{{ e.texto }}</p></li>{{/each}}{{else}}<li><h3>Diagnóstico</h3><p>Entendemos o negócio, o público e o ponto de partida antes de propor qualquer coisa.</p></li><li><h3>Estratégia</h3><p>Definimos objetivos, prioridades e o formato de entrega que faz sentido para você.</p></li><li><h3>Execução</h3><p>Criamos, produzimos e publicamos com aprovação em cada etapa.</p></li><li><h3>Acompanhamento</h3><p>Medimos, ajustamos e mantemos a marca evoluindo depois da entrega.</p></li>{{/if}}</ol>
+  {{#if item.preparar}}<div class="sx-prep"><span aria-hidden="true">✦</span><div><h3>O que preparar para a primeira conversa</h3><p>{{ item.preparar }}</p></div></div>{{/if}}
 </section>
-{{else}}
-<section class="sec t-char so-proc" data-bg="char" data-tone="ink">
-  <h2 class="display">Como a gente <span class="it">trabalha</span></h2>
-  <div class="so-steps">
-    <div class="so-step"><div><span class="ic" aria-hidden="true">◎</span><b>Diagnóstico</b></div><p>Entendemos o negócio, o público e o ponto de partida antes de propor qualquer coisa.</p></div>
-    <div class="so-step"><div><span class="ic" aria-hidden="true">↗</span><b>Estratégia</b></div><p>Definimos objetivos, prioridades e o formato de entrega que faz sentido para você.</p></div>
-    <div class="so-step"><div><span class="ic" aria-hidden="true">✦</span><b>Execução</b></div><p>Criamos, produzimos e publicamos com aprovação em cada etapa.</p></div>
-    <div class="so-step"><div><span class="ic" aria-hidden="true">↻</span><b>Acompanhamento</b></div><p>Medimos, ajustamos e mantemos a marca evoluindo depois da entrega.</p></div>
-  </div>
-</section>
-
-{{/if}}

@@ -1,9 +1,11 @@
-<section class="sec t-paper sl-hero" data-bg="paper" data-tone="paper">
-  <nav class="eyebrow so-crumb" aria-label="Você está em"><a href="index.html">Início</a><span aria-hidden="true">/</span><b style="color:var(--ink)" aria-current="page">Soluções</b></nav>
-  <h1>Soluções em marketing digital <span class="it">para empresas</span></h1>
-  <div class="intro"><p>A Cobra desenvolve soluções em marketing digital, design e tecnologia para empresas que precisam fortalecer sua presença, comunicar melhor sua marca e gerar mais oportunidades.</p><a class="btn" href="https://wa.me/{{ site.whatsapp.numero }}?text={{ site.whatsapp.mensagem | url }}" target="_blank" rel="noopener">Solicitar diagnóstico <span class="arr">↗</span></a></div>
-</section>
-<section class="sec t-paper sl-full" data-bg="paper" data-tone="paper">
-  <h2 class="display">Somos agência <span class="it">full service</span></h2>
-  <div><p>Isso significa que conseguimos atender diferentes necessidades de comunicação, design e presença digital, desde campanhas pontuais até estratégias contínuas para marcas que querem crescer.</p><p>Atuamos com estratégia, branding, criação de sites, e-commerce, gestão de redes sociais, tráfego pago, fotografia, vídeo e soluções criativas adaptadas ao momento de cada negócio.</p></div>
+<section class="sec t-paper sx-hero is-hub" data-bg="paper" data-tone="paper">
+  <div class="sx-hero-txt">
+    <nav class="eyebrow sx-crumb" aria-label="Você está em"><a href="index.html">Início</a><span aria-hidden="true">/</span><b aria-current="page">Soluções</b></nav>
+    <p class="sx-kicker"><span class="graf">Full service</span><span>Estratégia • Design • Tecnologia</span></p>
+    <h1 class="sx-h1">Soluções em marketing digital para empresas</h1>
+    <p class="sx-lead">A Cobra desenvolve soluções em marketing digital, design e tecnologia para empresas que precisam fortalecer sua presença, comunicar melhor sua marca e gerar mais oportunidades.</p>
+    <div class="sx-row"><a class="btn" href="https://wa.me/{{ site.whatsapp.numero }}?text={{ site.whatsapp.mensagem | url }}" target="_blank" rel="noopener">Solicitar diagnóstico <span class="arr">↗</span></a><a class="btn ghost" href="#lista">Ver soluções <span class="arr">↓</span></a></div>
+  </div>
+  <div class="sx-mos" aria-hidden="true">{{#each content.solucoes as x}}<span><img src="{{ x.img }}" alt=""{{#if x.zoom}} class="zoom"{{else}}{{#if x.tall}} class="tall"{{/if}}{{/if}}><em>{{ x.curto }}</em></span>{{/each}}</div>
+  <div class="sx-ent is-full"><h2>Somos agência full service</h2><p>Isso significa que conseguimos atender diferentes necessidades de comunicação, design e presença digital, desde campanhas pontuais até estratégias contínuas para marcas que querem crescer.</p><p>Atuamos com estratégia, branding, criação de sites, e-commerce, gestão de redes sociais, tráfego pago, fotografia, vídeo e soluções criativas adaptadas ao momento de cada negócio.</p></div>
 </section>

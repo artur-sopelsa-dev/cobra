@@ -1,0 +1,22 @@
+<script>
+/* Soluções: entrada do topo, cards surgindo ao rolar, filtro da lista e contadores */
+(function(){
+  const C = window.__cobra || {}; C.reveal && C.reveal();
+  const anim = window.gsap && window.ScrollTrigger && !matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (anim){
+    gsap.from('.sx-hero-txt > *', { y:40, opacity:0, duration:1, stagger:.07, ease:'expo.out', delay:.1 });
+    gsap.from('.sx-vis, .sx-mos', { y:60, opacity:0, duration:1.2, ease:'expo.out', delay:.3 });
+    gsap.to('.sx-vis .so-frame', { yPercent:-6, ease:'none', scrollTrigger:{ trigger:'.sx-hero', start:'top top', end:'bottom top', scrub:true } });
+    ScrollTrigger.batch('.sx-ent li, .sx-it, .sx-steps li, .sx-q, .sx-rc, .sx-card, .sx-mv > div, .sx-blk.is-say', { start:'top 92%', once:true,
+      onEnter: els => gsap.fromTo(els, { y:36, opacity:0 }, { y:0, opacity:1, duration:.8, stagger:.06, ease:'expo.out', overwrite:true }) });
+    document.querySelectorAll('[data-count]').forEach(el=>{ const v=parseFloat(el.dataset.count), dec=el.dataset.count.includes('.')?1:0, o={v:0};
+      gsap.to(o,{ v, duration:1.6, ease:'power2.out', scrollTrigger:{ trigger:el, start:'top 88%', once:true }, onUpdate:()=>el.textContent=o.v.toFixed(dec) }); });
+  }
+  const chips=document.getElementById('sxChips'), cards=[...document.querySelectorAll('.sx-card')];
+  if (chips) chips.addEventListener('click', e=>{ const b=e.target.closest('button'); if (!b) return;
+    chips.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed', String(x===b)));
+    const f=b.dataset.f; cards.forEach(c=>c.hidden = f!=='all' && c.dataset.g!==f);
+    if (anim) gsap.fromTo(cards.filter(c=>!c.hidden), { y:24, opacity:0 }, { y:0, opacity:1, duration:.6, stagger:.04, ease:'expo.out' });
+    window.ScrollTrigger && ScrollTrigger.refresh(); });
+})();
+</script>

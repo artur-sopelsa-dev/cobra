@@ -6,19 +6,6 @@
 ]}
 </script>
 <script>
-(function(){
-  const C = window.__cobra || {};
-  const $ = id => document.getElementById(id);
-  function fitBig(){ const el=$('soBig'); el.style.fontSize=''; const max=el.parentElement.clientWidth; const w=el.scrollWidth; if (w>max && max>0) el.style.fontSize=(parseFloat(getComputedStyle(el).fontSize)*max/w*0.98)+'px'; }
-  document.querySelectorAll('.hf [data-sol="{{ item.slug }}"]').forEach(a=>a.setAttribute('aria-current','page'));
-  requestAnimationFrame(fitBig);
-  addEventListener('resize', fitBig); if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitBig);
-  C.reveal && C.reveal();
-  if (window.gsap && window.ScrollTrigger && !matchMedia('(prefers-reduced-motion: reduce)').matches){
-    gsap.from('#soScript', { opacity:0, x:-30, rotate:-10, duration:1.1, ease:'expo.out', delay:.15 });
-    gsap.from('#soBig', { yPercent:40, opacity:0, duration:1.1, ease:'expo.out', delay:.25 });
-    gsap.from('.so-vis', { y:60, opacity:0, duration:1.2, ease:'expo.out', delay:.35 });
-    gsap.to('.so-frame', { yPercent:-8, ease:'none', scrollTrigger:{ trigger:'.so-hero', start:'top top', end:'bottom top', scrub:true } });
-  }
-})();
+document.querySelectorAll('.hf [data-sol="{{ item.slug }}"]').forEach(a=>a.setAttribute('aria-current','page'));
 </script>
+{{> solucoes-script }}

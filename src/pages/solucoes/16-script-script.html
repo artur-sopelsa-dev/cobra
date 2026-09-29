@@ -1,11 +1,4 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"ItemList","name":"Soluções em marketing digital","itemListElement":[{{#each content.solucoes as x}}{"@type":"ListItem","position":{{ @index | mais }},"name":{{{ x.nome | json }}},"url":"{{ site.dominio }}/{{ x.url }}"}{{#if not @last}},{{/if}}{{/each}}]}
 </script>
-<script>
-(function(){
-  const C = window.__cobra || {}; C.reveal && C.reveal();
-  /* contadores */
-  if (window.gsap && window.ScrollTrigger && !matchMedia('(prefers-reduced-motion: reduce)').matches) document.querySelectorAll('[data-count]').forEach(el=>{ const v=parseFloat(el.dataset.count), dec=el.dataset.count.includes('.')?1:0, o={v:0};
-    gsap.to(o,{ v, duration:1.6, ease:'power2.out', scrollTrigger:{ trigger:el, start:'top 88%', once:true }, onUpdate:()=>el.textContent=o.v.toFixed(dec) }); });
-})();
-</script>
+{{> solucoes-script }}

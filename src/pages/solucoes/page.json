@@ -22,6 +22,11 @@
       "partial": "rodape-estilos"
     },
     {
+      "label": "Estilos das páginas de soluções",
+      "kind": "style",
+      "partial": "solucoes-estilos"
+    },
+    {
       "label": "Fim do head",
       "kind": "structure",
       "file": "03-structure-fim-do-head.html"
@@ -42,12 +47,12 @@
       "file": "06-section-sl-hero.html"
     },
     {
-      "label": "Lista de soluções",
+      "label": "Lista de soluções com filtro",
       "kind": "section",
       "file": "07-section-sl-grid.html"
     },
     {
-      "label": "Agência full service",
+      "label": "Cada empresa vive um momento diferente",
       "kind": "section",
       "file": "08-section-sl-full.html"
     },
@@ -57,9 +62,9 @@
       "partial": "numeros"
     },
     {
-      "label": "Como a gente trabalha",
+      "label": "Chamada final",
       "kind": "section",
-      "file": "08-section-so-proc.html"
+      "file": "09-section-sl-cta.html"
     },
     {
       "label": "Fechamento do conteúdo",

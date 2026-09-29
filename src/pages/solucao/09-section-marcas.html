@@ -1,7 +1,7 @@
 {{#if item.faq}}
-<section class="sec t-paper so-faq" id="perguntas" data-bg="paper" data-tone="paper">
-  <h2 class="display">Perguntas <span class="it">frequentes</span></h2>
-  <div class="so-qs">{{#each item.faq as q}}<details class="so-q"><summary>{{ q.pergunta }}<i aria-hidden="true">+</i></summary><div>{{#each q.resposta as t}}<p>{{ t }}</p>{{/each}}</div></details>{{/each}}</div>
+<section class="sec t-paper sx-faq" id="perguntas" data-bg="paper" data-tone="paper">
+  <div class="sx-faq-h"><p class="eyebrow">Dúvidas</p><h2>Perguntas frequentes</h2><p>Não encontrou o que procura? Fale com a gente e tire suas dúvidas sobre {{ item.nome | lower }}.</p><a class="btn ink" href="https://wa.me/{{ site.whatsapp.numero }}?text={{ site.whatsapp.mensagem | url }}" target="_blank" rel="noopener">Chamar no WhatsApp <span class="arr">↗</span></a></div>
+  <div class="sx-qs">{{#each item.faq as q}}<details class="sx-q"{{#if @first}} open{{/if}}><summary>{{ q.pergunta }}<i aria-hidden="true">+</i></summary><div>{{#each q.resposta as t}}<p>{{ t }}</p>{{/each}}</div></details>{{/each}}</div>
 </section>
 {{/if}}
 {{#if item.clientes}}
