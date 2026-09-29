@@ -77,7 +77,7 @@ No template, `site` é o `content/site.json`, `content.<arquivo>` é qualquer ar
 - WhatsApp: 5547999150241, mensagem "Olá! Vim pelo site da Cobra e gostaria de conversar sobre um projeto."
 - Depoimentos mostram só o nome da empresa (sem nome de pessoa, telefone, print ou áudio).
 - As 3 fotos de gastronomia geradas por IA precisam continuar marcadas como "Exemplo IA".
-- Números só com dados reais: 19 vídeos, 12 marcas, nota 5.0 no Google.
+- Números só com dados reais. Os da seção "Em números" (Sobre e Soluções) ficam em `site.json` (`numeros.lista`): +500 clientes, 15+ anos, 650+ projetos e 3 MI+ em ativos gerenciados, os mesmos do site atual. Nota 5.0 no Google, 19 vídeos e 12 marcas também são dados confirmados.
 - Nos cards de soluções, não usar numeração.
 
 ## Pendências conhecidas

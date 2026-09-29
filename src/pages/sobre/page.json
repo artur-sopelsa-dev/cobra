@@ -48,7 +48,7 @@
     {
       "label": "Em números",
       "kind": "section",
-      "file": "08-section-ab-num.html"
+      "partial": "numeros"
     },
     {
       "label": "O que a gente faz",

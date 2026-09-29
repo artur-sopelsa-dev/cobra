@@ -135,8 +135,9 @@ html:not(.js) .rv,.reduce .rv{opacity:1;transform:none}
 .nums>div:last-child{border-right:0}
 .nums>div+div{padding-left:22px}
 .nums b{font-size:clamp(70px,9vw,160px);font-weight:800;letter-spacing:-.07em;line-height:.8;font-variant-numeric:tabular-nums}
-.nums b sup{font-size:.3em;color:var(--lime);letter-spacing:0;vertical-align:top;margin-left:.06em}
-.nums span{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;opacity:.75}
+.nums b sup{font-size:.3em;color:var(--lime);letter-spacing:0;vertical-align:top;margin:0 .06em}
+.nums b i{font-style:normal}
+.nums>div>span{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;opacity:.75}
 .nums em{font-style:normal;font-size:13px;opacity:.6;max-width:26ch}
 @media (max-width:860px){.nums{grid-template-columns:1fr 1fr}.nums>div:nth-child(2){border-right:0}.nums>div:nth-child(3){padding-left:0}.nums>div:nth-child(n+3){border-top:1px solid var(--line)}}
 /* serviços */
@@ -269,15 +270,14 @@ html:not(.js) .rv,.reduce .rv{opacity:1;transform:none}
 </section>
 
 <section class="sec t-ink ab-num" data-bg="ink" data-tone="ink">
-  <div class="head"><h2 class="display" data-split>Em <span class="it">números</span></h2><p class="muted rv" style="max-width:40ch;margin:0">Dados do portfólio publicado e da avaliação exibida no site oficial.</p></div>
+  <div class="head"><h2 class="display" data-split>Em <span class="it">números</span></h2><p class="muted rv" style="max-width:40ch;margin:0">Ajudamos a sua empresa a se destacar online. Nosso trabalho é garantir que sua marca tenha o reconhecimento que merece.</p></div>
   <div class="nums">
-    <div class="rv"><b data-count="5.0">5.0</b><span>Nota no Google</span><em>Avaliação exibida no site oficial, set/2026.</em></div>
-    <div class="rv" data-d=".08"><b data-count="19">19</b><span>Vídeos no portfólio</span><em>Institucionais e reels publicados no canal.</em></div>
-    <div class="rv" data-d=".16"><b data-count="12">12</b><span>Marcas no portfólio</span><em>Da indústria à gastronomia.</em></div>
-    <div class="rv" data-d=".24"><b>5</b><span>Frentes de serviço</span><em>Tudo sob o mesmo teto.</em></div>
+    <div class="rv"><b><sup>+</sup><i data-count="500">500</i></b><span>Clientes</span></div>
+    <div class="rv"><b><i data-count="15">15</i><sup>+</sup></b><span>Anos de experiência</span></div>
+    <div class="rv"><b><i data-count="650">650</i><sup>+</sup></b><span>Projetos</span></div>
+    <div class="rv"><b><i data-count="3">3</i><sup>MI+</sup></b><span>Em ativos gerenciados</span></div>
   </div>
 </section>
-
 <section class="sec t-char ab-svc" data-bg="char" data-tone="ink">
   <h2 class="display" data-split>O que a gente <span class="it">faz</span></h2>
   <div class="svcs" id="svcs">
