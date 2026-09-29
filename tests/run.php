@@ -91,6 +91,9 @@ check('gera todas as páginas', count($written), $esperadas);
 foreach ($written as $file => $bytes) {
     $html = file_get_contents("$tmp/$file");
     check("$file sem marcações de template sobrando", preg_match('/\{\{|\}\}\}/', $html) === 0, true);
+    preg_match_all('#<style>(.*?)</style>#s', $html, $css);
+    $css = preg_replace('#/\*.*?\*/#s', '', implode('', $css[1]));
+    check("$file com chaves do CSS fechadas", substr_count($css, '{'), substr_count($css, '}'));
 }
 $urls = array_map(fn($i) => $i->url, $site->items($site->page('solucao'), $content));
 $urls[] = $site->page('solucoes')->url;
