@@ -1,0 +1,121 @@
+<script>
+(function(){
+  const TH = {{{ content.portfolio.miniaturas | js }}};
+  const TX = {{{ content.portfolio.texturas | js }}};
+  const SERVICES = {{{ content.portfolio.servicos | js }}};
+  const CASES = {{{ content.portfolio.cases | js }}};
+  const svcById = Object.fromEntries(SERVICES.map(s => [s.id, s]));
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches, fine = matchMedia('(hover:hover) and (pointer:fine)').matches;
+  const hasG = !!(window.gsap && window.ScrollTrigger); if (hasG) gsap.registerPlugin(ScrollTrigger);
+  let lenis = null;
+  if (!reduce && window.Lenis){ lenis = new Lenis({ smoothWheel:false, syncTouch:false }); history.scrollRestoration='manual'; if (hasG){ ScrollTrigger.addEventListener('refresh', () => lenis.resize()); lenis.on('scroll', ScrollTrigger.update); gsap.ticker.add(t => lenis.raf(t*1000)); gsap.ticker.lagSmoothing(0); } }
+
+  /* contour */
+  function field(x,y,t){ return Math.sin(x + 1.7*Math.sin(y*0.8 + t*0.30)) + Math.sin(y*1.1 + 1.5*Math.sin(x*0.9 - t*0.25)) + 0.6*Math.sin((x+y)*0.7 + t*0.20); }
+  const SEG=[[],[[3,2]],[[2,1]],[[3,1]],[[0,1]],[[3,0],[2,1]],[[0,2]],[[3,0]],[[3,0]],[[0,2]],[[0,1],[3,2]],[[0,1]],[[3,1]],[[2,1]],[[3,2]],[]];
+  function contour(ctx,w,h,o,t){ const c=o.cell, cols=Math.ceil(w/c)+1, rows=Math.ceil(h/c)+1, v=new Float32Array((cols+1)*(rows+1));
+    for (let j=0;j<=rows;j++) for (let i=0;i<=cols;i++) v[j*(cols+1)+i]=field((i*c+o.ox)/o.scale,(j*c+o.oy)/o.scale,t);
+    ctx.lineWidth=o.lw; ctx.strokeStyle=o.line; for (const L of o.levels){ ctx.beginPath();
+      for (let j=0;j<rows;j++) for (let i=0;i<cols;i++){ const a=v[j*(cols+1)+i], b=v[j*(cols+1)+i+1], d=v[(j+1)*(cols+1)+i], cc=v[(j+1)*(cols+1)+i+1];
+        const k=(a>L?8:0)|(b>L?4:0)|(cc>L?2:0)|(d>L?1:0); if (k===0||k===15) continue; const x=i*c, y=j*c;
+        const pt=e=>e===0?[x+c*(L-a)/(b-a),y]:e===1?[x+c,y+c*(L-b)/(cc-b)]:e===2?[x+c*(L-d)/(cc-d),y+c]:[x,y+c*(L-a)/(d-a)];
+        for (const sg of SEG[k]){ const p1=pt(sg[0]),p2=pt(sg[1]); ctx.moveTo(p1[0],p1[1]); ctx.lineTo(p2[0],p2[1]); } } ctx.stroke(); } }
+  function fit(cv,m){ const dpr=Math.min(m||1.5,devicePixelRatio||1), w=cv.clientWidth, h=cv.clientHeight; if (cv.width!==Math.round(w*dpr)||cv.height!==Math.round(h*dpr)){ cv.width=Math.round(w*dpr); cv.height=Math.round(h*dpr); } const ctx=cv.getContext('2d'); ctx.setTransform(dpr,0,0,dpr,0,0); return {ctx,w,h}; }
+  (function(){ const c=document.createElement('canvas'); c.width=480; c.height=600; const x=c.getContext('2d'); x.fillStyle='#1B1E15'; x.fillRect(0,0,480,600); contour(x,480,600,{cell:8,scale:70,levels:[-1.4,-0.7,0,0.7,1.4],lw:1.4,line:'rgba(203,226,46,.32)',ox:90,oy:20},0); document.documentElement.style.setProperty('--contour',`url(${c.toDataURL()})`); })();
+  const topo=document.getElementById('topo'); let tk=0;
+  (function loop(t){ tk++; if (!reduce && tk%3===0 || tk===1){ const B=fit(topo); B.ctx.clearRect(0,0,B.w,B.h); contour(B.ctx,B.w,B.h,{cell:innerWidth<800?26:18,scale:150,levels:[-2,-1,0,1,2],lw:1,line:'rgba(203,226,46,.07)',ox:0,oy:scrollY*.15},reduce?0:t*.00022); } requestAnimationFrame(loop); })(0);
+
+  /* ----- HUB ----- */
+  const clientsSet = new Set(CASES.map(c=>c.cliente));
+  document.getElementById('nCases').textContent = CASES.length;
+  document.getElementById('nClients').textContent = clientsSet.size;
+  const list=document.getElementById('svcList');
+  SERVICES.forEach((s,i)=>{ const n=CASES.filter(c=>c.svcs.includes(s.id)).length;
+    const a=document.createElement(s.link?'a':'button'); a.className='svc-row'; a.setAttribute('role','listitem');
+    if (s.link){ a.href=s.link; } else { a.type='button'; a.dataset.svc=s.id; }
+    a.innerHTML=`<span class="n">${String(i+1).padStart(2,'0')}</span><h2 class="display">${s.nome}</h2><p>${s.lead.split(',')[0]}.</p><span class="c">${s.link?'Página dedicada':(n+(n===1?' projeto':' projetos'))}</span><span class="go" aria-hidden="true">→</span>`;
+    a.dataset.tex=s.tex; list.appendChild(a); });
+  const peek=document.getElementById('peek');
+  if (fine){ list.addEventListener('pointermove', e=>{ peek.style.left=e.clientX+'px'; peek.style.top=e.clientY+'px'; });
+    list.querySelectorAll('.svc-row').forEach(r=>{ r.addEventListener('pointerenter', ()=>{ peek.innerHTML=`<img src="${TX[r.dataset.tex]}" alt="" style="width:100%;height:100%;object-fit:cover">`; peek.classList.add('on'); }); r.addEventListener('pointerleave', ()=>peek.classList.remove('on')); }); }
+  function caseCard(c){ const svcNames=c.svcs.map(id=>svcById[id].curto);
+    return `<button class="case" type="button" data-case="${c.id}" data-svcs="${c.svcs.join(' ')}" aria-label="Abrir case ${c.cliente}"><div class="v">${c.img?`<img src="${c.img}" alt="">`:''}</div><div class="b"><small>${svcNames.join(' · ')}</small><h3>${c.cliente}</h3><div class="tags">${c.tags.slice(0,3).map(t=>`<span>${t}</span>`).join('')}</div></div></button>`; }
+  const soonCard = (svc) => `<div class="case soon" aria-label="Case em breve"><div class="v"></div><div class="b"><small>${svc?svc.curto:'Em breve'}</small><h3>Case em breve</h3><div class="tags"><span>A cadastrar</span></div></div></div>`;
+  const allCases=document.getElementById('allCases'); allCases.innerHTML=CASES.map(caseCard).join('');
+  const chips=document.getElementById('allChips');
+  [['all','Todos']].concat(SERVICES.map(s=>[s.id,s.curto])).forEach(([k,l],i)=>{ const b=document.createElement('button'); b.className='chip'; b.type='button'; b.dataset.f=k; b.textContent=l; b.setAttribute('aria-pressed',String(i===0)); chips.appendChild(b); });
+  chips.addEventListener('click', e=>{ const b=e.target.closest('.chip'); if (!b) return; chips.querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-pressed',String(c===b)));
+    allCases.querySelectorAll('.case').forEach(c=>c.classList.toggle('out', b.dataset.f!=='all' && !c.dataset.svcs.split(' ').includes(b.dataset.f)));
+    if (hasG && !reduce) gsap.fromTo(allCases.querySelectorAll('.case:not(.out)'), { y:30, opacity:0 }, { y:0, opacity:1, duration:.6, stagger:.05, ease:'expo.out' }); if (hasG) ScrollTrigger.refresh(); });
+
+  /* ----- SERVICE VIEW ----- */
+  const vHub=document.getElementById('vHub'), vSvc=document.getElementById('vSvc'); let curSvc=null;
+  function motif(s){ if (s.motif==='bars') return `<div class="m-bars"><i style="height:35%"></i><i style="height:55%"></i><i style="height:48%"></i><i style="height:78%"></i><i style="height:100%"></i></div><span class="big">${s.big}</span>`;
+    if (s.motif==='feed') return `<div class="m-feed">${'<i></i>'.repeat(9)}</div><span class="big">${s.big}</span>`;
+    if (s.motif==='site') return `<div class="m-site"><i></i><i></i><b></b></div><span class="big">${s.big}</span>`;
+    return `<div class="m-mark">${s.big}</div>`; }
+  function fillSvc(id){ const s=svcById[id]; curSvc=id;
+    document.getElementById('svcCrumb').textContent=s.nome;
+    const parts=s.nome.split(' & '); document.getElementById('svcTitle').innerHTML = parts.length>1 ? `${parts[0]} <span class="it">&amp; ${parts[1]}</span>` : `${s.nome}<span class="it">.</span>`;
+    document.getElementById('svcLead').textContent=s.lead;
+    document.getElementById('svcMotif').innerHTML=motif(s);
+    document.getElementById('svcDeliv').innerHTML=s.deliv.map(d=>`<li>${d}</li>`).join('');
+    const cs=CASES.filter(c=>c.svcs.includes(id));
+    document.getElementById('svcCount').textContent = `${cs.length} ${cs.length===1?'projeto':'projetos'} publicado${cs.length===1?'':'s'}`;
+    const soonN = Math.max(0, 3 - cs.length);
+    document.getElementById('svcCases').innerHTML = cs.map(caseCard).join('') + Array.from({length:soonN},()=>soonCard(s)).join('');
+    const cl=cs.filter(c=>c.client); document.getElementById('svcClientsWrap').hidden=!cl.length;
+    document.getElementById('svcClients').innerHTML=cl.map(c=>`<a href="audiovisual.html#${c.client}">${c.cliente} ↗</a>`).join('');
+    const idx=SERVICES.findIndex(x=>x.id===id); let nx=SERVICES[(idx+1)%SERVICES.length]; if (nx.link) nx=SERVICES[(idx+2)%SERVICES.length];
+    const next=document.getElementById('svcNext'); next.dataset.svc=nx.id; document.getElementById('svcNextName').textContent=nx.nome;
+    const cv=document.getElementById('svcCanvas'); requestAnimationFrame(()=>{ const F=fit(cv); F.ctx.fillStyle='#0A0B08'; F.ctx.fillRect(0,0,F.w,F.h); contour(F.ctx,F.w,F.h,{cell:16,scale:130,levels:[-1.6,-0.8,0,0.8,1.6],lw:1,line:'rgba(203,226,46,.13)',ox:idx*700,oy:0},idx); });
+  }
+  const vt=document.getElementById('vt'), vtLabel=document.getElementById('vtLabel');
+  function show(hash, animate){
+    const svc = hash && hash.indexOf('servico-')===0 ? hash.slice(8) : null;
+    if (svc && svcById[svc] && svcById[svc].link){ if (window.parent!==window) parent.postMessage({cobraNav:svcById[svc].link},'*'); else location.href=svcById[svc].link; return; }
+    const apply=()=>{ if (svc && svcById[svc]){ fillSvc(svc); vHub.classList.remove('on'); vSvc.classList.add('on'); } else { vSvc.classList.remove('on'); vHub.classList.add('on'); curSvc=null; }
+      document.getElementById('navPf').classList.toggle('cur', true);
+      if (lenis) lenis.scrollTo(0,{immediate:true}); else scrollTo(0,0);
+      if (hasG){ ScrollTrigger.refresh(); if (!reduce){ const v=svc?vSvc:vHub; gsap.fromTo(v.querySelectorAll('h1, .lead, .motif, .svc-row, .hub-intro'), { y:50, opacity:0 }, { y:0, opacity:1, duration:.9, stagger:.05, ease:'expo.out' }); } }
+      try { history.replaceState(null,'', svc ? '#servico-'+svc : location.pathname+location.search); } catch(e){}
+    };
+    if (!animate || reduce){ apply(); return; }
+    vtLabel.textContent = svc ? svcById[svc].nome : 'Portfólio';
+    vt.animate([{transform:'translateY(100%)'},{transform:'translateY(0)'}],{duration:500,easing:'cubic-bezier(.7,0,.2,1)',fill:'forwards'}).onfinish=()=>{ apply(); setTimeout(()=>vt.animate([{transform:'translateY(0)'},{transform:'translateY(-100%)'}],{duration:600,easing:'cubic-bezier(.7,0,.2,1)',fill:'forwards'}),80); };
+  }
+  document.addEventListener('click', e=>{ const s=e.target.closest('[data-svc]'); if (s){ e.preventDefault(); show('servico-'+s.dataset.svc, true); return; }
+    const v=e.target.closest('[data-view]'); if (v){ e.preventDefault(); show('', true); return; }
+    const c=e.target.closest('[data-case]'); if (c){ e.preventDefault(); openCase(c.dataset.case, c); } });
+  window.__cobra = { lenis, openService: id => show('servico-'+id, true), showHub: () => show('', true) };
+
+  /* ----- CASE OVERLAY ----- */
+  const co=document.getElementById('co'); let coFrom=null;
+  function openCase(id, from){ const c=CASES.find(x=>x.id===id); coFrom=from;
+    document.getElementById('coVis').innerHTML = c.img?`<img src="${c.img}" alt="">`:'';
+    document.getElementById('coEye').textContent='Case · '+c.svcs.map(s=>svcById[s].curto).join(' · ');
+    document.getElementById('coTitle').textContent=c.cliente;
+    document.getElementById('coTags').innerHTML=c.tags.map(t=>`<span>${t}</span>`).join('');
+    document.getElementById('coDesc').textContent=c.desc;
+    document.getElementById('coThumbs').innerHTML=c.thumbs.filter(t=>TH[t]).map(t=>`<img src="${TH[t]}" alt="">`).join('');
+    const cl=document.getElementById('coClient'); cl.hidden=!c.client; if (c.client) cl.href='audiovisual.html#'+c.client;
+    co.classList.add('open'); if (lenis) lenis.stop();
+    if (hasG && !reduce){ const r=from.getBoundingClientRect(); gsap.fromTo(co,{clipPath:`inset(${r.top}px ${innerWidth-r.right}px ${innerHeight-r.bottom}px ${r.left}px round 10px)`},{clipPath:'inset(0px 0px 0px 0px round 0px)',duration:.85,ease:'expo.inOut'}); } else co.style.clipPath='none';
+    document.getElementById('coClose').focus(); }
+  function closeCase(){ if (!co.classList.contains('open')) return; const done=()=>{ co.classList.remove('open'); co.style.clipPath=''; if (lenis) lenis.start(); if (coFrom) coFrom.focus({preventScroll:true}); };
+    if (hasG && !reduce && coFrom){ const r=coFrom.getBoundingClientRect(); gsap.to(co,{clipPath:`inset(${r.top}px ${innerWidth-r.right}px ${innerHeight-r.bottom}px ${r.left}px round 10px)`,duration:.65,ease:'expo.inOut',onComplete:done}); } else done(); }
+  document.getElementById('coClose').addEventListener('click', closeCase);
+  document.addEventListener('keydown', e=>{ if (e.key==='Escape') closeCase(); });
+  document.getElementById('coClient').addEventListener('click', ()=>{ co.classList.remove('open'); co.style.clipPath=''; if (lenis) lenis.start(); });
+
+  /* ----- cursor ----- */
+  if (fine && !reduce){ const dot=document.getElementById('curDot'), ring=document.getElementById('curRing'), lab=document.getElementById('curLabel'); dot.hidden=ring.hidden=false; document.documentElement.classList.add('has-cursor');
+    let mx=innerWidth/2,my=innerHeight/2,rx=mx,ry=my; addEventListener('pointermove',e=>{ mx=e.clientX; my=e.clientY; dot.style.transform=`translate(${mx}px,${my}px)`; });
+    (function cl(){ rx+=(mx-rx)*.18; ry+=(my-ry)*.18; ring.style.transform=`translate(${rx}px,${ry}px)`; requestAnimationFrame(cl); })();
+    document.addEventListener('pointerover', e=>{ const t=e.target; const m=(k,txt)=>{ ring.classList.toggle('link',k==='link'); ring.classList.toggle('label',k==='label'); if (txt) lab.textContent=txt; };
+      if (t.closest('.case:not(.soon)')) m('label','ver case'); else if (t.closest('.svc-row')) m('label','abrir'); else if (t.closest('a,button')) m('link'); else m(''); }); }
+
+  const start=(location.hash||'').slice(1); show(start, false);
+  if (hasG) addEventListener('load', ()=>ScrollTrigger.refresh());
+})();
+</script>

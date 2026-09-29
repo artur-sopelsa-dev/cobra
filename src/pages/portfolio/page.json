@@ -1,0 +1,84 @@
+{
+  "slug": "portfolio",
+  "output": "portfolio.html",
+  "title": "Portfólio | Agência Cobra",
+  "description": "",
+  "fontes_url": "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500&display=swap",
+  "parts": [
+    {
+      "label": "Início do documento (head)",
+      "kind": "structure",
+      "partial": "documento-inicio"
+    },
+    {
+      "label": "Estilos da página",
+      "kind": "style",
+      "file": "01-style-estilos-da-pagina.html"
+    },
+    {
+      "label": "Estilos do rodapé",
+      "kind": "style",
+      "partial": "rodape-estilos"
+    },
+    {
+      "label": "Fim do head",
+      "kind": "structure",
+      "file": "03-structure-fim-do-head.html"
+    },
+    {
+      "label": "Cabeçalho e menu",
+      "kind": "header",
+      "file": "04-header-cabecalho-e-menu.html"
+    },
+    {
+      "label": "Abertura do conteúdo",
+      "kind": "structure",
+      "file": "05-structure-abertura-do-conteudo.html"
+    },
+    {
+      "label": "Portfólio (lista)",
+      "kind": "section",
+      "file": "06-section-vhub.html"
+    },
+    {
+      "label": "Página de serviço",
+      "kind": "section",
+      "file": "07-section-vsvc.html"
+    },
+    {
+      "label": "Fechamento do conteúdo",
+      "kind": "structure",
+      "file": "08-structure-fechamento-do-conteudo.html"
+    },
+    {
+      "label": "Rodapé",
+      "kind": "footer",
+      "partial": "rodape"
+    },
+    {
+      "label": "Elementos flutuantes",
+      "kind": "extras",
+      "file": "10-extras-elementos-flutuantes.html"
+    },
+    {
+      "label": "Bibliotecas (GSAP, ScrollTrigger, Lenis)",
+      "kind": "script",
+      "partial": "bibliotecas"
+    },
+    {
+      "label": "Script da página",
+      "kind": "script",
+      "file": "12-script-script.html"
+    },
+    {
+      "label": "Script do rodapé",
+      "kind": "script",
+      "partial": "rodape-script"
+    },
+    {
+      "label": "Fim do documento",
+      "kind": "structure",
+      "partial": "fim-do-documento"
+    }
+  ]
+}

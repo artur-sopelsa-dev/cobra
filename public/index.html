@@ -169,7 +169,6 @@ html:not(.js) .h-sign{display:none}
 .hs-quote .sig path{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.6s cubic-bezier(.5,0,.3,1)}
 .hs-quote .sig path+path{transition-delay:1.2s;transition-duration:.5s}
 .hs-item.on .sig path,html:not(.js) .hs-quote .sig path{stroke-dashoffset:0}
-.bit{position:absolute;width:14px;height:10px;background:var(--lime);border-radius:1px}
 .stat{border:1.5px solid currentColor;border-radius:8px;padding:14px 18px;display:flex;gap:14px;align-items:center}
 .stat b{font-size:44px;line-height:1;font-weight:800}
 .stat span{font-size:11px;letter-spacing:.12em;text-transform:uppercase;line-height:1.3;font-weight:700}
@@ -182,7 +181,8 @@ html:not(.js) .h-sign{display:none}
 .door:first-child{align-items:flex-end;text-align:right}
 .door h2{margin:0;font-size:clamp(34px,5vw,76px)}
 .door h2 .it{display:block;font-size:.72em;text-transform:lowercase}
-.graf{display:inline-block;font-family:"Sedgwick Ave Display","Permanent Marker",cursive;font-weight:400;text-transform:none;font-size:1.22em;line-height:.9;color:var(--lime);-webkit-text-stroke:2px var(--ink);paint-order:stroke fill;text-shadow:5px 5px 0 var(--ink);transform:rotate(-7deg) translate(.04em,.04em);padding:0 .08em;letter-spacing:.01em}
+.graf{display:inline-block;background:var(--lime);color:var(--ink);padding:0 .1em;line-height:1;margin-top:.04em}
+.d-cta{position:relative;z-index:2;display:flex;justify-content:center;margin-top:clamp(40px,5vw,64px)}
 .door p{margin:0;max-width:34ch;color:#3b3e33}
 .door ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;font-weight:700;text-transform:uppercase;font-size:12px;letter-spacing:.1em}
 .door ul li::before{content:"— ";color:var(--lime-deep)}
@@ -314,29 +314,9 @@ html.js .sec.offer{background:var(--paper)}
 .sticker{right:2%;bottom:14%;width:120px;height:120px;border-radius:50%;background:var(--lime);display:grid;place-items:center;text-align:center;font-weight:800;text-transform:uppercase;font-size:13px;line-height:1.05;transform:rotate(-12deg);box-shadow:0 14px 30px rgba(10,11,8,.2)}
 @media (max-width:860px){.o-grid{grid-template-columns:1fr}.offer{border-radius:50% 50% 0 0/40px 40px 0 0;margin-top:-40px}}
 
-/* ================= BRANDS (logos around the snake) ================= */
-.brands{padding-block:clamp(80px,10vw,140px);overflow:clip}
-.b-head{text-align:center;position:relative;z-index:2;margin-bottom:40px}
-.b-head h2{margin:0;font-size:clamp(40px,5.6vw,90px)}
-.b-head h2 .it{display:block}
-.b-head p{margin:14px auto 0;max-width:44ch;color:#3b3e33}
-.b-grid{position:relative;display:grid;grid-template-columns:1fr 1fr 1.4fr 1fr 1fr;gap:var(--gut);min-height:120vh;z-index:2}
-.b-col{display:flex;flex-direction:column;gap:clamp(56px,9vh,110px);align-items:center;padding-top:6vh}
-.b-col:nth-child(2),.b-col:nth-child(4){padding-top:20vh}
-.b-col span{font-weight:800;font-size:clamp(18px,1.9vw,30px);letter-spacing:-.02em;text-transform:uppercase;white-space:nowrap}
-.b-col span:nth-child(2n){font-style:italic;font-weight:400;text-transform:none}
-.b-link{text-decoration:none;background:linear-gradient(var(--lime),var(--lime)) 0 100%/0 .32em no-repeat;transition:background-size .45s var(--ease)}
-.b-link:hover{background-size:100% .32em}
-.b-center{position:relative;align-self:stretch;min-height:100%}
-#snakeSvg{position:absolute;left:-20%;top:0;width:140%;height:100%;overflow:visible;pointer-events:none}
-.b-cta{position:absolute;left:50%;bottom:0;transform:translateX(-50%);white-space:nowrap}
-.tongue{animation:flick 2.4s infinite;transform-origin:0 0}
-@keyframes flick{0%,70%,100%{transform:scaleX(0)}74%,86%{transform:scaleX(1)}}
-@media (max-width:860px){.b-grid{grid-template-columns:1fr 1fr;min-height:0}.b-center{grid-column:1/-1;order:2;min-height:0;display:flex;justify-content:center;margin-top:30px}#snakeSvg{display:none}.b-cta{position:static;transform:none}.b-col{padding-top:0!important;gap:28px}.b-col:nth-child(n+4){display:none}.b-col span:nth-child(n+4){display:none}}
 
 /* ================= FAN ================= */
 .fan-sec{padding-block:clamp(60px,8vw,110px);text-align:center;overflow:hidden}
-.fan-ico{width:34px;height:34px;border-radius:50%;display:inline-block}
 .fan-sec h2{margin:18px 0 0;font-size:clamp(40px,5.4vw,86px)}
 .fan-sec h2 .it{display:block}
 .fan{position:relative;height:clamp(360px,40vw,520px);margin-top:40px}
@@ -345,8 +325,10 @@ html.js .sec.offer{background:var(--paper)}
 .fcard .fc-t{position:absolute;left:16px;right:16px;bottom:16px;text-align:left;z-index:2;font-weight:700;font-size:16px;line-height:1.2;letter-spacing:-.01em}
 .fcard .fc-t small{display:block;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--lime);margin-bottom:6px}
 .fcard::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 45%,rgba(10,11,8,.8));z-index:1}
-.soc{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;margin-top:34px;font-weight:800;text-transform:uppercase;font-size:13px}
-.soc a{text-decoration:none}.soc a:hover{color:var(--lime-deep)}
+.soc{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:24px;font-weight:800;text-transform:uppercase;font-size:13px;letter-spacing:.04em}
+.soc a{display:inline-flex;align-items:center;gap:10px;height:50px;padding:0 20px 0 16px;border-radius:12px;background:var(--ink);color:var(--paper);text-decoration:none;transition:background .3s,color .3s,transform .3s var(--ease)}
+.soc a svg{width:20px;height:20px;fill:none;stroke:var(--lime);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:stroke .3s}
+.soc a:hover svg{stroke:var(--ink)}.soc a:hover{background:var(--lime);color:var(--ink);transform:translateY(-2px)}
 .fan-sec .lead{font-size:clamp(20px,2.2vw,30px);font-weight:500;margin:26px 0 0;letter-spacing:-.02em}
 
 /* ================= FOOTER ================= */
@@ -402,6 +384,19 @@ html:not(.js) .pixels{display:none}
 .co-close{position:absolute;right:var(--gut);top:18px;width:46px;height:46px;border-radius:10px;border:1.5px solid var(--paper);background:transparent;color:var(--paper);font-size:22px;cursor:pointer;z-index:2}
 @media (max-width:800px){.case-ov{grid-template-columns:1fr;grid-template-rows:42vh 1fr}}
 /* gallery big word + chapter bar */
+/* marcas na galeria horizontal */
+.hs-intro{max-width:34ch;gap:14px}
+.hs-intro h2{margin:0;font-size:clamp(40px,4.6vw,78px);line-height:.9}
+.hs-intro h2 .it{display:block;color:var(--lime)}
+.hs-intro p{margin:0;font-size:clamp(16px,1.3vw,19px);line-height:1.45;opacity:.8}
+.logo-tile{display:grid;place-items:center;width:clamp(200px,17vw,270px);aspect-ratio:1;padding:13%;border-radius:6px;background:#EEF0E3;color:var(--ink);text-decoration:none;filter:grayscale(1);opacity:.85;transition:filter .8s var(--ease),transform .8s var(--ease),opacity .8s}
+.logo-tile img{max-width:100%;max-height:100%;object-fit:contain}
+.logo-tile.w{background:#0A0B08;border:1px solid rgba(238,240,227,.14)}
+.logo-tile.type{background:#0A0B08;border:1px solid rgba(203,226,46,.35);color:var(--lime)}
+.logo-tile.type b{font-weight:900;text-transform:uppercase;letter-spacing:-.03em;font-size:clamp(18px,1.7vw,28px);line-height:1;text-align:center;overflow-wrap:anywhere;hyphens:auto}
+.hs-item.on .logo-tile,a.logo-tile:hover{filter:none;opacity:1;transform:scale(1.03)}
+.hs-end{gap:18px;align-items:flex-start}
+.hs-end .btn{background:var(--lime);color:var(--ink)}
 .hs-word{position:absolute;left:0;top:50%;transform:translateY(-50%);font-size:24vw;font-weight:900;letter-spacing:-.05em;line-height:.8;white-space:nowrap;color:transparent;-webkit-text-stroke:1.5px currentColor;opacity:.12;pointer-events:none;z-index:0;text-transform:uppercase}
 .hs-track{position:relative;z-index:1}
 .chap-bar{height:2px;background:rgba(238,240,227,.15);margin-top:30px;max-width:320px}
@@ -504,11 +499,6 @@ html:not(.js) .pixels{display:none}
     <i class="soft s1" aria-hidden="true"></i><i class="soft s2" aria-hidden="true"></i><i class="soft s3" aria-hidden="true"></i>
     <div class="gridlines" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
 
-    <div class="h-stats">
-      <div class="h-stat"><b data-scr="5.0">5.0</b><span>nota no Google</span></div>
-      <div class="h-stat"><b data-scr="6">6</b><span>frentes de serviço</span></div>
-      <div class="h-stat"><b data-scr="SC">SC</b><span>Timbó e região</span></div>
-    </div>
     <p class="h-right">Estratégia, criatividade e dados para empresas que querem crescer no digital.</p>
 
     <div class="stage" id="stage" aria-hidden="true">
@@ -523,11 +513,11 @@ html:not(.js) .pixels{display:none}
       <p>Transformamos cliques em clientes combinando estratégia, criatividade e dados.</p>
       <div class="row"><a class="btn ink" href="contato.html">Falar com a gente <span class="arr">→</span></a></div>
     </div>
-    <a class="case-card" href="#portfolio">
-      <span class="eyebrow">Último case</span>
-      <svg viewBox="0 0 190 46" aria-hidden="true"><path class="cc-path" pathLength="1" d="M2 42 L30 34 L52 37 L78 25 L100 28 L126 14 L150 18 L188 3" fill="none" stroke="#0A0B08" stroke-width="2"/></svg>
-      <p>Frigorífico Gessner</p>
-      <small>Campanhas + vídeo →</small>
+    <a class="case-card" href="#solucoes">
+      <span class="eyebrow">Nossos serviços</span>
+      <svg viewBox="0 0 190 46" aria-hidden="true"><path class="cc-path" pathLength="1" d="M4 4 H40 V40 H4 Z M52 4 H88 V40 H52 Z M100 4 H136 V40 H100 Z M148 4 H184 V40 H148 Z" fill="none" stroke="#0A0B08" stroke-width="2" stroke-linejoin="round"/></svg>
+      <p>12 soluções para a sua marca</p>
+      <small>Ver todos os serviços →</small>
     </a>
   </div>
   <svg class="sig h-sign" viewBox="0 0 400 160" aria-hidden="true"><path pathLength="1" d="M80 46 C 62 26, 22 38, 20 78 C 18 118, 60 124, 84 102 C 92 94, 96 86, 104 80 C 94 80, 92 112, 112 112 C 132 112, 136 80, 116 76 C 106 74, 104 84, 114 88 C 124 92, 132 86, 140 78 C 152 64, 164 28, 158 14 C 152 2, 136 16, 140 52 L 143 110 C 150 92, 176 84, 178 98 C 180 112, 160 118, 146 110 C 160 106, 172 96, 186 88 C 192 84, 196 78, 198 74 C 202 84, 200 100, 199 112 C 203 90, 213 76, 228 80 C 234 82, 238 84, 246 82 C 236 74, 214 84, 216 100 C 218 116, 242 112, 250 90 L 249 104 C 249 114, 258 116, 270 106 C 296 86, 334 68, 378 58" fill="none" stroke="#CBE22E" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><path pathLength="1" d="M40 138 C 140 120, 270 126, 372 112" fill="none" stroke="#CBE22E" stroke-width="5.6" stroke-linecap="round"/></svg>
@@ -535,30 +525,33 @@ html:not(.js) .pixels{display:none}
 
 <!-- MANIFESTO -->
 <section class="sec t-char mani wrap" id="sobre" data-tone="char" data-bg="char">
-  <div class="seal">
-    <div class="seal-mark" aria-hidden="true"><svg viewBox="0 0 90 60"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M22 52 C 10 44, 8 28, 16 14"/><path d="M68 52 C 80 44, 82 28, 74 14"/><path d="M14 22 l-6 -3 M12 32 l-7 0 M14 42 l-6 3 M76 22 l6 -3 M78 32 l7 0 M76 42 l6 3"/></g></svg><canvas class="blob" data-fill="#CBE22E" data-line="#0A0B08" data-lw="2.2" data-scale="7" data-lv="-0.6,0.6"></canvas></div>
-    <span>Agência Cobra · Timbó, SC</span>
-  </div>
   <div class="float f1 key" data-speed="1.2" aria-hidden="true"></div>
   <div class="float f2 ph p6" data-speed="-1" aria-hidden="true"><span class="ph-l">Foto · bastidores</span></div>
   <p class="display" id="mani">A Cobra une <span class="it">estratégia,</span> design e tecnologia para construir presença digital com mais <span class="it">clareza,</span> consistência e <span class="it">resultado.</span></p>
 </section>
 
 <!-- HORIZONTAL GALLERY -->
-<section class="sec t-char hs" id="hs" data-tone="char" data-bg="hs">
+<section class="sec t-char hs" id="hs" data-tone="char" data-bg="hs" aria-labelledby="marcasTitle">
   <div class="hs-pin">
-    <div class="hs-word" id="hsWord" aria-hidden="true">Bastidores · Bastidores</div>
+    <div class="hs-word" id="hsWord" aria-hidden="true">Marcas · Marcas</div>
     <div class="hs-track" id="hsTrack">
-      <div class="hs-item up"><span class="cap">Cobra · key visual</span><div class="key" style="width:clamp(200px,20vw,300px);aspect-ratio:1"></div></div>
-      <div class="hs-item down"><span class="cap">Frigorífico Gessner · institucional</span><img class="hs-img" src="assets/576924ed87dd.webp" alt="" style="width:clamp(180px,16vw,240px);aspect-ratio:4/5;object-fit:cover" loading="lazy"></div>
-      <div class="hs-item"><div class="hs-quote">Da estratégia à execução, transformamos posicionamento, conteúdo e campanhas em <b>soluções mais claras</b>, criativas e <b>eficientes.</b><svg class="sig sig-s" viewBox="0 0 400 160" aria-hidden="true"><path pathLength="1" d="M80 46 C 62 26, 22 38, 20 78 C 18 118, 60 124, 84 102 C 92 94, 96 86, 104 80 C 94 80, 92 112, 112 112 C 132 112, 136 80, 116 76 C 106 74, 104 84, 114 88 C 124 92, 132 86, 140 78 C 152 64, 164 28, 158 14 C 152 2, 136 16, 140 52 L 143 110 C 150 92, 176 84, 178 98 C 180 112, 160 118, 146 110 C 160 106, 172 96, 186 88 C 192 84, 196 78, 198 74 C 202 84, 200 100, 199 112 C 203 90, 213 76, 228 80 C 234 82, 238 84, 246 82 C 236 74, 214 84, 216 100 C 218 116, 242 112, 250 90 L 249 104 C 249 114, 258 116, 270 106 C 296 86, 334 68, 378 58" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/><path pathLength="1" d="M40 138 C 140 120, 270 126, 372 112" fill="none" stroke="currentColor" stroke-width="7.2" stroke-linecap="round"/></svg></div></div>
-      <div class="hs-item"><span class="cap">Butzke Móveis · presença internacional</span><img class="hs-img" src="assets/4c843d847851.webp" alt="" style="width:clamp(280px,30vw,460px);aspect-ratio:1.1;object-fit:cover" loading="lazy"></div>
-      <div class="hs-item up"><span class="cap">Seller Multimarcas · making of</span><img class="hs-img" src="assets/3d999cad8bdc.webp" alt="" style="width:clamp(160px,13vw,200px);aspect-ratio:1;object-fit:cover" loading="lazy"></div>
-      <div class="hs-item down"><span class="cap">Avaliações</span><div class="stat"><b>5.0</b><span>no Google<br>★★★★★</span></div></div>
-      <div class="hs-item"><span class="cap">Sonhar Decorações · institucional</span><img class="hs-img" src="assets/8b5fe5d2962a.webp" alt="" style="width:clamp(220px,22vw,340px);aspect-ratio:4/5;object-fit:cover" loading="lazy"></div>
-      <div class="hs-item up"><div class="hs-quote">Grandes projetos começam com <b>parcerias estratégicas.</b><svg class="sig sig-s" viewBox="0 0 400 160" aria-hidden="true"><path pathLength="1" d="M80 46 C 62 26, 22 38, 20 78 C 18 118, 60 124, 84 102 C 92 94, 96 86, 104 80 C 94 80, 92 112, 112 112 C 132 112, 136 80, 116 76 C 106 74, 104 84, 114 88 C 124 92, 132 86, 140 78 C 152 64, 164 28, 158 14 C 152 2, 136 16, 140 52 L 143 110 C 150 92, 176 84, 178 98 C 180 112, 160 118, 146 110 C 160 106, 172 96, 186 88 C 192 84, 196 78, 198 74 C 202 84, 200 100, 199 112 C 203 90, 213 76, 228 80 C 234 82, 238 84, 246 82 C 236 74, 214 84, 216 100 C 218 116, 242 112, 250 90 L 249 104 C 249 114, 258 116, 270 106 C 296 86, 334 68, 378 58" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/><path pathLength="1" d="M40 138 C 140 120, 270 126, 372 112" fill="none" stroke="currentColor" stroke-width="7.2" stroke-linecap="round"/></svg></div></div>
-      <div class="hs-item down"><span class="cap">Morada Terra Nova · reels</span><img class="hs-img" src="assets/0c7f2e562a4f.webp" alt="" style="width:clamp(180px,16vw,240px);aspect-ratio:1;object-fit:cover" loading="lazy"></div>
-      <div class="hs-item"><span class="cap">Fidenza Club &amp; Casa · evento</span><img class="hs-img" src="assets/a2832ad5b945.webp" alt="" style="width:clamp(240px,24vw,360px);aspect-ratio:1.2;object-fit:cover" loading="lazy"></div>
+      <div class="hs-item hs-intro"><span class="cap">Clientes Cobra</span><h2 class="display" id="marcasTitle">Marcas que <span class="it">atendemos</span></h2><p>Empresas de Timbó e região que confiam na Cobra para crescer no digital, da indústria à gastronomia.</p></div>
+      <div class="hs-item up"><span class="cap">Frigorífico Gessner · Site · Tráfego · Redes · Vídeo</span><a class="logo-tile type" href="audiovisual.html#cliente-frigorifico-gessner"><b>Frigorífico Gessner</b></a></div>
+      <div class="hs-item"><span class="cap">Butzke · Produção de vídeo</span><a class="logo-tile" href="audiovisual.html#cliente-butzke"><img src="assets/57280a13afb4.svg" alt="Butzke" loading="lazy"></a></div>
+      <div class="hs-item down"><span class="cap">SFI Chips · Audiovisual</span><div class="logo-tile w"><img src="assets/ca84b33c40e5.png" alt="SFI Chips" loading="lazy"></div></div>
+      <div class="hs-item up"><span class="cap">Catarininho · Branding · Redes · Vídeo</span><a class="logo-tile type" href="audiovisual.html#cliente-catarininho"><b>Catarininho</b></a></div>
+      <div class="hs-item"><span class="cap">Calesita · Audiovisual</span><div class="logo-tile"><img src="assets/8b9a926de880.png" alt="Calesita" loading="lazy"></div></div>
+      <div class="hs-item down"><span class="cap">Missner · Audiovisual</span><div class="logo-tile"><img src="assets/90d6615987d4.png" alt="Missner" loading="lazy"></div></div>
+      <div class="hs-item up"><span class="cap">Tipótil · Produção de vídeo</span><a class="logo-tile type" href="audiovisual.html#cliente-tipotil"><b>Tipótil</b></a></div>
+      <div class="hs-item"><div class="hs-quote">Grandes projetos começam com <b>parcerias estratégicas.</b><svg class="sig sig-s" viewBox="0 0 400 160" aria-hidden="true"><path pathLength="1" d="M80 46 C 62 26, 22 38, 20 78 C 18 118, 60 124, 84 102 C 92 94, 96 86, 104 80 C 94 80, 92 112, 112 112 C 132 112, 136 80, 116 76 C 106 74, 104 84, 114 88 C 124 92, 132 86, 140 78 C 152 64, 164 28, 158 14 C 152 2, 136 16, 140 52 L 143 110 C 150 92, 176 84, 178 98 C 180 112, 160 118, 146 110 C 160 106, 172 96, 186 88 C 192 84, 196 78, 198 74 C 202 84, 200 100, 199 112 C 203 90, 213 76, 228 80 C 234 82, 238 84, 246 82 C 236 74, 214 84, 216 100 C 218 116, 242 112, 250 90 L 249 104 C 249 114, 258 116, 270 106 C 296 86, 334 68, 378 58" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/><path pathLength="1" d="M40 138 C 140 120, 270 126, 372 112" fill="none" stroke="currentColor" stroke-width="7.2" stroke-linecap="round"/></svg></div></div>
+      <div class="hs-item"><span class="cap">F.A. Colchões · Audiovisual</span><div class="logo-tile"><img src="assets/2efd4f46e899.svg" alt="F.A. Colchões" loading="lazy"></div></div>
+      <div class="hs-item down"><span class="cap">Linshalm · Audiovisual</span><div class="logo-tile w"><img src="assets/c10cd357338b.png" alt="Linshalm" loading="lazy"></div></div>
+      <div class="hs-item up"><span class="cap">Sonhar Decorações · Produção de vídeo</span><a class="logo-tile type" href="audiovisual.html#cliente-sonhar-decoracoes"><b>Sonhar Decorações</b></a></div>
+      <div class="hs-item"><span class="cap">TaTeTi · Audiovisual</span><div class="logo-tile"><img src="assets/b6f13a38409f.png" alt="TaTeTi" loading="lazy"></div></div>
+      <div class="hs-item down"><span class="cap">Kitutte · Audiovisual</span><div class="logo-tile"><img src="assets/69222b666fb0.png" alt="Kitutte" loading="lazy"></div></div>
+      <div class="hs-item up"><span class="cap">Fidenza Club &amp; Casa · Produção de vídeo</span><a class="logo-tile type" href="audiovisual.html#cliente-fidenza-club-casa"><b>Fidenza Club &amp; Casa</b></a></div>
+      <div class="hs-item"><span class="cap">Ferana · Cliente Cobra</span><div class="logo-tile type"><b>Ferana</b></div></div>
+      <div class="hs-item hs-end"><div class="hs-quote">A próxima marca pode ser a sua.</div><a class="btn" href="contato.html">Seja a próxima marca <span class="arr">»</span></a></div>
     </div>
   </div>
 </section>
@@ -574,27 +567,17 @@ html:not(.js) .pixels{display:none}
       <h2 class="display"><span class="it">quero</span>Vender <span class="graf">mais</span></h2>
       <p>Tráfego pago, estratégia, dados e sites pensados para gerar oportunidade e crescimento comercial.</p>
       <ul><li><a href="portfolio.html#servico-performance" style="text-decoration:none">Performance &amp; Estratégia ↗</a></li><li><a href="portfolio.html#servico-tecnologia" style="text-decoration:none">Dados &amp; Tecnologia ↗</a></li><li><a href="portfolio.html#servico-tecnologia" style="text-decoration:none">Sites e e-commerce ↗</a></li></ul>
-      <a class="sq" href="portfolio.html#servico-performance" aria-label="Ver portfólio de performance">↙</a>
     </div>
     <div class="door">
       <h2 class="display"><span class="it">quero</span>Ser lembrado</h2>
       <p>Branding, conteúdo e produção audiovisual para a marca comunicar valor e se diferenciar.</p>
-      <ul><li><a href="portfolio.html#servico-branding" style="text-decoration:none">Branding ↗</a></li><li><a href="portfolio.html#servico-conteudo" style="text-decoration:none">Conteúdo &amp; Criatividade ↗</a></li><li><a href="audiovisual.html" style="text-decoration:underline;text-decoration-color:var(--lime-deep);text-underline-offset:3px">Fotos &amp; Vídeos ↗</a></li></ul>
-      <div style="display:flex;gap:10px;align-items:center"><a class="sq" href="portfolio.html#servico-branding" aria-label="Ver portfólio de branding">↘</a><a class="btn ink" href="audiovisual.html">Portfólio audiovisual <span class="arr">↗</span></a></div>
+      <ul><li><a href="portfolio.html#servico-branding" style="text-decoration:none">Branding ↗</a></li><li><a href="portfolio.html#servico-conteudo" style="text-decoration:none">Conteúdo &amp; Criatividade ↗</a></li><li><a href="audiovisual.html" style="text-decoration:none">Fotos &amp; Vídeos ↗</a></li></ul>
     </div>
   </div>
+  <div class="d-cta"><a class="btn ink" href="#solucoes">Saiba mais sobre nossos serviços <span class="arr">→</span></a></div>
 </section>
 
 <!-- EXPAND -->
-<section class="sec t-paper expand" id="expand" data-tone="ink" data-bg="paper">
-  <div class="ex-frame" id="exFrame"><div class="key" id="exImg"></div></div>
-  <div class="ex-copy">
-    <h3 class="display">Tudo sob o <span class="it">mesmo teto.</span></h3>
-    <a class="btn" href="sobre.html">Conhecer a equipe <span class="arr">→</span></a>
-  </div>
-</section>
-
-<!-- HALL -->
 <section class="sec t-ink hall wrap" id="solucoes" data-tone="ink" data-bg="ink">
   <div class="hall-head">
     <h2 class="display">Nossas <span class="it">soluções</span></h2>
@@ -645,24 +628,7 @@ html:not(.js) .pixels{display:none}
 </section>
 
 <!-- BRANDS -->
-<section class="sec t-paper brands wrap" data-tone="paper" data-bg="paper">
-  <div class="gridlines" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
-  <div class="b-head">
-    <h2 class="display">Marcas que <span class="it">atendemos</span></h2>
-    <p>Empresas de Timbó e região que confiam na Cobra para crescer no digital.</p>
-  </div>
-  <div class="b-grid" id="bGrid">
-    <div class="b-col" data-speed="-0.6"><span>Ferana</span><span><a href="audiovisual.html#cliente-tipotil" class="b-link">Tipótil</a></span><span><a href="audiovisual.html#cliente-frigorifico-gessner" class="b-link">Gessner</a></span><span><a href="audiovisual.html#cliente-butzke" class="b-link">Butzke</a></span><span><a href="audiovisual.html#cliente-missner" class="b-link">Missner</a></span></div>
-    <div class="b-col" data-speed="0.4"><span><a href="audiovisual.html#cliente-butzke" class="b-link">Butzke</a></span><span><a href="audiovisual.html#cliente-sfi-chips" class="b-link">SFI Chips</a></span><span><a href="audiovisual.html#cliente-missner" class="b-link">Missner</a></span><span>Ferana</span></div>
-    <div class="b-center" id="bCenter"><svg id="snakeSvg" aria-hidden="true"></svg><a class="btn ink b-cta" href="contato.html">Seja a próxima marca <span class="arr">»</span></a></div>
-    <div class="b-col" data-speed="0.4"><span><a href="audiovisual.html#cliente-missner" class="b-link">Missner</a></span><span><a href="audiovisual.html#cliente-frigorifico-gessner" class="b-link">Gessner</a></span><span>Ferana</span><span><a href="audiovisual.html#cliente-tipotil" class="b-link">Tipótil</a></span></div>
-    <div class="b-col" data-speed="-0.6"><span><a href="audiovisual.html#cliente-sfi-chips" class="b-link">SFI Chips</a></span><span><a href="audiovisual.html#cliente-butzke" class="b-link">Butzke</a></span><span><a href="audiovisual.html#cliente-tipotil" class="b-link">Tipótil</a></span><span><a href="audiovisual.html#cliente-frigorifico-gessner" class="b-link">Gessner</a></span><span><a href="audiovisual.html#cliente-sfi-chips" class="b-link">SFI Chips</a></span></div>
-  </div>
-</section>
-
-<!-- FAN -->
 <section class="sec t-paper fan-sec wrap" data-tone="paper" data-bg="paper">
-  <canvas class="blob fan-ico" aria-hidden="true" data-fill="#0A0B08" data-line="#CBE22E" data-lw="2" data-scale="7" data-lv="-0.6,0.6"></canvas>
   <h2 class="display">Conteúdo pra <span class="it">quem quer crescer</span></h2>
   <div class="fan" id="fan">
     <a class="fcard" href="blog.html#post-marketing-para-contadores"><div class="ph p5"></div><div class="fc-t"><small>Blog</small>Marketing digital para contadores em SC</div></a>
@@ -672,7 +638,7 @@ html:not(.js) .pixels{display:none}
     <a class="fcard" href="blog.html#post-marketing-para-advogados"><div class="ph p7"></div><div class="fc-t"><small>Blog</small>Marketing digital para advogados em SC</div></a>
   </div>
   <p class="lead">Acompanhe a Cobra</p>
-  <div class="soc"><a href="https://www.instagram.com/agenciacobra.oficial/" target="_blank" rel="noopener">Instagram</a><a href="https://www.facebook.com/agenciacobra.oficial/" target="_blank" rel="noopener">Facebook</a><a href="https://br.linkedin.com/in/cobradesignoficial" target="_blank" rel="noopener">LinkedIn</a><a href="blog.html">Blog</a></div>
+  <div class="soc"><a href="https://www.instagram.com/agenciacobra.oficial/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>Instagram</a><a href="https://www.facebook.com/agenciacobra.oficial/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4h-3a4 4 0 00-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8.6a.6.6 0 01.6-.6z"/></svg>Facebook</a><a href="https://br.linkedin.com/in/cobradesignoficial" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10.5V17M8 7.2v.1M12 17v-3.8a2.2 2.2 0 014.4 0V17M12 10.5V17"/></svg>LinkedIn</a><a href="https://www.youtube.com/@AgenciaCobra" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10.5 9.5l4 2.5-4 2.5z" fill="currentColor"/></svg>YouTube</a><a href="blog.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13 7l4 4"/></svg>Blog</a></div>
 </section>
 
 </main>
@@ -775,13 +741,13 @@ html:not(.js) .pixels{display:none}
   function sectionAt(y){ let cur = secs[0]; for (const s of secs){ if (s.getBoundingClientRect().top <= y) cur = s; } return cur; }
   function targets(){
     const s = sectionAt(innerHeight*0.6); const key = s.dataset.bg || 'ink';
-    if (key === 'hs'){ const t = smooth(0.35, 0.8, hsST ? hsST.progress : 0); return { bg: mix(COL.char, COL.paper, t), fg: mix(FG.char, FG.paper, t) }; }
+    if (key === 'hs'){ const t = smooth(0.86, 1, hsST ? hsST.progress : 0); return { bg: mix(COL.char, COL.paper, t), fg: mix(FG.char, FG.paper, t) }; }
     return { bg: COL[key], fg: FG[key] };
   }
   function headerTone(){
     const s = sectionAt(46); let tone = s.dataset.tone || 'ink';
     if (s.id === 'hero') tone = (heroST && heroST.progress > 0.22) ? 'ink' : 'paper';
-    if (s.id === 'hs') tone = (hsST && hsST.progress > 0.6) ? 'paper' : 'char';
+    if (s.id === 'hs') tone = (hsST && hsST.progress > 0.93) ? 'paper' : 'char';
     if (hdr.dataset.tone !== tone) hdr.dataset.tone = tone;
   }
 
@@ -916,49 +882,6 @@ html:not(.js) .pixels{display:none}
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .5 });
   document.querySelectorAll('.wipe').forEach(el => io.observe(el));
 
-  /* ---------- brands: a snake slithering down the centre ---------- */
-  const snakeSvg = document.getElementById('snakeSvg');
-  const NS = 'http://www.w3.org/2000/svg';
-  let snake = null, snakeP = 0.55, snakeTarget = 0.55;
-  function buildSnake(){
-    const w = snakeSvg.clientWidth, h = snakeSvg.clientHeight; if (!w || !h) return;
-    snakeSvg.setAttribute('viewBox', `0 0 ${w} ${h}`);
-    const A = Math.min(w*0.3, 120), cx = w/2, step = 10; let d = '';
-    for (let y = -140; y <= h - 130; y += step){ const x = cx + A*Math.sin(y/170) * (0.75 + 0.25*Math.sin(y/410)); d += (d ? ' L' : 'M') + x.toFixed(1) + ' ' + y.toFixed(1); }
-    snakeSvg.innerHTML = `<defs><pattern id="scl" width="12" height="9" patternUnits="userSpaceOnUse"><rect width="12" height="9" fill="#101109"/><path d="M0 4.5 L6 0 L12 4.5 L6 9 Z" fill="#1d2016" stroke="#2c3022" stroke-width=".8"/><circle cx="6" cy="3" r=".9" fill="rgba(203,226,46,.25)"/></pattern></defs>
-      <path id="snPath" d="${d}" fill="none" stroke="none"/>
-      <g id="snBody" fill="none" stroke-linecap="round" stroke-linejoin="round"></g>
-      <g id="snHead"><path d="M34 0 C 30 -15, 8 -24, -14 -20 C -28 -17, -32 -9, -32 0 C -32 9, -28 17, -14 20 C 8 24, 30 15, 34 0 Z" fill="url(#scl)" stroke="#0A0B08" stroke-width="3"/>
-        <circle cx="12" cy="-9" r="3.6" fill="#CBE22E"/><circle cx="12" cy="9" r="3.6" fill="#CBE22E"/>
-        <path class="tongue" d="M34 0 L52 0 M52 0 L60 -6 M52 0 L60 6" stroke="#CBE22E" stroke-width="2.4" stroke-linecap="round"/></g>`;
-    const body = snakeSvg.querySelector('#snBody');
-    const layers = []; for (let i = 0; i < 12; i++){ const f = 0.5 + 0.5*(i/11), wd = 46 - 40*(i/11); layers.push([wd,'#0A0B08',f]); } for (let i = 0; i < 12; i++){ const f = 0.5 + 0.5*(i/11) - 0.01, wd = 40 - 38*(i/11); if (wd > 3) layers.push([wd,'url(#scl)',f]); }
-    const path = snakeSvg.querySelector('#snPath'), total = path.getTotalLength();
-    const bodyLen = Math.min(total*0.55, 900);
-    const segs = layers.map(([wd,col,f]) => { const p = document.createElementNS(NS,'path'); p.setAttribute('d', d); p.setAttribute('stroke', col); p.setAttribute('stroke-width', wd); body.appendChild(p); return { p, len: bodyLen*f }; });
-    snake = { path, total, segs, head: snakeSvg.querySelector('#snHead'), bodyLen };
-    placeSnake(snakeP);
-  }
-  function placeSnake(p){
-    if (!snake) return;
-    const { path, total, segs, head, bodyLen } = snake;
-    const lead = bodyLen*0.6 + p*(total - bodyLen*0.6 - 10);
-    segs.forEach(s => { s.p.setAttribute('stroke-dasharray', `${s.len} ${total*2}`); s.p.setAttribute('stroke-dashoffset', String(-(lead - s.len))); });
-    const a = path.getPointAtLength(Math.max(0, lead - 2)), b = path.getPointAtLength(Math.min(total, lead + 2));
-    const ang = Math.atan2(b.y - a.y, b.x - a.x) * 180 / Math.PI;
-    const pt = path.getPointAtLength(lead);
-    head.setAttribute('transform', `translate(${pt.x.toFixed(1)} ${pt.y.toFixed(1)}) rotate(${ang.toFixed(1)}) scale(1.45)`);
-  }
-  if (snakeSvg){
-    buildSnake();
-    let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(buildSnake, 200); });
-    (function loop(t){ const idle = reduce ? 0 : Math.sin(t*0.0016)*0.006; snakeP += (snakeTarget - snakeP)*0.08; placeSnake(Math.max(0, Math.min(1, snakeP + idle))); requestAnimationFrame(loop); })(0);
-    if (hasG && !reduce){
-      ScrollTrigger.create({ trigger: '#bGrid', start: 'top 85%', end: 'bottom 40%', onUpdate: self => { snakeTarget = self.progress; }, onRefresh: buildSnake });
-      snakeP = snakeTarget = 0;
-    }
-  }
-
   /* hero: stage follows the pointer a little */
   const hero = document.getElementById('hero');
   if (fine && !reduce){
@@ -1076,17 +999,14 @@ html:not(.js) .pixels{display:none}
   document.querySelectorAll('.float[data-speed]').forEach(el => { const s = +el.dataset.speed; gsap.fromTo(el, { y: s*90 }, { y: -s*90, ease: 'none', scrollTrigger: { trigger: '.mani', start: 'top bottom', end: 'bottom top', scrub: true } }); });
   document.querySelectorAll('.collage [data-speed]').forEach(el => { const s = +el.dataset.speed; gsap.fromTo(el, { y: s*60 }, { y: -s*60, ease: 'none', scrollTrigger: { trigger: '.collage', start: 'top bottom', end: 'bottom top', scrub: true } }); });
 
-  /* horizontal gallery */
+  /* horizontal gallery: brands */
   mm.add('(min-width: 800px)', () => {
     const track = document.getElementById('hsTrack'); const dist = () => track.scrollWidth - innerWidth;
     const tween = gsap.to(track, { x: () => -dist(), ease: 'none', scrollTrigger: { trigger: '#hs', pin: '.hs-pin', start: 'top top', end: () => '+=' + dist(), scrub: 0.6, invalidateOnRefresh: true } });
     hsST = tween.scrollTrigger;
     gsap.to('#hsWord', { x: () => -dist()*0.35, ease: 'none', scrollTrigger: { trigger: '#hs', start: 'top top', end: () => '+=' + dist(), scrub: 1, invalidateOnRefresh: true } });
     track.querySelectorAll('.hs-item').forEach(it => ScrollTrigger.create({ trigger: it, containerAnimation: tween, start: 'left 72%', end: 'right 28%', toggleClass: 'on' }));
-    const pin = document.querySelector('.hs-pin'); const bits = [];
-    for (let i=0;i<7;i++){ const b = document.createElement('i'); b.className = 'bit'; b.style.left = (10+Math.random()*80)+'%'; b.style.top = (12+Math.random()*76)+'%'; b.style.transform = `scale(${0.5+Math.random()*1.3})`; pin.appendChild(b); bits.push(b);
-      gsap.to(b, { xPercent: -300 - Math.random()*900, ease: 'none', scrollTrigger: { trigger: '#hs', start: 'top top', end: () => '+=' + dist(), scrub: 1.5 } }); }
-    return () => { hsST = null; bits.forEach(b => b.remove()); };
+    return () => { hsST = null; };
   });
 
   /* doors */
@@ -1094,19 +1014,9 @@ html:not(.js) .pixels{display:none}
   gsap.from('.d-side.l', { xPercent: -60, rotate: -12, ease: 'none', scrollTrigger: { trigger: '#caminhos', start: 'top bottom', end: 'center center', scrub: 1 } });
   gsap.from('.d-side.r', { xPercent: 50, rotate: 10, ease: 'none', scrollTrigger: { trigger: '#caminhos', start: 'top bottom', end: 'center center', scrub: 1 } });
 
-  /* expand */
-  gsap.timeline({ scrollTrigger: { trigger: '#expand', start: 'top 85%', end: 'top 5%', scrub: 0.6 } })
-    .fromTo('#exFrame', { clipPath: 'inset(18% 26% 18% 26% round 18px)' }, { clipPath: 'inset(0% 0% 0% 0% round 0px)', ease: 'none' }, 0)
-    .fromTo('#exImg', { scale: 1.25 }, { scale: 1, ease: 'none' }, 0)
-    .fromTo('.ex-copy', { yPercent: 60, opacity: 0 }, { yPercent: 0, opacity: 1, ease: 'none' }, .45);
-
   /* hall */
   gsap.utils.toArray('#grid .card').forEach(c => gsap.from(c, { y: 80, ease: 'none', scrollTrigger: { trigger: c, start: 'top bottom', end: 'top 60%', scrub: 1 } }));
 
-  /* brands columns + turning snake */
-  mm.add('(min-width: 861px)', () => {
-    document.querySelectorAll('.b-col').forEach(col => { const s = +col.dataset.speed; gsap.fromTo(col, { y: s*160 }, { y: -s*160, ease: 'none', scrollTrigger: { trigger: '#bGrid', start: 'top bottom', end: 'bottom top', scrub: true } }); });
-  });
 
   /* fan */
   const cards = gsap.utils.toArray('#fan .fcard'); const mid = (cards.length-1)/2;

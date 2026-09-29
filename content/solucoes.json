@@ -1,0 +1,291 @@
+[
+  {
+    "slug": "branding",
+    "nome": "Branding",
+    "script": "Identidade",
+    "big": "Branding",
+    "grupo": "marca",
+    "tag": "Marca",
+    "img": "assets/c65205a981d5.webp",
+    "desc": "Criamos identidades visuais, posicionamento de marca e sistemas visuais para empresas que precisam comunicar valor, profissionalismo e diferenciação no mercado.",
+    "entregas": [
+      "Diagnóstico e posicionamento de marca",
+      "Logotipo e identidade visual",
+      "Paleta, tipografia e elementos gráficos",
+      "Manual de marca",
+      "Aplicações em papelaria, redes e ponto de venda"
+    ],
+    "curto": "Branding",
+    "href": "solucao.html#solucao-branding",
+    "clientes": [
+      {
+        "nome": "Catarininho",
+        "key": "cliente-catarininho"
+      }
+    ],
+    "link": false,
+    "tall": false,
+    "yt": "assets/c65205a981d5.webp"
+  },
+  {
+    "slug": "sites-institucionais",
+    "nome": "Sites Institucionais",
+    "script": "Presença",
+    "big": "Sites",
+    "grupo": "tecnologia",
+    "tag": "Tecnologia",
+    "img": "assets/e8c86fb18710.jpg",
+    "desc": "Desenvolvemos sites institucionais profissionais para empresas que querem apresentar seus serviços com clareza, fortalecer sua presença digital e gerar mais oportunidades pelo Google.",
+    "entregas": [
+      "Arquitetura de páginas e conteúdo",
+      "Layout exclusivo e responsivo",
+      "Formulários e integração com WhatsApp",
+      "Estrutura otimizada para o Google",
+      "Painel para editar textos e imagens"
+    ],
+    "curto": "Sites",
+    "href": "solucao.html#solucao-sites-institucionais",
+    "clientes": [
+      {
+        "nome": "Frigorífico Gessner",
+        "key": "cliente-frigorifico-gessner"
+      }
+    ],
+    "link": false,
+    "tall": false,
+    "yt": "assets/e8c86fb18710.jpg"
+  },
+  {
+    "slug": "e-commerce",
+    "nome": "E-Commerce",
+    "script": "Vendas",
+    "big": "E-commerce",
+    "grupo": "tecnologia",
+    "tag": "Tecnologia",
+    "img": "assets/4f057ed32218.jpg",
+    "desc": "Criamos lojas virtuais estratégicas para empresas que desejam vender online com estrutura profissional, boa experiência de navegação, design confiável e foco em conversão.",
+    "entregas": [
+      "Escolha e configuração da plataforma",
+      "Layout da loja e páginas de produto",
+      "Meios de pagamento e frete",
+      "Cadastro e organização do catálogo",
+      "Ajustes de conversão e checkout"
+    ],
+    "curto": "E-commerce",
+    "href": "solucao.html#solucao-e-commerce",
+    "clientes": [],
+    "link": false,
+    "tall": false,
+    "yt": "assets/4f057ed32218.jpg"
+  },
+  {
+    "slug": "midias-sociais",
+    "nome": "Mídias Sociais",
+    "script": "Conteúdo",
+    "big": "Social",
+    "grupo": "conteudo",
+    "tag": "Conteúdo",
+    "img": "assets/7cac61bf0baf.webp",
+    "desc": "Planejamos e produzimos conteúdos para redes sociais com foco em posicionamento, consistência visual, relacionamento com o público e fortalecimento da marca.",
+    "entregas": [
+      "Planejamento e calendário editorial",
+      "Criação de posts, carrosséis e stories",
+      "Roteiro e edição de reels",
+      "Linha visual para o perfil",
+      "Relatórios mensais"
+    ],
+    "curto": "Redes sociais",
+    "href": "solucao.html#solucao-midias-sociais",
+    "clientes": [
+      {
+        "nome": "Frigorífico Gessner",
+        "key": "cliente-frigorifico-gessner"
+      },
+      {
+        "nome": "Catarininho",
+        "key": "cliente-catarininho"
+      }
+    ],
+    "link": false,
+    "tall": false,
+    "yt": "assets/7cac61bf0baf.webp"
+  },
+  {
+    "slug": "embalagens-e-tags",
+    "nome": "Embalagens e Tags de Produto",
+    "script": "Na gôndola",
+    "big": "Embalagens",
+    "grupo": "marca",
+    "tag": "Marca",
+    "img": "assets/87c9ce7128b3.webp",
+    "desc": "Desenvolvemos embalagens estratégicas para produtos que precisam se destacar no ponto de venda, comunicar valor e fortalecer a identidade da marca.",
+    "entregas": [
+      "Estudo de ponto de venda e concorrência",
+      "Design de embalagem e rótulo",
+      "Tags e etiquetas de produto",
+      "Arquivos finais para gráfica",
+      "Acompanhamento de prova de cor"
+    ],
+    "curto": "Embalagens",
+    "href": "solucao.html#solucao-embalagens-e-tags",
+    "clientes": [],
+    "link": false,
+    "tall": true,
+    "yt": "assets/87c9ce7128b3.webp"
+  },
+  {
+    "slug": "trafego-pago",
+    "nome": "Tráfego Pago",
+    "script": "Resultados",
+    "big": "Tráfego",
+    "grupo": "performance",
+    "tag": "Performance",
+    "img": "assets/a761a95cc979.jpg",
+    "desc": "Planejamos campanhas de tráfego pago para empresas que querem atrair clientes, divulgar produtos, gerar leads e melhorar seus resultados em canais como Google, Instagram e Facebook.",
+    "entregas": [
+      "Planejamento de campanhas e públicos",
+      "Google Ads, Meta Ads (Instagram e Facebook)",
+      "Criativos para anúncios",
+      "Configuração de mensuração e conversões",
+      "Otimização contínua e relatórios"
+    ],
+    "curto": "Tráfego pago",
+    "href": "solucao.html#solucao-trafego-pago",
+    "clientes": [
+      {
+        "nome": "Frigorífico Gessner",
+        "key": "cliente-frigorifico-gessner"
+      }
+    ],
+    "link": false,
+    "tall": false,
+    "yt": "assets/a761a95cc979.jpg"
+  },
+  {
+    "slug": "consultoria",
+    "nome": "Consultoria",
+    "script": "Direção",
+    "big": "Consultoria",
+    "grupo": "performance",
+    "tag": "Estratégia",
+    "img": "assets/d39e458249f1.webp",
+    "desc": "Analisamos o momento da marca, identificamos oportunidades e orientamos decisões de marketing, comunicação e presença digital com mais clareza e direção.",
+    "entregas": [
+      "Diagnóstico de marketing e presença digital",
+      "Análise de concorrência",
+      "Plano de ação priorizado",
+      "Reuniões de acompanhamento",
+      "Treinamento da equipe interna"
+    ],
+    "curto": "Consultoria",
+    "href": "solucao.html#solucao-consultoria",
+    "clientes": [],
+    "link": false,
+    "tall": false,
+    "yt": "assets/d39e458249f1.webp",
+    "zoom": true
+  },
+  {
+    "slug": "design-de-estampas",
+    "nome": "Design de Estampas",
+    "script": "Coleções",
+    "big": "Estampas",
+    "grupo": "marca",
+    "tag": "Marca",
+    "img": "assets/bd53f12073a2.jpg",
+    "desc": "Criamos estampas personalizadas para marcas, produtos e coleções, unindo conceito visual, aplicação comercial e linguagem alinhada ao posicionamento da empresa.",
+    "entregas": [
+      "Conceito e pesquisa de referências",
+      "Estampas exclusivas e rapport",
+      "Variações de cor por coleção",
+      "Mockups de aplicação",
+      "Arquivos prontos para produção"
+    ],
+    "curto": "Estampas",
+    "href": "solucao.html#solucao-design-de-estampas",
+    "clientes": [],
+    "link": false,
+    "tall": false,
+    "yt": "assets/bd53f12073a2.jpg"
+  },
+  {
+    "slug": "fotografia",
+    "nome": "Fotografia",
+    "grupo": "audiovisual",
+    "tag": "Audiovisual",
+    "img": "assets/8b5fe5d2962a.webp",
+    "href": "audiovisual.html",
+    "desc": "Produzimos fotos profissionais para produtos, ambientes, equipes e campanhas, valorizando a percepção da marca e criando materiais visuais mais fortes para canais digitais e impressos.",
+    "curto": "Fotografia",
+    "clientes": [],
+    "link": true,
+    "tall": true,
+    "yt": "assets/8b5fe5d2962a.webp",
+    "script": "",
+    "big": "Fotografia",
+    "entregas": []
+  },
+  {
+    "slug": "producao-de-video",
+    "nome": "Produção de Vídeo",
+    "grupo": "audiovisual",
+    "tag": "Audiovisual",
+    "img": "assets/576924ed87dd.webp",
+    "href": "audiovisual.html#sala",
+    "desc": "Criamos vídeos para apresentar empresas, produtos e serviços, com planejamento da mensagem, dos formatos e dos canais em que o conteúdo será usado.",
+    "curto": "Vídeo",
+    "clientes": [],
+    "link": true,
+    "tall": true,
+    "yt": "assets/576924ed87dd.webp",
+    "script": "",
+    "big": "Produção de Vídeo",
+    "entregas": []
+  },
+  {
+    "slug": "seo",
+    "nome": "SEO e Otimização",
+    "script": "No Google",
+    "big": "SEO",
+    "grupo": "tecnologia",
+    "tag": "Tecnologia",
+    "img": "assets/84a210205cc9.jpg",
+    "desc": "Organizamos conteúdo, páginas e links internos e avaliamos aspectos técnicos para facilitar a descoberta do site e a compreensão dos serviços da empresa.",
+    "entregas": [
+      "Auditoria técnica do site",
+      "Pesquisa de palavras-chave",
+      "Organização de páginas e links internos",
+      "Otimização de títulos, textos e imagens",
+      "Google Meu Negócio e acompanhamento"
+    ],
+    "curto": "SEO",
+    "href": "solucao.html#solucao-seo",
+    "clientes": [],
+    "link": false,
+    "tall": false,
+    "yt": "assets/84a210205cc9.jpg"
+  },
+  {
+    "slug": "manutencao-de-sites",
+    "nome": "Manutenção de Sites",
+    "script": "Cuidado",
+    "big": "Manutenção",
+    "grupo": "tecnologia",
+    "tag": "Tecnologia",
+    "img": "assets/76faebec2532.webp",
+    "desc": "Avaliamos sites existentes para atualizar informações, investigar falhas de funcionamento e definir os cuidados necessários conforme a estrutura de cada projeto.",
+    "entregas": [
+      "Diagnóstico do site atual",
+      "Correção de falhas e erros",
+      "Atualização de textos, imagens e plugins",
+      "Backups e segurança",
+      "Suporte mensal sob demanda"
+    ],
+    "curto": "Manutenção",
+    "href": "solucao.html#solucao-manutencao-de-sites",
+    "clientes": [],
+    "link": false,
+    "tall": false,
+    "yt": "assets/76faebec2532.webp"
+  }
+]

@@ -1,0 +1,36 @@
+<script>
+(function(){
+  const C = window.__cobra || {}; const SOLS = {{{ content.solucoes | js }}};
+  const $ = id => document.getElementById(id);
+  const zoomCls = s => /T_H4/.test(s.yt||'') ? 'zoom' : (s.tall ? 'tall' : '');
+  function fitBig(){ const el=$('soBig'); el.style.fontSize=''; const max=el.parentElement.clientWidth; const w=el.scrollWidth; if (w>max && max>0) el.style.fontSize=(parseFloat(getComputedStyle(el).fontSize)*max/w*0.98)+'px'; }
+  function render(slug, scroll){
+    const s = SOLS.find(x=>x.slug===slug && !x.link) || SOLS.find(x=>!x.link);
+    document.title = s.nome + ' | Soluções | Agência Cobra';
+    $('soTitle').setAttribute('aria-label', s.nome);
+    $('soTag').textContent = s.nome; $('soScript').textContent = s.script; $('soBig').textContent = s.big;
+    const im=$('soImg'); im.src = s.img; im.className = zoomCls(s); $('soTy').textContent = s.tag; $('soLab').textContent = s.nome;
+    $('soLead').textContent = s.desc;
+    $('soList').innerHTML = s.entregas.map(e=>`<li>${e}<i aria-hidden="true">→</i></li>`).join('');
+    const mk=$('marcas'); mk.hidden = !s.clientes.length;
+    $('logos').innerHTML = s.clientes.map(c=>`<a class="lg${c.logo?'':' txt'}${c.branca?' w':''}" href="audiovisual.html#${c.key}" aria-label="Ver portfólio de ${c.nome}">${c.logo?`<img src="${c.logo}" alt="${c.nome}">`:`<b>${c.nome}</b>`}<i class="cnt">Cliente</i><span>Ver portfólio →</span></a>`).join('');
+    $('soRail').innerHTML = SOLS.filter(x=>x.slug!==s.slug).map(x=>`<a class="so-card" href="${x.href}"><div class="in"><img class="${zoomCls(x)}" src="${x.img}" alt="" loading="lazy"><span class="ty">${x.tag}</span><span class="lab">${x.nome}</span></div></a>`).join('');
+    document.querySelectorAll('.hf [data-sol]').forEach(a=>{ if (a.dataset.sol===s.slug) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current'); });
+    requestAnimationFrame(fitBig);
+    if (scroll){ C.scrollTo ? C.scrollTo(0,true) : scrollTo(0,0); }
+    C.refresh && C.refresh();
+  }
+  const fromHash = h => (h||'').replace(/^#/,'').replace(/^solucao-/,'');
+  render(fromHash(location.hash), false);
+  C.goHash = h => render(fromHash(h), true);
+  addEventListener('hashchange', () => render(fromHash(location.hash), true));
+  addEventListener('resize', fitBig); if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitBig);
+  C.reveal && C.reveal();
+  if (window.gsap && window.ScrollTrigger && !matchMedia('(prefers-reduced-motion: reduce)').matches){
+    gsap.from('#soScript', { opacity:0, x:-30, rotate:-10, duration:1.1, ease:'expo.out', delay:.15 });
+    gsap.from('#soBig', { yPercent:40, opacity:0, duration:1.1, ease:'expo.out', delay:.25 });
+    gsap.from('.so-vis', { y:60, opacity:0, duration:1.2, ease:'expo.out', delay:.35 });
+    gsap.to('.so-frame', { yPercent:-8, ease:'none', scrollTrigger:{ trigger:'.so-hero', start:'top top', end:'bottom top', scrub:true } });
+  }
+})();
+</script>

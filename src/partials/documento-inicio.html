@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>[hidden]{display:none!important}</style>
+<title>{{ page.title }}</title>
+{{#if page.description}}<meta name="description" content="{{ page.description }}">
+{{/if}}<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="{{#if page.fontes_url}}{{{ page.fontes_url }}}{{else}}{{{ site.fontes_url }}}{{/if}}">

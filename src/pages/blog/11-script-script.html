@@ -1,0 +1,74 @@
+<script>
+(function(){
+  const C = window.__cobra || {}; const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches; const hasG=!!window.gsap;
+  const IMG = {{{ content.blog.imagens | js }}};
+  const POSTS = {{{ content.blog.posts | js }}};
+  const fmt = d => { const m=['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez']; const [y,mo,da]=d.split('-'); return `${+da} ${m[+mo-1]} ${y}`; };
+  const esc = s => String(s).replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const card = p => `<a class="pc" href="#post-${p.slug}" data-route data-slug="${p.slug}" data-cat="${esc(p.cat)}"><div class="cov"><img src="${IMG[p.img]}" alt="" loading="lazy"><span class="ex">Exemplo</span></div><div class="meta"><span class="tag">${esc(p.cat)}</span>${fmt(p.date)} · ${p.read} min</div><h3>${esc(p.title)}</h3><p>${esc(p.lede)}</p></a>`;
+  /* lista */
+  const feat=document.getElementById('feat'), grid=document.getElementById('pgrid');
+  const f0=POSTS[0];
+  feat.href='#post-'+f0.slug; feat.dataset.slug=f0.slug;
+  feat.innerHTML=`<div class="cov"><img src="${IMG[f0.img]}" alt=""><span class="ex">Post de exemplo</span></div><div><div class="meta"><span class="tag">${esc(f0.cat)}</span>${fmt(f0.date)} · ${f0.read} min de leitura</div><h2>${esc(f0.title)}</h2><p>${esc(f0.lede)}</p><span class="more">Ler artigo →</span></div>`;
+  grid.innerHTML=POSTS.slice(1).map(card).join('')+'<p class="empty" hidden>Nenhum artigo encontrado.</p>';
+  const cats=['Tudo',...new Set(POSTS.map(p=>p.cat))], catsEl=document.getElementById('cats'); let cat='Tudo';
+  catsEl.innerHTML=cats.map((c,i)=>`<button type="button" aria-pressed="${i===0}">${esc(c)}</button>`).join('');
+  const q=document.getElementById('q');
+  function filter(){ const s=q.value.trim().toLowerCase(); let n=0;
+    const all=[feat,...grid.querySelectorAll('.pc')];
+    all.forEach(el=>{ const p=POSTS.find(x=>x.slug===el.dataset.slug); const ok=(cat==='Tudo'||p.cat===cat)&&(!s||(p.title+' '+p.lede+' '+p.cat).toLowerCase().includes(s)); el.classList.toggle('hide',!ok); el.style.display = ok?'':'none'; if (ok) n++; });
+    grid.querySelector('.empty').hidden = n>0; C.refresh && C.refresh(); }
+  catsEl.addEventListener('click', e=>{ const b=e.target.closest('button'); if (!b) return; cat=b.textContent; catsEl.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed', String(x===b))); filter(); });
+  q.addEventListener('input', filter);
+  /* artigo */
+  const vList=document.getElementById('vList'), vPost=document.getElementById('vPost');
+  function renderBody(p){ let h='<span class="ar-note">Texto de exemplo para o layout</span>', toc='<p>Neste artigo</p>';
+    p.body.forEach(([t,v])=>{ if (t==='h2'){ const id='s-'+v.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,'-'); h+=`<h2 id="${id}">${esc(v)}</h2>`; toc+=`<a href="#${id}" data-toc>${esc(v)}</a>`; }
+      else if (t==='ul') h+='<ul>'+v.map(i=>`<li>${esc(i)}</li>`).join('')+'</ul>'; else if (t==='blockquote') h+=`<blockquote>${esc(v)}</blockquote>`; else h+=`<p>${esc(v)}</p>`; });
+    h+=`<div class="author"><span class="av"><svg class="sig " viewBox="0 0 400 160" aria-hidden="true"><path pathLength="1" d="M80 46 C 62 26, 22 38, 20 78 C 18 118, 60 124, 84 102 C 92 94, 96 86, 104 80 C 94 80, 92 112, 112 112 C 132 112, 136 80, 116 76 C 106 74, 104 84, 114 88 C 124 92, 132 86, 140 78 C 152 64, 164 28, 158 14 C 152 2, 136 16, 140 52 L 143 110 C 150 92, 176 84, 178 98 C 180 112, 160 118, 146 110 C 160 106, 172 96, 186 88 C 192 84, 196 78, 198 74 C 202 84, 200 100, 199 112 C 203 90, 213 76, 228 80 C 234 82, 238 84, 246 82 C 236 74, 214 84, 216 100 C 218 116, 242 112, 250 90 L 249 104 C 249 114, 258 116, 270 106 C 296 86, 334 68, 378 58" fill="none" stroke="#0A0B08" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/><path pathLength="1" d="M40 138 C 140 120, 270 126, 372 112" fill="none" stroke="#0A0B08" stroke-width="9.6" stroke-linecap="round"/></svg></span><div><b>Equipe Cobra</b><span>Marketing, conteúdo e tecnologia em Timbó, SC.</span></div></div>`;
+    return [h,toc]; }
+  let tocIO=null;
+  function openPost(slug, instant){
+    const p=POSTS.find(x=>x.slug===slug); if (!p) return showList(instant);
+    const go=()=>{
+      document.getElementById('arMeta').innerHTML=`<span class="tag">${esc(p.cat)}</span>${fmt(p.date)} · ${p.read} min de leitura`;
+      document.getElementById('arTitle').textContent=p.title; document.getElementById('arLede').textContent=p.lede;
+      document.getElementById('arCov').src=IMG[p.img];
+      const [b,t]=renderBody(p); document.getElementById('arBody').innerHTML=b; document.getElementById('toc').innerHTML=t;
+      const url=location.href.split('#')[0]+'#post-'+p.slug;
+      document.getElementById('shWa').href='https://wa.me/?text='+encodeURIComponent(p.title+' '+url);
+      document.getElementById('shIn').href='https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent(url);
+      document.getElementById('relGrid').innerHTML=POSTS.filter(x=>x.slug!==p.slug).sort((a,b)=>(b.cat===p.cat)-(a.cat===p.cat)).slice(0,3).map(card).join('');
+      vList.classList.remove('on'); vPost.classList.add('on'); document.title=p.title+' | Blog da Cobra';
+      C.scrollTo(0,true); C.refresh && C.refresh();
+      if (tocIO) tocIO.disconnect(); const links=[...document.querySelectorAll('[data-toc]')];
+      tocIO=new IntersectionObserver(es=>es.forEach(e=>{ if (e.isIntersecting) links.forEach(a=>a.classList.toggle('on', a.getAttribute('href')==='#'+e.target.id)); }),{ rootMargin:'-20% 0px -70% 0px' });
+      links.forEach(a=>{ const t=document.getElementById(a.getAttribute('href').slice(1)); t && tocIO.observe(t); });
+      if (hasG && !reduce) gsap.from('#vPost .ar-head > *, #vPost .ar-cov', { y:40, opacity:0, duration:.9, ease:'expo.out', stagger:.06 });
+    };
+    swap(go, instant);
+    try { history.replaceState(null,'','#post-'+p.slug); } catch(e){}
+  }
+  function showList(instant){ swap(()=>{ vPost.classList.remove('on'); vList.classList.add('on'); document.title='Blog da Cobra | Marketing digital, conteúdo e tecnologia'; C.scrollTo(0,true); C.refresh && C.refresh(); }, instant); try { history.replaceState(null,'',location.pathname+location.search); } catch(e){} }
+  const wipe=document.createElement('div'); wipe.className='pgwipe'; document.body.appendChild(wipe);
+  function swap(fn, instant){ if (instant || reduce || !wipe.animate){ fn(); return; }
+    wipe.animate([{transform:'translateY(100%)'},{transform:'translateY(0)'}],{duration:450,easing:'cubic-bezier(.7,0,.2,1)',fill:'forwards'}).onfinish=()=>{ fn(); wipe.animate([{transform:'translateY(0)'},{transform:'translateY(-100%)'}],{duration:550,easing:'cubic-bezier(.7,0,.2,1)',fill:'forwards'}); }; }
+  document.addEventListener('click', e=>{
+    const a=e.target.closest('[data-slug]'); if (a){ e.preventDefault(); openPost(a.dataset.slug); return; }
+    if (e.target.closest('[data-back]')){ e.preventDefault(); showList(); return; }
+    const t=e.target.closest('[data-toc]'); if (t){ e.preventDefault(); C.scrollTo(document.getElementById(t.getAttribute('href').slice(1))); }
+  });
+  document.getElementById('shCopy').addEventListener('click', e=>{ navigator.clipboard && navigator.clipboard.writeText(location.href).then(()=>{ e.target.textContent='Link copiado!'; setTimeout(()=>e.target.textContent='Copiar link',1600); }); });
+  const prog=document.getElementById('prog');
+  (function pr(){ if (vPost.classList.contains('on')){ const b=document.getElementById('arBody'); const r=b.getBoundingClientRect(); prog.style.width=Math.max(0,Math.min(1,(innerHeight*.4-r.top)/r.height))*100+'%'; } else prog.style.width=0; requestAnimationFrame(pr); })();
+  /* curvas do topo */
+  const cv=document.getElementById('blCv'), t0=performance.now();
+  (function loop(t){ if (vList.classList.contains('on')){ const F=C.fit(cv,1.5); if (F){ F.ctx.clearRect(0,0,F.w,F.h); C.contour(F.ctx,F.w,F.h,{cell:18,scale:140,levels:[-1.5,-1,-.5,0,.5,1,1.5],lw:1,line:'rgba(203,226,46,.13)',ox:0,oy:0},reduce?0:(t-t0)*.00025); } }
+    if (!reduce) setTimeout(()=>requestAnimationFrame(loop),60); })(t0);
+  C.openPost=s=>openPost(s,true); C.showList=()=>showList(true);
+  C.goHash=h=>{ if (h && h.indexOf('post-')===0) openPost(h.slice(5),true); else showList(true); };
+  C.reveal && C.reveal();
+  const h0=(location.hash||'').slice(1); if (h0.indexOf('post-')===0) openPost(h0.slice(5),true);
+})();
+</script>

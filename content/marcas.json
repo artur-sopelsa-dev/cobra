@@ -1,0 +1,25 @@
+{
+  "titulo": "Marcas que",
+  "titulo_destaque": "atendemos",
+  "texto": "Empresas de Timbó e região que confiam na Cobra para crescer no digital, da indústria à gastronomia.",
+  "frase": "Grandes projetos começam com",
+  "frase_destaque": "parcerias estratégicas.",
+  "chamada": "A próxima marca pode ser a sua.",
+  "botao": "Seja a próxima marca",
+  "lista": [
+    {"nome": "Frigorífico Gessner", "servicos": "Site · Tráfego · Redes · Vídeo", "logo": "", "branca": false, "link": "audiovisual.html#cliente-frigorifico-gessner"},
+    {"nome": "Butzke", "servicos": "Produção de vídeo", "logo": "assets/57280a13afb4.svg", "branca": false, "link": "audiovisual.html#cliente-butzke"},
+    {"nome": "SFI Chips", "servicos": "Audiovisual", "logo": "assets/ca84b33c40e5.png", "branca": true, "link": ""},
+    {"nome": "Catarininho", "servicos": "Branding · Redes · Vídeo", "logo": "", "branca": false, "link": "audiovisual.html#cliente-catarininho"},
+    {"nome": "Calesita", "servicos": "Audiovisual", "logo": "assets/8b9a926de880.png", "branca": false, "link": ""},
+    {"nome": "Missner", "servicos": "Audiovisual", "logo": "assets/90d6615987d4.png", "branca": false, "link": ""},
+    {"nome": "Tipótil", "servicos": "Produção de vídeo", "logo": "", "branca": false, "link": "audiovisual.html#cliente-tipotil"},
+    {"nome": "F.A. Colchões", "servicos": "Audiovisual", "logo": "assets/2efd4f46e899.svg", "branca": false, "link": ""},
+    {"nome": "Linshalm", "servicos": "Audiovisual", "logo": "assets/c10cd357338b.png", "branca": true, "link": ""},
+    {"nome": "Sonhar Decorações", "servicos": "Produção de vídeo", "logo": "", "branca": false, "link": "audiovisual.html#cliente-sonhar-decoracoes"},
+    {"nome": "TaTeTi", "servicos": "Audiovisual", "logo": "assets/b6f13a38409f.png", "branca": false, "link": ""},
+    {"nome": "Kitutte", "servicos": "Audiovisual", "logo": "assets/69222b666fb0.png", "branca": false, "link": ""},
+    {"nome": "Fidenza Club & Casa", "servicos": "Produção de vídeo", "logo": "", "branca": false, "link": "audiovisual.html#cliente-fidenza-club-casa"},
+    {"nome": "Ferana", "servicos": "Cliente Cobra", "logo": "", "branca": false, "link": ""}
+  ]
+}

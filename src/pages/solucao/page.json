@@ -1,0 +1,104 @@
+{
+  "slug": "solucao",
+  "output": "solucao.html",
+  "title": "Soluções | Agência Cobra",
+  "description": "Agência Cobra · marketing digital, conteúdo, tecnologia e audiovisual em Timbó, SC.",
+  "menu_ativo": "solucoes",
+  "parts": [
+    {
+      "label": "Início do documento (head)",
+      "kind": "structure",
+      "partial": "documento-inicio"
+    },
+    {
+      "label": "Estilos da página",
+      "kind": "style",
+      "file": "01-style-estilos-da-pagina.html"
+    },
+    {
+      "label": "Estilos do rodapé",
+      "kind": "style",
+      "partial": "rodape-estilos"
+    },
+    {
+      "label": "Fim do head",
+      "kind": "structure",
+      "file": "03-structure-fim-do-head.html"
+    },
+    {
+      "label": "Cabeçalho e menu",
+      "kind": "header",
+      "partial": "cabecalho-interno"
+    },
+    {
+      "label": "Abertura do conteúdo",
+      "kind": "structure",
+      "file": "05-structure-abertura-do-conteudo.html"
+    },
+    {
+      "label": "Abertura da solução",
+      "kind": "section",
+      "file": "06-section-so-hero.html"
+    },
+    {
+      "label": "O que entregamos",
+      "kind": "section",
+      "file": "07-section-entregas.html"
+    },
+    {
+      "label": "Como a gente trabalha",
+      "kind": "section",
+      "file": "08-section-so-proc.html"
+    },
+    {
+      "label": "Marcas que confiaram",
+      "kind": "section",
+      "file": "09-section-marcas.html"
+    },
+    {
+      "label": "Outras soluções",
+      "kind": "section",
+      "file": "10-section-so-more.html"
+    },
+    {
+      "label": "Fechamento do conteúdo",
+      "kind": "structure",
+      "file": "11-structure-fechamento-do-conteudo.html"
+    },
+    {
+      "label": "Rodapé",
+      "kind": "footer",
+      "partial": "rodape"
+    },
+    {
+      "label": "Elementos flutuantes",
+      "kind": "extras",
+      "file": "13-extras-elementos-flutuantes.html"
+    },
+    {
+      "label": "Bibliotecas (GSAP, ScrollTrigger, Lenis)",
+      "kind": "script",
+      "partial": "bibliotecas"
+    },
+    {
+      "label": "Script base das páginas internas",
+      "kind": "script",
+      "partial": "base-interna-script"
+    },
+    {
+      "label": "Script da página",
+      "kind": "script",
+      "file": "16-script-script.html"
+    },
+    {
+      "label": "Script do rodapé",
+      "kind": "script",
+      "partial": "rodape-script"
+    },
+    {
+      "label": "Fim do documento",
+      "kind": "structure",
+      "partial": "fim-do-documento"
+    }
+  ]
+}

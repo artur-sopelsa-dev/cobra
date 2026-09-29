@@ -1,0 +1,22 @@
+name: Build do site
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Testes
+        run: php tests/run.php
+      - name: Gerar páginas
+        run: php bin/build.php
+      - name: public/ está atualizado
+        run: |
+          if ! git diff --quiet -- public; then
+            git diff --stat -- public
+            echo "::error::As páginas em public/ estão desatualizadas. Rode 'php bin/build.php' e faça commit."
+            exit 1
+          fi

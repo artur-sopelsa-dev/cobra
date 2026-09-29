@@ -1,0 +1,90 @@
+<script>
+/* on-track: câmera real 360° que viaja do hero até o selo, girando com o scroll */
+(function(){
+  const sec = document.getElementById('solucao'); if (!sec) return;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const hasG = !!(window.gsap && window.ScrollTrigger);
+  const C = window.__cobra || {};
+  const ITEMS = C.items || [];
+  const SEQ = ["assets/663a84d4e65d.webp", "assets/45b349b4a6c9.webp", "assets/576e73e39694.webp", "assets/7e576ffbb999.webp", "assets/9d465459dd64.webp", "assets/c1ec3b53f9b3.webp", "assets/61c1dea2b63e.webp", "assets/df848170c9b2.webp", "assets/9b08c5a007b7.webp", "assets/5a8bc071382e.webp", "assets/e231a2a5008a.webp", "assets/8266df2fa513.webp", "assets/4524aac03188.webp", "assets/fdb75691afcc.webp", "assets/d5527e14e0b7.webp", "assets/8718bbd4e0dd.webp", "assets/7c49d5b813cf.webp", "assets/a94aaab19b60.webp", "assets/49a80c86ee1a.webp", "assets/0c5655a37681.webp", "assets/49cc69649327.webp", "assets/38ad7d7287c6.webp", "assets/331fda4171dc.webp", "assets/ca17602a37e7.webp", "assets/c49b5d502d80.webp", "assets/4f9da0f23cef.webp", "assets/46294c6b6f9d.webp", "assets/77fdea904b08.webp", "assets/71a1c2fd054e.webp", "assets/82bb2ba8b34b.webp", "assets/f626b9dcc771.webp", "assets/0dffe89f3a0f.webp", "assets/e276207a9fb3.webp", "assets/7aa706e5efe3.webp", "assets/a2ed1414e6a4.webp", "assets/57265836b471.webp", "assets/3b303ecccf7e.webp", "assets/1db82c8a88d0.webp", "assets/e67a8399eec4.webp", "assets/dc59f411c5c8.webp", "assets/56c6c418088d.webp", "assets/308f915c2e9a.webp", "assets/4cef9ae4b514.webp", "assets/33b466c6c953.webp", "assets/7688b0041618.webp", "assets/1b3ea73594dd.webp", "assets/e2a0f4387bca.webp", "assets/69eabb7b309c.webp", "assets/e4a4c339932b.webp", "assets/19f30af8357e.webp", "assets/ef48d9f857aa.webp", "assets/4ebde6b972f8.webp", "assets/140f4dd76d76.webp", "assets/3ec4fae1da71.webp", "assets/9b284ebe2255.webp", "assets/8693eaa94148.webp", "assets/1694889f4077.webp", "assets/cc9430b00f15.webp", "assets/8e89d3abca06.webp", "assets/c1359843624e.webp", "assets/2cc578603b25.webp", "assets/5ebc5540a523.webp", "assets/bc1f1ce8c691.webp", "assets/9923f8d632a7.webp", "assets/8f5cfba7c464.webp", "assets/851db27c0f90.webp", "assets/b00e4eb19af2.webp", "assets/a4983c21d0dc.webp", "assets/6c2afc6ff920.webp", "assets/189c2009935a.webp", "assets/f10376188b0e.webp", "assets/38c842486bef.webp", "assets/c6edda4e3d9c.webp", "assets/79d8f2ef59ba.webp", "assets/6d21f3fb64d3.webp", "assets/1a707033aa0c.webp", "assets/f1183cfbb1ff.webp", "assets/dcfea7809254.webp", "assets/fa6cbd4cecb5.webp", "assets/f7d615330c21.webp", "assets/b6c34f407e53.webp", "assets/adefcf4cc93a.webp", "assets/cd2c66d2be2c.webp", "assets/c36617924f4f.webp", "assets/0e06213e17a7.webp", "assets/c99d8bc3c8cf.webp", "assets/bd9f736bfdd5.webp", "assets/fd086bd164dc.webp", "assets/b95492275934.webp"];              // 89 quadros = 1 volta (4° cada)
+  const N = SEQ.length;
+
+  /* números reais */
+  const vids = ITEMS.filter(i => i.kind !== 'photo');
+  const clients = new Set(vids.map(i => i.client).filter(c => c && c !== 'Agência Cobra'));
+  if (vids.length) document.querySelectorAll('[data-n="videos"]').forEach(e => e.textContent = vids.length);
+  if (clients.size) document.querySelectorAll('[data-n="clients"]').forEach(e => e.textContent = clients.size);
+
+  /* fotos que sobem sobre o número gigante (só vídeos reais do portfólio) */
+  const pics = document.getElementById('otPics');
+  if (pics){
+    const pick = vids.filter(v => v.thumb).filter((v,i,a) => a.findIndex(x => x.client===v.client)===i).slice(0,3);
+    const spots = [{l:'14%',t:'8%'},{l:'44%',t:'38%'},{l:'70%',t:'12%'}];
+    pick.forEach((v,i) => { const im = new Image(); im.src = v.thumb; im.alt = ''; im.style.left = spots[i].l; im.style.top = spots[i].t; pics.appendChild(im); });
+    if (hasG && !reduce) pics.querySelectorAll('img').forEach((im,i) => gsap.fromTo(im, { yPercent: 70 + i*25 }, { yPercent: -90 - i*30, ease:'none', scrollTrigger:{ trigger:'#otNums', start:'top bottom', end:'bottom top', scrub:true } }));
+  }
+
+  /* ---------- câmera ---------- */
+  const fly = document.getElementById('camFly'), cv = document.getElementById('cam3d');
+  const state = document.getElementById('otState'), slot = document.getElementById('otSlot'), title = sec.querySelector('.ot-title');
+  if (!fly || !cv || !N) return;
+  const ctx = cv.getContext('2d');
+  const imgs = new Array(N);
+  let dirty = true;
+  SEQ.forEach((src,i) => { const im = new Image(); im.onload = () => { imgs[i] = im; dirty = true; }; im.src = src; });
+  function frameImg(i){ if (imgs[i]) return imgs[i]; for (let d=1; d<N; d++){ const a = imgs[(i+d)%N] || imgs[(i-d+N)%N]; if (a) return a; } return null; }
+  let lastIdx = -1;
+  function draw(f){
+    const idx = ((Math.round(f/2) % N) + N) % N;
+    if (idx === lastIdx && !dirty) return;
+    const im = frameImg(idx); if (!im) return;
+    ctx.clearRect(0,0,cv.width,cv.height); ctx.drawImage(im,0,0,cv.width,cv.height);
+    lastIdx = idx; dirty = !imgs[idx];
+  }
+
+  const mob = () => innerWidth <= 860;
+  const ease = t => t<.5 ? 4*t*t*t : 1-Math.pow(-2*t+2,3)/2;
+  const smooth = t => t*t*(3-2*t);
+  const clamp = t => Math.max(0, Math.min(1, t));
+  const lerp = (a,b,t) => a+(b-a)*t;
+  const docY = el => el.getBoundingClientRect().top + scrollY;
+  let M = null;
+  function measure(){
+    const W = innerWidth, H = innerHeight, m = mob();
+    const tb = title.getBoundingClientRect().bottom + scrollY;
+    M = {
+      A: m ? { cx:W*.5, cy:tb + W*.33, w:W*1.02 } : { cx:W*.21, cy:H*.8, w:W*.6 },
+      B: { cx:W*.5, cy:H*.5, w: m ? W*.74 : Math.min(W*.3, H*.62) },
+      sB: docY(state) + state.offsetHeight*.5 - H*.5,
+      sC: docY(slot) + slot.offsetHeight*.5 - H*.5
+    };
+  }
+  measure();
+  addEventListener('resize', () => { measure(); dirty = true; });
+  addEventListener('load', measure);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
+  if (hasG) ScrollTrigger.addEventListener('refresh', measure);
+
+  const F0 = 45, F1 = 178+15, F2 = 178+15+62;   // 3/4 → de frente → 3/4 no selo
+  let mx = 0, tmx = 0;
+  if (matchMedia('(hover:hover) and (pointer:fine)').matches) addEventListener('pointermove', e => { tmx = e.clientX/innerWidth - .5; });
+  function render(){
+    const s = scrollY, H = innerHeight;
+    const r = slot.getBoundingClientRect();
+    const Cc = { cx:r.left + r.width/2, cy:r.top + r.height/2, w:r.width };
+    let p, f, halo;
+    if (s <= M.sB){ const t = clamp(s/Math.max(1,M.sB)); const e = ease(t); p = { cx:lerp(M.A.cx,M.B.cx,e), cy:lerp(M.A.cy - s*.15,M.B.cy,e), w:lerp(M.A.w,M.B.w,e) }; f = lerp(F0,F1,smooth(t)); halo = clamp((t-.35)/.4); }
+    else { const t = clamp((s-M.sB)/Math.max(1,M.sC-M.sB)); const e = ease(t); p = { cx:lerp(M.B.cx,Cc.cx,e), cy:lerp(M.B.cy,Cc.cy,e), w:lerp(M.B.w,Cc.w,e) }; f = lerp(F1,F2,smooth(t)); halo = 1-clamp((t-.4)/.4); }
+    mx += (tmx-mx)*.06;
+    if (!reduce) f += mx*8;
+    draw(f);
+    const sc = p.w/675, h = p.w*cv.height/cv.width;
+    fly.style.transform = `translate3d(${(p.cx - p.w/2).toFixed(1)}px,${(p.cy - h/2).toFixed(1)}px,0) scale(${sc.toFixed(4)})`;
+    fly.style.setProperty('--halo', halo.toFixed(2));
+    fly.style.visibility = (p.cy + h/2 < -50 || p.cy - h/2 > H + 50) ? 'hidden' : 'visible';
+  }
+  (function loop(){ render(); requestAnimationFrame(loop); })();
+  requestAnimationFrame(() => fly.classList.add('on'));
+})();
+</script>
+

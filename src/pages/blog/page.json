@@ -1,0 +1,84 @@
+{
+  "slug": "blog",
+  "output": "blog.html",
+  "title": "Blog da Cobra | Marketing digital, conteúdo e tecnologia",
+  "description": "Agência Cobra · marketing digital, conteúdo, tecnologia e audiovisual em Timbó, SC.",
+  "menu_ativo": "blog",
+  "parts": [
+    {
+      "label": "Início do documento (head)",
+      "kind": "structure",
+      "partial": "documento-inicio"
+    },
+    {
+      "label": "Estilos da página",
+      "kind": "style",
+      "file": "01-style-estilos-da-pagina.html"
+    },
+    {
+      "label": "Estilos do rodapé",
+      "kind": "style",
+      "partial": "rodape-estilos"
+    },
+    {
+      "label": "Fim do head",
+      "kind": "structure",
+      "file": "03-structure-fim-do-head.html"
+    },
+    {
+      "label": "Cabeçalho e menu",
+      "kind": "header",
+      "partial": "cabecalho-interno"
+    },
+    {
+      "label": "Barra de progresso de leitura",
+      "kind": "extras",
+      "file": "04-extras-barra-de-progresso.html"
+    },
+    {
+      "label": "Abertura do conteúdo",
+      "kind": "structure",
+      "file": "05-structure-abertura-do-conteudo.html"
+    },
+    {
+      "label": "Fechamento do conteúdo",
+      "kind": "structure",
+      "file": "06-structure-fechamento-do-conteudo.html"
+    },
+    {
+      "label": "Rodapé",
+      "kind": "footer",
+      "partial": "rodape"
+    },
+    {
+      "label": "Elementos flutuantes",
+      "kind": "extras",
+      "file": "08-extras-elementos-flutuantes.html"
+    },
+    {
+      "label": "Bibliotecas (GSAP, ScrollTrigger, Lenis)",
+      "kind": "script",
+      "partial": "bibliotecas"
+    },
+    {
+      "label": "Script base das páginas internas",
+      "kind": "script",
+      "partial": "base-interna-script"
+    },
+    {
+      "label": "Script da página",
+      "kind": "script",
+      "file": "11-script-script.html"
+    },
+    {
+      "label": "Script do rodapé",
+      "kind": "script",
+      "partial": "rodape-script"
+    },
+    {
+      "label": "Fim do documento",
+      "kind": "structure",
+      "partial": "fim-do-documento"
+    }
+  ]
+}

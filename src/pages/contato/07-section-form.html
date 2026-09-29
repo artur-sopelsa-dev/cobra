@@ -1,0 +1,41 @@
+<section class="sec t-paper ct-form" id="form" data-bg="paper" data-tone="paper">
+  <div class="intro">
+    <p class="eyebrow">Formulário</p>
+    <h2 class="display" data-split style="margin-top:12px">Conte sobre o <span class="it">seu projeto</span></h2>
+    <p class="rv">Leva um minuto. Quando você envia, abrimos o WhatsApp com a mensagem pronta para a nossa equipe.</p>
+    <ol class="steps rv"><li>Você conta o que precisa.</li><li>A gente entende o momento da empresa.</li><li>Marcamos uma conversa e montamos a proposta.</li></ol>
+  </div>
+  <form class="card rv" id="leadForm" novalidate>
+    <div class="form-in">
+      <div class="fr">
+        <label class="fld"><span>Seu nome</span><input name="nome" autocomplete="name" required><em class="msg"></em></label>
+        <label class="fld"><span>Empresa <i>(opcional)</i></span><input name="empresa" autocomplete="organization"></label>
+      </div>
+      <div class="fr">
+        <label class="fld"><span>WhatsApp</span><input name="tel" type="tel" inputmode="tel" autocomplete="tel" placeholder="(47) 90000-0000" required><em class="msg"></em></label>
+        <label class="fld"><span>E-mail <i>(opcional)</i></span><input name="email" type="email" autocomplete="email"></label>
+      </div>
+      <div class="fld"><span>No que podemos ajudar?</span>
+        <div class="pills" role="group" aria-label="Interesses">
+          <label><input type="checkbox" name="int" value="Tráfego pago e performance"><span>Tráfego pago</span></label>
+          <label><input type="checkbox" name="int" value="Redes sociais e conteúdo"><span>Redes sociais</span></label>
+          <label><input type="checkbox" name="int" value="Site ou e-commerce"><span>Site / e-commerce</span></label>
+          <label><input type="checkbox" name="int" value="Fotos e vídeos"><span>Fotos &amp; vídeos</span></label>
+          <label><input type="checkbox" name="int" value="Branding e identidade visual"><span>Branding</span></label>
+          <label><input type="checkbox" name="int" value="Diagnóstico digital"><span>Diagnóstico</span></label>
+          <label><input type="checkbox" name="int" value="Ainda não sei"><span>Ainda não sei</span></label>
+        </div>
+      </div>
+      <label class="fld"><span>Quando quer começar?</span>
+        <select name="quando"><option value="">Escolha uma opção</option><option>O quanto antes</option><option>Nos próximos 3 meses</option><option>Ainda estou pesquisando</option></select>
+      </label>
+      <label class="fld"><span>Mensagem <i>(opcional)</i></span><textarea name="msg" placeholder="Conte um pouco da empresa, do objetivo e do que já tentaram."></textarea></label>
+      <div class="fbot">
+        <button class="btn ink big" type="submit">Enviar pelo WhatsApp <span class="arr">→</span></button>
+        <small>Seus dados só são usados para responder o seu contato.</small>
+      </div>
+    </div>
+    <div class="ok" role="status"><b>Mensagem pronta!</b><p>Abrimos o WhatsApp numa nova aba. É só tocar em enviar.<br>Se não abriu, <a id="waAgain" href="https://wa.me/{{ site.whatsapp.numero }}?text={{ site.whatsapp.mensagem | url }}" target="_blank" rel="noopener">clique aqui</a>.</p><button class="btn ghost" type="button" id="again">Enviar outro contato</button></div>
+  </form>
+</section>
+
