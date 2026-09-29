@@ -39,7 +39,8 @@ main,footer{position:relative;z-index:1}
 .hub-intro .count div b{display:block;font-size:clamp(34px,4vw,56px);font-weight:800;letter-spacing:-.04em;line-height:1}
 .hub-intro .count div span{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
 /* mural de cards */
-.wall{--n:4;margin:0 var(--gut);display:flex;flex-wrap:wrap;justify-content:center;gap:16px;align-items:stretch}
+/* 3 por linha, com a mesma largura de card de uma grade de 4 */
+.wall{--n:3;width:calc(.75 * (100% - 2 * var(--gut)) - 4px);margin:0 auto;display:flex;flex-wrap:wrap;justify-content:center;gap:16px;align-items:stretch}
 .wall>.wc{width:calc((100% - (var(--n) - 1) * 16px) / var(--n))}
 .wc{position:relative;display:flex;flex-direction:column;gap:12px;width:100%;padding:24px;border-radius:12px;background:var(--char);border:1px solid var(--line);color:var(--paper);text-align:left;text-decoration:none;cursor:pointer;font:inherit;overflow:hidden;transition:transform .45s var(--ease),border-color .3s}
 div.wc{cursor:default}
@@ -64,7 +65,7 @@ div.wc{cursor:default}
 .wc .big em{font-style:italic;font-weight:400;text-transform:none;color:var(--lime)}
 .wc.cta .big,.wc.cta .big em{color:var(--ink)}
 @media (max-width:860px){.hub-intro{grid-template-columns:1fr}.hub-intro .count{justify-self:start}}
-@media (max-width:1100px){.wall{--n:2}}
+@media (max-width:1100px){.wall{--n:2;width:auto;margin:0 var(--gut)}}
 @media (max-width:600px){.wall{--n:1}}
 .all{padding:clamp(80px,10vw,140px) var(--gut)}
 .all-head{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:30px}
