@@ -1,7 +1,7 @@
 {{#if item.relacionadas}}
 <section class="sec t-ink sx-rel" data-bg="ink" data-tone="ink">
   <div class="sx-rel-h"><div><p class="eyebrow lime">Complete o projeto</p><h2>Soluções que se conectam</h2></div><a class="btn ghost" href="solucoes-em-marketing-digital/">Ver todas as soluções <span class="arr">→</span></a></div>
-  <div class="sx-rel-g">{{#each item.relacionadas as r}}<a class="sx-rc" href="{{ r.url }}"><span class="im"><img src="{{ r.img }}" alt="" loading="lazy"{{#if r.zoom}} class="zoom"{{else}}{{#if r.tall}} class="tall"{{/if}}{{/if}}></span><span class="t"><small>{{ r.tag }}</small><b>{{ r.nome }}</b></span><i aria-hidden="true">→</i></a>{{/each}}<a class="sx-rc is-pf" href="portfolio.html"><span class="t"><small>Cases</small><b>Conhecer o portfólio da Cobra</b></span><i aria-hidden="true">→</i></a></div>
+  <div class="sx-rel-g">{{#each item.relacionadas as r}}<a class="sx-rc" href="{{ r.href }}"><span class="im"><img src="{{ r.img }}" alt="" loading="lazy"{{#if r.zoom}} class="zoom"{{else}}{{#if r.tall}} class="tall"{{/if}}{{/if}}></span><span class="t"><small>{{ r.tag }}</small><b>{{ r.nome }}</b></span><i aria-hidden="true">→</i></a>{{/each}}<a class="sx-rc is-pf" href="portfolio.html"><span class="t"><small>Cases</small><b>Conhecer o portfólio da Cobra</b></span><i aria-hidden="true">→</i></a></div>
 </div></section>
 {{/if}}
 <section class="sec t-ink sx-cta-sec" data-bg="ink" data-tone="ink"><div class="sx-cta">
