@@ -1,5 +1,5 @@
 <section class="sec t-ink sx-list" id="lista" data-bg="ink" data-tone="ink">
   <div class="sx-list-h"><div><p class="eyebrow lime">{{ content.solucoes | count }} soluções</p><h2>Escolha por onde começar</h2></div>
     <div class="sx-chips" id="sxChips" role="group" aria-label="Filtrar soluções"><button type="button" data-f="all" aria-pressed="true">Todas</button><button type="button" data-f="marca" aria-pressed="false">Marca</button><button type="button" data-f="conteudo" aria-pressed="false">Conteúdo</button><button type="button" data-f="tecnologia" aria-pressed="false">Tecnologia</button><button type="button" data-f="performance" aria-pressed="false">Performance</button><button type="button" data-f="audiovisual" aria-pressed="false">Audiovisual</button></div></div>
-  <div class="sx-cards">{{#each content.solucoes as x}}<a class="sx-card" href="{{ x.url }}" data-g="{{ x.grupo }}"><h3>{{ x.nome }}</h3><p>{{ x.desc }}</p><i aria-hidden="true">→</i></a>{{/each}}</div>
+  <div class="sx-cards">{{#each content.solucoes as x}}<a class="sx-card" href="{{ x.href }}" data-g="{{ x.grupo }}"><h3>{{ x.nome }}</h3><p>{{ x.desc }}</p><i aria-hidden="true">→</i></a>{{/each}}</div>
 </section>
