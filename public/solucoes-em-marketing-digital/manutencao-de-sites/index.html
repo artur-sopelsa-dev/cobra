@@ -381,7 +381,9 @@ ol.so-steps{list-style:none;margin:0;padding:0}
 .sx-chips button[aria-pressed="true"]{background:var(--lime);color:var(--ink);border-color:var(--lime)}
 .sx-cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
 .sx-card{position:relative;display:flex;flex-direction:column;gap:12px;min-height:220px;padding:26px 26px 24px;border-radius:16px;background:var(--char);border:1px solid var(--line);text-decoration:none;transition:border-color .3s,transform .45s var(--ease)}
-.sx-card[hidden]{display:none}
+.sx-card.off{opacity:.18!important;pointer-events:none}
+.sx-card{transition:border-color .3s,transform .45s var(--ease),opacity .4s}
+html.js .sec.sx-list{background:var(--ink)}
 .sx-card h3{margin:0;font-size:clamp(20px,1.5vw,24px);font-weight:800;letter-spacing:-.02em;line-height:1.15}
 .sx-card p{margin:0;font-size:14px;line-height:1.6;opacity:.65;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .sx-card i{margin-top:auto;align-self:flex-end;font-style:normal;width:40px;height:40px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;transition:all .4s var(--ease)}
@@ -598,9 +600,9 @@ document.querySelectorAll('.hf [data-sol="manutencao-de-sites"]').forEach(a=>a.s
   const chips=document.getElementById('sxChips'), cards=[...document.querySelectorAll('.sx-card')];
   if (chips) chips.addEventListener('click', e=>{ const b=e.target.closest('button'); if (!b) return;
     chips.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed', String(x===b)));
-    const f=b.dataset.f; cards.forEach(c=>c.hidden = f!=='all' && c.dataset.g!==f);
-    if (anim) gsap.fromTo(cards.filter(c=>!c.hidden), { y:24, opacity:0 }, { y:0, opacity:1, duration:.6, stagger:.04, ease:'expo.out' });
-    window.ScrollTrigger && ScrollTrigger.refresh(); });
+    const f=b.dataset.f;
+    /* os cards fora do filtro ficam apagados (não somem), assim a seção não muda de altura */
+    cards.forEach(c=>{ const off = f!=='all' && c.dataset.g!==f; c.classList.toggle('off', off); if (off) c.setAttribute('tabindex','-1'); else c.removeAttribute('tabindex'); c.setAttribute('aria-hidden', String(off)); }); });
 })();
 </script>
 
