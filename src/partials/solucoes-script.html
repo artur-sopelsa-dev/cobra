@@ -15,8 +15,8 @@
   const chips=document.getElementById('sxChips'), cards=[...document.querySelectorAll('.sx-card')];
   if (chips) chips.addEventListener('click', e=>{ const b=e.target.closest('button'); if (!b) return;
     chips.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed', String(x===b)));
-    const f=b.dataset.f; cards.forEach(c=>c.hidden = f!=='all' && c.dataset.g!==f);
-    if (anim) gsap.fromTo(cards.filter(c=>!c.hidden), { y:24, opacity:0 }, { y:0, opacity:1, duration:.6, stagger:.04, ease:'expo.out' });
-    window.ScrollTrigger && ScrollTrigger.refresh(); });
+    const f=b.dataset.f;
+    /* os cards fora do filtro ficam apagados (não somem), assim a seção não muda de altura */
+    cards.forEach(c=>{ const off = f!=='all' && c.dataset.g!==f; c.classList.toggle('off', off); if (off) c.setAttribute('tabindex','-1'); else c.removeAttribute('tabindex'); c.setAttribute('aria-hidden', String(off)); }); });
 })();
 </script>
